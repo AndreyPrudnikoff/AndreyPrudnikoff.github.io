@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/bitcybets/static/css/main.5f87b6b1.chunk.css",
+    "main.js": "/bitcybets/static/js/main.11173991.chunk.js",
+    "main.js.map": "/bitcybets/static/js/main.11173991.chunk.js.map",
+    "runtime-main.js": "/bitcybets/static/js/runtime-main.d9433e99.js",
+    "runtime-main.js.map": "/bitcybets/static/js/runtime-main.d9433e99.js.map",
+    "static/js/2.df76d91a.chunk.js": "/bitcybets/static/js/2.df76d91a.chunk.js",
+    "static/js/2.df76d91a.chunk.js.map": "/bitcybets/static/js/2.df76d91a.chunk.js.map",
+    "static/js/3.4d90d021.chunk.js": "/bitcybets/static/js/3.4d90d021.chunk.js",
+    "static/js/3.4d90d021.chunk.js.map": "/bitcybets/static/js/3.4d90d021.chunk.js.map",
+    "index.html": "/bitcybets/index.html",
+    "static/css/main.5f87b6b1.chunk.css.map": "/bitcybets/static/css/main.5f87b6b1.chunk.css.map",
+    "static/js/2.df76d91a.chunk.js.LICENSE.txt": "/bitcybets/static/js/2.df76d91a.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/bitcybets/static/media/main_bg.e37768ad.png",
+    "static/media/arrowDown.e8dc83bd.svg": "/bitcybets/static/media/arrowDown.e8dc83bd.svg",
+    "static/media/arrowUp.dbe56842.svg": "/bitcybets/static/media/arrowUp.dbe56842.svg",
+    "static/media/main.scss": "/bitcybets/static/media/select.3343bbef.svg",
+    "static/media/bitcoin.d0700d0f.svg": "/bitcybets/static/media/bitcoin.d0700d0f.svg",
+    "static/media/deposit.1d680270.svg": "/bitcybets/static/media/deposit.1d680270.svg",
+    "static/media/down.43b4bccb.svg": "/bitcybets/static/media/down.43b4bccb.svg",
+    "static/media/person.c4327c37.svg": "/bitcybets/static/media/person.c4327c37.svg",
+    "static/media/up.80efb8f0.svg": "/bitcybets/static/media/up.80efb8f0.svg",
+    "static/media/withdraw.2043f4fc.svg": "/bitcybets/static/media/withdraw.2043f4fc.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d9433e99.js",
+    "static/js/2.df76d91a.chunk.js",
+    "static/css/main.5f87b6b1.chunk.css",
+    "static/js/main.11173991.chunk.js"
+  ]
+}
