@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.8f737266.chunk.css",
-    "main.js": "/static/js/main.5d417419.chunk.js",
-    "main.js.map": "/static/js/main.5d417419.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.5a59f281.js",
-    "runtime-main.js.map": "/static/js/runtime-main.5a59f281.js.map",
-    "static/js/2.df76d91a.chunk.js": "/static/js/2.df76d91a.chunk.js",
-    "static/js/2.df76d91a.chunk.js.map": "/static/js/2.df76d91a.chunk.js.map",
-    "static/js/3.4d90d021.chunk.js": "/static/js/3.4d90d021.chunk.js",
-    "static/js/3.4d90d021.chunk.js.map": "/static/js/3.4d90d021.chunk.js.map",
+    "main.css": "/static/css/main.e29e90ee.chunk.css",
+    "main.js": "/static/js/main.f5f03d49.chunk.js",
+    "main.js.map": "/static/js/main.f5f03d49.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.5688ba95.js",
+    "runtime-main.js.map": "/static/js/runtime-main.5688ba95.js.map",
+    "static/js/2.4fd1ad76.chunk.js": "/static/js/2.4fd1ad76.chunk.js",
+    "static/js/2.4fd1ad76.chunk.js.map": "/static/js/2.4fd1ad76.chunk.js.map",
+    "static/js/3.6d1d1f46.chunk.js": "/static/js/3.6d1d1f46.chunk.js",
+    "static/js/3.6d1d1f46.chunk.js.map": "/static/js/3.6d1d1f46.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.8f737266.chunk.css.map": "/static/css/main.8f737266.chunk.css.map",
-    "static/js/2.df76d91a.chunk.js.LICENSE.txt": "/static/js/2.df76d91a.chunk.js.LICENSE.txt",
+    "static/css/main.e29e90ee.chunk.css.map": "/static/css/main.e29e90ee.chunk.css.map",
+    "static/js/2.4fd1ad76.chunk.js.LICENSE.txt": "/static/js/2.4fd1ad76.chunk.js.LICENSE.txt",
     "static/media/index.scss": "/static/media/main_bg.e37768ad.png",
     "static/media/arrowDown.e8dc83bd.svg": "/static/media/arrowDown.e8dc83bd.svg",
     "static/media/arrowUp.dbe56842.svg": "/static/media/arrowUp.dbe56842.svg",
@@ -19,14 +19,15 @@
     "static/media/bitcoin.d0700d0f.svg": "/static/media/bitcoin.d0700d0f.svg",
     "static/media/deposit.1d680270.svg": "/static/media/deposit.1d680270.svg",
     "static/media/down.43b4bccb.svg": "/static/media/down.43b4bccb.svg",
+    "static/media/auth.scss": "/static/media/eyeSlash.b2cfd82b.svg",
     "static/media/person.c4327c37.svg": "/static/media/person.c4327c37.svg",
     "static/media/up.80efb8f0.svg": "/static/media/up.80efb8f0.svg",
     "static/media/withdraw.2043f4fc.svg": "/static/media/withdraw.2043f4fc.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.5a59f281.js",
-    "static/js/2.df76d91a.chunk.js",
-    "static/css/main.8f737266.chunk.css",
-    "static/js/main.5d417419.chunk.js"
+    "static/js/runtime-main.5688ba95.js",
+    "static/js/2.4fd1ad76.chunk.js",
+    "static/css/main.e29e90ee.chunk.css",
+    "static/js/main.f5f03d49.chunk.js"
   ]
 }
