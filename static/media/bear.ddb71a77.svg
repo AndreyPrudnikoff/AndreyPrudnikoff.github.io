@@ -1,4 +1,4 @@
-<svg width="27" height="26" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="27" height="26" viewBox="0 0 27 26" fill="#250e25" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <rect width="27" height="26" fill="#1A1A1A"/>
     <g clip-path="url(#clip0)">
         <rect width="1280" height="720" transform="translate(-859 -627)" fill="#18192F"/>
@@ -9,7 +9,7 @@
         <rect width="1280" height="720" transform="translate(-859 -627)" fill="#8DD9FC"/>
         <rect width="1280" height="720" transform="translate(-859 -627)" fill="#191E33"/>
         <g clip-path="url(#clip1)">
-            <rect x="-971" y="-984" width="1495" height="1495" fill="url(#pattern0)"/>
+            <rect x="-971" y="-984" width="1495" height="1495" fill="#250e25"/>
         </g>
         <g filter="url(#filter0_b)">
             <rect x="-799" y="-156" width="857" height="224" rx="24" fill="#1A1F34" fill-opacity="0.7"/>
