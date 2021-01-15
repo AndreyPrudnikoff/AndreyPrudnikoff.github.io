@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.08c4a388.chunk.css",
-    "main.js": "/static/js/main.fe0c073d.chunk.js",
-    "main.js.map": "/static/js/main.fe0c073d.chunk.js.map",
+    "main.css": "/static/css/main.60cfdec3.chunk.css",
+    "main.js": "/static/js/main.87cf4da4.chunk.js",
+    "main.js.map": "/static/js/main.87cf4da4.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.7856f7b7.js",
     "runtime-main.js.map": "/static/js/runtime-main.7856f7b7.js.map",
-    "static/js/2.f5d8f86a.chunk.js": "/static/js/2.f5d8f86a.chunk.js",
-    "static/js/2.f5d8f86a.chunk.js.map": "/static/js/2.f5d8f86a.chunk.js.map",
+    "static/js/2.2e36b532.chunk.js": "/static/js/2.2e36b532.chunk.js",
+    "static/js/2.2e36b532.chunk.js.map": "/static/js/2.2e36b532.chunk.js.map",
     "static/js/3.1717320d.chunk.js": "/static/js/3.1717320d.chunk.js",
     "static/js/3.1717320d.chunk.js.map": "/static/js/3.1717320d.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.08c4a388.chunk.css.map": "/static/css/main.08c4a388.chunk.css.map",
-    "static/js/2.f5d8f86a.chunk.js.LICENSE.txt": "/static/js/2.f5d8f86a.chunk.js.LICENSE.txt",
+    "static/css/main.60cfdec3.chunk.css.map": "/static/css/main.60cfdec3.chunk.css.map",
+    "static/js/2.2e36b532.chunk.js.LICENSE.txt": "/static/js/2.2e36b532.chunk.js.LICENSE.txt",
     "static/media/Logo2.056c141d.svg": "/static/media/Logo2.056c141d.svg",
     "static/media/arrowDown.e8dc83bd.svg": "/static/media/arrowDown.e8dc83bd.svg",
     "static/media/arrowUp.dbe56842.svg": "/static/media/arrowUp.dbe56842.svg",
@@ -24,14 +24,16 @@
     "static/media/down.43b4bccb.svg": "/static/media/down.43b4bccb.svg",
     "static/media/auth.scss": "/static/media/eyeSlash.b2cfd82b.svg",
     "static/media/index.scss": "/static/media/main_bg.e37768ad.png",
+    "static/media/mastercard.5f717f5d.svg": "/static/media/mastercard.5f717f5d.svg",
     "static/media/person.c4327c37.svg": "/static/media/person.c4327c37.svg",
     "static/media/up.80efb8f0.svg": "/static/media/up.80efb8f0.svg",
+    "static/media/visa.e3c41444.svg": "/static/media/visa.e3c41444.svg",
     "static/media/withdraw.2043f4fc.svg": "/static/media/withdraw.2043f4fc.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.7856f7b7.js",
-    "static/js/2.f5d8f86a.chunk.js",
-    "static/css/main.08c4a388.chunk.css",
-    "static/js/main.fe0c073d.chunk.js"
+    "static/js/2.2e36b532.chunk.js",
+    "static/css/main.60cfdec3.chunk.css",
+    "static/js/main.87cf4da4.chunk.js"
   ]
 }
