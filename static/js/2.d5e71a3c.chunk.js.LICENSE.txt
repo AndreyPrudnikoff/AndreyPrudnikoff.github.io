@@ -17,6 +17,13 @@ object-assign
  * Released under the MIT License
  */
 
+/*!
+ * chartjs-plugin-style v0.5.0
+ * https://nagix.github.io/chartjs-plugin-style
+ * (c) 2019 Akihiko Kusanagi
+ * Released under the MIT license
+ */
+
 /** @license React v0.20.1
  * scheduler.production.min.js
  *
