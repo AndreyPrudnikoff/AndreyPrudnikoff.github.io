@@ -1,4 +1,5 @@
 import React from 'react'
+import './main.scss'
 
 const Timer = () => {
 
@@ -43,7 +44,7 @@ const Timer = () => {
     }, [miliSecond]);
 
     return (
-        <div className="time-item">
+        <div className="Timer">
             {second === 0 ? "Time over" : <div className="gold">Countdown: {formatTime(second)}</div>}
         </div>
     )
