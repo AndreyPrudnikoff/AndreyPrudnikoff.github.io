@@ -7,6 +7,7 @@ export const GOAWAY = 'GOAWAY';
 export const CREATE_AD = 'CREATE_AD';
 export const DEVICE_WIDTH = 'DEVICE_WIDTH';
 export const VIEW_MODE = 'VIEW_MODE';
+export const LANG_MODE = 'LANG_MODE';
 
 
 export const GET_LOCATION ='GET_LOCATION';

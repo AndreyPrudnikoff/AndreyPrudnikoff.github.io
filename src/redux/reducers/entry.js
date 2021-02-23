@@ -1,7 +1,7 @@
 import {
     AUTHORIZATION, CREATE_AD, DEVICE_WIDTH,
     GET_COURSE,
-    GET_LOCATION, GOAWAY, LOGOUT,
+    GET_LOCATION, GOAWAY, LANG_MODE, LOGOUT,
     PROHIBITION,
     REGISTRATION, VIEW_MODE
 } from "../types";
@@ -18,7 +18,8 @@ const initialState = {
     createAd: false,
     unauthorized: false,
     widthMode: window.outerWidth > 756 ? "desktop" : "mobile",
-    view: false
+    view: false,
+    lang: "en"
 }
 
 export const switchOptions = (state = initialState, action) => {
@@ -29,6 +30,8 @@ export const switchOptions = (state = initialState, action) => {
             return {...state, widthMode: action.payload};
         case VIEW_MODE:
             return {...state, view: action.payload};
+        case LANG_MODE:
+            return {...state, lang: action.payload};
         default:
             return state;
     }
@@ -82,4 +85,3 @@ export const courseReducer = (state = initialState, action) => {
             return state;
     }
 }
-

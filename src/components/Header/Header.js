@@ -15,6 +15,8 @@ import {authorization, createAd, logoutQuestion, prohibition, registration, swit
 import {Link, useLocation} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
 
+import {LANG} from "../../languges/en";
+
 const Header = ({
                     auth,
                     reg,
@@ -103,7 +105,7 @@ const Header = ({
                             }} className="login auth-header-icon" to="/login">
                                 <img width={18} src={login} alt="signin"/>
                             </Link>
-                            <Link onClick={registration} className="signup auth-header" to="/signup">SIGN UP</Link>
+                            <Link onClick={registration} className="signup auth-header" to="/signup">{LANG.SIGN_UP}</Link>
                             <Link onClick={registration} className="signup auth-header-icon" to="/signup">
                                 <img width={18} src={signup} alt="signup"/></Link>
                         </div> : null}
