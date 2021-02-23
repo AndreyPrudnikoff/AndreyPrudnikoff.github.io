@@ -1,4 +1,23 @@
 export const EN = {
+    Main: {
+        Start: {
+            implemented: 'Real ICO',
+            title: 'Добро пожаловать на bitcybets.com',
+            content: 'Make real Bitcoin bets',
+            loading: 'Загрузка 50 %',
+            btnUp: 'PREDICT UP',
+            btnDown: 'PREDICT DOWN'
+        },
+        Modal: {
+            title: {
+                first: 'You did great!',
+                second: 'Join now!'
+            },
+            logIn: 'LOG IN',
+            signUp: 'SIGN UP'
+        }
+    },
+
     Auth: {
         Login: {
             title: 'Welcome',
