@@ -25,7 +25,7 @@ const Reset = ({history}, currentLang) => {
                   setSecret('');
                   history.push("/restore")
               }} className="back">&larr;</span>
-                <h2>{LANG.Auth.ResetPassword.title}</h2>
+                <h2 className={currentLang}>{LANG.Auth.ResetPassword.title}</h2>
                 <form onSubmit={e => {
                     e.preventDefault();
                     if (confpass.length < 8 || confpass.length < 8) {
@@ -51,7 +51,7 @@ const Reset = ({history}, currentLang) => {
 
                     <div className={password ? 'pass' : 'text'}>
                         <span onClick={() => setPassword(!password)} className="eye"/>
-                        <label htmlFor="password">{LANG.Auth.ResetPassword.passwordNew}</label>
+                        <label className={currentLang} htmlFor="password">{LANG.Auth.ResetPassword.passwordNew}</label>
                         <input min='8' onChange={e => {
                             setPass(e.target.value);
                             setErr('');
@@ -61,7 +61,7 @@ const Reset = ({history}, currentLang) => {
                     </div>
                     <div className={passwordConfirm ? 'pass' : 'text'}>
                         <span onClick={() => setPasswordConfirm(!passwordConfirm)} className="eye"/>
-                        <label htmlFor="passwordConfirm">{LANG.Auth.ResetPassword.passwordRepeat}</label>
+                        <label className={currentLang} htmlFor="passwordConfirm">{LANG.Auth.ResetPassword.passwordRepeat}</label>
                         <input min='8' onChange={e => {
                             setConfpass(e.target.value);
                             setErr('');
@@ -73,16 +73,16 @@ const Reset = ({history}, currentLang) => {
                     </div>
 
                     <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
-                    <button type="submit">{LANG.Auth.ResetPassword.reset}</button>
+                    <button className={currentLang} type="submit">{LANG.Auth.ResetPassword.reset}</button>
                 </form>
             </div>
         );
     } else {
         return (
             <div className="round-dark auth">
-                <h2>{LANG.Auth.ResetPassword.passwordChanged}</h2>
+                <h2 className={currentLang}>{LANG.Auth.ResetPassword.passwordChanged}</h2>
                 <form>
-                    <button><Link to="/login">{LANG.Auth.ResetPassword.ok}</Link></button>
+                    <button><Link className={currentLang} to="/login">{LANG.Auth.ResetPassword.ok}</Link></button>
                 </form>
             </div>
         )

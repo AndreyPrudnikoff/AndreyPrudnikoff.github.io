@@ -55,13 +55,13 @@ class Restore extends Component {
                     }
                     }>
                         <div>
-                            <h2>{LANG.Auth.ForgotPassword.title}</h2>
-                            <label htmlFor="phone">{LANG.Auth.ForgotPassword.emailTitle}</label>
+                            <h2 className={currentLang}>{LANG.Auth.ForgotPassword.title}</h2>
+                            <label className={currentLang} htmlFor="phone">{LANG.Auth.ForgotPassword.emailTitle}</label>
                             <input onInput={this.inputHandler} placeholder={LANG.Auth.ForgotPassword.email} id="phone" name="phone"
                                    type="email" required/>
                         </div>
                         <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
-                        <button>{LANG.Auth.ForgotPassword.reset}</button>
+                        <button className={currentLang}>{LANG.Auth.ForgotPassword.reset}</button>
                     </form>
                 </div>
             );
@@ -69,9 +69,9 @@ class Restore extends Component {
             return (
                 <div className="round-dark restore auth col-3">
                     <form onSubmit={e => e.preventDefault()}>
-                        <h2>{LANG.Auth.StatusInfo.title}</h2>
-                        <p style={{fontWeight: 300, opacity: "0.8"}}>{LANG.Auth.StatusInfo.statusContent.sendLinkContent}<span style={{textDecoration: "underline", fontWeight: 400, opacity: "1"}}>{this.state.userEmail}</span>. {LANG.Auth.StatusInfo.statusContent.checkEmailContent}</p>
-                        <Link className="ok" to="/reset">{LANG.Auth.StatusInfo.ok}</Link>
+                        <h2 className={currentLang}>{LANG.Auth.StatusInfo.title}</h2>
+                        <p className={currentLang} style={{fontWeight: 300, opacity: "0.8"}}>{LANG.Auth.StatusInfo.statusContent.sendLinkContent}<span style={{textDecoration: "underline", fontWeight: 400, opacity: "1"}}>{this.state.userEmail}</span>. {LANG.Auth.StatusInfo.statusContent.checkEmailContent}</p>
+                        <Link className={currentLang + " ok"} to="/reset">{LANG.Auth.StatusInfo.ok}</Link>
                     </form>
                 </div>
             );

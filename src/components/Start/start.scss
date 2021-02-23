@@ -218,6 +218,12 @@ span.chross {
 //    justify-content: space-between;
 //  }
 //}
+button.ru {
+  font-family: "pragmatica"!important;
+}
+button span {
+  border: none!important;
+}
 @media screen and (max-width: 768px) {
   #chartjs-tooltip {
     display: none;

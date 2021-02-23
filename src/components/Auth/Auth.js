@@ -143,10 +143,10 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                     registration();
                     clearData();
                 }} className="back">&larr;</span>
-                    <h2 className="">{LANG.Auth.Register.title}</h2>
+                    <h2 className={currentLang}>{LANG.Auth.Register.title}</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="">
-                            <label htmlFor="name">{LANG.Auth.Register.nameTitle}</label>
+                            <label className={currentLang} htmlFor="name">{LANG.Auth.Register.nameTitle}</label>
                             <input onChange={e => {
                                 setName(e.target.value);
                                 setErr('');
@@ -156,7 +156,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                                    id="name" name="name" type="text" required/>
                         </div>
                         <div className="">
-                            <label htmlFor="phone">{LANG.Auth.Register.phoneTitle}</label>
+                            <label className={currentLang} htmlFor="phone">{LANG.Auth.Register.phoneTitle}</label>
                             <PhoneInput onChange={e => {
                                 setErr('');
                                 setPhoneNumber(e);
@@ -166,7 +166,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                                         displayInitialValueAsLocalNumber required/>
                         </div>
                         <div className="">
-                            <label htmlFor="email">{LANG.Auth.Register.emailTitle}</label>
+                            <label className={currentLang} htmlFor="email">{LANG.Auth.Register.emailTitle}</label>
                             <input onChange={e => {
                                 setEmail(e.target.value);
                                 setErr('');
@@ -177,7 +177,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                         </div>
                         <div className={password ? 'pass' : 'text'}>
                             <span onClick={() => setPassword(!password)} className="eye"/>
-                            <label htmlFor="password">{LANG.Auth.Register.password}</label>
+                            <label className={currentLang} htmlFor="password">{LANG.Auth.Register.password}</label>
                             <input min='8' onChange={e => {
                                 setPass(e.target.value);
                                 setErr('');
@@ -187,7 +187,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                         </div>
                         <div className={passwordConfirm ? 'pass' : 'text'}>
                             <span onClick={() => setPasswordConfirm(!passwordConfirm)} className="eye"/>
-                            <label htmlFor="passwordConfirm">{LANG.Auth.Register.passwordRepeat}</label>
+                            <label className={currentLang} htmlFor="passwordConfirm">{LANG.Auth.Register.passwordRepeat}</label>
                             <input min='8' onChange={e => {
                                 setConfpass(e.target.value);
                                 setErr('');
@@ -198,8 +198,8 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                                    required/>
                         </div>
                         <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
-                        <button>{LANG.Auth.Register.signUp}</button>
-                        <Link to='/support' className="support-link">{LANG.Auth.Register.support}</Link>
+                        <button className={currentLang}>{LANG.Auth.Register.signUp}</button>
+                        <Link to='/support' className={currentLang + " support-link"}>{LANG.Auth.Register.support}</Link>
                     </form>
 
                 </div>
@@ -211,10 +211,10 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                <span onClick={() => {
                    clearData();
                }} className="back"><Link to="/">&larr;</Link></span>
-                <h2>{LANG.Auth.Login.title}</h2>
+                <h2 className={currentLang}>{LANG.Auth.Login.title}</h2>
                 <form onSubmit={handleLogin}>
                     <div className="">
-                        <label htmlFor="phone">{LANG.Auth.Login.phoneTitle}</label>
+                        <label className={currentLang} htmlFor="phone">{LANG.Auth.Login.phoneTitle}</label>
                         <PhoneInput onChange={e => {
                             setPhone(e);
                             setErr('');
@@ -223,7 +223,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                     </div>
                     <div className={password ? 'pass' : 'text'}>
                         <span onClick={() => setPassword(!password)} className="eye"/>
-                        <label htmlFor="password">{LANG.Auth.Login.password}</label>
+                        <label className={currentLang} htmlFor="password">{LANG.Auth.Login.password}</label>
                         <input onInput={e => {
                             setPass(e.target.value);
                             setErr('');
@@ -231,16 +231,16 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                                type={password ? 'password' : 'text'} required/>
                     </div>
                     <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
-                    <Link to="/restore" className="forgot mb-3">{LANG.Auth.Login.forgotPassword}</Link>
-                    <button>{LANG.Auth.Login.loginIn}</button>
-                    <span>{LANG.Auth.Login.or}</span>
-                    <button onClick={e => {
+                    <Link to="/restore" className={currentLang + " forgot mb-3"}>{LANG.Auth.Login.forgotPassword}</Link>
+                    <button className={currentLang}>{LANG.Auth.Login.loginIn}</button>
+                    <span className={currentLang}>{LANG.Auth.Login.or}</span>
+                    <button className={currentLang} onClick={e => {
                         e.preventDefault();
                         registration();
                         clearData();
                     }}>{LANG.Auth.Login.signUp}
                     </button>
-                    <Link to="/support" className="support-link">{LANG.Auth.Login.support}</Link>
+                    <Link to="/support" className={currentLang + " support-link"}>{LANG.Auth.Login.support}</Link>
                 </form>
             </div>
         );
