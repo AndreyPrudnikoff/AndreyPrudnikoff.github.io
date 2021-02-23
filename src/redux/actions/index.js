@@ -4,7 +4,7 @@ import {
     BET_WIN,
     CLOSE_CONGRATULATION, CLOSE_YOURLOSE, CREATE_AD, DEVICE_WIDTH,
     GET_COURSE, GET_CURRENT_COURSE,
-    GET_LOCATION, LOGOUT,
+    GET_LOCATION, LANG_MODE, LOGOUT,
     PROHIBITION,
     REGISTRATION, VIEW_MODE
 } from "../types";
@@ -89,5 +89,10 @@ export function createAd() {
 export function switchView(param) {
     return dispatch => {
         dispatch({type: VIEW_MODE, payload: param});
+    }
+}
+export function chooseLang(lang) {
+    return dispatch => {
+        dispatch({type: LANG_MODE, payload: lang});
     }
 }

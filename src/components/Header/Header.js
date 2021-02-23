@@ -14,6 +14,7 @@ import {connect} from "react-redux";
 import {authorization, createAd, logoutQuestion, prohibition, registration, switchView} from "../../redux/actions";
 import {Link, useLocation} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
+import {LANG} from "../../languages/en";
 
 const Header = ({
                     auth,
@@ -103,7 +104,7 @@ const Header = ({
                             }} className="login auth-header-icon" to="/login">
                                 <img width={18} src={login} alt="signin"/>
                             </Link>
-                            <Link onClick={registration} className="signup auth-header" to="/signup">SIGN UP</Link>
+                            <Link onClick={registration} className="signup auth-header" to="/signup">{LANG.SIGN_UP}</Link>
                             <Link onClick={registration} className="signup auth-header-icon" to="/signup">
                                 <img width={18} src={signup} alt="signup"/></Link>
                         </div> : null}
