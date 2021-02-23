@@ -50,6 +50,7 @@ const Header = ({
                 }) => {
     const [menu, setMenu] = useState(false);
     const LANG = currentLang === "en" ? EN : RU;
+
     useEffect(() => {
         authorization();
     }, [])
@@ -58,9 +59,11 @@ const Header = ({
     }
     let location = useLocation();
     let isGame = location.pathname === "/game";
+    const show = location.pathname === "/" || location.pathname === "/login" || location.pathname === "/signup";
     useEffect(() => {
         if (location.pathname === "/" || location.pathname === "/login") {
             prohibition();
+
         }
     }, [location.pathname])
     return (
@@ -95,8 +98,8 @@ const Header = ({
                         </a>
                     </nav>
                     <div className="header-right">
-                       <div>{currentLang}</div>
-                        <img onClick={() => {
+                       <div style={{display: show ? "inline" : "none"}}>{currentLang}</div>
+                        <img style={{display: show ? "inline" : "none"}} onClick={() => {
                             if (currentLang === "en") {
                                 chooseLang("ru")
                             } else {
@@ -119,7 +122,7 @@ const Header = ({
                                 if (reg) {
                                     registration();
                                 }
-                            }} className="login auth-header" to="/login">{LANG.Auth.Login.loginIn}</Link>
+                            }} className={currentLang + " login auth-header"} to="/login">{LANG.Auth.Login.loginIn}</Link>
                             <Link onClick={() => {
                                 if (reg) {
                                     registration();
@@ -127,7 +130,7 @@ const Header = ({
                             }} className="login auth-header-icon" to="/login">
                                 <img width={18} src={login} alt="signin"/>
                             </Link>
-                            <Link onClick={registration} className="signup auth-header" to="/signup">{LANG.Auth.Login.signUp}</Link>
+                            <Link onClick={registration} className={currentLang + " signup auth-header"} to="/signup">{LANG.Auth.Login.signUp}</Link>
                             <Link onClick={registration} className="signup auth-header-icon" to="/signup">
                                 <img width={18} src={signup} alt="signup"/></Link>
                         </div> : null}

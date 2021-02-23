@@ -103,7 +103,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <Router>
+            <Router className={this.props.currentLang}>
                 <Header refresh={this.refresh}/>
                 <Playlist/>
                 {routing.map((content, index) => {

@@ -4,10 +4,16 @@
     <list default="true" id="3f6b93ff-e806-4942-bf67-7a8ba8e695b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/Auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/Reset.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/Reset.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Auth/Support.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/Support.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/restore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/restore.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header/header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/header.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/languages/en.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/languages/en.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Start/Start.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Start/Start.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/languages/ru.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/languages/ru.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -146,7 +152,7 @@
       <workItem from="1613893971600" duration="1191000" />
       <workItem from="1613977199714" duration="22160000" />
       <workItem from="1614062375131" duration="11372000" />
-      <workItem from="1614094356903" duration="1235000" />
+      <workItem from="1614094356903" duration="7341000" />
     </task>
     <servers />
   </component>

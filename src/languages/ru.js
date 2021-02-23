@@ -3,7 +3,7 @@ export const RU = {
         Start: {
             implemented: 'Реальное ICO',
             title: 'Добро пожаловать на bitcybets.com',
-            content: 'Вы можете заработать настоящий биткойн, просто угадав, вырастет цена биткойна или упадет в следующие десять секунд',
+            content: 'Делайте реальные ставки на биткойны',
             loading: 'Загрузка 50 %',
             btnUp: 'Вырастет',
             btnDown: 'Упадет'
@@ -41,7 +41,7 @@ export const RU = {
             email: 'lucky@mail.com',
             password: 'Пароль',
             passwordRepeat: 'Повторите пароль',
-            signUp: 'ЗЗАРЕГИСТРИРОВАТЬСЯ',
+            signUp: 'ЗАРЕГИСТРИРОВАТЬСЯ',
             support: 'Поддержка'
         },
 

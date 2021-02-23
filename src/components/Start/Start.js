@@ -71,14 +71,14 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                            setPredict('');
                            setBet('');
                        }} className="chross">&#10008;</span>
-                        <h2>{LANG.Main.Modal.title.first} <br/> {currentLang === "en" ? LANG.Main.Modal.title.second : null}</h2>
+                        <h2 className={currentLang}>{LANG.Main.Modal.title.first} <br/> {currentLang === "en" ? LANG.Main.Modal.title.second : null}</h2>
                         {/* <h2>{currentLang === "en" ? LANG.Main.Modal.title.first <br/> LANG.Main.Modal.title.second : LANG.Main.Modal.title.first}</h2> */}
                         {/* <h2>You did great! <br/> Join now!</h2> */}
                         <button onClick={() => {
                             setPredict('');
                             setBet('');
                             history.push('/login')
-                        }} className="btn btn-primary">
+                        }} className={currentLang + " btn btn-primary"}>
                             {LANG.Main.Modal.logIn}
                         </button>
                         <button onClick={() => {
@@ -86,7 +86,7 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                             setBet('');
                             history.push('/signup');
                             registration();
-                        }} className="btn btn-primary">
+                        }} className={currentLang + " btn btn-primary"}>
                             {LANG.Main.Modal.signUp}
                         </button>
                     </div>
@@ -98,13 +98,13 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                 <div className="bull-start"><img src={bull} alt="bull"/></div>
                 <div className="bear-start"><img src={bear} alt="bear"/></div>
                 <div className="text text-center">
-                    <span className="gold">{LANG.Main.Start.implemented}</span>
+                    <span className={currentLang + " gold"}>{LANG.Main.Start.implemented}</span>
                     <h2>
                         {/* {currentLang === 'en' ? <span><span className="gold">BITCY</span>BETS</span> : LANG.Main.Start.title} */}
                         <span className="gold">BITCY</span>BETS
                         
                     </h2>
-                    <p className="mt-3">{LANG.Main.Start.content}</p>
+                    <p className={currentLang + " mt-3"}>{LANG.Main.Start.content}</p>
                 </div>
                 <div className="dark">
                     <Time/>
@@ -130,7 +130,7 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                     <div className="buttons">
                         <div className="wrap-btn">
                             <button disabled={bet || !currentCourse} onClick={() => setBet('down')}
-                                    className="btn green green-start predict-btn"
+                                    className={currentLang + " btn green green-start predict-btn"}
                                     id="down">
                                         {LANG.Main.Start.btnUp}
                                 <img src={arrowUp} width="15" height="20" alt="b"/>
@@ -138,7 +138,7 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                                       mode={timeGame ? 'rectUp' : ''}/>
                             </button>
                             <button disabled={bet || !currentCourse} onClick={() => setBet('up')}
-                                    className="btn red red-start predict-btn"
+                                    className={currentLang + " btn red red-start predict-btn"}
                                     id="down">
                                         {LANG.Main.Start.btnDown}
                                 <img src={arrowDown} width="15" height="20" alt="b"/>

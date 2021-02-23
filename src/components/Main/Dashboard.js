@@ -105,7 +105,7 @@ class Dashboard extends React.Component {
             this.predictSubmit();
         }
 
-        if (true) {
+        if (false) {
             return (
                 <div className={`${widthMode} row bottom-container`}>
                     {widthMode === "desktop" ? <Rates/> : <></>}
@@ -179,50 +179,50 @@ class Dashboard extends React.Component {
                                                 </button>
                                             </div>}
 
-                                        {/*<p*/}
-                                        {/*    style={{*/}
-                                        {/*        display: startGame && predict === 'up' ? 'flex' : 'none'*/}
-                                        {/*    }}*/}
-                                        {/*    id="predict"*/}
-                                        {/*    className="btn bet-btn col-sm-4">*/}
-                                        {/*    <span className="gold">{counter}*/}
-                                        {/*        <span className='circle'>*/}
-                                        {/*            <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">*/}
-                                        {/*            <g>*/}
-                                        {/*                <title>Layer 1</title>*/}
-                                        {/*                <circle*/}
-                                        {/*                    strokeDasharray={440}*/}
-                                        {/*                    strokeDashoffset={counter === 10 ? -2 * initialOffset : ((i + 1) * (initialOffset / time)) - 2 * initialOffset}*/}
-                                        {/*                    id="circle" className="circle_animation" r="69.85699" cy="81"*/}
-                                        {/*                    cx="81" strokeWidth="6"*/}
-                                        {/*                    stroke="#F7931A" fill="none"/>*/}
-                                        {/*            </g>*/}
-                                        {/*        </svg>*/}
-                                        {/*        </span>*/}
-                                        {/*    </span>*/}
-                                        {/*</p>*/}
+                                        <p
+                                            style={{
+                                                display: startGame && predict === 'up' ? 'flex' : 'none'
+                                            }}
+                                            id="predict"
+                                            className="btn bet-btn col-sm-4">
+                                            <span className="gold">{counter}
+                                                <span className='circle'>
+                                                    <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
+                                                    <g>
+                                                        <title>Layer 1</title>
+                                                        <circle
+                                                            strokeDasharray={440}
+                                                            strokeDashoffset={counter === 10 ? -2 * initialOffset : ((i + 1) * (initialOffset / time)) - 2 * initialOffset}
+                                                            id="circle" className="circle_animation" r="69.85699" cy="81"
+                                                            cx="81" strokeWidth="6"
+                                                            stroke="#F7931A" fill="none"/>
+                                                    </g>
+                                                </svg>
+                                                </span>
+                                            </span>
+                                        </p>
 
-                                        {/*<p style={{*/}
-                                        {/*    display: startGame && (predict === 'down' || !predict) ? 'flex' : 'none'*/}
-                                        {/*}}*/}
-                                        {/*   id="predict"*/}
-                                        {/*   className="btn bet-btn col-sm-4">*/}
-                                        {/*    <span className="gold">{counter}*/}
-                                        {/*        <span className='circle'>*/}
-                                        {/*            <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">*/}
-                                        {/*            <g>*/}
-                                        {/*                <title>Layer 1</title>*/}
-                                        {/*                <circle*/}
-                                        {/*                    strokeDasharray={440}*/}
-                                        {/*                    strokeDashoffset={counter === 10 ? -2 * initialOffset : ((i + 1) * (initialOffset / time)) - 2 * initialOffset}*/}
-                                        {/*                    id="circle" className="circle_animation" r="69.85699" cy="81"*/}
-                                        {/*                    cx="81" strokeWidth="6"*/}
-                                        {/*                    stroke="#F7931A" fill="none"/>*/}
-                                        {/*            </g>*/}
-                                        {/*        </svg>*/}
-                                        {/*        </span>*/}
-                                        {/*    </span>*/}
-                                        {/*</p>*/}
+                                        <p style={{
+                                            display: startGame && (predict === 'down' || !predict) ? 'flex' : 'none'
+                                        }}
+                                           id="predict"
+                                           className="btn bet-btn col-sm-4">
+                                            <span className="gold">{counter}
+                                                <span className='circle'>
+                                                    <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
+                                                    <g>
+                                                        <title>Layer 1</title>
+                                                        <circle
+                                                            strokeDasharray={440}
+                                                            strokeDashoffset={counter === 10 ? -2 * initialOffset : ((i + 1) * (initialOffset / time)) - 2 * initialOffset}
+                                                            id="circle" className="circle_animation" r="69.85699" cy="81"
+                                                            cx="81" strokeWidth="6"
+                                                            stroke="#F7931A" fill="none"/>
+                                                    </g>
+                                                </svg>
+                                                </span>
+                                            </span>
+                                        </p>
 
                                         {startGame && (predict === 'up' || !predict)
                                             ? <></>
