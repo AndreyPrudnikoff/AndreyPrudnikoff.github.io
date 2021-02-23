@@ -14,11 +14,15 @@ import bitsybets from "../../images/BITCYBETS.svg";
 import coin from "../../images/coin.svg";
 import {userdata} from "../../redux/actions/game";
 import {registration} from "../../redux/actions";
+import {EN} from "../../languages/en";
+import {RU} from "../../languages/ru";
 
-const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode, registration}) => {
+const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode, registration, currentLang}) => {
     const [timeGame, setTimeGame] = useState(false);
     const [bet, setBet] = useState('');
     const [predict, setPredict] = useState('');
+
+    const LANG = currentLang === "en" ? EN : RU
 
     useEffect(() => {
         if (lastSeconds % 10 === 0) {
@@ -67,19 +71,23 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                            setPredict('');
                            setBet('');
                        }} className="chross">&#10008;</span>
-                        <h2>You did great! <br/> Join now!</h2>
+                        <h2>{LANG.Main.Modal.title.first} <br/> {currentLang === "en" ? LANG.Main.Modal.title.second : null}</h2>
+                        {/* <h2>{currentLang === "en" ? LANG.Main.Modal.title.first <br/> LANG.Main.Modal.title.second : LANG.Main.Modal.title.first}</h2> */}
+                        {/* <h2>You did great! <br/> Join now!</h2> */}
                         <button onClick={() => {
                             setPredict('');
                             setBet('');
                             history.push('/login')
-                        }} className="btn btn-primary">LOG IN
+                        }} className="btn btn-primary">
+                            {LANG.Main.Modal.logIn}
                         </button>
                         <button onClick={() => {
                             setPredict('');
                             setBet('');
                             history.push('/signup');
                             registration();
-                        }} className="btn btn-primary">SIGN UP
+                        }} className="btn btn-primary">
+                            {LANG.Main.Modal.signUp}
                         </button>
                     </div>
                 </div>
@@ -90,11 +98,13 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                 <div className="bull-start"><img src={bull} alt="bull"/></div>
                 <div className="bear-start"><img src={bear} alt="bear"/></div>
                 <div className="text text-center">
-                    <span className="gold">Real ICO</span>
+                    <span className="gold">{LANG.Main.Start.implemented}</span>
                     <h2>
+                        {/* {currentLang === 'en' ? <span><span className="gold">BITCY</span>BETS</span> : LANG.Main.Start.title} */}
                         <span className="gold">BITCY</span>BETS
+                        
                     </h2>
-                    <p className="mt-3">Make real Bitcoin bets</p>
+                    <p className="mt-3">{LANG.Main.Start.content}</p>
                 </div>
                 <div className="dark">
                     <Time/>
@@ -121,14 +131,16 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                         <div className="wrap-btn">
                             <button disabled={bet || !currentCourse} onClick={() => setBet('down')}
                                     className="btn green green-start predict-btn"
-                                    id="down">PREDICT UP
+                                    id="down">
+                                        {LANG.Main.Start.btnUp}
                                 <img src={arrowUp} width="15" height="20" alt="b"/>
                                 <Rect start={timeGame} infinite={'infinity'} idButton={'down'}
                                       mode={timeGame ? 'rectUp' : ''}/>
                             </button>
                             <button disabled={bet || !currentCourse} onClick={() => setBet('up')}
                                     className="btn red red-start predict-btn"
-                                    id="down">PREDICT DOWN
+                                    id="down">
+                                        {LANG.Main.Start.btnDown}
                                 <img src={arrowDown} width="15" height="20" alt="b"/>
                                 <Rect infinite={'infinity'} idButton={'down'} mode={timeGame ? 'rectDown' : ''}/>
                             </button>
@@ -147,7 +159,8 @@ const mapStateToProps = state => {
         currentCourse: state.courseReducer.currentCourse,
         course: state.courseReducer.course,
         lastSeconds: state.courseReducer.lastSeconds,
-        widthMode: state.switchOptions.widthMode
+        widthMode: state.switchOptions.widthMode,
+        currentLang: state.switchOptions.lang
     }
 }
 const mapDispatchToProps = {

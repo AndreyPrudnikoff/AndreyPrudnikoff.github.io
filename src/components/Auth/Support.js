@@ -1,5 +1,9 @@
 import React from 'react';
 import "./auth.scss";
+// import store from '../../redux/store'
+import {connect} from 'react-redux'
+import {EN} from "../../languages/en";
+import {RU} from "../../languages/ru";
 
 const styles = {
     backgroundColor: 'inherit',
@@ -20,16 +24,21 @@ const label = {
     marginBottom: '5px',
     opacity: 0.8
 }
-const Support = ({history}) => {
+const Support = ({history}, currentLang) => {
+
+    // const { lang } = store.getState().switchOptions;
+    const LANG = currentLang === "en" ? EN : RU
+
     return (
         <div className="blur">
             <form style={{width: '40%'}} className="round-dark win">
                 <span onClick={() => history.push('/')} style={arrow} className="back restore-arrow">&larr;</span>
                 <div className="win-btn">
-                    <h2>Support</h2>
-                    <span style={label}>Write your question here </span>
+                    <h2>{LANG.Auth.Support.title}</h2>
+                    <span style={label}>{LANG.Auth.Support.writeQuestion}</span>
                     <input style={styles} type="text"/>
-                    <button onClick={() => history.push('/')} style={{width: '200px', margin: '30px auto'}} className="btn btn-primary">OK
+                    <button onClick={() => history.push('/')} style={{width: '200px', margin: '30px auto'}} className="btn btn-primary">
+                        {LANG.Auth.Support.send}
                     </button>
                 </div>
             </form>
@@ -37,4 +46,11 @@ const Support = ({history}) => {
     );
 };
 
-export default Support;
+
+const mapStateToProps = state => {
+    return {
+        currentLang: state.switchOptions.lang
+    }
+}
+
+export default connect(mapStateToProps, null)(Support);
