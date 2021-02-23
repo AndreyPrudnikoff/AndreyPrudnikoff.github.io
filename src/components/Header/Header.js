@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './header.scss';
 import logo from '../../images/logoLeft.svg';
-// import logo2 from '../../images/logoCentre.svg';
 import burger from '../../images/burger.png';
 import refreshIcon from '../../images/refresh.svg';
 import sound from '../../images/volume-up-solid.svg';
@@ -10,36 +9,16 @@ import signup from '../../images/user_plus.svg';
 import login from '../../images/sign_in.svg';
 import bets from '../../images/bets.png';
 import wallet from '../../images/wallet.png';
+import caret from '../../images/lang.svg';
 import {connect} from "react-redux";
-import {authorization, createAd, logoutQuestion, prohibition, registration, switchView} from "../../redux/actions";
+import {authorization, chooseLang, createAd, logoutQuestion, prohibition, registration, switchView} from "../../redux/actions";
 import {Link, useLocation} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
-import store from "../../redux/store"
-
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const { lang } = store.getState().switchOptions;
-const LANG = lang === "en" ? EN : RU
-const Header = ({
-                    auth,
-                    reg,
-                    mute,
-                    muteToggle,
-                    logoutQuestion,
-                    createAd,
-                    logout,
-                    registration,
-                    prohibition,
-                    authorization,
-                    history,
-                    unauthorized,
-                    predict,
-                    refresh,
-                    view,
-                    switchView,
-                    widthMode
-                }) => {
+const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, registration, prohibition, authorization, history, unauthorized, predict, refresh, view, switchView, widthMode, chooseLang, currentLang}) => {
+    const LANG = currentLang === "en" ? EN : RU;
     const [menu, setMenu] = useState(false);
     useEffect(() => {
         authorization();
@@ -86,6 +65,15 @@ const Header = ({
                         </a>
                     </nav>
                     <div className="header-right">
+                        <div>{currentLang}</div>
+                        <img onClick={() => {
+                            if (currentLang === "en") {
+                                chooseLang("ru")
+                            } else {
+                                chooseLang("en")
+                            }
+                        }} className="sound " src={caret} height="18" width="18"
+                             alt="lang"/>
                         <img onClick={() => {
                             if (sessionStorage.getItem("token")) {
                                 sessionStorage.setItem("saveReload", "1");
@@ -96,6 +84,8 @@ const Header = ({
                              alt="refresh"/>
                         <img onClick={handleMute} className="sound " src={mute ? sound : noSound} height="18" width="18"
                              alt="sound"/>
+
+
                         {!auth ? <div className="startHeader">
                             <Link onClick={() => {
                                 if (reg) {
@@ -109,7 +99,8 @@ const Header = ({
                             }} className="login auth-header-icon" to="/login">
                                 <img width={18} src={login} alt="signin"/>
                             </Link>
-                            <Link onClick={registration} className="signup auth-header" to="/signup">{LANG.SIGN_UP}</Link>
+                            <Link onClick={registration} className="signup auth-header"
+                                  to="/signup">{LANG.SIGN_UP}</Link>
                             <Link onClick={registration} className="signup auth-header-icon" to="/signup">
                                 <img width={18} src={signup} alt="signup"/></Link>
                         </div> : null}
@@ -159,7 +150,8 @@ const mapStateToProps = state => {
         unauthorized: state.authReducer.unauthorized,
         predict: state.balanceReducer.predict,
         widthMode: state.switchOptions.widthMode,
-        view: state.switchOptions.view
+        view: state.switchOptions.view,
+        currentLang: state.switchOptions.lang
     }
 }
 const mapDispatchToProps = {
@@ -169,6 +161,7 @@ const mapDispatchToProps = {
     registration,
     prohibition,
     authorization,
-    switchView
+    switchView,
+    chooseLang
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -119,7 +119,8 @@ class App extends React.Component {
 const mapStateToProps = state => {
     return {
         auth: state.authReducer.auth,
-        unauthorized: state.authReducer.unauthorized
+        unauthorized: state.authReducer.unauthorized,
+        currentLang: state.switchOptions.lang
     }
 }
 const mapDispatchToProps = {
