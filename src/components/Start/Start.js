@@ -132,7 +132,7 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                             <button disabled={bet || !currentCourse} onClick={() => setBet('down')}
                                     className={currentLang + " btn green green-start predict-btn"}
                                     id="down">
-                                        {LANG.Main.Start.btnUp}
+                                        <span className={currentLang + " green"}>{LANG.Main.Start.btnUp}</span>
                                 <img src={arrowUp} width="15" height="20" alt="b"/>
                                 <Rect start={timeGame} infinite={'infinity'} idButton={'down'}
                                       mode={timeGame ? 'rectUp' : ''}/>
@@ -140,7 +140,7 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                             <button disabled={bet || !currentCourse} onClick={() => setBet('up')}
                                     className={currentLang + " btn red red-start predict-btn"}
                                     id="down">
-                                        {LANG.Main.Start.btnDown}
+                                        <span className={currentLang + " red"}>{LANG.Main.Start.btnDown}</span>
                                 <img src={arrowDown} width="15" height="20" alt="b"/>
                                 <Rect infinite={'infinity'} idButton={'down'} mode={timeGame ? 'rectDown' : ''}/>
                             </button>
