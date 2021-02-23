@@ -6,8 +6,10 @@ import './auth.scss';
 import {authorization, betWin, registration} from "../../redux/actions";
 import {User} from "../../api/User";
 import {fireworks, muteToggle} from "../../redux/actions/music";
+import {EN} from "../../languages/en";
+import {RU} from "../../languages/ru";
 
-const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, fireworks, history, widthMode}) => {
+const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, fireworks, history, widthMode, currentLang}) => {
     const [password, setPassword] = useState(true)
     const [passwordConfirm, setPasswordConfirm] = useState(true)
     const [name, setName] = useState('')
@@ -18,6 +20,8 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
     const [code, setCode] = useState('')
     const [enterCode, setEnterCode] = useState(false)
     const [err, setErr] = useState('')
+
+    const LANG = currentLang === "en" ? EN : RU
 
     const phoneRef = useRef(null);
     const moveCaretToEnd = () => {
@@ -139,41 +143,41 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                     registration();
                     clearData();
                 }} className="back">&larr;</span>
-                    <h2 className="">Registration</h2>
+                    <h2 className="">{LANG.Auth.Register.title}</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="">
-                            <label htmlFor="name">Name</label>
+                            <label htmlFor="name">{LANG.Auth.Register.nameTitle}</label>
                             <input onChange={e => {
                                 setName(e.target.value);
                                 setErr('');
                             }}
                                    value={name}
-                                   placeholder="John Lucky"
+                                   placeholder={LANG.Auth.Register.name}
                                    id="name" name="name" type="text" required/>
                         </div>
                         <div className="">
-                            <label htmlFor="phone">Phone</label>
+                            <label htmlFor="phone">{LANG.Auth.Register.phoneTitle}</label>
                             <PhoneInput onChange={e => {
                                 setErr('');
                                 setPhoneNumber(e);
                                 moveCaretToEnd();
-                            }} id="phone" ref={phoneRef} limitMaxLength={true} placeholder='+123-456-78-90'
+                            }} id="phone" ref={phoneRef} limitMaxLength={true} placeholder={LANG.Auth.Register.phone}
                                         value={phone} international
                                         displayInitialValueAsLocalNumber required/>
                         </div>
                         <div className="">
-                            <label htmlFor="email">Email</label>
+                            <label htmlFor="email">{LANG.Auth.Register.emailTitle}</label>
                             <input onChange={e => {
                                 setEmail(e.target.value);
                                 setErr('');
                             }}
                                    value={email}
-                                   placeholder="lucky@mail.com"
+                                   placeholder={LANG.Auth.Register.email}
                                    id="email" name="email" type="email" required/>
                         </div>
                         <div className={password ? 'pass' : 'text'}>
                             <span onClick={() => setPassword(!password)} className="eye"/>
-                            <label htmlFor="password">Password</label>
+                            <label htmlFor="password">{LANG.Auth.Register.password}</label>
                             <input min='8' onChange={e => {
                                 setPass(e.target.value);
                                 setErr('');
@@ -183,7 +187,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                         </div>
                         <div className={passwordConfirm ? 'pass' : 'text'}>
                             <span onClick={() => setPasswordConfirm(!passwordConfirm)} className="eye"/>
-                            <label htmlFor="passwordConfirm">Repeat password</label>
+                            <label htmlFor="passwordConfirm">{LANG.Auth.Register.passwordRepeat}</label>
                             <input min='8' onChange={e => {
                                 setConfpass(e.target.value);
                                 setErr('');
@@ -194,8 +198,8 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                                    required/>
                         </div>
                         <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
-                        <button>SIGN UP</button>
-                        <Link to='/support' className="support-link">Need support?</Link>
+                        <button>{LANG.Auth.Register.signUp}</button>
+                        <Link to='/support' className="support-link">{LANG.Auth.Register.support}</Link>
                     </form>
 
                 </div>
@@ -207,19 +211,19 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                <span onClick={() => {
                    clearData();
                }} className="back"><Link to="/">&larr;</Link></span>
-                <h2>Welcome</h2>
+                <h2>{LANG.Auth.Login.title}</h2>
                 <form onSubmit={handleLogin}>
                     <div className="">
-                        <label htmlFor="phone">Phone</label>
+                        <label htmlFor="phone">{LANG.Auth.Login.phoneTitle}</label>
                         <PhoneInput onChange={e => {
                             setPhone(e);
                             setErr('');
-                        }} id="phone" limitMaxLength={true} placeholder='+123-456-78-90' value={phone} international
+                        }} id="phone" limitMaxLength={true} placeholder={LANG.Auth.Login.phone} value={phone} international
                                     displayInitialValueAsLocalNumber required/>
                     </div>
                     <div className={password ? 'pass' : 'text'}>
                         <span onClick={() => setPassword(!password)} className="eye"/>
-                        <label htmlFor="password">Password</label>
+                        <label htmlFor="password">{LANG.Auth.Login.password}</label>
                         <input onInput={e => {
                             setPass(e.target.value);
                             setErr('');
@@ -227,16 +231,16 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                                type={password ? 'password' : 'text'} required/>
                     </div>
                     <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
-                    <Link to="/restore" className="forgot mb-3">Forgot password?</Link>
-                    <button>LOG IN</button>
-                    <span>or</span>
+                    <Link to="/restore" className="forgot mb-3">{LANG.Auth.Login.forgotPassword}</Link>
+                    <button>{LANG.Auth.Login.loginIn}</button>
+                    <span>{LANG.Auth.Login.or}</span>
                     <button onClick={e => {
                         e.preventDefault();
                         registration();
                         clearData();
-                    }}>SIGN UP
+                    }}>{LANG.Auth.Login.signUp}
                     </button>
-                    <Link to="/support" className="support-link">Need support?</Link>
+                    <Link to="/support" className="support-link">{LANG.Auth.Login.support}</Link>
                 </form>
             </div>
         );
@@ -247,7 +251,8 @@ const mapStateToProps = state => {
     return {
         reg: state.authReducer.reg,
         mute: state.soundReducer.mute,
-        widthMode: state.switchOptions.widthMode
+        widthMode: state.switchOptions.widthMode,
+        currentLang: state.switchOptions.lang
     }
 }
 const mapDispatchToProps = {

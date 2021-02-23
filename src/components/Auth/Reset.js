@@ -1,8 +1,12 @@
 import React, {useState} from 'react';
 import {User} from "../../api/User";
 import {Link} from "react-router-dom";
+// import store from '../../redux/store'
+import {connect} from 'react-redux'
+import {EN} from "../../languages/en";
+import {RU} from "../../languages/ru";
 
-const Reset = ({history}) => {
+const Reset = ({history}, currentLang) => {
     const [success, setSuccess] = useState(false);
     const [password, setPassword] = useState(true)
     const [passwordConfirm, setPasswordConfirm] = useState(true)
@@ -10,6 +14,10 @@ const Reset = ({history}) => {
     const [pass, setPass] = useState('');
     const [confpass, setConfpass] = useState('');
     const [err, setErr] = useState('');
+
+    // const { lang } = store.getState().switchOptions;
+    const LANG = currentLang === "en" ? EN : RU
+    
     if (!success) {
         return (
             <div className="round-dark auth">
@@ -17,7 +25,7 @@ const Reset = ({history}) => {
                   setSecret('');
                   history.push("/restore")
               }} className="back">&larr;</span>
-                <h2>Enter secret code</h2>
+                <h2>{LANG.Auth.ResetPassword.title}</h2>
                 <form onSubmit={e => {
                     e.preventDefault();
                     if (confpass.length < 8 || confpass.length < 8) {
@@ -43,7 +51,7 @@ const Reset = ({history}) => {
 
                     <div className={password ? 'pass' : 'text'}>
                         <span onClick={() => setPassword(!password)} className="eye"/>
-                        <label htmlFor="password">New password</label>
+                        <label htmlFor="password">{LANG.Auth.ResetPassword.passwordNew}</label>
                         <input min='8' onChange={e => {
                             setPass(e.target.value);
                             setErr('');
@@ -53,7 +61,7 @@ const Reset = ({history}) => {
                     </div>
                     <div className={passwordConfirm ? 'pass' : 'text'}>
                         <span onClick={() => setPasswordConfirm(!passwordConfirm)} className="eye"/>
-                        <label htmlFor="passwordConfirm">Repeat password</label>
+                        <label htmlFor="passwordConfirm">{LANG.Auth.ResetPassword.passwordRepeat}</label>
                         <input min='8' onChange={e => {
                             setConfpass(e.target.value);
                             setErr('');
@@ -65,20 +73,26 @@ const Reset = ({history}) => {
                     </div>
 
                     <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
-                    <button type="submit">RESET</button>
+                    <button type="submit">{LANG.Auth.ResetPassword.reset}</button>
                 </form>
             </div>
         );
     } else {
         return (
             <div className="round-dark auth">
-                <h2>Password has been changed!</h2>
+                <h2>{LANG.Auth.ResetPassword.passwordChanged}</h2>
                 <form>
-                    <button><Link to="/login">OK</Link></button>
+                    <button><Link to="/login">{LANG.Auth.ResetPassword.ok}</Link></button>
                 </form>
             </div>
         )
     }
 };
 
-export default Reset;
+const mapStateToProps = state => {
+    return {
+        currentLang: state.switchOptions.lang
+    }
+}
+
+export default connect(mapStateToProps, null)(Reset);

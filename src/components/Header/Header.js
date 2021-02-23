@@ -14,13 +14,11 @@ import {connect} from "react-redux";
 import {authorization, createAd, logoutQuestion, prohibition, registration, switchView} from "../../redux/actions";
 import {Link, useLocation} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
-import store from "../../redux/store"
 
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const { lang } = store.getState().switchOptions;
-const LANG = lang === "en" ? EN : RU
+// const LANG = currentLang === "en" ? EN : RU
 const Header = ({
                     auth,
                     reg,
@@ -38,7 +36,8 @@ const Header = ({
                     refresh,
                     view,
                     switchView,
-                    widthMode
+                    widthMode,
+                    currentLang
                 }) => {
     const [menu, setMenu] = useState(false);
     useEffect(() => {
@@ -109,7 +108,7 @@ const Header = ({
                             }} className="login auth-header-icon" to="/login">
                                 <img width={18} src={login} alt="signin"/>
                             </Link>
-                            <Link onClick={registration} className="signup auth-header" to="/signup">{LANG.SIGN_UP}</Link>
+                            <Link onClick={registration} className="signup auth-header" to="/signup">Sign Up</Link>
                             <Link onClick={registration} className="signup auth-header-icon" to="/signup">
                                 <img width={18} src={signup} alt="signup"/></Link>
                         </div> : null}
@@ -159,7 +158,8 @@ const mapStateToProps = state => {
         unauthorized: state.authReducer.unauthorized,
         predict: state.balanceReducer.predict,
         widthMode: state.switchOptions.widthMode,
-        view: state.switchOptions.view
+        view: state.switchOptions.view,
+        currentLang: state.switchOptions.lang
     }
 }
 const mapDispatchToProps = {

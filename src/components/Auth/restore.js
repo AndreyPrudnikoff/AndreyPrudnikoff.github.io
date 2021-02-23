@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import {User} from "../../api/User";
+import {connect} from 'react-redux'
+// import store from '../../redux/store'
+import {EN} from "../../languages/en";
+import {RU} from "../../languages/ru";
 
 class Restore extends Component {
     constructor(props) {
@@ -26,7 +30,12 @@ class Restore extends Component {
 
     render() {
         const {restore, userEmail, err} = this.state;
-        const {history} = this.props;
+        const {history, currentLang} = this.props;
+
+        // const { lang } = store.getState().switchOptions;
+
+        const LANG = currentLang === "en" ? EN : RU
+
         if (restore) {
             return (
                 <div className="round-dark restore auth col-3">
@@ -46,13 +55,13 @@ class Restore extends Component {
                     }
                     }>
                         <div>
-                            <h2>Forgot password?</h2>
-                            <label htmlFor="phone">E-mail</label>
-                            <input onInput={this.inputHandler} placeholder="lucky@mail.com" id="phone" name="phone"
+                            <h2>{LANG.Auth.ForgotPassword.title}</h2>
+                            <label htmlFor="phone">{LANG.Auth.ForgotPassword.emailTitle}</label>
+                            <input onInput={this.inputHandler} placeholder={LANG.Auth.ForgotPassword.email} id="phone" name="phone"
                                    type="email" required/>
                         </div>
                         <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
-                        <button>Reset password</button>
+                        <button>{LANG.Auth.ForgotPassword.reset}</button>
                     </form>
                 </div>
             );
@@ -60,10 +69,9 @@ class Restore extends Component {
             return (
                 <div className="round-dark restore auth col-3">
                     <form onSubmit={e => e.preventDefault()}>
-                        <h2>Email has been sent</h2>
-                        <p style={{fontWeight: 300, opacity: "0.8"}}>We have sent a secret code on your mail <span style={{textDecoration: "underline", fontWeight: 400, opacity: "1"}}>{this.state.userEmail}</span>. Please, check your email and
-                            copy the code</p>
-                        <Link className="ok" to="/reset">OK</Link>
+                        <h2>{LANG.Auth.StatusInfo.title}</h2>
+                        <p style={{fontWeight: 300, opacity: "0.8"}}>{LANG.Auth.StatusInfo.statusContent.sendLinkContent}<span style={{textDecoration: "underline", fontWeight: 400, opacity: "1"}}>{this.state.userEmail}</span>. {LANG.Auth.StatusInfo.statusContent.checkEmailContent}</p>
+                        <Link className="ok" to="/reset">{LANG.Auth.StatusInfo.ok}</Link>
                     </form>
                 </div>
             );
@@ -72,4 +80,10 @@ class Restore extends Component {
 
 }
 
-export default Restore;
+const mapStateToProps = state => {
+    return {
+        currentLang: state.switchOptions.lang
+    }
+}
+
+export default connect(mapStateToProps, null)(Restore);
