@@ -8,17 +8,25 @@ import sound from '../../images/volume-up-solid.svg';
 import noSound from '../../images/volume-mute-solid.svg';
 import signup from '../../images/user_plus.svg';
 import login from '../../images/sign_in.svg';
+import caret from '../../images/lang.svg';
 import bets from '../../images/bets.png';
 import wallet from '../../images/wallet.png';
 import {connect} from "react-redux";
-import {authorization, createAd, logoutQuestion, prohibition, registration, switchView} from "../../redux/actions";
+import {
+    authorization,
+    chooseLang,
+    createAd,
+    logoutQuestion,
+    prohibition,
+    registration,
+    switchView
+} from "../../redux/actions";
 import {Link, useLocation} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
 
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-// const LANG = currentLang === "en" ? EN : RU
 const Header = ({
                     auth,
                     reg,
@@ -37,9 +45,11 @@ const Header = ({
                     view,
                     switchView,
                     widthMode,
-                    currentLang
+                    currentLang,
+                    chooseLang
                 }) => {
     const [menu, setMenu] = useState(false);
+    const LANG = currentLang === "en" ? EN : RU;
     useEffect(() => {
         authorization();
     }, [])
@@ -85,6 +95,15 @@ const Header = ({
                         </a>
                     </nav>
                     <div className="header-right">
+                       <div>{currentLang}</div>
+                        <img onClick={() => {
+                            if (currentLang === "en") {
+                                chooseLang("ru")
+                            } else {
+                                chooseLang("en")
+                            }
+                        }} className="sound " src={caret} height="18" width="18"
+                             alt="lang"/>
                         <img onClick={() => {
                             if (sessionStorage.getItem("token")) {
                                 sessionStorage.setItem("saveReload", "1");
@@ -100,7 +119,7 @@ const Header = ({
                                 if (reg) {
                                     registration();
                                 }
-                            }} className="login auth-header" to="/login">LOG IN</Link>
+                            }} className="login auth-header" to="/login">{LANG.Auth.Login.loginIn}</Link>
                             <Link onClick={() => {
                                 if (reg) {
                                     registration();
@@ -108,7 +127,7 @@ const Header = ({
                             }} className="login auth-header-icon" to="/login">
                                 <img width={18} src={login} alt="signin"/>
                             </Link>
-                            <Link onClick={registration} className="signup auth-header" to="/signup">Sign Up</Link>
+                            <Link onClick={registration} className="signup auth-header" to="/signup">{LANG.Auth.Login.signUp}</Link>
                             <Link onClick={registration} className="signup auth-header-icon" to="/signup">
                                 <img width={18} src={signup} alt="signup"/></Link>
                         </div> : null}
@@ -169,6 +188,7 @@ const mapDispatchToProps = {
     registration,
     prohibition,
     authorization,
-    switchView
+    switchView,
+    chooseLang
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

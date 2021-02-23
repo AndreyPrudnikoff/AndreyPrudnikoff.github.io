@@ -1,14 +1,14 @@
 export const RU = {
     Auth: {
         Login: {
-            title: 'Добро пожаловать',
+            title: 'Авторизация',
             phoneTitle: 'Телефон',
             phone: '063 111 22 33',
             password: 'Пароль',
             forgotPassword: 'Забыли пароль?',
             loginIn: 'ВХОД',
             or: 'или',
-            signUp: 'ЗАРЕГИСТРИРОВАТЬСЯ',
+            signUp: 'РЕГИСТРАЦИЯ',
             support: 'Нужна помощь?'
         },
 

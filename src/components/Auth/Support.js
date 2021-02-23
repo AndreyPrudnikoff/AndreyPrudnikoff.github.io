@@ -1,6 +1,5 @@
 import React from 'react';
 import "./auth.scss";
-// import store from '../../redux/store'
 import {connect} from 'react-redux'
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
@@ -24,11 +23,9 @@ const label = {
     marginBottom: '5px',
     opacity: 0.8
 }
-const Support = ({history}, currentLang) => {
+const Support = ({history, currentLang}) => {
 
-    // const { lang } = store.getState().switchOptions;
-    const LANG = currentLang === "en" ? EN : RU
-
+    const LANG = currentLang === "en" ? EN : RU;
     return (
         <div className="blur">
             <form style={{width: '40%'}} className="round-dark win">

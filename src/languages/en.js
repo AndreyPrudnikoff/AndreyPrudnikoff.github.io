@@ -6,7 +6,7 @@ export const EN = {
             phone: '063 111 22 33',
             password: 'Password',
             forgotPassword: 'Forgot password?',
-            loginIn: 'LOGIN IN',
+            loginIn: 'LOG IN',
             or: 'or',
             signUp: 'SIGN UP',
             support: 'Need support?'
