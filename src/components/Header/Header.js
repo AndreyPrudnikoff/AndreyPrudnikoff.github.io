@@ -14,8 +14,7 @@ import {connect} from "react-redux";
 import {authorization, createAd, logoutQuestion, prohibition, registration, switchView} from "../../redux/actions";
 import {Link, useLocation} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
-
-import {LANG} from "../../languges/en";
+import {LANG} from "../../languages/en";
 
 const Header = ({
                     auth,
