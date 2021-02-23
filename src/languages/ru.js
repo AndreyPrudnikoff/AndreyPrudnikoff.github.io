@@ -1,60 +1,83 @@
 export const RU = {
+    Main: {
+        Start: {
+            implemented: 'Реальное ICO',
+            title: 'Добро пожаловать на bitcybets.com',
+            content: 'Вы можете заработать настоящий биткойн, просто угадав, вырастет цена биткойна или упадет в следующие десять секунд',
+            loading: 'Загрузка 50 %',
+            btnUp: 'Вырастет',
+            btnDown: 'Упадет'
+        },
+        Modal: {
+            title: {
+                first: 'Отличная работа',
+                // second: 'Join now!'
+            },
+            logIn: 'Войти',
+            signUp: 'Регистрация'
+        }
+    },
+
     Auth: {
         Login: {
-            title: 'Добро пожаловать',
+            title: 'Авторизация',
             phoneTitle: 'Телефон',
             phone: '063 111 22 33',
             password: 'Пароль',
             forgotPassword: 'Забыли пароль?',
-            loginIn: 'ВХОД',
+            loginIn: 'ВОЙТИ',
             or: 'или',
-            signUp: 'ЗАРЕГИСТРИРОВАТЬСЯ',
-            support: 'Нужна помощь?'
+            signUp: 'РЕГИСТРАЦИЯ',
+            support: 'Поддержка'
         },
 
         Register: {
             title: 'Регистрация',
             nameTitle: 'Имя',
-            name: 'Джон Лаки',
+            name: 'John Lucky',
             phoneTitle: 'Телефон',
             phone: '063 111 22 33',
-            emailTitle: 'Электронная почта',
+            emailTitle: 'Почта',
             email: 'lucky@mail.com',
             password: 'Пароль',
             passwordRepeat: 'Повторите пароль',
-            signUp: 'ВХОД',
-            support: 'Нужна помощь?'
+            signUp: 'ЗЗАРЕГИСТРИРОВАТЬСЯ',
+            support: 'Поддержка'
         },
 
         ForgotPassword: {
             title: 'Забыли пароль?',
-            emailTitle: 'Электронная почта',
+            emailTitle: 'Почта',
             email: 'lucky@mail.com',
-            reset: 'СБРОС ПАРОЛЯ',
+            reset: 'Отправить ссылку',
+            support: 'Поддержка'
         },
 
         StatusInfo: {
             title: 'Ссылка отправлена',
             statusContent: {
-                sendLinkContent: 'Мы отправили на вашу почту ссылку для сброса ',
-                checkEmailContent: 'Пожалуйста, проверьте почту и нажмите на ссылку'
+                sendLinkContent: 'Мы отправили ссылку на вашу почту ',
+                checkEmailContent: 'Пожалуйста, проверьте свою электронную почту и нажмите на ссылку'
             },
-            ok: 'OK',
+            ok: 'На главную',
+            support: 'Поддержка'
         },
 
         ResetPassword: {
             title: 'Введите секретный код',
-            passwordNew: 'Новый пароль',
+            passwordNew: 'Пароль',
             passwordRepeat: 'Повторите пароль',
-            reset: 'СБРОС',
+            reset: 'Сохранить',
             passwordChanged: 'Пароль изменен!',
-            ok: 'OK'
+            ok: 'OK',
+            support: 'Поддержка'
         },
 
         Support: {
             title: 'Поддержка',
-            writeQuestion: 'Напишите здесь свой вопрос',
-            send: 'ОТПРАВИТЬ'
+            writeQuestion: 'Ваш вопрос',
+            send: 'ОТПРАВИТЬ',
+            support: 'Поддержка'
         }
     }
 };
