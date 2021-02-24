@@ -9,7 +9,7 @@ import {connect} from "react-redux";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Btc = ({history}, currentLang) => {
+const Btc = ({history, currentLang}) => {
     const [copied, setCopied] = useState(false);
     const [file, setFile] = useState(null);
     const [transaction, setTransaction] = useState('');
