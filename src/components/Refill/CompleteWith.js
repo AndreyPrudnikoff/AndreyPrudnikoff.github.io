@@ -6,14 +6,20 @@ import {connect} from 'react-redux';
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
+import {EN} from "../../languages/en";
+import {RU} from "../../languages/ru";
+import {connect} from "react-redux";
 
-const CompletePay = (props, currentLang) => {
+
+const CompletePay = ({currentLang}) => {
+
     const LANG = currentLang === "en" ? EN : RU;
     return (
         <div>
             <Header/>
             <div className="refill">
                 <div style={{height: "250px"}} className="round-dark">
+
                     <h2 className={currentLang + " pay-header"}>{LANG.BettingRealMoney.CompletionNotification.title}</h2>
                     <div className={currentLang + " text-center"}>{LANG.BettingRealMoney.CompletionNotification.content}</div>
                     <div className="refill-btn">

@@ -302,5 +302,11 @@ export const EN = {
         }
     },
 
+    Menu: {
+        first: "Create ad",
+        second: "My ads",
+        exit: "Log out"
+    },
+
     support: 'Support'
 };
