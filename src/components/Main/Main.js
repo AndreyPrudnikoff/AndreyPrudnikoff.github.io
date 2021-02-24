@@ -21,6 +21,8 @@ import Preloader from "./Preloader";
 import {userdata} from "../../redux/actions/game";
 import SelectList from "./SelectList";
 import Rates from "./Rates";
+import {EN} from "../../languages/en";
+import {RU} from "../../languages/ru";
 
 const fire = () => {
     document.getElementById('fireworks-canvas').style.width = '100%'
@@ -66,8 +68,8 @@ const Main = ({
                   lastWinGame,
                   createAd,
                   createAdProp,
-                  widthMode
-              }) => {
+                  widthMode,
+              }, currentLang) => {
     useEffect(() => {
         userdata();
         fire();
@@ -76,6 +78,7 @@ const Main = ({
         fire();
     }, [])
     useEffect(()=> switchView(false), [])
+    const LANG = currentLang === "en" ? EN : RU;
     let flag = course ? course.length : false;
     return (
         <div className={`${widthMode}-bg main`}>
@@ -83,8 +86,8 @@ const Main = ({
             <div style={{display: congratulation ? "block" : "none"}} className="blur">
                 <canvas width="640" height="480" id="fireworks-canvas" style={{background: 'rgba(0,0,0, .2)'}}/>
                 <div className="round-dark win">
-                    <h2>Congratulations</h2>
-                    <div className="text-center">You won {lastWinGame || 1} <img src={bitcoin} width="15" alt="bit"/>
+                    <h2 className="currentLang">{LANG.BettingRealMoney.WinningAndLosing.Winning.title}</h2>
+                    <div className={currentLang + " text-center"}>{LANG.BettingRealMoney.WinningAndLosing.Winning.youWon} {lastWinGame || 1} <img src={bitcoin} width="15" alt="bit"/>
                     </div>
                     <div className="win-btn">
                         <button onClick={() => {
@@ -92,14 +95,14 @@ const Main = ({
                             userdata();
                             document.getElementById('fireworks').pause();
                             money();
-                        }} className="btn btn-primary">ADD TO MY WALLET
+                        }} className={currentLang + " btn btn-primary"}>{LANG.BettingRealMoney.WinningAndLosing.Winning.btnAddToWallet}
                         </button>
                         <button disabled onClick={() => {
                             closeCongratulation();
                             userdata();
                             document.getElementById('fireworks').pause();
                             money();
-                        }} className="btn btn-primary">WITHDRAW
+                        }} className={currentCourse + " btn btn-primary"}>{LANG.BettingRealMoney.WinningAndLosing.Winning.btnWithdraw}
                         </button>
                     </div>
                 </div>
@@ -170,7 +173,8 @@ const mapStateToProps = state => {
         logout: state.authReducer.logoutQuestion,
         createAdProp: state.switchOptions.createAd,
         widthMode: state.switchOptions.widthMode,
-        view: state.switchOptions.view
+        view: state.switchOptions.view,
+        currentLang: state.switchOptions.lang
     }
 }
 const mapDispatchToProps = {

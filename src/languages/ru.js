@@ -115,7 +115,7 @@ export const RU = {
                 btnDown: 'Курс вниз'
             },
 
-            DemoWalllet: {
+            DemoWallet: {
                 title: 'Демо деньги',
                 nameTitle: 'Имя',
                 name: 'Test',
@@ -131,13 +131,13 @@ export const RU = {
             SwitchingToReal: {
                 title: 'Мой Биткоин кошелек',
                 btnSwitchToReal: 'Перейти к реальному',
-                btnContunueDemo: 'Продолжить Демо'
+                btnContinueDemo: 'Продолжить Демо'
             },
 
             SwitchingToDemo: {
                 title: 'Мой Биткоин кошелек',
                 btnSwitchToDemo: 'Перейти к демо',
-                btnContunueReal: 'Продолжить Реальный'
+                btnContinueReal: 'Продолжить Реальный'
             }
 
         },
@@ -160,6 +160,7 @@ export const RU = {
                 btnSendInvite: 'Отправить',
                 shareLinkTitle: 'Поделиться ссылкой',
                 shareLink: 'bitcybets.com/inviting',
+                copyLink: 'Скопировано',
                 btnCopyShareLink: 'Скопировать'
             },
 
@@ -176,6 +177,7 @@ export const RU = {
 
         CurrencyExchange: {
             title: 'Варианты пополнения',
+            amount: 'Количество',
             btnDeposit: 'Пополнить',
         },
 
@@ -194,15 +196,18 @@ export const RU = {
         BTC: {
             title: 'Оплата Биткойном',
             OurBTCWallet: 'Наш Биткйон кошелек',
-            BTCWalletTitle: 'Наш БТК кошелек',
+            BTCWalletAddress: 'Наш БТК кошелек',
             BTCWalletPlaceholder: '161PtRedhQgxoc3UXgN6iVqMF3XFVs96QV',
             btnCopyLink: 'Скопировать',
+            linkCopy: 'Скопировано',
             paymentScreenshotTitle: 'Загрузите скриншот оплаты',
             paymentScreenshotDrag: 'Перетащите файл сюда или',
             paymentScreenshotChoose: 'ВЫберите файл',
             transactionIDTitle: 'Номер транзакции',
             transactionIDPlaceholder: '11223344',
-            btnSend: 'Send'
+            btnSend: 'Send',
+            emptyData: 'Пустые данные',
+            emptyID: 'Пустой идентификатор транзакции'
         },
 
         CompletionNotification: {
@@ -247,7 +252,7 @@ export const RU = {
                 btnDown: 'Курс вниз'
             },
 
-            MyWalllet: {
+            MyWallet: {
                 title: 'Кошелек',
                 nameTitle: 'Имя',
                 name: 'Test',
@@ -266,7 +271,7 @@ export const RU = {
             BTCWalletPlaceholder: '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2',
             AmountBTCTitle: 'Сумма БКТ',
             AmountBTC: '0.125',
-            btnGoToMain: 'Go to main'
+            btnWithdraw: 'СНЯТЬ'
         },
 
         CompletionNotification: {

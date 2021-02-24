@@ -4,9 +4,13 @@ import visa from "../../images/visa.svg";
 import mastercard from "../../images/mastercard.svg";
 import dollar from "../../images/dollar.svg";
 import Header from "../Header/Header";
+import {connect} from "react-redux";
+import {EN} from "../../languages/en";
+import {RU} from "../../languages/ru";
 
-const Usd = (props) => {
+const Usd = (props, currentLang) => {
     const [done, setDone] = useState(false);
+    const LANG = currentLang === "en" ? EN : RU;
     if (!done) {
         return (
             <div>
@@ -14,17 +18,17 @@ const Usd = (props) => {
                 <div className="refill false">
                     <div className="round-dark main-usd">
                         <span onClick={() => props.history.goBack()} className="back"><img src={back} alt="back"/></span>
-                        <h2>Payment by USD</h2>
-                        <p>Enter your bank card</p>
+                        <h2 className="currentLang">{LANG.FulfillingRealMoney.USD.title}</h2>
+                        <p className="currentLang">{LANG.FulfillingRealMoney.USD.content}</p>
                         <div className="wrap-img"><img src={visa} alt="visa"/><img src={mastercard} alt="master"/></div>
-                        <div className="amount label-payment">Card number</div>
+                        <div className={currentLang + " amount label-payment"}>{LANG.FulfillingRealMoney.USD.cardNumber}</div>
                         <div className="refill-input mb-3">
                             <div className="input-wrap">
                                 <input className="card-number" placeholder="_ _ _ _ – _ _ _ _ – _ _ _ _ – _ _ _ _"
                                        type="text"/>
                             </div>
                         </div>
-                        <div className="amount"><span>Expiring</span><span className="left">CVC</span></div>
+                        <div className="amount"><span className="currentLang">{LANG.FulfillingRealMoney.USD.expiring}</span><span className={currentLang + " left"}>{LANG.FulfillingRealMoney.USD.CVC}</span></div>
                         <br/>
 
                         <div className="refill-input">
@@ -37,13 +41,13 @@ const Usd = (props) => {
                         </div>
                         <div className="refill-input mt-3 mb-3">
                             <div className="input-wrap">
-                                <span className="nowrap">Holder’s name</span>
-                                <input className="card-number" placeholder="Michael Vasques"
+                                <span className={currentLang + " nowrap"}>{LANG.FulfillingRealMoney.USD.holdersNameTitle}</span>
+                                <input className={currentLang + " card-number"} placeholder={LANG.FulfillingRealMoney.USD.holdersName}
                                        type="text"/>
                             </div>
                         </div>
                         <div className="refill-btn">
-                            <button onClick={() => setDone(true)} className="pay">PAY<img src={dollar} width="15"
+                            <button onClick={() => setDone(true)} className={currentLang + " pay"}>{LANG.FulfillingRealMoney.USD.deposit}<img src={dollar} width="15"
                                                                                           alt="bit"/></button>
                         </div>
                     </div>
@@ -56,10 +60,10 @@ const Usd = (props) => {
                 <Header/>
                 <div className="refill done">
                     <div className="round-dark main-usd">
-                        <h2>Payment completed</h2>
-                        <p>Have a luck in your bets</p>
+                        <h2 className="currentLang">{LANG.FulfillingRealMoney.CompletionNotification.title}</h2>
+                        <p className="currentLang">{LANG.FulfillingRealMoney.CompletionNotification.content}</p>
                         <div className="refill-btn">
-                            <button onClick={() => props.history.push('/')} className="pay">Go to bets</button>
+                            <button onClick={() => props.history.push('/')} className={currentLang + " pay"}>{LANG.FulfillingRealMoney.CompletionNotification.btnGoToBets}</button>
                         </div>
                     </div>
                 </div>
@@ -68,4 +72,10 @@ const Usd = (props) => {
     }
 };
 
-export default Usd;
+const mapStateToProps = state => {
+    return {
+        currentLang: state.switchOptions.lang
+    }
+}
+
+export default connect(mapStateToProps, null)(Usd);

@@ -11,6 +11,8 @@ import {predictClear, predictDown, predictUp, userdata} from "../../redux/action
 import Rect from "./Rect/Rect";
 import SelectList from "./SelectList";
 import Timer from "./Timer";
+import {EN} from "../../languages/en";
+import {RU} from "../../languages/ru";
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -92,9 +94,13 @@ class Dashboard extends React.Component {
         }, 10000)
     }
 
+
+
     render() {
         const {bet, counter, initialOffset} = this.state;
-        const {balance, predict, upBets, downBets, up, down, lastSeconds, widthMode} = this.props;
+        const {balance, predict, upBets, downBets, up, down, lastSeconds, widthMode, currentLang} = this.props;
+        const LANG = currentLang === "en" ? EN : RU;
+        console.log(currentLang)
         const time = 10;
         const i = 10 - counter || 1;
         let timeBet = lastSeconds % 20 === 0 || lastSeconds % 20 === 5;
@@ -151,8 +157,7 @@ class Dashboard extends React.Component {
                         <div className="range">
                             <div className="form-label d-flex justify-content-between">
                                 <div>
-                                    <h2 className={predict || startGame ? "text-left" : "make-bet text-left"}>Make your
-                                        bet</h2>
+                                    <h2 className={predict || startGame ? "text-left" : "make-bet text-left"}>{LANG.BettingRealMoney.UsualState.MakeBet.title}</h2>
                                     {/*<span className="time-bet">{timeBet ? counterBet : ''}</span>*/}
                                 </div>
                                 <div>
@@ -190,7 +195,7 @@ class Dashboard extends React.Component {
                                             }} className="up">
                                                 <div className="profit">
                                                     <span style={{display: widthMode === "mobile" ? "block" : "inline"}}
-                                                          className="green">Your profit</span>
+                                                          className={" green"}>{LANG.BettingRealMoney.UsualState.MakeBet.yourProfit}</span>
                                                     <span>
                                                     {up || down ? ((bet / (bet + upBets) * downBets) * 0.97).toFixed(4) : 0}
                                                 </span>
@@ -201,7 +206,7 @@ class Dashboard extends React.Component {
                                                             e.preventDefault();
                                                             this.betDone(e);
                                                         }}
-                                                        className="btn green predict-btn">PREDICT UP
+                                                        className={" btn green predict-btn"}>{LANG.BettingRealMoney.UsualState.MakeBet.btnUp}
 
                                                     <img src={arrowUp} width="15" height="20" alt="b"/>
                                                     <Rect idButton={'up'} mode={timeBet ? 'rectUp' : ""}/>
@@ -260,7 +265,7 @@ class Dashboard extends React.Component {
                                                  className="down">
                                                 <div className="profit">
                                                     <span style={{display: widthMode === "mobile" ? "block" : "inline"}}
-                                                          className="red">Your profit </span>
+                                                          className={" red"}>{LANG.BettingRealMoney.UsualState.MakeBet.yourProfit}</span>
                                                     <span>
                                                     {up || down ? ((bet / (bet + downBets) * upBets) * 0.97).toFixed(4) : 0}
                                                 </span>
@@ -271,7 +276,7 @@ class Dashboard extends React.Component {
                                                             e.preventDefault();
                                                             this.betDone(e);
                                                         }}
-                                                        className="btn red predict-btn" id="down">PREDICT DOWN
+                                                        className={" btn red predict-btn"} id="down">{LANG.BettingRealMoney.UsualState.MakeBet.btnDown}
                                                     <img src={arrowDown} width="15" height="20" alt="b"/>
                                                     <Rect idButton={'down'} mode={timeBet ? 'rectDown' : ""}/>
                                                 </button>
@@ -301,7 +306,8 @@ const mapStateToProps = state => {
         upBets: state.balanceReducer.upBets,
         up: state.balanceReducer.up,
         down: state.balanceReducer.down,
-        widthMode: state.switchOptions.widthMode
+        widthMode: state.switchOptions.widthMode,
+        currentLang: state.switchOptions.lang
     }
 }
 const mapDispatchToProps = {

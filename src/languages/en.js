@@ -111,7 +111,7 @@ export const EN = {
                 btnDown: 'PREDICT DOWN'
             },
 
-            DemoWalllet: {
+            DemoWallet: {
                 title: 'Demo wallet',
                 nameTitle: 'Name',
                 name: 'Test',
@@ -120,20 +120,20 @@ export const EN = {
                 balanceTitle: 'Balance',
                 // balance: '',
                 lastWinTitle: 'Last win',
-                btnBetBitcoin: 'Bet rEal bitcoin',
+                btnBetBitcoin: 'Bet Real bitcoin',
                 btnPlayWithFriends: 'Bets with friends'
             },
 
             SwitchingToReal: {
                 title: 'My Bitcoin wallet',
-                btnSwitchToReal: 'Switch on real money',
-                btnContunueDemo: 'Contunue demo'
+                btnSwitchToReal: 'Bet real bitcoin',
+                btnContinueDemo: 'Continue demo'
             },
 
             SwitchingToDemo: {
                 title: 'My Bitcoin wallet',
-                btnSwitchToDemo: 'Switch on demo',
-                btnContunueReal: 'Contunue real money'
+                btnSwitchToDemo: 'Demo wallet',
+                btnContinueReal: 'Stay my wallet'
             }
 
         },
@@ -141,7 +141,7 @@ export const EN = {
         ThreeWinning: {
             title: 'Great job',
             content: 'You have won 3 times in a row',
-            yourWinnings: 'ВYour winnings are',
+            yourWinnings: 'Your winnings are',
             btnInvest: 'Invest in crypto',
             btnTrain: 'train with us'
         },
@@ -156,6 +156,7 @@ export const EN = {
                 btnSendInvite: 'Send invite',
                 shareLinkTitle: 'Share link',
                 shareLink: 'bitcybets.com/inviting',
+                copyLink: 'Link is copied',
                 btnCopyShareLink: 'Copy link'
             },
 
@@ -172,6 +173,7 @@ export const EN = {
 
         CurrencyExchange: {
             title: 'Deposit options',
+            amount: 'Amount',
             btnDeposit: 'Deposit',
         },
 
@@ -184,21 +186,24 @@ export const EN = {
             CVC: 'CVC',
             holdersNameTitle: 'Holder’s name',
             holdersName: 'Michael Vasques',
-            deposit: 'Deposit'
+            deposit: 'PAY'
         },
 
         BTC: {
             title: 'Payment by BTC',
             OurBTCWallet: 'Our BTC wallet',
-            BTCWalletTitle: 'Our BTC wallet',
+            BTCWalletAddress: 'Our BTC address',
             BTCWalletPlaceholder: '161PtRedhQgxoc3UXgN6iVqMF3XFVs96QV',
             btnCopyLink: 'Copy link',
+            linkCopy: 'Link is copied',
             paymentScreenshotTitle: 'Upload payment screenshot',
             paymentScreenshotDrag: 'Drag and drop file here or',
             paymentScreenshotChoose: 'Choose file',
             transactionIDTitle: 'Transaction ID',
             transactionIDPlaceholder: '11223344',
-            btnSend: 'Send'
+            btnSend: 'Send',
+            emptyData: 'Empty data',
+            emptyID: 'Empty transaction ID'
         },
 
         CompletionNotification: {
@@ -243,15 +248,15 @@ export const EN = {
                 btnDown: 'PREDICT DOWN'
             },
 
-            MyWalllet: {
+            MyWallet: {
                 title: 'My wallet',
                 nameTitle: 'Name',
                 name: 'Test',
                 winsTitle: 'Wins',
                 balanceTitle: 'Balance',
                 lastWinTitle: 'Last win',
-                btnDeposit: 'Deposit',
-                btnWithdraw: 'Withdraw'
+                btnDeposit: 'DEPOSIT',
+                btnWithdraw: 'WITHDRAW'
             }
 
         },
@@ -262,7 +267,7 @@ export const EN = {
             BTCWalletPlaceholder: '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2',
             AmountBTCTitle: 'Amount BTC',
             AmountBTC: '0.125',
-            btnGoToMain: 'Go to main'
+            btnWithdraw: 'Withdraw'
         },
 
         CompletionNotification: {
@@ -297,5 +302,5 @@ export const EN = {
         }
     },
 
-    support: 'Need support?'
+    support: 'Support'
 };

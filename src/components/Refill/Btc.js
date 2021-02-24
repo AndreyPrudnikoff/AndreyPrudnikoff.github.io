@@ -5,13 +5,17 @@ import qrcode from "../../images/qrqcode.png";
 import Header from "../Header/Header";
 import {User} from "../../api/User";
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
+import {EN} from "../../languages/en";
+import {RU} from "../../languages/ru";
 
-const Btc = ({history}) => {
+const Btc = ({history}, currentLang) => {
     const [copied, setCopied] = useState(false);
     const [file, setFile] = useState(null);
     const [transaction, setTransaction] = useState('');
     const [fileName, setFileName] = useState('');
     const [err, setErr] = useState('');
+    const LANG = currentLang === "en" ? EN : RU;
     const fileRef = useRef(null);
     const reader = new FileReader();
     const copy = (e) => {
@@ -59,9 +63,9 @@ const Btc = ({history}) => {
                 reader.onerror = error => console.log(error);
             }
         } else if (file && !transaction) {
-            setErr("Empty transaction ID");
+            setErr(LANG.FulfillingRealMoney.BTC.emptyID);
         } else {
-            setErr("Empty data");
+            setErr(LANG.FulfillingRealMoney.BTC.emptyData);
         }
     }
     return (
@@ -70,13 +74,13 @@ const Btc = ({history}) => {
             <div className="refill btc">
                 <div className="round-dark">
                     <div className="qrcode">
-                        <h2>Our BTC wallet</h2>
+                        <h2 className="currentLang">{LANG.FulfillingRealMoney.BTC.OurBTCWallet}</h2>
                         <img src={qrcode} alt="qr"/>
                     </div>
                     <span onClick={() => history.goBack()} className="back"><img src={back} alt="back"/></span>
-                    <h2>Payment by BTC</h2>
-                    <div className="amount label-payment"><span className="nowrap">Our BTC address</span><span
-                        style={{display: copied ? "block" : "none"}} className="green">Link is copied</span></div>
+                    <h2 className="currentLang">{LANG.FulfillingRealMoney.BTC.title}</h2>
+                    <div className="amount label-payment"><span className={currentLang + " nowrap"}>{LANG.FulfillingRealMoney.BTC.BTCWalletAddress}</span><span
+                        style={{display: copied ? "block" : "none"}} className={currentLang + " green"}>{LANG.FulfillingRealMoney.BTC.linkCopy}</span></div>
                     <div className="refill-input">
                         <div className="input-wrap">
                             <input id='link' className="card-number" readOnly
@@ -85,21 +89,21 @@ const Btc = ({history}) => {
                     </div>
 
                     <div className="refill-btn">
-                        <button onClick={copy} className="pay">COPY LINK</button>
+                        <button onClick={copy} className={currentLang + " pay"}>{LANG.FulfillingRealMoney.BTC.btnCopyLink}</button>
                         <div className="refill-btn">
                             <div className="">
-                                <span className="nowrap">Upload payment screenshot</span>
+                                <span className={currentLang + " nowrap"}>{LANG.FulfillingRealMoney.BTC.paymentScreenshotTitle}</span>
                                 <label className="label overflow-hidden">
-                                    <span className="drag nowrap">{fileName || "Drag and drop file here or"}</span>
+                                    <span className={currentLang + " drag nowrap"}>{fileName || LANG.FulfillingRealMoney.BTC.paymentScreenshotDrag}</span>
                                     <img src={add} alt="add"/>
-                                    <span className="title">Choose file</span>
+                                    <span className={currentLang + " title"}>{LANG.FulfillingRealMoney.BTC.paymentScreenshotChoose}</span>
                                     <input accept=".png, .jpg, .jpeg" ref={fileRef} onChange={saveFile} type="file"/>
                                 </label>
                             </div>
                         </div>
                         <div className="refill-input mt-5">
                             <div className="input-wrap">
-                                <span className="nowrap">Transaction ID</span>
+                                <span className={currentLang + " nowrap"}>{LANG.FulfillingRealMoney.BTC.transactionIDTitle}</span>
                                 <input value={transaction} onInput={(e) => {
                                     setErr('');
                                     setTransaction(e.target.value)
@@ -109,10 +113,10 @@ const Btc = ({history}) => {
                             </div>
                         </div>
 
-                        <button onClick={submitScreen} className="pay mt-5">SEND
+                        <button onClick={submitScreen} className={currentLang + " pay mt-5"}>{LANG.FulfillingRealMoney.BTC.btnSend}
                         </button>
                         <span style={{display: err ? "block" : "none"}} className="red mt-2 text-center">{err}</span>
-                        <Link to="/support" className="support-link text-center mt-4">Need support?</Link>
+                        <Link to="/support" className={currentLang + " support-link text-center mt-4"}>{LANG.support}</Link>
                     </div>
                 </div>
             </div>
@@ -120,4 +124,10 @@ const Btc = ({history}) => {
     );
 };
 
-export default Btc;
+const mapStateToProps = state => {
+    return {
+        currentLang: state.switchOptions.lang
+    }
+}
+
+export default connect(mapStateToProps, null)(Btc);

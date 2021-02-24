@@ -5,9 +5,12 @@ import bitcoin from "../../images/bitcoin.svg";
 // import arrdown from "../../images/arrdown.png";
 import {rates} from "../../redux/actions/game";
 import {connect} from "react-redux";
+import {EN} from "../../languages/en";
+import {RU} from "../../languages/ru";
 
-const Rates = ({rates, down, up, downBets, upBets, widthMode}) => {
+const Rates = ({rates, down, up, downBets, upBets, widthMode}, currentLang) => {
     const mobile = widthMode === "mobile";
+    const LANG = currentLang === "en" ? EN : RU
     const bankCoin = new Array(Math.ceil(downBets+upBets)).fill(downBets+upBets);
     const upCoin = new Array(up).fill('up');
     const downCoin = new Array(down).fill('down');
@@ -37,7 +40,7 @@ const Rates = ({rates, down, up, downBets, upBets, widthMode}) => {
     // const rateDown = 10 * ((down / up) ? (down / up) : 1);
     return (
         <div className="round rates">
-            <h2 className="text-center">Bets in progress</h2>
+            <h2 className={currentLang + " text-center"}>{LANG.BettingRealMoney.UsualState.BetsInProgress.title}</h2>
             <div className="wrap-table">
                 <div className="rates-col rates-up">
                     {/*<img className="arrow" src={arrup} alt="arrow"/>*/}
@@ -72,7 +75,8 @@ const mapStateToProps = state => {
         up: state.balanceReducer.up,
         downBets: state.balanceReducer.downBets,
         upBets: state.balanceReducer.upBets,
-        widthMode: state.switchOptions.widthMode
+        widthMode: state.switchOptions.widthMode,
+        currentLang: state.switchOptions.lang
     }
 }
 const mapDispatchToProps = {
