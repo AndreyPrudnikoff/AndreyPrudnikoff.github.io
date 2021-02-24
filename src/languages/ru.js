@@ -5,8 +5,8 @@ export const RU = {
             title: 'Добро пожаловать на bitcybets.com',
             content: 'Делайте реальные ставки на биткойны',
             loading: 'Загрузка 50 %',
-            btnUp: 'Вырастет',
-            btnDown: 'Упадет'
+            btnUp: 'Курс вверх',
+            btnDown: 'Курс вниз'
         },
         Modal: {
             title: {
@@ -78,6 +78,136 @@ export const RU = {
             writeQuestion: 'Ваш вопрос',
             send: 'ОТПРАВИТЬ',
             support: 'Поддержка'
+        }
+    },
+
+    Training: {
+        WinningAndLosing: {
+            Winning: {
+                title: 'Поздравляем',
+                youWon: 'Вы выиграли',
+                addToWallet: 'Добавить в кошелек',
+                withdraw: 'Вывести'
+            },
+
+            Losing: {
+                title: 'Вы на правильном пути',
+                btnTryAgain: 'Попробовать еще'
+            }
+            
+        },
+
+        UsualState: {
+
+            Chart: {
+                online: 'онлайн'
+            },
+
+            BetsInProgress: {
+                title: 'Сделанные ставки'
+            },
+
+            MakeBet: {
+                title: 'Сделайте ставку',
+                betSize: 'Размер ставки',
+                yourProfit: 'Ваша прибыль',
+                btnUp: 'Курс вверх',
+                btnDown: 'Курс вниз'
+            },
+
+            DemoWalllet: {
+                title: 'Демо деньги',
+                nameTitle: 'Имя',
+                name: 'Test',
+                winsTitle: 'Победы',
+                wins: '0',
+                balanceTitle: 'Баланс',
+                // balance: '',
+                lastWinTitle: 'Крайняя победа',
+                btnBetBitcoin: 'Поставить Биткоин',
+                btnPlayWithFriends: 'Играть с друзьями'
+            },
+
+            SwitchingToReal: {
+                title: 'Мой Биткоин кошелек',
+                btnSwitchToReal: 'Перейти к реальному',
+                btnContunueDemo: 'Продолжить Демо'
+            },
+
+            SwitchingToDemo: {
+                title: 'Мой Биткоин кошелек',
+                btnSwitchToDemo: 'Перейти к демо',
+                btnContunueReal: 'Продолжить Реальный'
+            }
+
+        },
+
+        ThreeWinning: {
+            title: 'Отличная работа',
+            content: 'Вы выиграли 3 раза подряд',
+            yourWinnings: 'Ваш выигрыш составил',
+            btnInvest: 'Инвестировать',
+            btnTrain: 'Тренироваться с нами'
+        },
+
+        InviteFriends: {
+
+            Form: {
+                title: 'Пригласить друзей',
+                content: 'Вы получите 1 БТК на демо-кошелек за каждую регистрацию вашего друга',
+                sendInvitation: 'Отправить приглашение',
+                emailPlaceholder: 'hi@gmail.com',
+                btnSendInvite: 'Отправить',
+                shareLinkTitle: 'Поделиться ссылкой',
+                shareLink: 'bitcybets.com/inviting',
+                btnCopyShareLink: 'Скопировать',
+                support: 'Нужна помощь?'
+            },
+
+            Success: {
+                title: 'Приглашение отправлено',
+                content: 'Спасибо за активность, вы получаете',
+                btnTrain: 'Тренироваться с нами',
+                support: 'Нужна помощь?'
+            }
+            
+        }
+    },
+
+    FulfillingRealMoney: {
+
+        CurrencyExchange: {
+            title: 'Варианты пополнения',
+            btnDeposit: 'Пополнить',
+            support: 'Нужна помощь?'
+        },
+
+        USD: {
+            title: 'Оплата долларами',
+            optionNotReady: 'В данный момент не работает',
+            content: 'Введите данные вашей банквоской карты',
+            cardNumber: 'Номер карты',
+            expiring: 'Истекает',
+            CVC: 'CVC',
+            holdersNameTitle: 'Имя и фамилия владельца',
+            holdersName: 'Михаил Васкес',
+            deposit: 'Deposit',
+            support: 'Нужна помощь?'
+        },
+
+        BTC: {
+            title: 'Оплата Биткойном',
+            OurBTCWallet: 'Наш Биткйон кошелек',
+            BTCWalletTitle: 'Наш БТК кошелек',
+            BTCWallet: '161PtRedhQgxoc3UXgN6iVqMF3XFVs96QV',
+            btnCopyLink: 'Скопировать',
+            paymentScreenshotTitle: 'Загрузите скриншот оплаты',
+            paymentScreenshotDrag: 'Перетащите файл сюда или',
+            paymentScreenshotChoose: 'ВЫберите файл',
+            transactionIDTitle: 'Номер транзакции',
+            transactionIDPlaceholder: '11223344',
+            btnSend: 'Send',
+            support: 'Нужна помощь?'
         }
     }
 };
