@@ -1,9 +1,9 @@
 //button.ru {
-  //  font-family: "pragmatica";
-  //}
-  //*.ru {
-  //  font-family: "pragmatica";
-  //}
+//  font-family: "pragmatica";
+//}
+//*.ru {
+//  font-family: "pragmatica";
+//}
 .start {
   width: 1280px;
 
@@ -87,7 +87,6 @@
             border: 1px solid var(--down);
           }
         }
-
       }
     }
 
@@ -148,6 +147,7 @@
   //  filter: blur(2px);
   //}
 }
+
 span.chross {
   position: absolute;
   right: 15px;
@@ -228,8 +228,9 @@ span.chross {
 //}
 //
 button span {
-  border: none!important;
+  border: none !important;
 }
+
 @media screen and (max-width: 768px) {
   #chartjs-tooltip {
     display: none;
@@ -246,7 +247,6 @@ button span {
       width: 100%;
       height: 100%;
       overflow: auto;
-
 
 
       .text {
@@ -284,6 +284,7 @@ button span {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
         .time {
           display: none;
         }
@@ -306,10 +307,12 @@ button span {
           }
         }
       }
+
       .predict-btn.green,
-      .predict-btn.red{
+      .predict-btn.red {
         background-size: 40px;
       }
+
       .buttons {
         margin-top: 20px;
         margin-bottom: 10px;
@@ -359,20 +362,20 @@ button span {
   }
   .win-btn {
     .btn-primary {
-      width: 100%!important;
+      width: 100% !important;
     }
   }
-    .mobile-start {
-      background-image: url("../../images/mobile_bg.png");
-      background-position: center;
-      background-size: cover;
-      background-color: transparent;
-      border-radius: 0;
-    }
-  .predict-btn.green{
+  .mobile-start {
+    background-image: url("../../images/mobile_bg.png");
+    background-position: center;
+    background-size: cover;
+    background-color: transparent;
+    border-radius: 0;
+  }
+  .predict-btn.green {
     z-index: 0;
   }
-  .predict-btn.red{
+  .predict-btn.red {
     z-index: 0;
   }
   .predict-btn.green.green-start:after {
