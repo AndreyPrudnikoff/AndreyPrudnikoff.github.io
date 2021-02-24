@@ -68,13 +68,15 @@
 
         .wrap-btn {
           width: 100%;
-          margin: 0 auto;
+          margin: 0 auto 10px;
           display: flex;
-          justify-content: space-around;
+          justify-content: center;
           position: relative;
+          gap: 15px;
 
           .btn {
             border-radius: 8px;
+            min-width: 250px;
           }
 
           .green {

@@ -110,7 +110,7 @@ class App extends React.Component {
                     return <Route key={index} exact path={content.path} component={content.component}/>
                 })}
                 <Redirect from="*" to={sessionStorage.getItem('token') ? "/game" : "/"}/>
-                {this.props.unauthorized ? <Redirect to='/login'/> : null}
+                {this.props.unauthorized ? <Redirect to='/'/> : null}
             </Router>
         );
     }
