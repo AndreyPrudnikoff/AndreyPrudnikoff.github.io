@@ -77,10 +77,25 @@ header {
       flex-wrap: nowrap;
       justify-content: space-between;
       align-items: center;
-      gap: 1em;
+      * {
+        margin-right: 10px;
+      }
+
+      .flag-wrapper {
+        position: relative;
+        .flag {
+          margin-right: 2px;
+        }
+        .hide-flag {
+          position: absolute;
+          top: 35px;
+          left: 0;
+        }
+      }
 
       .startHeader {
         width: 250px;
+
         .login {
           margin: 0 30px;
         }
@@ -202,6 +217,7 @@ header {
     .wrap-header .header-right .startHeader {
       width: auto;
     }
+
     .tabs {
       display: block;
       padding: 0 20px 10px 20px;
@@ -216,6 +232,7 @@ header {
         background-color: #151929;
         border-radius: 8px;
         padding: 2px;
+
         .tab {
           width: 50%;
           display: flex;
@@ -224,6 +241,7 @@ header {
           justify-content: center;
           align-items: center;
           cursor: pointer;
+
           &.active {
             background-color: #2C3558;
             border-radius: 8px;
