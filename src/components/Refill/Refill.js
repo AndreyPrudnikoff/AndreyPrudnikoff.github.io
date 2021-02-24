@@ -70,8 +70,11 @@ const Refill = ({createAd, createAdProp, history}) => {
                         <Link to="/refill/btc" className="pay"><span>DEPOSIT</span><img src={bitcoin} width="15"
                                                                                         alt="bit"/></Link>
 
-                        <button onClick={createAd} className="pay"><span>DEPOSIT</span><img src={dollar} width="15"
-                                                                                        alt="bit"/></button>
+                        <button onClick={()=>window.open('https://rave-client-afriticket.tls-flutterwave.com/pay/brczfpmoqch2', '_blank')}
+                                className="pay">
+                            <span>DEPOSIT</span>
+                            <img src={dollar} width="15" alt="bit"/>
+                        </button>
                     </div>
                     <div className="d-flex justify-content-center mt-3"><Link to="/support" className="support-link">Need
                         support?</Link></div>

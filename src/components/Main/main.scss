@@ -685,6 +685,7 @@ form {
       position: absolute;
       top: 50%;
       left: 50%;
+      min-width: 230px;
       transform: translate(-50%, -50%);
       font-weight: 700;
       font-size: 96px;
@@ -1221,6 +1222,7 @@ form {
 
           &.big-timer {
             padding-top: 15px;
+
           }
 
           .peoples {

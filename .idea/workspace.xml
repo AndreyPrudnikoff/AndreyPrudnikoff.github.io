@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f6b93ff-e806-4942-bf67-7a8ba8e695b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/images/british.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/russian.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/ukranian.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header/header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/header.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Refill/Refill.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Refill/Refill.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +146,7 @@
       <workItem from="1613977199714" duration="22160000" />
       <workItem from="1614062375131" duration="11372000" />
       <workItem from="1614094356903" duration="8321000" />
-      <workItem from="1614149663951" duration="17066000" />
+      <workItem from="1614149663951" duration="18820000" />
     </task>
     <servers />
   </component>
