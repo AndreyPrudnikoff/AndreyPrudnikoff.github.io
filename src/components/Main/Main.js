@@ -6,14 +6,7 @@ import Graph from "../Graph";
 import RightSector from "./RightSector";
 import Dashboard from "./Dashboard";
 // import SelectList from "./SelectList";
-import {
-    closeCongratulation,
-    closeYourLose,
-    createAd,
-    logoutQuestion,
-    prohibition,
-    switchView
-} from "../../redux/actions";
+import {closeCongratulation, closeYourLose, createAd, logoutQuestion, prohibition, switchView} from "../../redux/actions";
 import {money, stop} from "../../redux/actions/music";
 import JS_FIREWORKS from "../fireworks";
 import Time from "./Time";
@@ -48,28 +41,7 @@ const fire = () => {
     firework.start();
 };
 
-const Main = ({
-                  history,
-                  view,
-                  switchView,
-                  course,
-                  lastWin,
-                  closeCongratulation,
-                  congratulation,
-                  yourlose,
-                  closeYourLose,
-                  currentCourse,
-                  money,
-                  muteToggle,
-                  logout,
-                  logoutQuestion,
-                  prohibition,
-                  userdata,
-                  lastWinGame,
-                  createAd,
-                  createAdProp,
-                  widthMode,
-              }, currentLang) => {
+const Main = ({history, view, switchView, course, lastWin, closeCongratulation, congratulation, yourlose, closeYourLose, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition, userdata, lastWinGame, createAd, createAdProp, widthMode, currentLang}) => {
     useEffect(() => {
         userdata();
         fire();

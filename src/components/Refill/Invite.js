@@ -12,7 +12,7 @@ import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
 
-const Invite = ({history}, currentLang) => {
+const Invite = ({history, currentLang}) => {
     const [copied, setCopied] = useState(false);
     const LANG = currentLang === "en" ? EN : RU;
     const copy = (e) => {

@@ -18,7 +18,7 @@ socket.onmessage = async e => {
         bitcoins.push(course.Bitcoin);
     });
 }
-const Refill = ({createAd, createAdProp, history}, currentLang) => {
+const Refill = ({createAd, createAdProp, history, currentLang}) => {
     let currentCourse = bitcoins[bitcoins.length - 1];
     const [bit, setBit] = useState(0);
     const [usd, setUsd] = useState(0);

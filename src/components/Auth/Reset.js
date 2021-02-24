@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Reset = ({history}, currentLang) => {
+const Reset = ({history, currentLang}) => {
     const [success, setSuccess] = useState(false);
     const [password, setPassword] = useState(true)
     const [passwordConfirm, setPasswordConfirm] = useState(true)
