@@ -195,7 +195,7 @@ export const RU = {
             title: 'Оплата Биткойном',
             OurBTCWallet: 'Наш Биткйон кошелек',
             BTCWalletTitle: 'Наш БТК кошелек',
-            BTCWallet: '161PtRedhQgxoc3UXgN6iVqMF3XFVs96QV',
+            BTCWalletPlaceholder: '161PtRedhQgxoc3UXgN6iVqMF3XFVs96QV',
             btnCopyLink: 'Скопировать',
             paymentScreenshotTitle: 'Загрузите скриншот оплаты',
             paymentScreenshotDrag: 'Перетащите файл сюда или',
@@ -218,8 +218,8 @@ export const RU = {
             Winning: {
                 title: 'Поздравляем',
                 youWon: 'Вы выиграли',
-                addToWallet: 'Добавить в кошелек',
-                withdraw: 'Вывести'
+                btnAddToWallet: 'Добавить в кошелек',
+                btnWithdraw: 'Вывести'
             },
 
             Losing: {
@@ -252,9 +252,7 @@ export const RU = {
                 nameTitle: 'Имя',
                 name: 'Test',
                 winsTitle: 'Победы',
-                wins: '0',
                 balanceTitle: 'Баланс',
-                // balance: '',
                 lastWinTitle: 'Крайняя победа',
                 btnDeposit: 'Пополнить',
                 btnWithdraw: 'Вывести'
@@ -265,7 +263,7 @@ export const RU = {
         WithdrawalMethod: {
             title: 'Снятие',
             BTCWalletTitle: 'Ваш БКТ кошелек',
-            BTCWallet: '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2',
+            BTCWalletPlaceholder: '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2',
             AmountBTCTitle: 'Сумма БКТ',
             AmountBTC: '0.125',
             btnGoToMain: 'Go to main'
