@@ -156,6 +156,7 @@ export const EN = {
                 btnSendInvite: 'Send invite',
                 shareLinkTitle: 'Share link',
                 shareLink: 'bitcybets.com/inviting',
+                copyLink: 'Link is copied',
                 btnCopyShareLink: 'Copy link'
             },
 
@@ -172,6 +173,7 @@ export const EN = {
 
         CurrencyExchange: {
             title: 'Deposit options',
+            amount: 'Amount',
             btnDeposit: 'Deposit',
         },
 
@@ -190,15 +192,18 @@ export const EN = {
         BTC: {
             title: 'Payment by BTC',
             OurBTCWallet: 'Our BTC wallet',
-            BTCWalletTitle: 'Our BTC wallet',
+            BTCWalletAddress: 'Our BTC address',
             BTCWalletPlaceholder: '161PtRedhQgxoc3UXgN6iVqMF3XFVs96QV',
             btnCopyLink: 'Copy link',
+            linkCopy: 'Link is copied',
             paymentScreenshotTitle: 'Upload payment screenshot',
             paymentScreenshotDrag: 'Drag and drop file here or',
             paymentScreenshotChoose: 'Choose file',
             transactionIDTitle: 'Transaction ID',
             transactionIDPlaceholder: '11223344',
-            btnSend: 'Send'
+            btnSend: 'Send',
+            emptyData: 'Empty data',
+            emptyID: 'Empty transaction ID'
         },
 
         CompletionNotification: {
@@ -297,5 +302,5 @@ export const EN = {
         }
     },
 
-    support: 'Need support?'
+    support: 'Support'
 };

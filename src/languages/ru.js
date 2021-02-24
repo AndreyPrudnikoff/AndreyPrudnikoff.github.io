@@ -160,6 +160,7 @@ export const RU = {
                 btnSendInvite: 'Отправить',
                 shareLinkTitle: 'Поделиться ссылкой',
                 shareLink: 'bitcybets.com/inviting',
+                copyLink: 'Скопировано',
                 btnCopyShareLink: 'Скопировать'
             },
 
@@ -176,6 +177,7 @@ export const RU = {
 
         CurrencyExchange: {
             title: 'Варианты пополнения',
+            amount: 'Количество',
             btnDeposit: 'Пополнить',
         },
 
@@ -194,15 +196,18 @@ export const RU = {
         BTC: {
             title: 'Оплата Биткойном',
             OurBTCWallet: 'Наш Биткйон кошелек',
-            BTCWalletTitle: 'Наш БТК кошелек',
+            BTCWalletAddress: 'Наш БТК кошелек',
             BTCWalletPlaceholder: '161PtRedhQgxoc3UXgN6iVqMF3XFVs96QV',
             btnCopyLink: 'Скопировать',
+            linkCopy: 'Скопировано',
             paymentScreenshotTitle: 'Загрузите скриншот оплаты',
             paymentScreenshotDrag: 'Перетащите файл сюда или',
             paymentScreenshotChoose: 'ВЫберите файл',
             transactionIDTitle: 'Номер транзакции',
             transactionIDPlaceholder: '11223344',
-            btnSend: 'Send'
+            btnSend: 'Send',
+            emptyData: 'Пустые данные',
+            emptyID: 'Пустой идентификатор транзакции'
         },
 
         CompletionNotification: {
