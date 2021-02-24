@@ -105,7 +105,7 @@ class Dashboard extends React.Component {
             this.predictSubmit();
         }
 
-        if (false) {
+        if (startGame) {
             return (
                 <div className={`${widthMode} row bottom-container`}>
                     {widthMode === "desktop" ? <Rates/> : <></>}

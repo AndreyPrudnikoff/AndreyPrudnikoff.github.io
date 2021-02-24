@@ -1,52 +1,53 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './main.scss'
 
 
 const Timer = () => {
 
-    const [second, setSecond] = React.useState(120);
-    const [miliSecond, setmiliSecond] = React.useState(100)
-    
-    // const padTime = (time) => {
-    //     return String(time).length === 1 ? 0${time} : ${time};
-    //   };
+    const [second, setSecond] = React.useState(9);
+    const [miliSecond, setmiliSecond] = React.useState(9);
+    const [mSecond, setmSecond] = React.useState(9);
 
-    function padTime(num, padlen, padchar) {
-        var pad_char = typeof padchar !== 'undefined' ? padchar : '0';
-        var pad = new Array(1 + padlen).join(pad_char);
-        return (pad + num).slice(-pad.length);
-    }
-    
-    const formatTime = time => {
-        const minutes = Math.floor(time / 60);
-        const seconds = time % 60;
-        return `${minutes}:${padTime(seconds, 2)}:${padTime(miliSecond, 3)}`;
-    }
-
-
-    React.useEffect(() => {
-        let timerSecond,
-            timerMiliSecond;
-
-        if(miliSecond > 0) {
-          timerMiliSecond =  setTimeout(() => setmiliSecond(miliSecond => miliSecond - 1), 10);
+    useEffect(() => {
+        let timerMiliSecond;
+        if (miliSecond > 0) {
+            timerMiliSecond = setTimeout(() => setmiliSecond(miliSecond - 1), 10);
         } else if (miliSecond === 0) {
-          setmiliSecond(100)
-          setSecond(second => second - 1)
+            setmiliSecond(9)
         }
-    
         return () => {
-          if (timerSecond) {
-            clearTimeout(timerSecond);
-          } if (timerMiliSecond) {
-            clearTimeout(timerMiliSecond);
-          }
+            if (timerMiliSecond) {
+                clearTimeout(timerMiliSecond);
+            }
         };
-      }, [miliSecond]);
-
+    }, [miliSecond]);
+    useEffect(() => {
+        let timerMSecond;
+        if (mSecond > 0) {
+            timerMSecond = setTimeout(() => setmSecond(mSecond - 1), 100);
+        } else if (mSecond === 0) {
+            setmSecond(9)
+        }
+        return () => {
+            if (timerMSecond) {
+                clearTimeout(timerMSecond);
+            }
+        };
+    }, [mSecond]);
+    useEffect(() => {
+        let timerSecond;
+        if (second > 0) {
+            timerSecond = setTimeout(() => setSecond(second - 1), 1000);
+        }
+        return () => {
+            if (timerSecond) {
+                clearTimeout(timerSecond);
+            }
+        };
+    }, [second]);
     return (
-        <div className="Timer">
-            {second === 0 ? "Time over" : <div>Countdown: {formatTime(second)}</div>}
+        <div className="timer-item">
+            <h1 className="gold">{second + ":" + mSecond + "" + miliSecond}</h1>
         </div>
     )
 }
