@@ -160,15 +160,13 @@ export const RU = {
                 btnSendInvite: 'Отправить',
                 shareLinkTitle: 'Поделиться ссылкой',
                 shareLink: 'bitcybets.com/inviting',
-                btnCopyShareLink: 'Скопировать',
-                support: 'Нужна помощь?'
+                btnCopyShareLink: 'Скопировать'
             },
 
             Success: {
                 title: 'Приглашение отправлено',
                 content: 'Спасибо за активность, вы получаете',
-                btnTrain: 'Тренироваться с нами',
-                support: 'Нужна помощь?'
+                btnTrain: 'Тренироваться с нами'
             }
             
         }
@@ -179,7 +177,6 @@ export const RU = {
         CurrencyExchange: {
             title: 'Варианты пополнения',
             btnDeposit: 'Пополнить',
-            support: 'Нужна помощь?'
         },
 
         USD: {
@@ -191,23 +188,118 @@ export const RU = {
             CVC: 'CVC',
             holdersNameTitle: 'Имя и фамилия владельца',
             holdersName: 'Михаил Васкес',
-            deposit: 'Deposit',
-            support: 'Нужна помощь?'
+            deposit: 'Deposit'
         },
 
         BTC: {
             title: 'Оплата Биткойном',
             OurBTCWallet: 'Наш Биткйон кошелек',
             BTCWalletTitle: 'Наш БТК кошелек',
-            BTCWallet: '161PtRedhQgxoc3UXgN6iVqMF3XFVs96QV',
+            BTCWalletPlaceholder: '161PtRedhQgxoc3UXgN6iVqMF3XFVs96QV',
             btnCopyLink: 'Скопировать',
             paymentScreenshotTitle: 'Загрузите скриншот оплаты',
             paymentScreenshotDrag: 'Перетащите файл сюда или',
             paymentScreenshotChoose: 'ВЫберите файл',
             transactionIDTitle: 'Номер транзакции',
             transactionIDPlaceholder: '11223344',
-            btnSend: 'Send',
-            support: 'Нужна помощь?'
+            btnSend: 'Send'
+        },
+
+        CompletionNotification: {
+            title: 'Оплата завершена',
+            content: 'Удачи в ваших ставках',
+            btnGoToBets: 'Перейти к ставкам'
         }
-    }
+    },
+
+    BettingRealMoney: {
+
+        WinningAndLosing: {
+            Winning: {
+                title: 'Поздравляем',
+                youWon: 'Вы выиграли',
+                btnAddToWallet: 'Добавить в кошелек',
+                btnWithdraw: 'Вывести'
+            },
+
+            Losing: {
+                title: 'Вы на правильном пути',
+                btnTryAgain: 'Попробовать еще'
+            }
+            
+        },
+
+        UsualState: {
+
+            Chart: {
+                online: 'онлайн'
+            },
+
+            BetsInProgress: {
+                title: 'Сделанные ставки'
+            },
+
+            MakeBet: {
+                title: 'Сделайте ставку',
+                betSize: 'Размер ставки',
+                yourProfit: 'Ваша прибыль',
+                btnUp: 'Курс вверх',
+                btnDown: 'Курс вниз'
+            },
+
+            MyWalllet: {
+                title: 'Кошелек',
+                nameTitle: 'Имя',
+                name: 'Test',
+                winsTitle: 'Победы',
+                balanceTitle: 'Баланс',
+                lastWinTitle: 'Крайняя победа',
+                btnDeposit: 'Пополнить',
+                btnWithdraw: 'Вывести'
+            }
+
+        },
+
+        WithdrawalMethod: {
+            title: 'Снятие',
+            BTCWalletTitle: 'Ваш БКТ кошелек',
+            BTCWalletPlaceholder: '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2',
+            AmountBTCTitle: 'Сумма БКТ',
+            AmountBTC: '0.125',
+            btnGoToMain: 'Go to main'
+        },
+
+        CompletionNotification: {
+            title: 'Завершено',
+            content: 'Удачи',
+            btnStartBetting: 'Начать ставки'
+        }
+            
+    },
+
+    ModalWindows: {
+
+        LogOut: {
+            title: 'Вы уверены?',
+            btnLogOut: 'Выйти',
+            btnContunue: 'Продолжить'
+        },
+
+        OutOfMoney: {
+            
+            Demo: {
+                title: 'Не хватает денег',
+                btnBetRealBTC: 'Поставить биткойн',
+                btnRestart: 'Перезапустить Демо'
+            },
+
+            Real: {
+                title: 'Не хватает Биткойнов',
+                deposit: 'Пополнить',
+                btnRestart: 'Перезапустить Демо'
+            }
+        }
+    },
+
+    support: 'Нужна помощь?'
 };
