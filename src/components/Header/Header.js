@@ -33,7 +33,6 @@ const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, 
     }
     let location = useLocation();
     let isGame = location.pathname === "/game";
-    const show = location.pathname === "/" || location.pathname === "/login" || location.pathname === "/signup";
     const chooseLanguages = () => {
         if (currentLang === "en") {
             chooseLang("ru")
@@ -53,18 +52,18 @@ const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, 
             <header className="header">
                 <div style={{display: logout ? "block" : "none"}} className="blur">
                     <div className="round-dark win">
-                        <h2>Are you sure?</h2>
+                        <h2 className={currentLang}>{LANG.ModalWindows.LogOut.title}</h2>
                         <div className="win-btn">
                             <button onClick={() => {
                                 logoutQuestion();
                                 sessionStorage.removeItem('token');
                                 prohibition();
                                 window.location.reload();
-                            }} className="btn btn-primary"><Link to="/">LOG OUT</Link>
+                            }} className="btn btn-primary"><Link to="/">{LANG.ModalWindows.LogOut.btnLogOut}</Link>
                             </button>
                             <button onClick={() => {
                                 logoutQuestion();
-                            }} className="btn btn-primary">STAY
+                            }} className={currentLang + " btn btn-primary"}>{LANG.ModalWindows.LogOut.btnContunue}
                             </button>
                         </div>
                     </div>
@@ -80,13 +79,13 @@ const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, 
                         </a>
                     </nav>
                     <div className="header-right">
-                        <div className="flag-wrapper" style={{display: show ? "inline" : "none"}}>
+                        <div className="flag-wrapper">
                             <img onClick={switchLang} className="flag"
                                  src={currentLang === "en" ? british : russian} width="30" alt="lang"/>
                             <img onClick={chooseLanguages} style={{display: showLang ? "none" : "inline"}}
                                  className="flag hide-flag" src={currentLang === "ru" ? british : russian} width="30"
                                  alt="lang"/>
-                            <img style={{display: show ? "inline" : "none", transform: showLang ? "none" : "rotate(180deg)"}} onClick={switchLang}
+                            <img style={{transform: showLang ? "none" : "rotate(180deg)"}} onClick={switchLang}
                                  className="sound "
                                  src={caret}
                                  height="18" width="18"
@@ -134,11 +133,11 @@ const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, 
                                  src={burger} alt="icon"/>
                             <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">
                                 {/*<li className="burger-menu-item bord"><Link to="/ads">Create ad</Link></li>*/}
-                                <li onClick={createAd} className="burger-menu-item bord">Create ad</li>
-                                <li onClick={createAd} className="burger-menu-item bord"><span>My ads</span></li>
+                                <li onClick={createAd} className="burger-menu-item bord">{LANG.Menu.first}</li>
+                                <li onClick={createAd} className="burger-menu-item bord"><span>{LANG.Menu.second}</span></li>
                                 <li className="burger-menu-item" onClick={() => {
                                     logoutQuestion();
-                                }}>Log out
+                                }}>{LANG.Menu.exit}
                                 </li>
                             </ul>
                         </div>
