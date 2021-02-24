@@ -6,10 +6,6 @@ import {connect} from 'react-redux';
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-import {EN} from "../../languages/en";
-import {RU} from "../../languages/ru";
-import {connect} from "react-redux";
-
 
 const CompletePay = ({currentLang}) => {
 
