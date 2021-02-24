@@ -668,23 +668,43 @@ form {
   transform: scale(0.97);
   //color: var(--alert);
 }
+
 .big-timer {
   position: relative;
   background-image: url("../../images/bg_timer.png");
-  background-position: 0 0;
-  .timer-item h1 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+
+  .timer-item {
+
+    h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 230px;
+      transform: translate(-50%, -50%);
+      font-weight: 700;
+      font-size: 96px;
+      line-height: 138px;
+      font-family: 'roc-grotesk-wide';
+      text-transform: uppercase;
+      color: #CEA132;
+    }
+
+
+  }
+
+  .off {
     font-weight: 500;
-    font-size: 64px;
-    font-family: 'roc-grotesk-wide';
-    line-height: 69px;
-    text-transform: uppercase;
-    color:#CEA132;
+    font-size: 24px;
+    line-height: 35px;
   }
 }
+
 /*<<<<<<<<<<<<<<<<<   RIGHT SECTOR   >>>>>>>>>>>>>>>>>>*/
 .right-sector {
   height: auto;
@@ -1133,6 +1153,7 @@ form {
 }
 
 @media screen and (max-width: 768px) {
+
   .mobile-bg.main .load {
     width: 90%;
     height: auto;
@@ -1145,6 +1166,7 @@ form {
   }
   .wrap-img-preload {
     margin-top: 15px;
+
     img {
       width: 20vw;
     }
@@ -1187,6 +1209,7 @@ form {
 
       .bottom-container {
         height: auto;
+        min-height: 240px;
 
         .dashboard {
           width: 100%;
@@ -1194,7 +1217,13 @@ form {
           padding: 0;
           margin: 20px 0 0 0;
           height: auto;
+          min-height: 100%;
           background-color: transparent;
+
+          &.big-timer {
+            padding-top: 15px;
+
+          }
 
           .peoples {
             left: 5px;

@@ -47,7 +47,7 @@ const Timer = () => {
     }, [second]);
     return (
         <div className="timer-item">
-            <h1 className="gold">{second + ":" + mSecond + "" + miliSecond}</h1>
+            <h1 className="gold">{"0" + second + ":" + mSecond + "" + miliSecond}</h1>
         </div>
     )
 }

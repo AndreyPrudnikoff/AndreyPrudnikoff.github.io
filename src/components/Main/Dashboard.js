@@ -117,6 +117,35 @@ class Dashboard extends React.Component {
                     {widthMode === "desktop" ? <Rates/> : <></>}
                     <div className={`${widthMode} round dashboard big-timer`}>
                         <Timer />
+                        {startGame && !predict
+                            ? <span style={{display: startGame && !predict ? 'inline' : 'none'}}
+                                    className="off text-center">All bets are off</span>
+                            : <div style={{
+                                display: predict === 'up' || !predict ? 'inline' : 'none',
+                                transform: startGame && (predict === 'down' || !predict) ? 'scale(0)' : 'scale(1)'
+                            }} className="up">
+                                <div style={{display: predict === 'down' ? "none" : "inherit"}} className="profit">
+                                                    <span style={{display: widthMode === "mobile" ? "inline" : "inline"}}
+                                                          className="green">Profit up </span>
+                                    <span>
+                                                    {up || down ? ((bet / (bet + upBets) * downBets) * 0.97).toFixed(4) : 0}
+                                                </span>
+                                    <img src={bitcoin} width="15" height="20" alt="b"/>
+                                </div>
+                            </div>}
+                        {startGame && (predict === 'up' || !predict)
+                            ? <></>
+                            :
+                            <div style={{display: (predict === 'down' || !predict) ? 'block' : 'none'}}
+                                 className="down">
+                                <div style={{display: predict === 'up' ? "none" : "inherit"}} className="profit">
+                                                    <span style={{display: widthMode === "mobile" ? "inline" : "inline"}}
+                                                          className="red">Profit down </span>
+                                    <span>{up || down ? ((bet / (bet + downBets) * upBets) * 0.97).toFixed(4) : 0}
+                                                </span>
+                                    <img src={bitcoin} width="15" height="20" alt="b"/>
+                                </div>
+                            </div>}
                     </div>
                 </div>
             );

@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './header.scss';
 import logo from '../../images/logoLeft.svg';
-// import logo2 from '../../images/logoCentre.svg';
 import burger from '../../images/burger.png';
 import refreshIcon from '../../images/refresh.svg';
 import sound from '../../images/volume-up-solid.svg';
@@ -9,48 +8,23 @@ import noSound from '../../images/volume-mute-solid.svg';
 import signup from '../../images/user_plus.svg';
 import login from '../../images/sign_in.svg';
 import caret from '../../images/lang.svg';
+import russian from '../../images/russian.png';
+import british from '../../images/british.png';
 import bets from '../../images/bets.png';
 import wallet from '../../images/wallet.png';
 import {connect} from "react-redux";
-import {
-    authorization,
-    chooseLang,
-    createAd,
-    logoutQuestion,
-    prohibition,
-    registration,
-    switchView
-} from "../../redux/actions";
+import {authorization, chooseLang, createAd, logoutQuestion, prohibition, registration, switchView} from "../../redux/actions";
 import {Link, useLocation} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
 
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Header = ({
-                    auth,
-                    reg,
-                    mute,
-                    muteToggle,
-                    logoutQuestion,
-                    createAd,
-                    logout,
-                    registration,
-                    prohibition,
-                    authorization,
-                    history,
-                    unauthorized,
-                    predict,
-                    refresh,
-                    view,
-                    switchView,
-                    widthMode,
-                    currentLang,
-                    chooseLang
-                }) => {
+const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, registration, prohibition, authorization, history, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang}) => {
     const [menu, setMenu] = useState(false);
+    const [showLang, setShowLang] = useState(true);
     const LANG = currentLang === "en" ? EN : RU;
-
+    const switchLang = () => setShowLang(!showLang);
     useEffect(() => {
         authorization();
     }, [])
@@ -60,6 +34,14 @@ const Header = ({
     let location = useLocation();
     let isGame = location.pathname === "/game";
     const show = location.pathname === "/" || location.pathname === "/login" || location.pathname === "/signup";
+    const chooseLanguages = () => {
+        if (currentLang === "en") {
+            chooseLang("ru")
+        } else {
+            chooseLang("en")
+        }
+        switchLang();
+    }
     useEffect(() => {
         if (location.pathname === "/" || location.pathname === "/login") {
             prohibition();
@@ -98,15 +80,19 @@ const Header = ({
                         </a>
                     </nav>
                     <div className="header-right">
-                       <div style={{display: show ? "inline" : "none"}}>{currentLang}</div>
-                        <img style={{display: show ? "inline" : "none"}} onClick={() => {
-                            if (currentLang === "en") {
-                                chooseLang("ru")
-                            } else {
-                                chooseLang("en")
-                            }
-                        }} className="sound " src={caret} height="18" width="18"
-                             alt="lang"/>
+                        <div className="flag-wrapper" style={{display: show ? "inline" : "none"}}>
+                            <img onClick={switchLang} className="flag"
+                                 src={currentLang === "en" ? british : russian} width="30" alt="lang"/>
+                            <img onClick={chooseLanguages} style={{display: showLang ? "none" : "inline"}}
+                                 className="flag hide-flag" src={currentLang === "ru" ? british : russian} width="30"
+                                 alt="lang"/>
+                            <img style={{display: show ? "inline" : "none", transform: showLang ? "none" : "rotate(180deg)"}} onClick={switchLang}
+                                 className="sound "
+                                 src={caret}
+                                 height="18" width="18"
+                                 alt="lang"/>
+                        </div>
+
                         <img onClick={() => {
                             if (sessionStorage.getItem("token")) {
                                 sessionStorage.setItem("saveReload", "1");
@@ -122,7 +108,8 @@ const Header = ({
                                 if (reg) {
                                     registration();
                                 }
-                            }} className={currentLang + " login auth-header"} to="/login">{LANG.Auth.Login.loginIn}</Link>
+                            }} className={currentLang + " login auth-header"}
+                                  to="/login">{LANG.Auth.Login.loginIn}</Link>
                             <Link onClick={() => {
                                 if (reg) {
                                     registration();
@@ -130,7 +117,8 @@ const Header = ({
                             }} className="login auth-header-icon" to="/login">
                                 <img width={18} src={login} alt="signin"/>
                             </Link>
-                            <Link onClick={registration} className={currentLang + " signup auth-header"} to="/signup">{LANG.Auth.Login.signUp}</Link>
+                            <Link onClick={registration} className={currentLang + " signup auth-header"}
+                                  to="/signup">{LANG.Auth.Login.signUp}</Link>
                             <Link onClick={registration} className="signup auth-header-icon" to="/signup">
                                 <img width={18} src={signup} alt="signup"/></Link>
                         </div> : null}
