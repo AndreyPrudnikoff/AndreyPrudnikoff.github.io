@@ -7,9 +7,14 @@ import sms from "../../images/social/sms.svg";
 import viber from "../../images/social/viber.svg";
 import twitter from "../../images/social/twitter.svg";
 import {Link} from "react-router-dom";
+import {connect} from 'react-redux';
+import {EN} from "../../languages/en";
+import {RU} from "../../languages/ru";
 
-const Invite = ({history}) => {
+
+const Invite = ({history}, currentLang) => {
     const [copied, setCopied] = useState(false);
+    const LANG = currentLang === "en" ? EN : RU;
     const copy = (e) => {
         setCopied(true);
         document.getElementById('link').select();
@@ -22,11 +27,11 @@ const Invite = ({history}) => {
             <div className="round-dark">
                 <span onClick={() => history.goBack()} className="back"><img src={back} alt="back"/></span>
                 <div className="text">
-                    <h2>Invite friends</h2>
-                    <span className="gold">You will take 1 BTC on your demo wallet for every registration of your friend</span>
+                    <h2 className='currentLang'>{LANG.Training.InviteFriends.Form.title}</h2>
+                    <span className={currentLang + " gold"}>{LANG.Training.InviteFriends.Form.content}</span>
                 </div>
                 <div className="social">
-                    <span className="label ">Send invitation</span>
+                    <span className={currentLang+ " label "}>{LANG.Training.InviteFriends.Form.sendInvitation}</span>
                     <div className="wrap">
                         <div className="wrap-image"><img width="28" src={telegram} alt="telegram"/></div>
                         <div className="wrap-image"><img width="24" src={sms} alt="sms"/></div>
@@ -35,19 +40,24 @@ const Invite = ({history}) => {
                         <div className="wrap-image"><img width="28" src={twitter} alt="twitter"/></div>
                     </div>
                     <input type="email" placeholder="hi@gmail.com"/>
-                    <button className="invite-btn">SEND INVITE</button>
+                    <button className={currentLang + " invite-btn"}>{LANG.Training.InviteFriends.Form.btnSendInvite}</button>
                 </div>
                 <div className="share-link">
-                    <span className="label ">Share link <span
-                        style={{display: copied ? "block" : "none"}} className="green">Link is copied</span></span>
+                    <span className={currentLang + " label "}>{LANG.Training.InviteFriends.Form.shareLinkTitle} <span
+                        style={{display: copied ? "block" : "none"}} className={currentLang + " green"}>{LANG.Training.InviteFriends.Form.copyLink}</span></span>
                     <input type="text" id="link" readOnly defaultValue="bitcybets.com/inviting"/>
-                    <button onClick={copy} className="invite-btn">COPY LINK</button>
+                    <button onClick={copy} className={currentLang + " invite-btn"}>{LANG.Training.InviteFriends.Form.btnCopyShareLink}</button>
                 </div>
-                <div className="d-flex justify-content-center mt-3"><Link to="/support" className="support-link">Need
-                    support?</Link></div>
+                <div className="d-flex justify-content-center mt-3"><Link to="/support" className={currentLang + " support-link"}>{LANG.support}</Link></div>
             </div>
         </div>
     );
 };
 
-export default Invite;
+const mapStateToProps = state => {
+    return {
+        currentLang: state.switchOptions.lang
+    }
+}
+
+export default connect(mapStateToProps, null)(Invite);

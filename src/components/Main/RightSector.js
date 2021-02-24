@@ -7,10 +7,13 @@ import {click} from "../../redux/actions/music";
 import switchWallet from "../../images/switch_wallet.svg";
 import {changeDemo, userdata} from "../../redux/actions/game";
 import {createAd} from "../../redux/actions";
+import {EN} from "../../languages/en";
+import {RU} from "../../languages/ru";
 
-const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click, userdata, name, isDemo, threewins, changeDemo, createAd, predict}) => {
+const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click, userdata, name, isDemo, threewins, changeDemo, createAd, predict}, currentLang) => {
     const [switcher, setSwitcher] = useState(false);
     const [banner, setBanner] = useState("banner one round-dark");
+    const LANG = currentLang === "en" ? EN : RU;
     const balanceColor = {color: colorBlalance === 'green' ? '#32D74B' : colorBlalance === 'red' ? '#FF453A' : '#FFFFFF'}
 
     useEffect(() => {
@@ -33,25 +36,25 @@ const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click
         <div className="right-sector">
             <div style={{display: switcher ? "block" : "none"}} className="blur">
                 <div className="round-dark win">
-                    <h2>My bitcoin wallet</h2>
+                    <h2 className="curremtLang">{LANG.Training.UsualState.SwitchingToReal.title}</h2>
                     {/*<div className="text-center">You are going to play on real <br/> money. Are you sure? </div>*/}
                     <div className="win-btn">
                         <button onClick={() => {
                             changeDemo();
                             setSwitcher(false);
                         }}
-                                className="btn btn-primary">{isDemo ? 'Bet real bitcoin' : 'Demo wallet'}
+                                className={currentLang + " btn btn-primary"}>{isDemo ? LANG.Training.UsualState.SwitchingToReal.btnSwitchToReal : LANG.Training.UsualState.SwitchingToDemo.btnSwitchToDemo}
                         </button>
                         <button onClick={() => {
                             userdata();
                             setSwitcher(false);
-                        }} className="btn btn-primary">{!isDemo ? 'Stay my wallet' : 'Continue demo'}
+                        }} className={currentLang + " btn btn-primary"}>{!isDemo ? LANG.Training.UsualState.SwitchingToDemo.btnContinueReal : LANG.Training.UsualState.SwitchingToReal.btnContinueDemo}
                         </button>
                     </div>
                 </div>
             </div>
             <div className="score-wrap round-dark">
-                <h2>{isDemo ? "Demo wallet" : "My wallet"}
+                <h2 className="currentLang">{isDemo ? LANG.Training.UsualState.DemoWallet.title : LANG.BettingRealMoney.UsualState.MyWallet.title}
                     <span onClick={() => {
                         if(!predict) {
                             setSwitcher(true)
@@ -64,21 +67,21 @@ const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click
                     <tbody>
                     <tr>
                         <td>
-                            <div className="label">Name</div>
+                            <div className={currentLang + " label"}>{LANG.BettingRealMoney.UsualState.MyWallet.nameTitle}</div>
                             <div className="score" id="name">{name}</div>
                         </td>
                         <td>
-                            <div className="label">Wins</div>
+                            <div className={currentLang + " label"}>{LANG.BettingRealMoney.UsualState.MyWallet.winsTitle}</div>
                             <div className="score" id="wins">{wins}</div>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <div className="label">Balance</div>
+                            <div className={currentLang + " label"}>{LANG.BettingRealMoney.UsualState.MyWallet.balanceTitle}</div>
                             <div style={balanceColor} className="score" id="balance">{balance} BTC</div>
                         </td>
                         <td>
-                            <div className="label">Last Win</div>
+                            <div className={currentLang + " label"}>{LANG.BettingRealMoney.UsualState.MyWallet.lastWinTitle}</div>
                             <div className="score" id="lastWin">{lastWinGame || '0.000'} BTC</div>
                         </td>
                     </tr>
@@ -86,18 +89,18 @@ const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, click
                 </table>
                 {!isDemo
                     ? <div>
-                    <Link to="/refill" style={{pointerEvents: predict ? "none" : "auto"}} className="btn money-btn green">DEPOSIT
+                    <Link to="/refill" style={{pointerEvents: predict ? "none" : "auto"}} className={currentLang + " btn money-btn green"}>{LANG.BettingRealMoney.UsualState.MyWallet.btnDeposit}
                     <img src={deposit} alt="deposit"/>
                     </Link>
-                    <Link to="/withdraw" style={{pointerEvents: predict ? "none" : "auto"}} className="btn money-btn red">WITHDRAW
+                    <Link to="/withdraw" style={{pointerEvents: predict ? "none" : "auto"}} className={currentLang + " btn money-btn red"}>{LANG.BettingRealMoney.UsualState.MyWallet.btnWithdraw}
                     <img src={withdraw} alt="withdraw"/>
                     </Link>
                     </div>
                     : <div>
-                        <button disabled={predict} onClick={() => {setSwitcher(true)}}  className="btn money-btn green">BET REAL BITCOIN
+                        <button disabled={predict} onClick={() => {setSwitcher(true)}}  className={currentLang + " btn money-btn green"}>{LANG.Training.UsualState.DemoWallet.btnBetBitcoin}
                             {/*<img src={withdraw} alt="withdraw"/>*/}
                         </button>
-                        <Link to="/invite" style={{pointerEvents: predict ? "none" : "auto"}} className="btn money-btn friends">BETS WITH FRIENDS
+                        <Link to="/invite" style={{pointerEvents: predict ? "none" : "auto"}} className={currentLang + " btn money-btn friends"}>{LANG.Training.UsualState.DemoWallet.btnPlayWithFriends}
                             {/*<img src={deposit} alt="deposit"/>*/}
                         </Link>
 
@@ -123,6 +126,7 @@ const mapStateToProps = state => {
         threewins: state.balanceReducer['3wins'],
         isDemo: state.balanceReducer.isDemo,
         predict: state.balanceReducer.predict,
+        currentLang: state.switchOptions.lang
     }
 }
 const mapDispatchToProps = {
