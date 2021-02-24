@@ -1,14 +1,12 @@
 import React, {useEffect, useState} from 'react';
-// import arrup from "../../images/arrup.png";
 import person from "../../images/person.svg";
 import bitcoin from "../../images/bitcoin.svg";
-// import arrdown from "../../images/arrdown.png";
 import {rates} from "../../redux/actions/game";
 import {connect} from "react-redux";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Rates = ({rates, down, up, downBets, upBets, widthMode}, currentLang) => {
+const Rates = ({rates, down, up, downBets, upBets, widthMode, currentLang}) => {
     const mobile = widthMode === "mobile";
     const LANG = currentLang === "en" ? EN : RU
     const bankCoin = new Array(Math.ceil(downBets+upBets)).fill(downBets+upBets);
