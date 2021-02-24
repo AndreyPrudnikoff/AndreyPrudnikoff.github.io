@@ -115,7 +115,7 @@ export const RU = {
                 btnDown: 'Курс вниз'
             },
 
-            DemoWalllet: {
+            DemoWallet: {
                 title: 'Демо деньги',
                 nameTitle: 'Имя',
                 name: 'Test',
@@ -131,13 +131,13 @@ export const RU = {
             SwitchingToReal: {
                 title: 'Мой Биткоин кошелек',
                 btnSwitchToReal: 'Перейти к реальному',
-                btnContunueDemo: 'Продолжить Демо'
+                btnContinueDemo: 'Продолжить Демо'
             },
 
             SwitchingToDemo: {
                 title: 'Мой Биткоин кошелек',
                 btnSwitchToDemo: 'Перейти к демо',
-                btnContunueReal: 'Продолжить Реальный'
+                btnContinueReal: 'Продолжить Реальный'
             }
 
         },
@@ -252,7 +252,7 @@ export const RU = {
                 btnDown: 'Курс вниз'
             },
 
-            MyWalllet: {
+            MyWallet: {
                 title: 'Кошелек',
                 nameTitle: 'Имя',
                 name: 'Test',
@@ -271,7 +271,7 @@ export const RU = {
             BTCWalletPlaceholder: '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2',
             AmountBTCTitle: 'Сумма БКТ',
             AmountBTC: '0.125',
-            btnGoToMain: 'Go to main'
+            btnWithdraw: 'СНЯТЬ'
         },
 
         CompletionNotification: {
