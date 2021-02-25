@@ -5,11 +5,11 @@ import PhoneInput from 'react-phone-number-input';
 import './auth.scss';
 import {authorization, betWin, registration} from "../../redux/actions";
 import {User} from "../../api/User";
-import {fireworks, muteToggle} from "../../redux/actions/music";
+import {fireworks, muteToggle, playClick} from "../../redux/actions/music";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, fireworks, history, widthMode, currentLang}) => {
+const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, fireworks, history, widthMode, currentLang, playClick}) => {
     const [password, setPassword] = useState(true)
     const [passwordConfirm, setPasswordConfirm] = useState(true)
     const [name, setName] = useState('')
@@ -124,6 +124,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                          <span onClick={() => {
                              setEnterCode(false);
                              clearData();
+                             playClick()
                          }} className="back">&larr;</span>
                     <h2>Enter code</h2>
                     <form onSubmit={e => codeSubmit(e)}>
@@ -132,7 +133,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                                    required/>
                         </div>
                         <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
-                        <button type="submit">SEND</button>
+                        <button type="submit" onClick={playClick}>SEND</button>
                     </form>
                 </div>
             );
@@ -142,6 +143,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                 <span onClick={() => {
                     registration();
                     clearData();
+                    playClick()
                 }} className="back">&larr;</span>
                     <h2 className={currentLang}>{LANG.Auth.Register.title}</h2>
                     <form onSubmit={handleSubmit}>
@@ -176,7 +178,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                                    id="email" name="email" type="email" required/>
                         </div>
                         <div className={password ? 'pass' : 'text'}>
-                            <span onClick={() => setPassword(!password)} className="eye"/>
+                            <span onClick={() => {setPassword(!password); playClick()}} className="eye"/>
                             <label className={currentLang} htmlFor="password">{LANG.Auth.Register.password}</label>
                             <input min='8' onChange={e => {
                                 setPass(e.target.value);
@@ -186,7 +188,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                                    id="password" name="password" type={password ? 'password' : 'text'} required/>
                         </div>
                         <div className={passwordConfirm ? 'pass' : 'text'}>
-                            <span onClick={() => setPasswordConfirm(!passwordConfirm)} className="eye"/>
+                            <span onClick={() => {setPasswordConfirm(!passwordConfirm); playClick()}} className="eye"/>
                             <label className={currentLang} htmlFor="passwordConfirm">{LANG.Auth.Register.passwordRepeat}</label>
                             <input min='8' onChange={e => {
                                 setConfpass(e.target.value);
@@ -198,8 +200,8 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                                    required/>
                         </div>
                         <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
-                        <button className={currentLang}>{LANG.Auth.Register.signUp}</button>
-                        <Link to='/support' className={currentLang + " support-link"}>{LANG.support}</Link>
+                        <button className={currentLang} onClick={playClick}>{LANG.Auth.Register.signUp}</button>
+                        <Link to='/support' className={currentLang + " support-link"} onClick={playClick}>{LANG.support}</Link>
                     </form>
 
                 </div>
@@ -210,6 +212,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
             <div className="round-dark auth">
                <span onClick={() => {
                    clearData();
+                   playClick()
                }} className="back"><Link to="/">&larr;</Link></span>
                 <h2 className={currentLang}>{LANG.Auth.Login.title}</h2>
                 <form onSubmit={handleLogin}>
@@ -222,7 +225,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                                     displayInitialValueAsLocalNumber required/>
                     </div>
                     <div className={password ? 'pass' : 'text'}>
-                        <span onClick={() => setPassword(!password)} className="eye"/>
+                        <span onClick={() => {setPassword(!password); playClick()}} className="eye"/>
                         <label className={currentLang} htmlFor="password">{LANG.Auth.Login.password}</label>
                         <input onInput={e => {
                             setPass(e.target.value);
@@ -231,16 +234,17 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                                type={password ? 'password' : 'text'} required/>
                     </div>
                     <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
-                    <Link to="/restore" className={currentLang + " forgot mb-3"}>{LANG.Auth.Login.forgotPassword}</Link>
-                    <button className={currentLang}>{LANG.Auth.Login.loginIn}</button>
+                    <Link to="/restore" className={currentLang + " forgot mb-3"} onClick={playClick}>{LANG.Auth.Login.forgotPassword}</Link>
+                    <button className={currentLang} onClick={playClick}>{LANG.Auth.Login.loginIn}</button>
                     <span className={currentLang}>{LANG.Auth.Login.or}</span>
                     <button className={currentLang} onClick={e => {
                         e.preventDefault();
                         registration();
                         clearData();
+                        playClick();
                     }}>{LANG.Auth.Login.signUp}
                     </button>
-                    <Link to="/support" className={currentLang + " support-link"}>{LANG.support}</Link>
+                    <Link to="/support" className={currentLang + " support-link"} onClick={playClick}>{LANG.support}</Link>
                 </form>
             </div>
         );
@@ -260,7 +264,8 @@ const mapDispatchToProps = {
     registration,
     muteToggle,
     betWin,
-    fireworks
+    fireworks,
+    playClick
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Auth);

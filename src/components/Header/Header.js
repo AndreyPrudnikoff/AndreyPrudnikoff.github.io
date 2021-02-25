@@ -13,6 +13,7 @@ import british from '../../images/british.png';
 import bets from '../../images/bets.png';
 import wallet from '../../images/wallet.png';
 import {connect} from "react-redux";
+import {playClick} from "../../redux/actions/music";
 import {authorization, chooseLang, createAd, logoutQuestion, prohibition, registration, switchView} from "../../redux/actions";
 import {Link, useLocation} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
@@ -20,7 +21,7 @@ import {muteToggle} from "../../redux/actions/music";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, registration, prohibition, authorization, history, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang}) => {
+const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, registration, prohibition, authorization, history, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang, playClick}) => {
     const [menu, setMenu] = useState(false);
     const [showLang, setShowLang] = useState(true);
     const LANG = currentLang === "en" ? EN : RU;
@@ -59,11 +60,13 @@ const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, 
                                 sessionStorage.removeItem('token');
                                 prohibition();
                                 window.location.reload();
-                            }} className="btn btn-primary"><Link to="/">{LANG.ModalWindows.LogOut.btnLogOut}</Link>
+                                playClick()
+                            }} className="btn btn-primary"><Link to="/" onClick={playClick}>{LANG.ModalWindows.LogOut.btnLogOut}</Link>
                             </button>
                             <button onClick={() => {
                                 logoutQuestion();
-                            }} className={currentLang + " btn btn-primary"}>{LANG.ModalWindows.LogOut.btnContunue}
+                                playClick()
+                            }} className={currentLang + " btn btn-primary"} onClick={playClick}>{LANG.ModalWindows.LogOut.btnContunue}
                             </button>
                         </div>
                     </div>
@@ -74,18 +77,19 @@ const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, 
                             sessionStorage.setItem("saveReload", "0");
                             sessionStorage.removeItem('token');
                             window.location.reload();
+                            playClick()
                         }} className="navbar-brand">
                             <img src={logo} alt="logo" height="23"/>
                         </a>
                     </nav>
                     <div className="header-right">
                         <div className="flag-wrapper">
-                            <img onClick={switchLang} className="flag"
+                            <img onClick={() => {switchLang(); playClick()}} className="flag"
                                  src={currentLang === "en" ? british : russian} width="30" alt="lang"/>
-                            <img onClick={chooseLanguages} style={{display: showLang ? "none" : "inline"}}
+                            <img onClick={() => {chooseLanguages(); playClick()}} style={{display: showLang ? "none" : "inline"}}
                                  className="flag hide-flag" src={currentLang === "ru" ? british : russian} width="30"
                                  alt="lang"/>
-                            <img style={{transform: showLang ? "none" : "rotate(180deg)"}} onClick={switchLang}
+                            <img style={{transform: showLang ? "none" : "rotate(180deg)"}} onClick={() => {switchLang(); playClick()}}
                                  className="sound "
                                  src={caret}
                                  height="18" width="18"
@@ -97,31 +101,35 @@ const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, 
                                 sessionStorage.setItem("saveReload", "1");
                             }
                             window.location.reload();
+                            playClick()
                         }} style={{marginRight: "30px"}} className="sound reload" height="18" width="18"
                              src={refreshIcon}
                              alt="refresh"/>
-                        <img onClick={handleMute} className="sound " src={mute ? sound : noSound} height="18" width="18"
+                        <img onClick={() => {handleMute(); playClick()}} className="sound " src={mute ? sound : noSound} height="18" width="18"
                              alt="sound"/>
                         {!auth ? <div className="startHeader">
                             <Link onClick={() => {
                                 if (reg) {
                                     registration();
                                 }
+                                playClick()
                             }} className={currentLang + " login auth-header"}
                                   to="/login">{LANG.Auth.Login.loginIn}</Link>
                             <Link onClick={() => {
+                                playClick()
                                 if (reg) {
                                     registration();
                                 }
                             }} className="login auth-header-icon" to="/login">
                                 <img width={18} src={login} alt="signin"/>
                             </Link>
-                            <Link onClick={registration} className={currentLang + " signup auth-header"}
+                            <Link onClick={() => {registration(); playClick()}} className={currentLang + " signup auth-header"}
                                   to="/signup">{LANG.Auth.Login.signUp}</Link>
-                            <Link onClick={registration} className="signup auth-header-icon" to="/signup">
+                            <Link onClick={() => {registration(); playClick()}} className="signup auth-header-icon" to="/signup">
                                 <img width={18} src={signup} alt="signup"/></Link>
                         </div> : null}
                         <div onClick={(e) => {
+                            playClick()
                             setMenu(!menu)
                         }}
                              style={{
@@ -133,9 +141,10 @@ const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, 
                                  src={burger} alt="icon"/>
                             <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">
                                 {/*<li className="burger-menu-item bord"><Link to="/ads">Create ad</Link></li>*/}
-                                <li onClick={createAd} className="burger-menu-item bord">{LANG.Menu.first}</li>
-                                <li onClick={createAd} className="burger-menu-item bord"><span>{LANG.Menu.second}</span></li>
+                                <li onClick={() => {createAd(); playClick()}} className="burger-menu-item bord">{LANG.Menu.first}</li>
+                                <li onClick={() => {createAd(); playClick()}} className="burger-menu-item bord"><span>{LANG.Menu.second}</span></li>
                                 <li className="burger-menu-item" onClick={() => {
+                                    playClick();
                                     logoutQuestion();
                                 }}>{LANG.Menu.exit}
                                 </li>
@@ -146,10 +155,10 @@ const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, 
                 </div>
                 <div style={{display: isGame && widthMode !== "desktop" ? "block" : "none"}} className="tabs">
                     <div className="wrap-tabs">
-                        <div onClick={() => switchView(false)} className={view ? "tab bets" : "tab bets active"}>
+                        <div onClick={() => {switchView(false); playClick()}} className={view ? "tab bets" : "tab bets active"}>
                             <img src={bets} alt="tab"/>
                         </div>
-                        <div onClick={() => switchView(true)} className={!view ? "tab wallet" : "tab wallet active"}>
+                        <div onClick={() => {switchView(true); playClick()}} className={!view ? "tab wallet" : "tab wallet active"}>
                             <img src={wallet} alt="tab"/>
                         </div>
                     </div>
@@ -179,6 +188,7 @@ const mapDispatchToProps = {
     prohibition,
     authorization,
     switchView,
-    chooseLang
+    chooseLang,
+    playClick
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -11,8 +11,11 @@ const Sound = ({play, param, stop, mute}) => {
         audRef.current.muted = !mute;
     }
     useEffect(() => {
+        console.log('456')
         if (param.id === play) {
+            console.log('h')
             audRef.current.id === 'fireworks' ? audRef.current.volume = 0.3 : audRef.current.volume = 0.7;
+            audRef.current.id === 'timer' ? audRef.current.playbackRate = 1.2 : audRef.current.playbackRate = 1.0;
             handlePlay();
         }
         stop();
