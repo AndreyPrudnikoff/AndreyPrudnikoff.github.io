@@ -410,7 +410,7 @@ main {
   form {
     .form {
       .bet {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
       }
     }
   }
@@ -972,6 +972,7 @@ form {
   margin: 0 0 20px 0;
   -moz-appearance: textfield;
   outline: none;
+  margin-bottom: 10px;
 }
 
 #numberBet.red {

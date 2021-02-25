@@ -199,7 +199,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                         </div>
                         <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
                         <button className={currentLang}>{LANG.Auth.Register.signUp}</button>
-                        <Link to='/support' className={currentLang + " support-link"}>{LANG.Auth.Register.support}</Link>
+                        <Link to='/support' className={currentLang + " support-link"}>{LANG.support}</Link>
                     </form>
 
                 </div>
@@ -240,7 +240,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                         clearData();
                     }}>{LANG.Auth.Login.signUp}
                     </button>
-                    <Link to="/support" className={currentLang + " support-link"}>{LANG.Auth.Login.support}</Link>
+                    <Link to="/support" className={currentLang + " support-link"}>{LANG.support}</Link>
                 </form>
             </div>
         );
