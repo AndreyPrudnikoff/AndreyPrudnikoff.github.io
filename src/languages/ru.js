@@ -309,6 +309,7 @@ export const RU = {
     Menu: {
         first: "Разместить рекламу",
         second: "Мои объявления",
+        third: "Вступление",
         exit: "Выход"
     },
     support: 'Нужна помощь?'
