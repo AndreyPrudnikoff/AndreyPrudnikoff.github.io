@@ -89,6 +89,58 @@ button {
   }
 }
 
+
+
+
+  // @font-face {
+  //   // название шрифта(чтобы не запутаться лучше указать название папки со шрифтом) 
+  //   font-family: "roc-grotesk"; 
+  //   // адрес шрифта и тип 
+  //   src: url("./fonts/rocGrotesk/FontsFree-Net-RocGrotesk.ttf") format("truetype"); 
+  //   font-style: normal; 
+  //   font-weight: normal; 
+  //   } 
+
+
+    @font-face {
+      font-family: 'Pragmatica';
+      src: local('Pragmatica Medium'), local('Pragmatica-Medium'),
+          url('./fonts/pragmatica/medium/Pragmatica-Medium.woff2') format('woff2'),
+          url('./fonts/pragmatica/medium/Pragmatica-Medium.woff') format('woff'),
+          url('./fonts/pragmatica/medium/Pragmatica-Medium.ttf') format('truetype');
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Pragmatica';
+      src: local('Pragmatica Light'), local('Pragmatica-Light'),
+          url('./fonts//pragmatica/light/Pragmatica-Light.woff2') format('woff2'),
+          url('./fonts//pragmatica/light/Pragmatica-Light.woff') format('woff'),
+          url('./fonts//pragmatica/light/Pragmatica-Light.ttf') format('truetype');
+      font-weight: 300;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Pragmatica';
+      src: local('Pragmatica Extra Bold'), local('Pragmatica-Extra-Bold'),
+          url('./fonts/pragmatica/extreBold/Pragmatica-ExtraBold.woff2') format('woff2'),
+          url('./fonts/pragmatica/extreBold/Pragmatica-ExtraBold.woff') format('woff'),
+          url('./fonts/pragmatica/extreBold/Pragmatica-ExtraBold.ttf') format('truetype');
+      font-weight: 800;
+      font-style: normal;
+    }
+
+
+    // @font-face {
+    //   // название шрифта(чтобы не запутаться лучше указать название папки со шрифтом) 
+    //   font-family: "roc-grotesk-wide"; 
+    //   // адрес шрифта и тип 
+    //   src: url("./fonts/rocGrotesk/FontsFree-Net-RocGrotesk.ttf") format("truetype"); 
+    //   font-style: normal; 
+    //   font-weight: normal; 
+    //   } 
 //@media screen and (max-width: 756px) {
 //  #root {
 //    background-image: url("images/mobile_bg.png");

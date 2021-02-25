@@ -69,12 +69,14 @@ class Dashboard extends React.Component {
     predictSubmit() {
         const timer = setInterval(() => {
             console.log('yyyyy')
-            this.props.playTimer()
             this.setState((state) => ({...state, counter: state.counter - 1}));
+            // this.props.playTimer()
             // this.props.tic();
         }, 1000)
+        // const timerSound = setInterval(() => {this.props.playTimer()}, 20000)
         const predict = this.props.predict;
         return setTimeout(() => {
+            // clearInterval(timerSound)
             clearInterval(timer);
             this.setState((state) => ({...state, counter: 10}));
             User.userdata()
@@ -106,10 +108,11 @@ class Dashboard extends React.Component {
 
     render() {
         const {bet, counter, initialOffset} = this.state;
-        const {balance, predict, upBets, downBets, up, down, lastSeconds, widthMode, currentLang, up_down, you_lose, timer} = this.props;
+        const {balance, predict, upBets, downBets, up, down, lastSeconds, widthMode, currentLang, up_down, you_lose} = this.props;
         const LANG = currentLang === "en" ? EN : RU;
         const time = 10;
         const i = 10 - counter || 1;
+        console.log(lastSeconds)
         let timeBet = lastSeconds % 20 === 0 || lastSeconds % 20 === 5;
         let startGame = lastSeconds % 20 === 10 || lastSeconds % 20 === 15;
 
