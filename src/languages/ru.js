@@ -2,8 +2,7 @@ export const RU = {
     Main: {
         Start: {
             implemented: 'Реальное ICO',
-            title: 'Добро пожаловать на bitcybets.com',
-            content: 'Делайте реальные ставки на биткойны',
+            content: 'Реальные ставки на Bitcoin',
             loading: 'Загрузка 50 %',
             btnUp: 'Курс вверх',
             btnDown: 'Курс вниз'
@@ -116,27 +115,27 @@ export const RU = {
             },
 
             DemoWallet: {
-                title: 'Демо деньги',
+                title: 'Демо счёт',
                 nameTitle: 'Имя',
                 name: 'Test',
-                winsTitle: 'Победы',
+                winsTitle: 'Выиграши',
                 wins: '0',
                 balanceTitle: 'Баланс',
                 // balance: '',
-                lastWinTitle: 'Крайняя победа',
-                btnBetBitcoin: 'Поставить Биткоин',
+                lastWinTitle: 'Последний выиграш',
+                btnBetBitcoin: 'Перейти на реальный',
                 btnPlayWithFriends: 'Играть с друзьями'
             },
 
             SwitchingToReal: {
-                title: 'Мой Биткоин кошелек',
-                btnSwitchToReal: 'Перейти к реальному',
+                title: 'Мой Bitcoin кошелек',
+                btnSwitchToReal: 'Перейти в Реальный',
                 btnContinueDemo: 'Продолжить Демо'
             },
 
             SwitchingToDemo: {
-                title: 'Мой Биткоин кошелек',
-                btnSwitchToDemo: 'Перейти к демо',
+                title: 'Мой Bitcoin кошелек',
+                btnSwitchToDemo: 'Перейти в Демо',
                 btnContinueReal: 'Продолжить Реальный'
             }
 
@@ -256,9 +255,9 @@ export const RU = {
                 title: 'Кошелек',
                 nameTitle: 'Имя',
                 name: 'Test',
-                winsTitle: 'Победы',
+                winsTitle: 'Выигрыши',
                 balanceTitle: 'Баланс',
-                lastWinTitle: 'Крайняя победа',
+                lastWinTitle: 'Последний',
                 btnDeposit: 'Пополнить',
                 btnWithdraw: 'Вывести'
             }

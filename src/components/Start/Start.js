@@ -98,11 +98,8 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                 <div className="bull-start"><img src={bull} alt="bull"/></div>
                 <div className="bear-start"><img src={bear} alt="bear"/></div>
                 <div className="text text-center">
-                    <span className={currentLang + " gold"}>{LANG.Main.Start.implemented}</span>
                     <h2>
-                        {/* {currentLang === 'en' ? <span><span className="gold">BITCY</span>BETS</span> : LANG.Main.Start.title} */}
-                        <span className="gold">BITCY</span>BETS
-                        
+                        <span className="gold">BITCY</span>BETS     
                     </h2>
                     <p className={currentLang + " mt-3"}>{LANG.Main.Start.content}</p>
                 </div>

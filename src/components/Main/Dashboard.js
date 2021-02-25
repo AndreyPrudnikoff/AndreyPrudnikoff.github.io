@@ -125,12 +125,14 @@ class Dashboard extends React.Component {
                                 transform: startGame && (predict === 'down' || !predict) ? 'scale(0)' : 'scale(1)'
                             }} className="up">
                                 <div style={{display: predict === 'down' ? "none" : "inherit"}} className="profit">
-                                                    <span style={{display: widthMode === "mobile" ? "inline" : "inline"}}
-                                                          className="green">Profit up </span>
-                                    <span>
-                                                    {up || down ? ((bet / (bet + upBets) * downBets) * 0.97).toFixed(4) : 0}
+                                                    <span style={{
+                                                        fontSize: '21px',
+                                                        display: widthMode === "mobile" ? "inline" : "inline"}}
+                                                          className={currentLang + " green"}>{LANG.Training.UsualState.MakeBet.yourProfit} </span>
+                                    <span style={{fontSize: '21px'}}>
+                                                    {up || down ? ((bet / (bet + upBets) * downBets) * 0.97).toFixed(6) : 0}
                                                 </span>
-                                    <img src={bitcoin} width="15" height="20" alt="b"/>
+                                    <img style={{marginTop: '-5px'}} src={bitcoin} width="15" height="21" alt="b"/>
                                 </div>
                             </div>}
                         {startGame && (predict === 'up' || !predict)
@@ -139,11 +141,13 @@ class Dashboard extends React.Component {
                             <div style={{display: (predict === 'down' || !predict) ? 'block' : 'none'}}
                                  className="down">
                                 <div style={{display: predict === 'up' ? "none" : "inherit"}} className="profit">
-                                                    <span style={{display: widthMode === "mobile" ? "inline" : "inline"}}
-                                                          className="red">Profit down </span>
-                                    <span>{up || down ? ((bet / (bet + downBets) * upBets) * 0.97).toFixed(4) : 0}
+                                                    <span style={{
+                                                        fontSize: '21px',
+                                                        display: widthMode === "mobile" ? "inline" : "inline"}}
+                                                          className={currentLang + " red"}>{LANG.Training.UsualState.MakeBet.yourProfit} </span>
+                                    <span style={{fontSize: '21px'}}>{up || down ? ((bet / (bet + downBets) * upBets) * 0.97).toFixed(6) : 0}
                                                 </span>
-                                    <img src={bitcoin} width="15" height="20" alt="b"/>
+                                    <img style={{marginTop: '-5px'}} src={bitcoin} width="15" height="21" alt="b"/>
                                 </div>
                             </div>}
                     </div>
@@ -196,8 +200,8 @@ class Dashboard extends React.Component {
                                                 <div className="profit">
                                                     <span style={{display: widthMode === "mobile" ? "block" : "inline"}}
                                                           className={" green"}>{LANG.BettingRealMoney.UsualState.MakeBet.yourProfit}</span>
-                                                    <span>
-                                                    {up || down ? ((bet / (bet + upBets) * downBets) * 0.97).toFixed(4) : 0}
+                                                    <span> <br/>
+                                                    {up || down ? ((bet / (bet + upBets) * downBets) * 0.97).toFixed(6) : 0}
                                                 </span>
                                                     <img src={bitcoin} width="15" height="20" alt="b"/>
                                                 </div>
@@ -266,8 +270,8 @@ class Dashboard extends React.Component {
                                                 <div className="profit">
                                                     <span style={{display: widthMode === "mobile" ? "block" : "inline"}}
                                                           className={" red"}>{LANG.BettingRealMoney.UsualState.MakeBet.yourProfit}</span>
-                                                    <span>
-                                                    {up || down ? ((bet / (bet + downBets) * upBets) * 0.97).toFixed(4) : 0}
+                                                    <span> <br/>
+                                                    {up || down ? ((bet / (bet + downBets) * upBets) * 0.97).toFixed(6) : 0}
                                                 </span>
                                                     <img src={bitcoin} width="15" height="20" alt="b"/>
                                                 </div>
