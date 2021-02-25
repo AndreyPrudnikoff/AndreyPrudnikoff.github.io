@@ -12,10 +12,10 @@ import JS_FIREWORKS from "../fireworks";
 import Time from "./Time";
 import Preloader from "./Preloader";
 import {userdata} from "../../redux/actions/game";
-import SelectList from "./SelectList";
 import Rates from "./Rates";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
+import Online from "./Online";
 
 const fire = () => {
     document.getElementById('fireworks-canvas').style.width = '100%'
@@ -113,7 +113,7 @@ const Main = ({history, view, switchView, course, lastWin, closeCongratulation, 
                                     {currentCourse} <span>$</span>
                                 </h2>
                                 <div>
-                                    {widthMode === "desktop" ? <SelectList/> : <></>}
+                                    {widthMode === "desktop" ? <Online/> : <></>}
                                 </div>
                             </div>
                             <div className="graph-wrapper">

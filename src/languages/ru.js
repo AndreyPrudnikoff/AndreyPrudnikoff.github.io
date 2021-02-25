@@ -172,6 +172,8 @@ export const RU = {
         }
     },
 
+    Online: "Онлайн",
+
     FulfillingRealMoney: {
 
         CurrencyExchange: {
