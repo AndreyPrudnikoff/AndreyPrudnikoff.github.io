@@ -1,8 +1,8 @@
 import React from "react";
+import {BrowserRouter as Router, Redirect, Route} from "react-router-dom";
 import {connect} from "react-redux";
 import Main from "./components/Main/Main";
 import Auth from "./components/Auth/Auth";
-import {BrowserRouter as Router, Redirect, Route} from "react-router-dom";
 import Header from "./components/Header/Header";
 import Playlist from "./sound/Playlist";
 import Start from "./components/Start/Start";
@@ -16,9 +16,11 @@ import Ads from "./components/Ads/Ads";
 import CompletePay from "./components/Refill/CompletePay";
 import CompleteWith from "./components/Refill/CompleteWith";
 import Withdraw from "./components/Refill/Withdraw";
-import {prohibition, resizeScreen, switchView} from "./redux/actions";
 import Invite from "./components/Refill/Invite";
 import gotodesktop from "./components/Auth/gotodesktop";
+import Presentation from "./components/Intro/Presentation";
+import {prohibition, resizeScreen, switchView} from "./redux/actions";
+
 
 document.addEventListener("DOMContentLoaded", () => {
     if (!sessionStorage.getItem("saveReload")) {
@@ -31,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const routing = [
     {path: "/", component: Start},
+    {path: "/intro/:number", component: Presentation},
     {path: "/game", component: Main},
     {path: "/restore", component: Restore},
     {path: "/reset", component: Reset},
