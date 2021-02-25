@@ -3,11 +3,12 @@ import Header from "../Header/Header";
 import back from "../../images/back.svg";
 import {Link} from "react-router-dom";
 import {User} from "../../api/User";
+import {playClick} from "../../redux/actions/music";
 import {connect} from "react-redux";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Withdraw = ({history, currentLang}) => {
+const Withdraw = ({history, currentLang, playClick}) => {
     const [wallet, setWallet] = useState('');
     const [amount, setAmount] = useState('');
     const [err, setErr] = useState('')
@@ -30,7 +31,7 @@ const Withdraw = ({history, currentLang}) => {
             <Header/>
             <div className="refill">
                 <div className="round-dark">
-                    <span onClick={() => history.goBack()} className="back"><img src={back} alt="back"/></span>
+                    <span onClick={() => {history.goBack(); playClick()}} className="back"><img src={back} alt="back"/></span>
                     <form onSubmit={e => submitRequest(e)}>
                         <h2 className="currentLang">{LANG.BettingRealMoney.WithdrawalMethod.title}</h2>
                         <div className={currentLang + " amount"}>{LANG.BettingRealMoney.WithdrawalMethod.BTCWalletTitle}</div>
@@ -51,11 +52,11 @@ const Withdraw = ({history, currentLang}) => {
                             <span style={{display: err ? "block" : "none"}} className="red">{err}</span>
                         </div>
                         <div className="refill-btn">
-                            <button type="submit" className={currentLang + " pay"}><span>{LANG.BettingRealMoney.WithdrawalMethod.btnWithdraw}</span>
+                            <button type="submit" className={currentLang + " pay"} onClick={playClick}><span>{LANG.BettingRealMoney.WithdrawalMethod.btnWithdraw}</span>
                             </button>
                         </div>
                         <div className="d-flex justify-content-center mt-3"><Link to="/support"
-                                                                                  className={currentLang + " support-link"}>{LANG.support}</Link></div>
+                                                                                  className={currentLang + " support-link"} onClick={playClick}>{LANG.support}</Link></div>
                     </form>
                 </div>
             </div>
@@ -70,4 +71,8 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null)(Withdraw);
+const mapDispatchToProps = {
+    playClick
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Withdraw);

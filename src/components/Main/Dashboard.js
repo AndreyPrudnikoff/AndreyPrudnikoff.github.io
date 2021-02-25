@@ -4,7 +4,7 @@ import arrowUp from "../../images/arrowUp.svg";
 import arrowDown from "../../images/arrowDown.svg";
 import {connect} from "react-redux";
 import {betLose, betWin, closeCongratulation} from "../../redux/actions";
-import {bell, click, tic, fireworks, muteToggle} from "../../redux/actions/music";
+import {bell, click, up_down, fireworks, you_lose, muteToggle, playTimer} from "../../redux/actions/music";
 import Rates from "./Rates";
 import {User} from "../../api/User";
 import {predictClear, predictDown, predictUp, userdata} from "../../redux/actions/game";
@@ -30,6 +30,7 @@ class Dashboard extends React.Component {
         this.predictSubmit = this.predictSubmit.bind(this);
         // this.countSec = this.countSec.bind(this);
         this.betDone = this.betDone.bind(this);
+        // this.btnDownHandler = this.btnDownHandler.bind(this);
     }
 
     setBet(e) {
@@ -45,7 +46,8 @@ class Dashboard extends React.Component {
 
     betDone(e) {
         let rate = e.target.id;
-        this.props.click();
+        // this.props.click();
+        this.props.up_down();
         if (rate === 'up') {
             this.props.predictUp({value: this.state.bet.toString()});
         } else if (rate === 'down') {
@@ -66,6 +68,8 @@ class Dashboard extends React.Component {
 
     predictSubmit() {
         const timer = setInterval(() => {
+            console.log('yyyyy')
+            this.props.playTimer()
             this.setState((state) => ({...state, counter: state.counter - 1}));
             // this.props.tic();
         }, 1000)
@@ -80,11 +84,10 @@ class Dashboard extends React.Component {
                         this.props.betWin();
                         this.props.fireworks();
                     } else if (+data.data.data.lastWin === -1 && predict !== '') {
-                        this.props.bell();
+                        this.props.you_lose();
                         this.props.betLose();
                         this.props.userdata();
                     } else if (this.props.up > 0 && this.props.down > 0) {
-                        this.props.bell();
                         this.props.userdata();
                     } else {
                         this.props.userdata();
@@ -96,13 +99,15 @@ class Dashboard extends React.Component {
         }, 10000)
     }
 
-
+    btnDownHandler(e) {
+        e.preventDefault();
+        this.betDone(e);
+    }
 
     render() {
         const {bet, counter, initialOffset} = this.state;
-        const {balance, predict, upBets, downBets, up, down, lastSeconds, widthMode, currentLang} = this.props;
+        const {balance, predict, upBets, downBets, up, down, lastSeconds, widthMode, currentLang, up_down, you_lose, timer} = this.props;
         const LANG = currentLang === "en" ? EN : RU;
-        console.log(currentLang)
         const time = 10;
         const i = 10 - counter || 1;
         let timeBet = lastSeconds % 20 === 0 || lastSeconds % 20 === 5;
@@ -278,9 +283,9 @@ class Dashboard extends React.Component {
                                                     <img src={bitcoin} width="15" height="20" alt="b"/>
                                                 </div>
                                                 <button disabled={predict || balance - bet < 0 || !timeBet}
+                                                        // onClick={() => up_down()}
                                                         onClick={(e) => {
-                                                            e.preventDefault();
-                                                            this.betDone(e);
+                                                            this.btnDownHandler(e)
                                                         }}
                                                         className={" btn red predict-btn"} id="down">{LANG.BettingRealMoney.UsualState.MakeBet.btnDown}
                                                     <img src={arrowDown} width="15" height="20" alt="b"/>
@@ -323,8 +328,10 @@ const mapDispatchToProps = {
     predictDown,
     predictClear,
     click,
-    tic,
+    up_down,
+    you_lose,
     bell,
+    playTimer,
     fireworks,
     closeCongratulation,
     muteToggle,

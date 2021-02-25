@@ -14,10 +14,11 @@ import bitsybets from "../../images/BITCYBETS.svg";
 import coin from "../../images/coin.svg";
 import {userdata} from "../../redux/actions/game";
 import {registration} from "../../redux/actions";
+import {playClick, up_down} from "../../redux/actions/music";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode, registration, currentLang}) => {
+const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode, registration, currentLang, playClick, up_down}) => {
     const [timeGame, setTimeGame] = useState(false);
     const [bet, setBet] = useState('');
     const [predict, setPredict] = useState('');
@@ -70,6 +71,7 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                        <span onClick={() => {
                            setPredict('');
                            setBet('');
+                           playClick()
                        }} className="chross">&#10008;</span>
                         <h2 className={currentLang}>{LANG.Main.Modal.title.first} <br/> {currentLang === "en" ? LANG.Main.Modal.title.second : null}</h2>
                         {/* <h2>{currentLang === "en" ? LANG.Main.Modal.title.first <br/> LANG.Main.Modal.title.second : LANG.Main.Modal.title.first}</h2> */}
@@ -77,7 +79,8 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                         <button onClick={() => {
                             setPredict('');
                             setBet('');
-                            history.push('/login')
+                            history.push('/login');
+                            playClick()
                         }} className={currentLang + " btn btn-primary"}>
                             {LANG.Main.Modal.logIn}
                         </button>
@@ -86,6 +89,7 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                             setBet('');
                             history.push('/signup');
                             registration();
+                            playClick()
                         }} className={currentLang + " btn btn-primary"}>
                             {LANG.Main.Modal.signUp}
                         </button>
@@ -126,7 +130,7 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                     </div>
                     <div className="buttons">
                         <div className="wrap-btn">
-                            <button disabled={bet || !currentCourse} onClick={() => setBet('down')}
+                            <button disabled={bet || !currentCourse} onClick={() => {setBet('down'); up_down()}}
                                     className={currentLang + " btn green green-start predict-btn"}
                                     id="down">
                                         <span className={currentLang + " green"}>{LANG.Main.Start.btnUp}</span>
@@ -134,7 +138,7 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                                 <Rect start={timeGame} infinite={'infinity'} idButton={'down'}
                                       mode={timeGame ? 'rectUp' : ''}/>
                             </button>
-                            <button disabled={bet || !currentCourse} onClick={() => setBet('up')}
+                            <button disabled={bet || !currentCourse} onClick={() => {setBet('up'); up_down()}}
                                     className={currentLang + " btn red red-start predict-btn"}
                                     id="down">
                                         <span className={currentLang + " red"}>{LANG.Main.Start.btnDown}</span>
@@ -162,6 +166,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {
     userdata,
-    registration
+    registration,
+    playClick,
+    up_down
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Start);

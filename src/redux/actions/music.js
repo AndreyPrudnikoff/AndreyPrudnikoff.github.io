@@ -1,4 +1,4 @@
-import {MUTE, PLAY_BELL, PLAY_CLACK, PLAY_CLICK, PLAY_FIREWORKS, PLAY_MONEY, PLAY_TIC, STOP_ALL} from "../types";
+import {MUTE, PLAY_BELL, PLAY_CLACK, PLAY_CLICK, PLAY_FIREWORKS, PLAY_MONEY, PLAY_UP_DOWN, STOP_ALL, PLAY_YOU_LOSE, PLAY_ADD_TO_WALLET, PLAY_TIMER, PLAY_SUCCESS} from "../types";
 
 export function click() {
     return {type: PLAY_CLICK}
@@ -12,8 +12,26 @@ export function bell() {
 export function money() {
     return {type: PLAY_MONEY}
 }
-export function tic() {
-    return {type: PLAY_TIC}
+
+
+export function playSuccess() {
+    return {type: PLAY_SUCCESS}
+}
+export function playClick() {
+    return {type: PLAY_CLICK}
+}
+export function playTimer() {
+    return {type: PLAY_TIMER}
+}
+export function add_to_wallet() {
+    return {type: PLAY_ADD_TO_WALLET}
+}
+export function you_lose() {
+    return {type: PLAY_YOU_LOSE}
+}
+export function up_down() {
+    console.log('123')
+    return {type: PLAY_UP_DOWN}
 }
 export function fireworks() {
     return {type: PLAY_FIREWORKS}

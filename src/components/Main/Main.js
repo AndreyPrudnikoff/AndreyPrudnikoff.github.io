@@ -7,7 +7,7 @@ import RightSector from "./RightSector";
 import Dashboard from "./Dashboard";
 // import SelectList from "./SelectList";
 import {closeCongratulation, closeYourLose, createAd, logoutQuestion, prohibition, switchView} from "../../redux/actions";
-import {money, stop} from "../../redux/actions/music";
+import {money, stop, you_lose, add_to_wallet, playClick} from "../../redux/actions/music";
 import JS_FIREWORKS from "../fireworks";
 import Time from "./Time";
 import Preloader from "./Preloader";
@@ -41,7 +41,7 @@ const fire = () => {
     firework.start();
 };
 
-const Main = ({history, view, switchView, course, lastWin, closeCongratulation, congratulation, yourlose, closeYourLose, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition, userdata, lastWinGame, createAd, createAdProp, widthMode, currentLang}) => {
+const Main = ({history, view, switchView, course, lastWin, closeCongratulation, congratulation, yourlose, closeYourLose, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition, userdata, lastWinGame, createAd, createAdProp, widthMode, currentLang, you_lose, add_to_wallet, playClick}) => {
     useEffect(() => {
         userdata();
         fire();
@@ -66,19 +66,23 @@ const Main = ({history, view, switchView, course, lastWin, closeCongratulation, 
                             closeCongratulation();
                             userdata();
                             document.getElementById('fireworks').pause();
-                            money();
+
+                            // money();
+                            add_to_wallet();
                         }} className={currentLang + " btn btn-primary"}>{LANG.BettingRealMoney.WinningAndLosing.Winning.btnAddToWallet}
                         </button>
                         <button disabled onClick={() => {
                             closeCongratulation();
                             userdata();
+                            playClick()
                             document.getElementById('fireworks').pause();
-                            money();
+                            // money();
                         }} className={currentCourse + " btn btn-primary"}>{LANG.BettingRealMoney.WinningAndLosing.Winning.btnWithdraw}
                         </button>
                     </div>
                 </div>
             </div>
+            {/* <div style={{display: "block"}} className="blur" onClick={() => you_lose()}> */}
             <div style={{display: yourlose ? "block" : "none"}} className="blur">
                 <div className="round-dark win">
                     <h2>Your lose</h2>
@@ -86,6 +90,7 @@ const Main = ({history, view, switchView, course, lastWin, closeCongratulation, 
                         <button onClick={() => {
                             closeYourLose();
                             userdata();
+                            playClick()
                         }} className="btn btn-primary">Bet again
                         </button>
                     </div>
@@ -97,6 +102,7 @@ const Main = ({history, view, switchView, course, lastWin, closeCongratulation, 
                         <h2>This feature coming soon</h2>
                         <button onClick={() => {
                             createAd();
+                            playClick()
                         }} className="btn btn-primary">OK
                         </button>
                     </div>
@@ -158,6 +164,9 @@ const mapDispatchToProps = {
     prohibition,
     userdata,
     createAd,
+    you_lose,
+    add_to_wallet,
+    playClick,
     switchView
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

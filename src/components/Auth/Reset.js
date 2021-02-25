@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import {User} from "../../api/User";
 import {Link} from "react-router-dom";
+import {playClick} from "../../redux/actions/music";
 // import store from '../../redux/store'
 import {connect} from 'react-redux'
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Reset = ({history, currentLang}) => {
+const Reset = ({history, currentLang, playClick}) => {
     const [success, setSuccess] = useState(false);
     const [password, setPassword] = useState(true)
     const [passwordConfirm, setPasswordConfirm] = useState(true)
@@ -23,7 +24,8 @@ const Reset = ({history, currentLang}) => {
             <div className="round-dark auth">
               <span onClick={() => {
                   setSecret('');
-                  history.push("/restore")
+                  history.push("/restore");
+                  playClick()
               }} className="back">&larr;</span>
                 <h2 className={currentLang}>{LANG.Auth.ResetPassword.title}</h2>
                 <form onSubmit={e => {
@@ -50,7 +52,7 @@ const Reset = ({history, currentLang}) => {
                     </div>
 
                     <div className={password ? 'pass' : 'text'}>
-                        <span onClick={() => setPassword(!password)} className="eye"/>
+                        <span onClick={() => {setPassword(!password); playClick()}} className="eye"/>
                         <label className={currentLang} htmlFor="password">{LANG.Auth.ResetPassword.passwordNew}</label>
                         <input min='8' onChange={e => {
                             setPass(e.target.value);
@@ -60,7 +62,7 @@ const Reset = ({history, currentLang}) => {
                                id="password" name="password" type={password ? 'password' : 'text'} required/>
                     </div>
                     <div className={passwordConfirm ? 'pass' : 'text'}>
-                        <span onClick={() => setPasswordConfirm(!passwordConfirm)} className="eye"/>
+                        <span onClick={() => {setPasswordConfirm(!passwordConfirm); playClick()}} className="eye"/>
                         <label className={currentLang} htmlFor="passwordConfirm">{LANG.Auth.ResetPassword.passwordRepeat}</label>
                         <input min='8' onChange={e => {
                             setConfpass(e.target.value);
@@ -73,7 +75,7 @@ const Reset = ({history, currentLang}) => {
                     </div>
 
                     <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
-                    <button className={currentLang} type="submit">{LANG.Auth.ResetPassword.reset}</button>
+                    <button className={currentLang} type="submit" onClick={playClick}>{LANG.Auth.ResetPassword.reset}</button>
                 </form>
             </div>
         );
@@ -82,7 +84,7 @@ const Reset = ({history, currentLang}) => {
             <div className="round-dark auth">
                 <h2 className={currentLang}>{LANG.Auth.ResetPassword.passwordChanged}</h2>
                 <form>
-                    <button><Link className={currentLang} to="/login">{LANG.Auth.ResetPassword.ok}</Link></button>
+                    <button onClick={playClick}><Link className={currentLang} to="/login">{LANG.Auth.ResetPassword.ok}</Link></button>
                 </form>
             </div>
         )
@@ -95,4 +97,8 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null)(Reset);
+const mapDispatchToProps = {
+    playClick
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Reset);

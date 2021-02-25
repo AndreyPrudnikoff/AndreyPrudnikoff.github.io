@@ -18,11 +18,17 @@ export const BET_LOSE ='BET_LOSE';
 export const CLOSE_CONGRATULATION ='CLOSE_CONGRATULATION';
 export const CLOSE_YOURLOSE ='CLOSE_YOURLOSE';
 
-export const PLAY_CLICK ='PLAY_CLICK';
+// export const PLAY_CLICK ='PLAY_CLICK';
 export const PLAY_CLACK ='PLAY_CLACK';
 export const PLAY_BELL ='PLAY_BELL';
 export const PLAY_MONEY ='PLAY_MONEY';
-export const PLAY_TIC ='PLAY_TIC';
+
+export const PLAY_SUCCESS = 'PLAY_SUCCESS';
+export const PLAY_CLICK = 'PLAY_CLICK';
+export const PLAY_TIMER = 'PLAY_TIMER';
+export const PLAY_ADD_TO_WALLET = 'PLAY_ADD_TO_WALLET';
+export const PLAY_YOU_LOSE ='PLAY_YOU_LOSE';
+export const PLAY_UP_DOWN ='PLAY_UP_DOWN';
 export const PLAY_FIREWORKS ='PLAY_FIREWORKS';
 export const STOP_ALL ='STOP_ALL';
 export const MUTE ='MUTE';

@@ -4,11 +4,12 @@ import visa from "../../images/visa.svg";
 import mastercard from "../../images/mastercard.svg";
 import dollar from "../../images/dollar.svg";
 import Header from "../Header/Header";
+import {playClick} from "../../redux/actions/music";
 import {connect} from "react-redux";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Usd = (props, {currentLang}) => {
+const Usd = (props, {currentLang, playClick}) => {
     const [done, setDone] = useState(false);
     const LANG = currentLang === "en" ? EN : RU;
     if (!done) {
@@ -17,7 +18,7 @@ const Usd = (props, {currentLang}) => {
                 <Header/>
                 <div className="refill false">
                     <div className="round-dark main-usd">
-                        <span onClick={() => props.history.goBack()} className="back"><img src={back} alt="back"/></span>
+                        <span onClick={() => {props.history.goBack(); playClick()}} className="back"><img src={back} alt="back"/></span>
                         <h2 className="currentLang">{LANG.FulfillingRealMoney.USD.title}</h2>
                         <p className="currentLang">{LANG.FulfillingRealMoney.USD.content}</p>
                         <div className="wrap-img"><img src={visa} alt="visa"/><img src={mastercard} alt="master"/></div>
@@ -47,7 +48,7 @@ const Usd = (props, {currentLang}) => {
                             </div>
                         </div>
                         <div className="refill-btn">
-                            <button onClick={() => setDone(true)} className={currentLang + " pay"}>{LANG.FulfillingRealMoney.USD.deposit}<img src={dollar} width="15"
+                            <button onClick={() => {setDone(true); playClick()}} className={currentLang + " pay"}>{LANG.FulfillingRealMoney.USD.deposit}<img src={dollar} width="15"
                                                                                           alt="bit"/></button>
                         </div>
                     </div>
@@ -63,7 +64,7 @@ const Usd = (props, {currentLang}) => {
                         <h2 className="currentLang">{LANG.FulfillingRealMoney.CompletionNotification.title}</h2>
                         <p className="currentLang">{LANG.FulfillingRealMoney.CompletionNotification.content}</p>
                         <div className="refill-btn">
-                            <button onClick={() => props.history.push('/')} className={currentLang + " pay"}>{LANG.FulfillingRealMoney.CompletionNotification.btnGoToBets}</button>
+                            <button onClick={() => {props.history.push('/'); playClick()}} className={currentLang + " pay"}>{LANG.FulfillingRealMoney.CompletionNotification.btnGoToBets}</button>
                         </div>
                     </div>
                 </div>
@@ -78,4 +79,8 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null)(Usd);
+const mapDispatchToProps ={
+    playClick
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Usd);

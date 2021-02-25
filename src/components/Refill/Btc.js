@@ -5,11 +5,12 @@ import qrcode from "../../images/qrqcode.png";
 import Header from "../Header/Header";
 import {User} from "../../api/User";
 import {Link} from "react-router-dom";
+import {playClick, playSuccess} from "../../redux/actions/music";
 import {connect} from "react-redux";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Btc = ({history, currentLang}) => {
+const Btc = ({history, currentLang, playClick}) => {
     const [copied, setCopied] = useState(false);
     const [file, setFile] = useState(null);
     const [transaction, setTransaction] = useState('');
@@ -55,6 +56,7 @@ const Btc = ({history, currentLang}) => {
                                 .then(res => {
                                     if (res.data.status === "success") {
                                         history.push("/complete/pay")
+                                        playSuccess()
                                     }
                                 });
                         }
@@ -77,7 +79,7 @@ const Btc = ({history, currentLang}) => {
                         <h2 className="currentLang">{LANG.FulfillingRealMoney.BTC.OurBTCWallet}</h2>
                         <img src={qrcode} alt="qr"/>
                     </div>
-                    <span onClick={() => history.goBack()} className="back"><img src={back} alt="back"/></span>
+                    <span onClick={() => {history.goBack(); playClick()}} className="back"><img src={back} alt="back"/></span>
                     <h2 className="currentLang">{LANG.FulfillingRealMoney.BTC.title}</h2>
                     <div className="amount label-payment"><span className={currentLang + " nowrap"}>{LANG.FulfillingRealMoney.BTC.BTCWalletAddress}</span><span
                         style={{display: copied ? "block" : "none"}} className={currentLang + " green"}>{LANG.FulfillingRealMoney.BTC.linkCopy}</span></div>
@@ -89,7 +91,7 @@ const Btc = ({history, currentLang}) => {
                     </div>
 
                     <div className="refill-btn">
-                        <button onClick={copy} className={currentLang + " pay"}>{LANG.FulfillingRealMoney.BTC.btnCopyLink}</button>
+                        <button onClick={() => {copy(); playClick()} } className={currentLang + " pay"}>{LANG.FulfillingRealMoney.BTC.btnCopyLink}</button>
                         <div className="refill-btn">
                             <div className="">
                                 <span className={currentLang + " nowrap"}>{LANG.FulfillingRealMoney.BTC.paymentScreenshotTitle}</span>
@@ -113,10 +115,10 @@ const Btc = ({history, currentLang}) => {
                             </div>
                         </div>
 
-                        <button onClick={submitScreen} className={currentLang + " pay mt-5"}>{LANG.FulfillingRealMoney.BTC.btnSend}
+                        <button onClick={() => {submitScreen(); playClick()}} className={currentLang + " pay mt-5"}>{LANG.FulfillingRealMoney.BTC.btnSend}
                         </button>
                         <span style={{display: err ? "block" : "none"}} className="red mt-2 text-center">{err}</span>
-                        <Link to="/support" className={currentLang + " support-link text-center mt-4"}>{LANG.support}</Link>
+                        <Link to="/support" className={currentLang + " support-link text-center mt-4"} onClick={playClick}>{LANG.support}</Link>
                     </div>
                 </div>
             </div>
@@ -130,4 +132,9 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null)(Btc);
+const mapDispatchToProps = {
+    playClick,
+    playSuccess
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Btc);

@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react'
 import './main.scss'
+import {connect} from 'react-redux';
+import {playTimer} from "../../redux/actions/music";
 
 
 const Timer = () => {
@@ -52,4 +54,9 @@ const Timer = () => {
     )
 }
 
-export default Timer
+
+const mapDispatchToProps = {
+    playTimer
+}
+
+export default connect(null, mapDispatchToProps)(Timer)

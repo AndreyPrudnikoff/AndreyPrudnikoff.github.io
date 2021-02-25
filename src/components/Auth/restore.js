@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import {User} from "../../api/User";
 import {connect} from 'react-redux'
+import {playClick} from "../../redux/actions/music";
 // import store from '../../redux/store'
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
@@ -30,7 +31,7 @@ class Restore extends Component {
 
     render() {
         const {restore, userEmail, err} = this.state;
-        const {history, currentLang} = this.props;
+        const {history, currentLang, playClick} = this.props;
 
         // const { lang } = store.getState().switchOptions;
 
@@ -39,7 +40,7 @@ class Restore extends Component {
         if (restore) {
             return (
                 <div className="round-dark restore auth col-3">
-                    <span onClick={() => history.push('/login')} className="restore-arrow">&larr;</span>
+                    <span onClick={() => {history.push('/login'); playClick()}} className="restore-arrow">&larr;</span>
                     <form onSubmit={e => {
                         e.preventDefault();
                         User.forgotPassword({email: userEmail})
@@ -61,7 +62,7 @@ class Restore extends Component {
                                    type="email" required/>
                         </div>
                         <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
-                        <button className={currentLang}>{LANG.Auth.ForgotPassword.reset}</button>
+                        <button className={currentLang} onClick={playClick}>{LANG.Auth.ForgotPassword.reset}</button>
                     </form>
                 </div>
             );
@@ -71,7 +72,7 @@ class Restore extends Component {
                     <form onSubmit={e => e.preventDefault()}>
                         <h2 className={currentLang}>{LANG.Auth.StatusInfo.title}</h2>
                         <p className={currentLang} style={{fontWeight: 300, opacity: "0.8"}}>{LANG.Auth.StatusInfo.statusContent.sendLinkContent}<span style={{textDecoration: "underline", fontWeight: 400, opacity: "1"}}>{this.state.userEmail}</span>. {LANG.Auth.StatusInfo.statusContent.checkEmailContent}</p>
-                        <Link className={currentLang + " ok"} to="/reset">{LANG.Auth.StatusInfo.ok}</Link>
+                        <Link className={currentLang + " ok"} to="/reset" onClick={playClick}>{LANG.Auth.StatusInfo.ok}</Link>
                     </form>
                 </div>
             );
@@ -86,4 +87,8 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null)(Restore);
+const mapDispatchToProps = {
+    playClick
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Restore);

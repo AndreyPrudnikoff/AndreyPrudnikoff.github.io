@@ -1,10 +1,11 @@
 import React from 'react';
 import bitcoin from "../../images/bitcoin.svg";
 import {connect} from "react-redux";
+import {playClick} from "../../redux/actions/music";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Offer = (currentLang) => {
+const Offer = (currentLang, playClick) => {
     const LANG = currentLang === "en" ? EN : RU;
     return (
         <div style={{display: winnings ? "block" : "none"}} className="blur">
@@ -17,7 +18,7 @@ const Offer = (currentLang) => {
                     </button>
                     <button disabled onClick={() => {
                         document.getElementById('fireworks').pause();
-                    }} className={currentLang + " btn btn-primary"}>{LANG.Training.ThreeWinning.btnTrain}
+                    }, playClick()} className={currentLang + " btn btn-primary"}>{LANG.Training.ThreeWinning.btnTrain}
                     </button>
                 </div>
             </div>
@@ -32,4 +33,8 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null)(Offer);
+const mapDispatchToProps = {
+    playClick()
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Offer);
