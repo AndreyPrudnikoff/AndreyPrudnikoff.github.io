@@ -9,10 +9,12 @@ import Rates from "./Rates";
 import {User} from "../../api/User";
 import {predictClear, predictDown, predictUp, userdata} from "../../redux/actions/game";
 import Rect from "./Rect/Rect";
-import SelectList from "./SelectList";
 import Timer from "./Timer";
+import Online from "./Online";
+
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
+
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -165,7 +167,7 @@ class Dashboard extends React.Component {
                                     {/*<span className="time-bet">{timeBet ? counterBet : ''}</span>*/}
                                 </div>
                                 <div>
-                                    {widthMode === "mobile" ? <SelectList/> : <></>}
+                                    {widthMode === "mobile" ? <Online/> : <></>}
                                     <span className={balance - bet >= 0 ? '' : 'red'}>
                                 <input id="numberBet" type="number" step="0.0001" min="0.0001" max="1"
                                        className={balance - bet >= 0 ? '' : 'red'}

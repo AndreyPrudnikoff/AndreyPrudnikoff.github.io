@@ -167,7 +167,7 @@ export const EN = {
             
         }
     },
-
+    Online: "Online",
     FulfillingRealMoney: {
 
         CurrencyExchange: {
