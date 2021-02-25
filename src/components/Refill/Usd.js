@@ -8,7 +8,7 @@ import {connect} from "react-redux";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Usd = (props, currentLang) => {
+const Usd = (props, {currentLang}) => {
     const [done, setDone] = useState(false);
     const LANG = currentLang === "en" ? EN : RU;
     if (!done) {

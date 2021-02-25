@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Withdraw = ({history}, currentLang) => {
+const Withdraw = ({history, currentLang}) => {
     const [wallet, setWallet] = useState('');
     const [amount, setAmount] = useState('');
     const [err, setErr] = useState('')
