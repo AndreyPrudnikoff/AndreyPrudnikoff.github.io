@@ -15,7 +15,7 @@ const Step3 = (props) => {
                 <div className="text-intro">
                     <div className="wrap-text">
                         <h3 className="text-center">Your bet</h3>
-                        <p>Here you can make your bitcoin bet Up or Down and set your bet amount in bitcoin.</p>
+                        <p>Here you can make your bitcoin bet Up or Down <br/> and set your bet amount in bitcoin.</p>
                     </div>
                     <div className="wrap-buttons">
                         <button onClick={()=>history.goBack()} className="next">PREV</button>
