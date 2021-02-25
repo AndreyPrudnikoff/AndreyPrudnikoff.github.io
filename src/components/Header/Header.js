@@ -14,13 +14,13 @@ import bets from '../../images/bets.png';
 import wallet from '../../images/wallet.png';
 import {connect} from "react-redux";
 import {authorization, chooseLang, createAd, logoutQuestion, prohibition, registration, switchView} from "../../redux/actions";
-import {Link, useLocation} from "react-router-dom";
+import {Link, useLocation, useHistory} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
 
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, registration, prohibition, authorization, history, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang}) => {
+const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, registration, prohibition, authorization, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang}) => {
     const [menu, setMenu] = useState(false);
     const [showLang, setShowLang] = useState(true);
     const LANG = currentLang === "en" ? EN : RU;
@@ -32,6 +32,7 @@ const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, 
         muteToggle();
     }
     let location = useLocation();
+    let history = useHistory();
     let isGame = location.pathname === "/game";
     const chooseLanguages = () => {
         if (currentLang === "en") {
@@ -135,6 +136,7 @@ const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, 
                                 {/*<li className="burger-menu-item bord"><Link to="/ads">Create ad</Link></li>*/}
                                 <li onClick={createAd} className="burger-menu-item bord">{LANG.Menu.first}</li>
                                 <li onClick={createAd} className="burger-menu-item bord"><span>{LANG.Menu.second}</span></li>
+                                <li onClick={()=>history.push("/intro/1")} className="burger-menu-item bord"><span>{LANG.Menu.third}</span></li>
                                 <li className="burger-menu-item" onClick={() => {
                                     logoutQuestion();
                                 }}>{LANG.Menu.exit}
