@@ -14,10 +14,11 @@ const IntroList = [
     <Step5 key="5"/>
 ];
 
-const Presentation = ({match}) => {
+const Presentation = ( props) => {
+    console.log(props)
     return (
         <div className="presentation">
-            {IntroList.map((item, index) => (match.params.number === index + 1 + "" ? item : null))}
+            {IntroList.map((item, index) => (props.match.params.number === index + 1 + "" ? item : null))}
         </div>
     );
 };
