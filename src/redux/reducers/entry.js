@@ -1,5 +1,5 @@
 import {
-    AUTHORIZATION, CREATE_AD, DEVICE_WIDTH,
+    AUTHORIZATION, CREATE_AD, DEVICE_WIDTH, FIRST_IN,
     GET_COURSE,
     GET_LOCATION, GOAWAY, LANG_MODE, LOGOUT,
     PROHIBITION,
@@ -20,7 +20,8 @@ const initialState = {
     widthMode: window.outerWidth > 756 ? "desktop" : "mobile",
     view: false,
     lang: "en",
-    step: 0
+    step: 0,
+    firstIn: false
 }
 
 export const switchOptions = (state = initialState, action) => {

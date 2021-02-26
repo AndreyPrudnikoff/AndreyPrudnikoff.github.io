@@ -14,7 +14,16 @@ import bets from '../../images/bets.png';
 import wallet from '../../images/wallet.png';
 import {connect} from "react-redux";
 import {playClick} from "../../redux/actions/music";
-import {authorization, chooseLang, createAd, logoutQuestion, prohibition, registration, switchView} from "../../redux/actions";
+import {
+    authorization,
+    chooseLang,
+    createAd,
+    logoutQuestion,
+    prohibition,
+    registration,
+    switchStep,
+    switchView
+} from "../../redux/actions";
 import {Link, useLocation, useHistory} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
 
@@ -22,7 +31,7 @@ import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
 
-const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, registration, prohibition, authorization, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang, playClick}) => {
+const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, registration, prohibition, authorization, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang, playClick}) => {
 
     const [menu, setMenu] = useState(false);
     const [showLang, setShowLang] = useState(true);
@@ -147,8 +156,8 @@ const Header = ({auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, 
 
                                 <li onClick={() => {createAd(); playClick()}} className="burger-menu-item bord">{LANG.Menu.first}</li>
                                 <li onClick={() => {createAd();  playClick()}} className="burger-menu-item bord"><span>{LANG.Menu.second}</span></li>
-                                 <li onClick={()=>history.push("/intro/1")} className="burger-menu-item bord"><span>{LANG.Menu.third}</span></li>
-                                   
+                                {widthMode === "desktop" ? <li onClick={() => switchStep(1)} className="burger-menu-item bord">
+                                    <span>{LANG.Menu.third}</span></li> : null}
                                 <li className="burger-menu-item" onClick={() => {
                                     playClick();
                                     logoutQuestion();
@@ -195,6 +204,7 @@ const mapDispatchToProps = {
     authorization,
     switchView,
     chooseLang,
-    playClick
+    playClick,
+    switchStep
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

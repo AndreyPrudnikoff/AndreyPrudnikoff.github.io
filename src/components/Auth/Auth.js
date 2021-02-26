@@ -9,7 +9,19 @@ import {fireworks, muteToggle, playClick} from "../../redux/actions/music";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, fireworks, history, widthMode, currentLang, playClick}) => {
+const Auth = ({
+                  reg,
+                  authorization,
+                  registration,
+                  muteToggle,
+                  mute,
+                  betWin,
+                  fireworks,
+                  history,
+                  widthMode,
+                  currentLang,
+                  playClick
+              }) => {
     const [password, setPassword] = useState(true)
     const [passwordConfirm, setPasswordConfirm] = useState(true)
     const [name, setName] = useState('')
@@ -70,18 +82,9 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
         User.code({code: code})
             .then(res => {
                 if (res.data.status === "success") {
-                    if (widthMode === "desktop") {
-                        sessionStorage.setItem('token', res.data.data.accessToken);
-                        authorization();
-                        history.push('/game');
-                        if (!mute) {
-                            muteToggle();
-                        }
-                        betWin();
-                        fireworks();
-                    } else {
-                        history.push("/gotodesktop")
-                    }
+                    sessionStorage.setItem('token', res.data.data.accessToken);
+                    authorization();
+
                 } else {
                     if (res.data.error) {
                         setErr(res.data.error);
@@ -99,15 +102,15 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
             .then(res => res)
             .then(data => {
                     // if (widthMode === "desktop") {
-                        if (data.data.status === "success") {
-                            sessionStorage.setItem('token', data.data.data.accessToken);
-                            history.push('/game');
-                            return authorization();
-                        } else if (data.data.error) {
-                            return setErr(data.data.error);
-                        } else {
-                            return setErr('error, try again later')
-                        }
+                    if (data.data.status === "success") {
+                        sessionStorage.setItem('token', data.data.data.accessToken);
+                        history.push('/game');
+                        return authorization();
+                    } else if (data.data.error) {
+                        return setErr(data.data.error);
+                    } else {
+                        return setErr('error, try again later')
+                    }
                     // } else {
                     //     history.push("/gotodesktop")
                     // }
@@ -178,7 +181,10 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                                    id="email" name="email" type="email" required/>
                         </div>
                         <div className={password ? 'pass' : 'text'}>
-                            <span onClick={() => {setPassword(!password); playClick()}} className="eye"/>
+                            <span onClick={() => {
+                                setPassword(!password);
+                                playClick()
+                            }} className="eye"/>
                             <label className={currentLang} htmlFor="password">{LANG.Auth.Register.password}</label>
                             <input min='8' onChange={e => {
                                 setPass(e.target.value);
@@ -188,8 +194,12 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                                    id="password" name="password" type={password ? 'password' : 'text'} required/>
                         </div>
                         <div className={passwordConfirm ? 'pass' : 'text'}>
-                            <span onClick={() => {setPasswordConfirm(!passwordConfirm); playClick()}} className="eye"/>
-                            <label className={currentLang} htmlFor="passwordConfirm">{LANG.Auth.Register.passwordRepeat}</label>
+                            <span onClick={() => {
+                                setPasswordConfirm(!passwordConfirm);
+                                playClick()
+                            }} className="eye"/>
+                            <label className={currentLang}
+                                   htmlFor="passwordConfirm">{LANG.Auth.Register.passwordRepeat}</label>
                             <input min='8' onChange={e => {
                                 setConfpass(e.target.value);
                                 setErr('');
@@ -201,7 +211,8 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                         </div>
                         <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
                         <button className={currentLang} onClick={playClick}>{LANG.Auth.Register.signUp}</button>
-                        <Link to='/support' className={currentLang + " support-link"} onClick={playClick}>{LANG.support}</Link>
+                        <Link to='/support' className={currentLang + " support-link"}
+                              onClick={playClick}>{LANG.support}</Link>
                     </form>
 
                 </div>
@@ -221,11 +232,15 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                         <PhoneInput onChange={e => {
                             setPhone(e);
                             setErr('');
-                        }} id="phone" limitMaxLength={true} placeholder={LANG.Auth.Login.phone} value={phone} international
+                        }} id="phone" limitMaxLength={true} placeholder={LANG.Auth.Login.phone} value={phone}
+                                    international
                                     displayInitialValueAsLocalNumber required/>
                     </div>
                     <div className={password ? 'pass' : 'text'}>
-                        <span onClick={() => {setPassword(!password); playClick()}} className="eye"/>
+                        <span onClick={() => {
+                            setPassword(!password);
+                            playClick()
+                        }} className="eye"/>
                         <label className={currentLang} htmlFor="password">{LANG.Auth.Login.password}</label>
                         <input onInput={e => {
                             setPass(e.target.value);
@@ -234,7 +249,8 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                                type={password ? 'password' : 'text'} required/>
                     </div>
                     <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
-                    <Link to="/restore" className={currentLang + " forgot mb-3"} onClick={playClick}>{LANG.Auth.Login.forgotPassword}</Link>
+                    <Link to="/restore" className={currentLang + " forgot mb-3"}
+                          onClick={playClick}>{LANG.Auth.Login.forgotPassword}</Link>
                     <button className={currentLang} onClick={playClick}>{LANG.Auth.Login.loginIn}</button>
                     <span className={currentLang}>{LANG.Auth.Login.or}</span>
                     <button className={currentLang} onClick={e => {
@@ -244,7 +260,8 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                         playClick();
                     }}>{LANG.Auth.Login.signUp}
                     </button>
-                    <Link to="/support" className={currentLang + " support-link"} onClick={playClick}>{LANG.support}</Link>
+                    <Link to="/support" className={currentLang + " support-link"}
+                          onClick={playClick}>{LANG.support}</Link>
                 </form>
             </div>
         );

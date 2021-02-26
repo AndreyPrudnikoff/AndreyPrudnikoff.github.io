@@ -50,6 +50,7 @@ const Main = ({history, step, view, switchView, course, lastWin, closeCongratula
     }, [congratulation]);
     useEffect(() => {fire()}, []);
     useEffect(()=> switchView(false), []);
+
     const LANG = currentLang === "en" ? EN : RU;
     let flag = course ? course.length : false;
     return (

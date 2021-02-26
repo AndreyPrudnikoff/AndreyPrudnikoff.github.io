@@ -2,6 +2,7 @@ export const AUTHORIZATION = 'AUTHORIZATION';
 export const PROHIBITION = 'PROHIBITION';
 export const REGISTRATION = 'REGISTRATION';
 export const LOGOUT = 'LOGOUT';
+export const FIRST_IN = 'FIRST_IN';
 export const GOAWAY = 'GOAWAY';
 
 export const CREATE_AD = 'CREATE_AD';
