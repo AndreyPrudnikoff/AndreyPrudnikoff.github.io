@@ -20,7 +20,7 @@ const initialState = {
     widthMode: window.outerWidth > 756 ? "desktop" : "mobile",
     view: false,
     lang: "en",
-    step: 0
+    step: 1
 }
 
 export const switchOptions = (state = initialState, action) => {

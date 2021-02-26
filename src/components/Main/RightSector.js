@@ -10,7 +10,7 @@ import {createAd} from "../../redux/actions";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, userdata, name, isDemo, threewins, changeDemo, createAd, predict, currentLang, playClick, transition}) => {
+const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance, userdata, name, isDemo, threewins, changeDemo, createAd, predict, currentLang, playClick, transition}) => {
     const [switcher, setSwitcher] = useState(false);
     const [banner, setBanner] = useState("banner one round-dark");
     const LANG = currentLang === "en" ? EN : RU;
@@ -55,7 +55,7 @@ const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, userd
                     </div>
                 </div>
             </div>
-            <div className="score-wrap round-dark">
+            <div style={{zIndex: step === 4 || step === 5 ? "10" : ""}} className="score-wrap round-dark">
                 <h2 className="currentLang">{isDemo ? LANG.Training.UsualState.DemoWallet.title : LANG.BettingRealMoney.UsualState.MyWallet.title}
                     <span onClick={() => {
                         if(!predict) {
@@ -129,7 +129,8 @@ const mapStateToProps = state => {
         threewins: state.balanceReducer['3wins'],
         isDemo: state.balanceReducer.isDemo,
         predict: state.balanceReducer.predict,
-        currentLang: state.switchOptions.lang
+        currentLang: state.switchOptions.lang,
+        step: state.switchOptions.step
     }
 }
 const mapDispatchToProps = {
