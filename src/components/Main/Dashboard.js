@@ -16,7 +16,29 @@ import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
 
-const Dashboard = ({predictUp, betWin, betLose, fireworks, userdata, predictClear, predictDown, balance, predict, upBets, downBets, up, down, lastSeconds, widthMode, currentLang, up_down, you_lose, playTimer, playTimer2}) => {
+const Dashboard = ({
+                       step,
+                       predictUp,
+                       betWin,
+                       betLose,
+                       fireworks,
+                       userdata,
+                       predictClear,
+                       predictDown,
+                       balance,
+                       predict,
+                       upBets,
+                       downBets,
+                       up,
+                       down,
+                       lastSeconds,
+                       widthMode,
+                       currentLang,
+                       up_down,
+                       you_lose,
+                       playTimer,
+                       playTimer2
+                   }) => {
     const [bet, setBet] = useState(.0001);
     const [counter, setCounter] = useState(10);
     const [gameStart, setGameStart] = useState(undefined);
@@ -35,12 +57,10 @@ const Dashboard = ({predictUp, betWin, betLose, fireworks, userdata, predictClea
 
     }, [lastSeconds])
     useEffect(() => {
-        if(startGame) {
-            console.log('use');
+        if (startGame) {
             playTimer();
         }
         if (timeBet) {
-            console.log('no');
             playTimer2()
         }
     }, [startGame, timeBet])
@@ -87,7 +107,9 @@ const Dashboard = ({predictUp, betWin, betLose, fireworks, userdata, predictClea
                     } else {
                         userdata();
                     }
-                }).catch(e => {console.log(e)});
+                }).catch(e => {
+                console.log(e)
+            });
             setGameStart(undefined);
             predictClear();
         }, 10000)
@@ -102,7 +124,7 @@ const Dashboard = ({predictUp, betWin, betLose, fireworks, userdata, predictClea
         return (
             <div className={`${widthMode} row bottom-container`}>
                 {widthMode === "desktop" ? <Rates/> : <></>}
-                <div className={`${widthMode} round dashboard big-timer`}>
+                <div style={{zIndex: step === 3 ? "10" : ""}} className={`${widthMode} round dashboard big-timer`}>
                     <Timer/>
                     {startGame && !predict
                         ? <span style={{display: startGame && !predict ? 'inline' : 'none'}}
@@ -147,11 +169,12 @@ const Dashboard = ({predictUp, betWin, betLose, fireworks, userdata, predictClea
         return (
             <div className={`${widthMode} row bottom-container`}>
                 {widthMode === "desktop" ? <Rates/> : <></>}
-                <div className={`${widthMode} round dashboard`}>
+                <div style={{zIndex: step === 3 ? "10" : ""}} className={`${widthMode} round dashboard`}>
                     <div className="range">
                         <div className="form-label d-flex justify-content-between">
                             <div>
-                                <h2 className={predict || startGame ? "text-left" : "make-bet text-left"}>{LANG.BettingRealMoney.UsualState.MakeBet.title}</h2>
+                                <h2 className={predict || startGame ? "text-left" : "make-bet text-left"}>
+                                    {widthMode === "desktop" ? LANG.BettingRealMoney.UsualState.MakeBet.title : ""}</h2>
                                 {/*<span className="time-bet">{timeBet ? counterBet : ''}</span>*/}
                             </div>
                             <div>
@@ -190,7 +213,7 @@ const Dashboard = ({predictUp, betWin, betLose, fireworks, userdata, predictClea
                                             <div className="profit">
                                                     <span style={{display: widthMode === "mobile" ? "block" : "inline"}}
                                                           className={" green"}>{LANG.BettingRealMoney.UsualState.MakeBet.yourProfit}</span>
-                                                <span> <br/>
+                                                <span>
                                                     {up || down ? ((bet / (bet + upBets) * downBets) * 0.97).toFixed(6) : 0}
                                                 </span>
                                                 <img src={bitcoin} width="15" height="20" alt="b"/>
@@ -262,7 +285,7 @@ const Dashboard = ({predictUp, betWin, betLose, fireworks, userdata, predictClea
                                             <div className="profit">
                                                     <span style={{display: widthMode === "mobile" ? "block" : "inline"}}
                                                           className={" red"}>{LANG.BettingRealMoney.UsualState.MakeBet.yourProfit}</span>
-                                                <span> <br/>
+                                                <span>
                                                     {up || down ? ((bet / (bet + downBets) * upBets) * 0.97).toFixed(6) : 0}
                                                 </span>
                                                 <img src={bitcoin} width="15" height="20" alt="b"/>
@@ -303,7 +326,8 @@ const mapStateToProps = state => {
         up: state.balanceReducer.up,
         down: state.balanceReducer.down,
         widthMode: state.switchOptions.widthMode,
-        currentLang: state.switchOptions.lang
+        currentLang: state.switchOptions.lang,
+        step: state.switchOptions.step
     }
 }
 const mapDispatchToProps = {
