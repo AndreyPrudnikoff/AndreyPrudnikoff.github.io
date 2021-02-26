@@ -19,10 +19,10 @@ import {RU} from "../../languages/ru";
 const Dashboard = ({predictUp, betWin, betLose, fireworks, userdata, predictClear, predictDown, balance, predict, upBets, downBets, up, down, lastSeconds, widthMode, currentLang, up_down, you_lose}) => {
     const [bet, setBet] = useState(.0001);
     const [counter, setCounter] = useState(10);
-    const [initialOffset, setinItialOffset] = useState(440);
     const [gameStart, setGameStart] = useState(undefined);
     const LANG = currentLang === "en" ? EN : RU;
     const time = 10;
+    const initialOffset = 440;
     const i = 10 - counter || 1;
     let timeBet = lastSeconds % 20 === 0 || lastSeconds % 20 === 5;
     let startGame = lastSeconds % 20 === 10 || lastSeconds % 20 === 15;
@@ -74,7 +74,7 @@ const Dashboard = ({predictUp, betWin, betLose, fireworks, userdata, predictClea
                     } else {
                         userdata();
                     }
-                })
+                }).catch(e => {console.log(e)});
             setGameStart(undefined);
             predictClear();
         }, 10000)
