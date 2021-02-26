@@ -3,14 +3,14 @@ import deposit from '../../images/deposit.svg';
 import withdraw from '../../images/withdraw.svg';
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-import {playClick} from "../../redux/actions/music";
+import {playClick, transition} from "../../redux/actions/music";
 import switchWallet from "../../images/switch_wallet.svg";
 import {changeDemo, userdata} from "../../redux/actions/game";
 import {createAd} from "../../redux/actions";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, userdata, name, isDemo, threewins, changeDemo, createAd, predict, currentLang, playClick}) => {
+const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, userdata, name, isDemo, threewins, changeDemo, createAd, predict, currentLang, playClick, transition}) => {
     const [switcher, setSwitcher] = useState(false);
     const [banner, setBanner] = useState("banner one round-dark");
     const LANG = currentLang === "en" ? EN : RU;
@@ -40,7 +40,7 @@ const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, userd
                     {/*<div className="text-center">You are going to play on real <br/> money. Are you sure? </div>*/}
                     <div className="win-btn">
                         <button onClick={() => {
-                            playClick();
+                            transition();
                             changeDemo();
                             setSwitcher(false);
                         }}
@@ -136,6 +136,7 @@ const mapDispatchToProps = {
     userdata,
     changeDemo,
     createAd,
-    playClick
+    playClick,
+    transition
 }
 export default connect(mapStateToProps, mapDispatchToProps)(RightSector);
