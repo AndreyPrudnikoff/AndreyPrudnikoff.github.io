@@ -6,7 +6,7 @@ import {
     GET_COURSE, GET_CURRENT_COURSE,
     GET_LOCATION, LANG_MODE, LOGOUT,
     PROHIBITION,
-    REGISTRATION, VIEW_MODE
+    REGISTRATION, SWITCH_STEP, VIEW_MODE
 } from "../types";
 
 import {userdata} from "./game";
@@ -23,6 +23,7 @@ export function prohibition() {
 export function registration() {
     return {type: REGISTRATION}
 }
+
 export function resizeScreen(width) {
     return {type: DEVICE_WIDTH, payload: width}
 }
@@ -45,15 +46,13 @@ export function geoposition() {
 }
 
 export function bitcoinCourse(data) {
-    return dispatch => {
-        dispatch({type: GET_COURSE, payload: data});
+    return {
+        type: GET_COURSE, payload: data
     }
 }
 
 export function bitcoinCurrentCourse() {
-    return dispatch => {
-        dispatch({type: GET_CURRENT_COURSE});
-    }
+    return {type: GET_CURRENT_COURSE}
 }
 
 export function betWin(data) {
@@ -64,35 +63,29 @@ export function betWin(data) {
 }
 
 export function betLose(data) {
-    return dispatch => {
-        dispatch({type: BET_LOSE, payload: data});
-    }
+    return {type: BET_LOSE, payload: data}
 }
 
-export function closeCongratulation(data) {
-    return dispatch => {
-        dispatch({type: CLOSE_CONGRATULATION});
-    }
+export function closeCongratulation() {
+    return {type: CLOSE_CONGRATULATION}
 }
 
-export function closeYourLose(data) {
-    return dispatch => {
-        dispatch({type: CLOSE_YOURLOSE});
-    }
+export function closeYourLose() {
+    return {type: CLOSE_YOURLOSE}
 }
 
 export function createAd() {
-    return dispatch => {
-        dispatch({type: CREATE_AD});
-    }
+    return {type: CREATE_AD}
 }
+
 export function switchView(param) {
-    return dispatch => {
-        dispatch({type: VIEW_MODE, payload: param});
-    }
+    return {type: VIEW_MODE, payload: param}
 }
+
 export function chooseLang(lang) {
-    return dispatch => {
-        dispatch({type: LANG_MODE, payload: lang});
-    }
+    return {type: LANG_MODE, payload: lang}
+}
+
+export function switchStep(number) {
+    return {type: SWITCH_STEP, payload: number}
 }
