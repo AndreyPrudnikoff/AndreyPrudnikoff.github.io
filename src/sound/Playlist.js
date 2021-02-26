@@ -4,6 +4,7 @@ import React from 'react';
 // import bell from './bell.mp3';
 // import tic from './tic.mp3';
 // import clack from './clack.mp3';
+import timer2 from './timer3.mp3'
 import transition from './transition.ogg';
 import start_win from './start_win.mp3'
 import success from './success.mp3';
@@ -22,6 +23,7 @@ const Playlist = () => {
             {/*<Sound param={{id: 'clack', effect: clack}}/>*/}
             {/*<Sound param={{id: 'money', effect: money}}/>*/}
             {/*<Sound param={{id: 'bell', effect: bell}}/>*/}
+            <Sound param={{id: 'timer2', effect: timer2}}/>
             <Sound param={{id: 'transition', effect: transition}}/>
             <Sound param={{id: 'start_win', effect: start_win}}/>
             <Sound param={{id: 'success', effect: success}}/>
