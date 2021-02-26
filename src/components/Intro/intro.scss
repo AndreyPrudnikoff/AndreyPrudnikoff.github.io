@@ -48,7 +48,7 @@
         margin-left: 20px;
 
         &__item {
-          // width: 52px;
+          width: 52px;
           height: 6px;
           background: #F7931A;
           border-radius: 4px;
@@ -92,10 +92,13 @@
         // &__item:not(:nth-child(2)) {
         &__item {
           // border: 1px solid rgba(255, 255, 255, 1);
-          margin-right: 23px;
+          margin-right: 12px;
 
           span {
-            display: inline-block;
+            // display: inline-block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             cursor: pointer;
             font-family: Roc Grotesk;
             font-style: normal;
@@ -106,6 +109,7 @@
             text-transform: uppercase;
             outline: none;
             color: #FFFFFF;
+            margin-right: 12px;
           }
 
           &:not(:nth-child(2)) {
@@ -132,6 +136,10 @@
           &:nth-child(2) {
 
             span {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 116px;
               opacity: 0.5;
               width: 97px;
               height: 23px;
@@ -149,6 +157,9 @@
 
           &:last-child {
             margin-right: 0;
+            button {
+              margin-left: 0;
+            }
           }
         }
       }
@@ -195,9 +206,9 @@
         margin-left: 0;
 
         &__item {
-          width: 70px;
+          // width: 70px;
 
-          &:nth-last-child(-n+3) {
+          &:nth-last-child(-n+4) {
             opacity: 0.5;
           }
         }
@@ -299,9 +310,9 @@
       .list-lines {
 
         &__item {
-          width: 70px;
+          // width: 70px;
 
-          &:nth-last-child(-n+2) {
+          &:nth-last-child(-n+3) {
             opacity: 0.5;
           }
         }
@@ -350,9 +361,9 @@
       .list-lines {
 
         &__item {
-          width: 70px;
+          // width: 70px;
 
-          &:last-child {
+          &:nth-last-child(-n+2) {
             opacity: 0.5;
           }
         }
@@ -401,7 +412,9 @@
       .list-lines {
 
         &__item {
-          width: 70px;
+          &:last-child {
+            opacity: 0.5;
+          }
         }
       }
 
