@@ -40,7 +40,7 @@ const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, userd
                     {/*<div className="text-center">You are going to play on real <br/> money. Are you sure? </div>*/}
                     <div className="win-btn">
                         <button onClick={() => {
-                            transition();
+                            playClick();
                             changeDemo();
                             setSwitcher(false);
                         }}
@@ -61,6 +61,7 @@ const RightSector = ({balance, lastWinGame, lastgame, wins, colorBlalance, userd
                         if(!predict) {
                             setSwitcher(true)
                         }
+                        transition()
                     }} className={isDemo ? "switch-wrapper demo" : "switch-wrapper real"}
                     style={predict ? {filter: 'grayscale(1)', opacity: .5} : null}>
                     <img src={switchWallet} alt=""/>
