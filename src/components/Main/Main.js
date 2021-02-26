@@ -82,7 +82,7 @@ const Main = ({history, step, view, switchView, course, lastWin, closeCongratula
                     </div>
                 </div>
             </div>
-            <Presentation style={{display: step ? "none" : "block"}} />
+
             <div style={{display: yourlose ? "block" : "none"}} className="blur">
                 <div className="round-dark win">
                     <h2>Your lose</h2>
@@ -111,6 +111,7 @@ const Main = ({history, step, view, switchView, course, lastWin, closeCongratula
 
             <main style={{display: flag ? 'block' : 'none'}}>
                 <div className="row main">
+                    <Presentation style={{display: step ? "none" : "block"}} />
                     <div style={{display: widthMode === "mobile" && view ? "none" : "flex"}} className="left-sector">
                         {widthMode === "mobile" ? <Rates/> : <></>}
                         <div className={`${widthMode} round globe`}>
