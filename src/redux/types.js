@@ -23,6 +23,7 @@ export const PLAY_CLACK ='PLAY_CLACK';
 export const PLAY_BELL ='PLAY_BELL';
 export const PLAY_MONEY ='PLAY_MONEY';
 
+export const PLAY_TIMER_2 = 'PLAY_TIMER_2'
 export const PLAY_TRANSITION = 'PLAY_TRANSITION'
 export const PLAY_START_WIN = 'PLAY_START_WIN';
 export const PLAY_SUCCESS = 'PLAY_SUCCESS';

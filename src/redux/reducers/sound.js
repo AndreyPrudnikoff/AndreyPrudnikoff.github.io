@@ -1,4 +1,4 @@
-import {MUTE, PLAY_BELL, PLAY_CLACK, PLAY_CLICK, PLAY_FIREWORKS, PLAY_MONEY, PLAY_UP_DOWN, PLAY_YOU_LOSE, STOP_ALL, PLAY_ADD_TO_WALLET, PLAY_TIMER, PLAY_SUCCESS, PLAY_START_WIN, PLAY_TRANSITION} from "../types";
+import {MUTE, PLAY_BELL, PLAY_CLACK, PLAY_CLICK, PLAY_FIREWORKS, PLAY_MONEY, PLAY_UP_DOWN, PLAY_YOU_LOSE, STOP_ALL, PLAY_ADD_TO_WALLET, PLAY_TIMER, PLAY_SUCCESS, PLAY_START_WIN, PLAY_TRANSITION, PLAY_TIMER_2} from "../types";
 
 const initialState = {
     play: '',
@@ -13,6 +13,10 @@ export const soundReducer = (state = initialState, action) => {
         case PLAY_MONEY:
             return {...state, play: 'money'}
         
+
+        case PLAY_TIMER_2: {
+            return {...state, play: 'timer2'}
+        }    
         case PLAY_TRANSITION:
             return {...state, play: 'transition'}
         case PLAY_START_WIN:
