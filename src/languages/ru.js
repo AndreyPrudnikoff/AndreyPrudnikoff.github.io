@@ -153,7 +153,7 @@ export const RU = {
 
             Form: {
                 title: 'Пригласить друзей',
-                content: 'Вы получите 1 БТК на демо-кошелек за каждую регистрацию вашего друга',
+                content: 'Вы получите 1 BTC на демо-кошелек за каждую регистрацию вашего друга',
                 sendInvitation: 'Отправить приглашение',
                 emailPlaceholder: 'hi@gmail.com',
                 btnSendInvite: 'Отправить',
@@ -195,9 +195,9 @@ export const RU = {
         },
 
         BTC: {
-            title: 'Оплата Биткойном',
+            title: 'Оплата Bitcoin',
             OurBTCWallet: 'Наш Биткйон кошелек',
-            BTCWalletAddress: 'Наш БТК кошелек',
+            BTCWalletAddress: 'Наш BTC кошелек',
             BTCWalletPlaceholder: '161PtRedhQgxoc3UXgN6iVqMF3XFVs96QV',
             btnCopyLink: 'Скопировать',
             linkCopy: 'Скопировано',
@@ -295,12 +295,12 @@ export const RU = {
             
             Demo: {
                 title: 'Не хватает денег',
-                btnBetRealBTC: 'Поставить биткойн',
+                btnBetRealBTC: 'Поставить Bitcoin',
                 btnRestart: 'Перезапустить Демо'
             },
 
             Real: {
-                title: 'Не хватает Биткойнов',
+                title: 'Не хватает Bitcoin',
                 deposit: 'Пополнить',
                 btnRestart: 'Перезапустить Демо'
             }

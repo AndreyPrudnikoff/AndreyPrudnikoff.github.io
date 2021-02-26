@@ -1,0 +1,41 @@
+.audience {
+  margin-top: 30px;
+
+  & .content {
+    display: flex;
+    gap: 20px;
+
+    & .block {
+      width: 100%;
+    }
+
+    & .addButton {
+      display: flex;
+      align-items: center;
+      margin-top: 22px;
+      gap: 10px;
+      cursor: pointer;
+
+      & button {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        width: 20px;
+        height: 20px;
+        background: transparent;
+        border-color: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        color: rgba(255, 255, 255, 0.5);
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      & span {
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+}

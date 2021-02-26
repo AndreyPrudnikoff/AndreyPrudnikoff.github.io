@@ -1,26 +1,33 @@
-import React from 'react';
-import {connect} from "react-redux";
-import './ads.scss';
+import React from "react";
+import { connect } from "react-redux";
+// styles
+import "./ads.scss";
+// components
+import { TextInput } from "./components/Duration/components";
+import { Duration, ImagePreview, Audience, Method, Footer } from "./components";
 
 const Ads = () => {
-    return (
-        <div className="round-dark ads">
-            <h2>Ad creative</h2>
-            <div className="wrapper-input-file">
-                <div className="label-file">Select a banner to add
-                    <div>275 x 170 px</div>
-                </div>
-                <div className="wrap-input">
-                    <label className="dashed" htmlFor="ad-file">
-                        <input type="file" id="ad-file"/>
-                        <span className="description">Drag and drop file here or</span>
-                    </label>
-                    <label htmlFor="ad-file" className="btn-file">Choose file</label>
+  return (
+    <form className="round-dark ads">
+      <ImagePreview />
 
-                </div>
-            </div>
-        </div>
-    );
+      <TextInput label="Website URL" />
+
+      <hr />
+
+      <Audience />
+
+      <hr />
+
+      <Method />
+
+      <hr />
+
+      <Duration />
+
+      <Footer />
+    </form>
+  );
 };
 
 export default connect(null, null)(Ads);

@@ -1,36 +1,49 @@
-//*.ru {
-//  font-family: "pragmatica";
-//}
 .ads {
+  margin: 100px 0px 60px;
   min-height: 90%;
-  width: 40%;
-  padding: 50px;
+  width: 512px;
+  padding: 20px;
 
   h2 {
     text-align: left;
     font-weight: 300;
   }
 
+  .block-description {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 23px;
+  }
+
   .wrapper-input-file {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    margin-bottom: 30px;
 
     .label-file {
       display: flex;
       align-items: center;
+      font-size: 16px;
+      font-weight: normal;
       margin-bottom: 70px;
+      line-height: 23px;
     }
 
     .wrap-input {
       position: relative;
 
       .dashed {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         border: 1px dashed #fff;
         border-radius: 8px;
         width: 275px;
         height: 270px;
-        position: relative;
+        // position: relative;
         margin-bottom: 70px;
 
         #ad-file {
@@ -50,6 +63,36 @@
         cursor: pointer;
       }
 
+      .image-preview {
+        width: 275px;
+        height: 170px;
+      }
+    }
+  }
+  .website-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 30px;
+
+    & > input {
+      width: 100%;
+      height: 48px;
+      background: transparent;
+      border: none;
+      border-radius: 10px;
+      border: 1px solid #ffffff;
+      margin-top: 4px;
+      padding: 14px 12px;
+      outline: none;
+
+      &:valid {
+        border-color: #ffffff;
+      }
+
+      &:invalid {
+        border-color: #f94439;
+      }
     }
   }
 }

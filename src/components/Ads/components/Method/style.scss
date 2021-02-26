@@ -1,0 +1,19 @@
+.method {
+  margin-top: 30px;
+
+  & .content {
+    display: flex;
+    gap: 20px;
+
+    &-variantPayMethod {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    & .label {
+      margin-bottom: 10px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+}
