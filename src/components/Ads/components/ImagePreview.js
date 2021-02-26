@@ -1,6 +1,6 @@
 import React from "react";
 // hooks
-import useImagePreview from "../../../utils/hooks/useImagePreview";
+import useImagePreview from "../../useImagePreview";
 
 const ImagePreview = () => {
   const [image, setFile] = useImagePreview();
@@ -12,7 +12,7 @@ const ImagePreview = () => {
       <div className="wrapper-input-file">
         <div className="label-file">
           Select a banner to add <br />
-          275 x 170 px
+          275 x 270 px
         </div>
 
         <div className="wrap-input">

@@ -8,8 +8,7 @@ import bitcoin from "../../../../../images/bitcoin.svg";
 import dollar from "../../../../../images/dollar.svg";
 
 const Tabs = ({ tabs }) => {
-  const [activeTab, setActiveTab] = useState(1);
-
+  const [activeTab, setActiveTab] = useState(0);
   return (
     <div className="tabsContainer">
       <div className="tabs">

@@ -10,6 +10,7 @@
 		"axios": "^0.21.1",
 		"chart.js": "^2.9.4",
 		"chartjs-plugin-style": "^0.5.0",
+		"dayjs": "^1.10.4",
 		"react": "^17.0.1",
 		"react-dom": "^17.0.1",
 		"react-phone-number-input": "^3.1.10",

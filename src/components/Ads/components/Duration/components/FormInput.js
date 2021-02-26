@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import dayjs from "dayjs";``
+import dayjs from "dayjs";
 // styles
 import "./style.scss";
 
@@ -107,10 +107,10 @@ export const RangeInput = ({
   const hadlerChnage = ({ target: { valueAsNumber } }) => {
     onChange({
       value: valueAsNumber,
-      isValid: balance < valueAsNumber ? false : true,
+      isValid: balance >= valueAsNumber,
     });
 
-    setValidation(balance < valueAsNumber ? false : true);
+    setValidation(balance >= valueAsNumber);
   };
 
   return (
@@ -145,7 +145,7 @@ export const TextInput = ({ label, onChange = () => {} }) => {
     <div className="website-block">
       <span className="block-description">{label}</span>
       <input
-        value=""
+        // value=""
         type="text"
         placeholder="website.com"
         onChange={onChange}

@@ -112,7 +112,7 @@ class App extends React.Component {
                 {routing.map((content, index) => {
                     return <Route key={index} exact path={content.path} component={content.component}/>
                 })}
-                <Redirect from="*" to={sessionStorage.getItem('token') ? "/game" : "/"}/>
+                <Redirect from="*" to={!sessionStorage.getItem('token') ? "/" : null}/>
                 {this.props.unauthorized ? <Redirect to='/'/> : null}
             </Router>
         );
