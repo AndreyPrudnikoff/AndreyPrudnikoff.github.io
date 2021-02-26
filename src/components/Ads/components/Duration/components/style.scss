@@ -1,0 +1,289 @@
+.tabsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  & .tabs {
+    display: flex;
+    justify-content: space-evenly;
+    cursor: pointer;
+    margin-bottom: 16px;
+
+    & .tab {
+      border-bottom: 1px solid transparent;
+      color: rgba(2555, 255, 255, 0.5);
+    }
+
+    & .activeTab {
+      border-bottom: 1px solid #ffffff;
+    }
+
+    & .content {
+      width: 100%;
+    }
+  }
+
+  & .daily {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    & > span:nth-child(2) {
+      color: rgba(2555, 255, 255, 0.5);
+    }
+  }
+
+  & .estimated {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    &-perDay {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 15px;
+
+      & .amount {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        &-btc {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          color: rgba(2555, 255, 255, 0.5);
+
+          & > img {
+            width: 15px;
+            height: 20px;
+          }
+        }
+
+        &-dollar {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          & .dollarContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 48px;
+            font-size: 24px;
+            border: 1px solid #ffffff;
+            border-radius: 8px;
+
+            & > img {
+              width: 13px;
+              height: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.selectInput {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  border: 1px solid #ffffff;
+  margin-top: 4px;
+  padding: 12px;
+  outline: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+
+  & > select {
+    background: transparent;
+    border: none;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+    }
+
+    & > option {
+      color: black;
+    }
+  }
+}
+
+.dateInputContainer {
+  width: 100%;
+
+  & .dateInput {
+    display: flex;
+    justify-content: space-between;
+    color: whiet;
+    background: transparent;
+    border-radius: 8px;
+    border: 1px solid #ffffff;
+    margin-top: 4px;
+    padding: 12px;
+
+    & > input {
+      width: 48px;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: white;
+
+      &::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+        filter: invert(100%);
+      }
+    }
+  }
+}
+
+.timeInputContainer {
+  width: 100%;
+
+  & .timeInput {
+    display: flex;
+    justify-content: space-between;
+    color: whiet;
+    background: transparent;
+    border-radius: 8px;
+    border: 1px solid #ffffff;
+    margin-top: 4px;
+    padding: 12px;
+
+    & > input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: white;
+
+      &::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+        filter: invert(100%);
+      }
+    }
+  }
+}
+
+.formInput {
+  display: flex;
+  justify-content: space-between;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  border: 1px solid #ffffff;
+  margin-top: 4px;
+  padding: 12px;
+  outline: none;
+
+  & > input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  & .inputButtons {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+
+    & > button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      background: transparent;
+      border: 1px solid #ffffff;
+      border-radius: 50%;
+      outline: none;
+    }
+  }
+}
+
+.rangeInputContainer {
+  width: 100%;
+
+  .rangeInput {
+    -webkit-appearance: none;
+    width: 100%;
+    background-color: transparent;
+    outline: none;
+
+    &::-webkit-slider-runnable-track {
+      background: #32d74b;
+      border: 0.2px solid #32d74b;
+      border-radius: 1.3px;
+      width: 100%;
+      height: 2px;
+      cursor: pointer;
+    }
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      margin-top: -20px;
+      width: 40px;
+      height: 40px;
+      background: url("../../../../../images/sliderThump.svg") -9.5px -6.5px;
+      border: 1px solid white;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    &:focus::-webkit-slider-runnable-track {
+      outline: none;
+    }
+  }
+
+  .rangeInput-error {
+    @extend .rangeInput;
+
+    &::-webkit-slider-runnable-track {
+      background: #f94439;
+      border: 0.2px solid #f94439;
+    }
+  }
+
+  & .reffil {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 28px;
+
+    &-balance {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    &-button {
+      width: 200px;
+      height: 48px;
+      border: 1px solid white;
+      box-sizing: border-box;
+      backdrop-filter: blur(20px);
+      border-radius: 8px;
+      background: var(--dark-block);
+    }
+
+    &-error {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 110px;
+      height: 39px;
+      border: 1px solid #f94439;
+      border-radius: 24px;
+    }
+  }
+}

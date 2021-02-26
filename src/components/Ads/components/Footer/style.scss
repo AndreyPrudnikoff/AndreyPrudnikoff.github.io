@@ -1,0 +1,22 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+
+  & > button {
+    width: 200px;
+    height: 48px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    text-transform: uppercase;
+    outline: none;
+
+    &:hover {
+      border: 1px solid white;
+      color: white;
+      background: black;
+    }
+  }
+}
