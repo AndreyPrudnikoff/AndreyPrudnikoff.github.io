@@ -1262,6 +1262,7 @@ form {
             .profit .red,
             .profit .green {
               font-size: 12px;
+              white-space: nowrap;
             }
 
             .form-label {
@@ -1275,6 +1276,8 @@ form {
 
           .down, .up {
             width: 45%;
+            margin-top: -8px;
+            text-align: center;
 
             button {
               width: 100%;
