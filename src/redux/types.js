@@ -2,6 +2,7 @@ export const AUTHORIZATION = 'AUTHORIZATION';
 export const PROHIBITION = 'PROHIBITION';
 export const REGISTRATION = 'REGISTRATION';
 export const LOGOUT = 'LOGOUT';
+export const FIRST_IN = 'FIRST_IN';
 export const GOAWAY = 'GOAWAY';
 
 export const CREATE_AD = 'CREATE_AD';
@@ -35,6 +36,10 @@ export const PLAY_YOU_LOSE ='PLAY_YOU_LOSE';
 export const PLAY_UP_DOWN ='PLAY_UP_DOWN';
 export const PLAY_FIREWORKS ='PLAY_FIREWORKS';
 export const STOP_ALL ='STOP_ALL';
+export const STOP_BET_TIMER ='STOP_BET_TIMER';
+export const STOP_GAME_TIMER ='STOP_GAME_TIMER';
+export const PLAY_GAME_TIMER ='PLAY_GAME_TIMER';
+export const PLAY_BET_TIMER ='PLAY_BET_TIMER';
 export const MUTE ='MUTE';
 
 export const GET_USER_DATA = 'GET_USER_DATA';

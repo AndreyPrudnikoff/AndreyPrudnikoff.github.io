@@ -1,8 +1,27 @@
-import {MUTE, PLAY_BELL, PLAY_CLACK, PLAY_CLICK, PLAY_FIREWORKS, PLAY_MONEY, PLAY_UP_DOWN, PLAY_YOU_LOSE, STOP_ALL, PLAY_ADD_TO_WALLET, PLAY_TIMER, PLAY_SUCCESS, PLAY_START_WIN, PLAY_TRANSITION, PLAY_TIMER_2} from "../types";
+import {
+    MUTE,
+    PLAY_BELL,
+    PLAY_CLACK,
+    PLAY_CLICK,
+    PLAY_FIREWORKS,
+    PLAY_MONEY,
+    PLAY_UP_DOWN,
+    PLAY_YOU_LOSE,
+    STOP_ALL,
+    PLAY_ADD_TO_WALLET,
+    PLAY_TIMER,
+    PLAY_SUCCESS,
+    PLAY_START_WIN,
+    PLAY_TRANSITION,
+    PLAY_TIMER_2,
+    STOP_GAME_TIMER, STOP_BET_TIMER, PLAY_GAME_TIMER, PLAY_BET_TIMER
+} from "../types";
 
 const initialState = {
     play: '',
-    mute: true
+    mute: true,
+    bet: false,
+    game: false
 }
 export const soundReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -16,7 +35,19 @@ export const soundReducer = (state = initialState, action) => {
 
         case PLAY_TIMER_2: {
             return {...state, play: 'timer2'}
-        }    
+        }
+        case STOP_GAME_TIMER: {
+            return {...state, game: false}
+        }
+        case STOP_BET_TIMER: {
+            return {...state, bet: false}
+        }
+        case PLAY_GAME_TIMER: {
+            return {...state, game: true}
+        }
+        case PLAY_BET_TIMER: {
+            return {...state, bet: true}
+        }
         case PLAY_TRANSITION:
             return {...state, play: 'transition'}
         case PLAY_START_WIN:
