@@ -9,19 +9,17 @@ import {connect} from "react-redux";
 import {switchStep} from "../../redux/actions";
 
 const IntroList = [
-    <Step1 key="1"/>,
-    <Step2 key="2"/>,
-    <Step3 key="3"/>,
-    <Step4 key="4"/>,
-    <Step5 key="5"/>
+    Step1,
+    Step2,
+    Step3,
+    Step4,
+    Step5
 ];
 
 const Presentation = ({step}) => {
     return (
         <div style={{display: !step ? "none" : "block"}}  className="presentation">
-
-             {IntroList.map((item, index) => (step === index + 1 ? item : null))}
-
+             {IntroList.map((item, index) => (step === index + 1 ? <item key={index} />: null))}
         </div>
     );
 };

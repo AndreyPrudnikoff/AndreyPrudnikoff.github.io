@@ -2,24 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f6b93ff-e806-4942-bf67-7a8ba8e695b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sound/betTimer.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sound/betTimer.ogg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sound/gameTimer.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sound/gameTimer.ogg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Intro/Presentation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Intro/Presentation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Intro/Step5.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Intro/Step5.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/main.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/music.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/music.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/entry.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/entry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/sound.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/sound.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sound/Playlist.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sound/Playlist.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sound/Sound.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sound/Sound.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sound/timer.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/src/sound/timer.mp3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
