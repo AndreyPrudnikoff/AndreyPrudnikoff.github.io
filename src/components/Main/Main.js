@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {connect} from "react-redux";
 import './main.scss';
 import bitcoin from '../../images/bitcoin.svg';
@@ -16,6 +16,7 @@ import Rates from "./Rates";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 import Online from "./Online";
+import Presentation from "../Intro/Presentation";
 
 const fire = () => {
     document.getElementById('fireworks-canvas').style.width = '100%'
@@ -41,15 +42,14 @@ const fire = () => {
     firework.start();
 };
 
-const Main = ({history, view, switchView, course, lastWin, closeCongratulation, congratulation, yourlose, closeYourLose, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition, userdata, lastWinGame, createAd, createAdProp, widthMode, currentLang, you_lose, add_to_wallet, playClick}) => {
+const Main = ({history, step, view, switchView, course, lastWin, closeCongratulation, congratulation, yourlose, closeYourLose, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition, userdata, lastWinGame, createAd, createAdProp, widthMode, currentLang, you_lose, add_to_wallet, playClick}) => {
+
     useEffect(() => {
         userdata();
         fire();
-    }, [congratulation])
-    useEffect(() => {
-        fire();
-    }, [])
-    useEffect(()=> switchView(false), [])
+    }, [congratulation]);
+    useEffect(() => {fire()}, []);
+    useEffect(()=> switchView(false), []);
     const LANG = currentLang === "en" ? EN : RU;
     let flag = course ? course.length : false;
     return (
@@ -82,7 +82,7 @@ const Main = ({history, view, switchView, course, lastWin, closeCongratulation, 
                     </div>
                 </div>
             </div>
-            {/* <div style={{display: "block"}} className="blur" onClick={() => you_lose()}> */}
+            <Presentation style={{display: step ? "none" : "block"}} />
             <div style={{display: yourlose ? "block" : "none"}} className="blur">
                 <div className="round-dark win">
                     <h2>Your lose</h2>
@@ -108,6 +108,7 @@ const Main = ({history, view, switchView, course, lastWin, closeCongratulation, 
                     </div>
                 </div>
             </div>
+
             <main style={{display: flag ? 'block' : 'none'}}>
                 <div className="row main">
                     <div style={{display: widthMode === "mobile" && view ? "none" : "flex"}} className="left-sector">
@@ -152,7 +153,8 @@ const mapStateToProps = state => {
         createAdProp: state.switchOptions.createAd,
         widthMode: state.switchOptions.widthMode,
         view: state.switchOptions.view,
-        currentLang: state.switchOptions.lang
+        currentLang: state.switchOptions.lang,
+        step: state.switchOptions.step
     }
 }
 const mapDispatchToProps = {

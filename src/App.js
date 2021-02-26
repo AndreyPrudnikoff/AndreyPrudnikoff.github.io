@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const routing = [
     {path: "/", component: Start},
-    {path: "/intro/:number", component: Presentation},
+    // {path: "/intro/:number", component: Presentation},
     {path: "/game", component: Main},
     {path: "/restore", component: Restore},
     {path: "/reset", component: Reset},
@@ -112,7 +112,7 @@ class App extends React.Component {
                 {routing.map((content, index) => {
                     return <Route key={index} exact path={content.path} component={content.component}/>
                 })}
-                <Redirect from="*" to={!sessionStorage.getItem('token') ? "/" : null}/>
+                <Redirect from="*" to={sessionStorage.getItem('token') ? "/game" : "/"}/>
                 {this.props.unauthorized ? <Redirect to='/'/> : null}
             </Router>
         );

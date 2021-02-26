@@ -32,7 +32,8 @@ const Dashboard = ({predictUp, betWin, betLose, fireworks, userdata, predictClea
             setGameStart(lastSeconds);
             predictSubmit();
         }
-    }, [lastSeconds])
+    }, [lastSeconds]);
+
     const setBetHandler = (e) => {
         let bet = +e.target.value.slice(0, 5);
         if (!bet) {
@@ -43,6 +44,7 @@ const Dashboard = ({predictUp, betWin, betLose, fireworks, userdata, predictClea
         }
         setBet(bet || 0.0001);
     }
+
     const betDone = (e) => {
         let rate = e.target.id;
         up_down();
