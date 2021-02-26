@@ -4,7 +4,7 @@ import React from 'react';
 // import bell from './bell.mp3';
 // import tic from './tic.mp3';
 // import clack from './clack.mp3';
-import timer from './gameTimer.mp3'
+import timer from './gameTimer.ogg'
 import transition from './transition.ogg';
 import start_win from './start_win.mp3'
 import success from './success.mp3';
