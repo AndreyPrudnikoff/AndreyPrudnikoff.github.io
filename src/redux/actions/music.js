@@ -1,4 +1,21 @@
-import {MUTE, PLAY_BELL, PLAY_CLACK, PLAY_CLICK, PLAY_FIREWORKS, PLAY_MONEY, PLAY_UP_DOWN, STOP_ALL, PLAY_YOU_LOSE, PLAY_ADD_TO_WALLET, PLAY_TIMER, PLAY_SUCCESS, PLAY_START_WIN, PLAY_TRANSITION, PLAY_TIMER_2} from "../types";
+import {
+    MUTE,
+    PLAY_BELL,
+    PLAY_CLACK,
+    PLAY_CLICK,
+    PLAY_FIREWORKS,
+    PLAY_MONEY,
+    PLAY_UP_DOWN,
+    STOP_ALL,
+    PLAY_YOU_LOSE,
+    PLAY_ADD_TO_WALLET,
+    PLAY_TIMER,
+    PLAY_SUCCESS,
+    PLAY_START_WIN,
+    PLAY_TRANSITION,
+    PLAY_TIMER_2,
+    STOP_BET_TIMER, STOP_GAME_TIMER, PLAY_BET_TIMER, PLAY_GAME_TIMER
+} from "../types";
 
 export function click() {
     return {type: PLAY_CLICK}
@@ -39,7 +56,6 @@ export function you_lose() {
     return {type: PLAY_YOU_LOSE}
 }
 export function up_down() {
-    console.log('123')
     return {type: PLAY_UP_DOWN}
 }
 export function fireworks() {
@@ -47,6 +63,18 @@ export function fireworks() {
 }
 export function stop() {
     return {type: STOP_ALL}
+}
+export function stopBetTimer() {
+    return {type: STOP_BET_TIMER}
+}
+export function stopGameTimer() {
+    return {type: STOP_GAME_TIMER}
+}
+export function playBetTimer() {
+    return {type: PLAY_BET_TIMER}
+}
+export function playGameTimer() {
+    return {type: PLAY_GAME_TIMER}
 }
 export function muteToggle() {
     return {type: MUTE}

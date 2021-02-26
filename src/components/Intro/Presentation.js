@@ -18,10 +18,9 @@ const IntroList = [
 
 const Presentation = ({step}) => {
     return (
-        <div className="presentation">
+        <div style={{display: !step ? "none" : "block"}}  className="presentation">
 
-            {/* {IntroList.map((item, index) => (step === index + 1 + "" ? item : null))} */}
-            <Step5/>
+             {IntroList.map((item, index) => (step === index + 1 ? item : null))}
 
         </div>
     );

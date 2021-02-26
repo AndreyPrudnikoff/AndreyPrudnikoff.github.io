@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {stop} from '../redux/actions/music';
 
 const Sound = ({play, param, stop, mute}) => {
+
     const audRef = useRef(null);
     const handlePlay = () => {
         audRef.current.play();
@@ -18,9 +19,11 @@ const Sound = ({play, param, stop, mute}) => {
         }
         stop();
     }, [param.id, play, handlePlay]);
+
     useEffect(() => {
         muted();
     }, [muted]);
+
     return (
         <div className="sound">
             <audio ref={audRef} id={param.id} src={param.effect}/>

@@ -111,7 +111,7 @@ const Main = ({history, step, view, switchView, course, lastWin, closeCongratula
 
             <main style={{display: flag ? 'block' : 'none'}}>
                 <div className="row main">
-                    <Presentation style={{display: step ? "none" : "block"}} />
+                    <Presentation />
                     <div style={{display: widthMode === "mobile" && view ? "none" : "flex"}} className="left-sector">
                         {widthMode === "mobile" ? <Rates/> : <></>}
                         <div style={{zIndex: step === 1 ?  "10" : "" } } className={`${widthMode} round globe`}>
