@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Rates = ({rates, down, up, downBets, upBets, widthMode, currentLang}) => {
+const Rates = ({rates, down, up, downBets, upBets, widthMode, currentLang, step}) => {
     const mobile = widthMode === "mobile";
     const LANG = currentLang === "en" ? EN : RU
     const bankCoin = new Array(Math.ceil(downBets+upBets)).fill(downBets+upBets);
@@ -37,8 +37,8 @@ const Rates = ({rates, down, up, downBets, upBets, widthMode, currentLang}) => {
     // const rateUp = 10 * ((up / down) ? (up / down) : 1);
     // const rateDown = 10 * ((down / up) ? (down / up) : 1);
     return (
-        <div className="round rates">
-            <h2 className={currentLang + " text-center"}>{LANG.BettingRealMoney.UsualState.BetsInProgress.title}</h2>
+        <div style={step === 2 ? {zIndex: "10"} : null} className="round rates">
+            <h2 className={currentLang + " text-center"}>{mobile ? "" : LANG.BettingRealMoney.UsualState.BetsInProgress.title}</h2>
             <div className="wrap-table">
                 <div className="rates-col rates-up">
                     {/*<img className="arrow" src={arrup} alt="arrow"/>*/}
@@ -74,7 +74,8 @@ const mapStateToProps = state => {
         downBets: state.balanceReducer.downBets,
         upBets: state.balanceReducer.upBets,
         widthMode: state.switchOptions.widthMode,
-        currentLang: state.switchOptions.lang
+        currentLang: state.switchOptions.lang,
+        step: state.switchOptions.step
     }
 }
 const mapDispatchToProps = {

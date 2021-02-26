@@ -20,6 +20,7 @@ main {
 
   .main {
     height: 100%;
+    position: relative;
   }
 
   .row {
@@ -708,7 +709,7 @@ form {
 /*<<<<<<<<<<<<<<<<<   RIGHT SECTOR   >>>>>>>>>>>>>>>>>>*/
 .right-sector {
   height: auto;
-  z-index: 2;
+  //z-index: 2;
   max-width: 25%;
   width: 300px;
   display: flex;
@@ -877,7 +878,19 @@ form {
 
 }
 
-.peoples {
+.mobile .peoples {
+  position: absolute;
+  right: 35px;
+  top: -15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: .5em;
+  align-items: center;
+  margin-top: -35px;
+}
+
+.desktop .peoples {
   position: absolute;
   right: 35px;
   top: 25px;

@@ -19,8 +19,10 @@ const IntroList = [
 const Presentation = ({step}) => {
     return (
         <div className="presentation">
+
             {/* {IntroList.map((item, index) => (step === index + 1 + "" ? item : null))} */}
             <Step5/>
+
         </div>
     );
 };

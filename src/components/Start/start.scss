@@ -72,11 +72,11 @@
           display: flex;
           justify-content: center;
           position: relative;
-          gap: 15px;
 
           .btn {
             border-radius: 8px;
             min-width: 250px;
+            margin: 0 20px;
           }
 
           .green {
@@ -321,10 +321,11 @@ button span {
           width: 97%;
           flex-direction: column;
           //justify-content: space-between;
-          button {
+          button.btn {
             width: 100%;
             padding-left: 0;
             padding-right: 0;
+            margin: 10px 0;
           }
         }
       }

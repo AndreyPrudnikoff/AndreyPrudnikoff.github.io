@@ -114,7 +114,7 @@ const Main = ({history, step, view, switchView, course, lastWin, closeCongratula
                     <Presentation style={{display: step ? "none" : "block"}} />
                     <div style={{display: widthMode === "mobile" && view ? "none" : "flex"}} className="left-sector">
                         {widthMode === "mobile" ? <Rates/> : <></>}
-                        <div className={`${widthMode} round globe`}>
+                        <div style={{zIndex: step === 1 ?  "10" : "" } } className={`${widthMode} round globe`}>
                             {widthMode === "desktop" ? <Time/> : <></>}
                             <div>
                                 <h2 className="text-center"><img src={bitcoin} className="m-2" alt="course"/>
