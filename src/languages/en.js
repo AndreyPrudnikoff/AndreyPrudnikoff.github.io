@@ -308,5 +308,34 @@ export const EN = {
         exit: "Log out"
     },
 
+    Intro: {
+        Step1: {
+            title: 'Graph',
+            content: 'Here you can see Bitcoin price changes. This will help you to make your bet.'
+        },
+        Step2: {
+            title: 'Bank',
+            content: 'Here you can see how many players bet and how much is total bets amount.'
+        },
+        Step3: {
+            title: 'Your bet',
+            content: 'Here you can make your bitcoin bet Up or Down and set your bet amount in bitcoin.'
+        },
+        Step4: {
+            title: 'Wallet',
+            content: 'Here you can see your wallet balance and history.'
+        },
+        Step5: {
+            title: 'Inviting friends',
+            content: 'Here you can invite your friends to have more fun and earn more bitcoin.'
+        },
+        btnIntro: {
+            prev: 'Prev',
+            skip: 'Skip intro',
+            next: 'Next',
+            finish: 'Finish'
+        }
+    },
+
     support: 'Support'
 };
