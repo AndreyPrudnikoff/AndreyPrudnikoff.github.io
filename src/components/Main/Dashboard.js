@@ -4,7 +4,7 @@ import arrowUp from "../../images/arrowUp.svg";
 import arrowDown from "../../images/arrowDown.svg";
 import {connect} from "react-redux";
 import {betLose, betWin, closeCongratulation} from "../../redux/actions";
-import {bell, click, up_down, fireworks, you_lose, muteToggle, playTimer} from "../../redux/actions/music";
+import {bell, click, up_down, fireworks, you_lose, muteToggle, playTimer, playTimer2} from "../../redux/actions/music";
 import Rates from "./Rates";
 import {User} from "../../api/User";
 import {predictClear, predictDown, predictUp, userdata} from "../../redux/actions/game";
@@ -16,7 +16,7 @@ import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
 
-const Dashboard = ({predictUp, betWin, betLose, fireworks, userdata, predictClear, predictDown, balance, predict, upBets, downBets, up, down, lastSeconds, widthMode, currentLang, up_down, you_lose}) => {
+const Dashboard = ({predictUp, betWin, betLose, fireworks, userdata, predictClear, predictDown, balance, predict, upBets, downBets, up, down, lastSeconds, widthMode, currentLang, up_down, you_lose, playTimer, playTimer2}) => {
     const [bet, setBet] = useState(.0001);
     const [counter, setCounter] = useState(10);
     const [gameStart, setGameStart] = useState(undefined);
@@ -32,7 +32,18 @@ const Dashboard = ({predictUp, betWin, betLose, fireworks, userdata, predictClea
             setGameStart(lastSeconds);
             predictSubmit();
         }
-    }, [lastSeconds]);
+
+    }, [lastSeconds])
+    useEffect(() => {
+        if(startGame) {
+            console.log('use');
+            playTimer();
+        }
+        if (timeBet) {
+            console.log('no');
+            playTimer2()
+        }
+    }, [startGame, timeBet])
 
     const setBetHandler = (e) => {
         let bet = +e.target.value.slice(0, 5);
@@ -306,6 +317,7 @@ const mapDispatchToProps = {
     you_lose,
     bell,
     playTimer,
+    playTimer2,
     fireworks,
     closeCongratulation,
     muteToggle,
