@@ -14,11 +14,11 @@ import bitsybets from "../../images/BITCYBETS.svg";
 import coin from "../../images/coin.svg";
 import {userdata} from "../../redux/actions/game";
 import {registration} from "../../redux/actions";
-import {playClick, up_down} from "../../redux/actions/music";
+import {playClick, up_down, startWin} from "../../redux/actions/music";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode, registration, currentLang, playClick, up_down}) => {
+const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode, registration, currentLang, playClick, up_down, startWin}) => {
     const [timeGame, setTimeGame] = useState(false);
     const [bet, setBet] = useState('');
     const [predict, setPredict] = useState('');
@@ -35,15 +35,19 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
             if (bet === 'down' && currentCourse < course[course.length - 2]) {
                 setPredict('win');
                 setBet('');
+                startWin()
             } else if (bet === 'down' && currentCourse > course[course.length - 2]) {
                 setPredict('lose');
                 setBet('');
+                startWin()
             } else if (bet === 'up' && currentCourse > course[course.length - 2]) {
                 setPredict('win');
                 setBet('');
+                startWin()
             } else if (bet === 'up' && currentCourse < course[course.length - 2]) {
                 setPredict('lose');
                 setBet('');
+                startWin()
             } else {
                 setBet('');
             }
@@ -52,7 +56,6 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
     }, [currentCourse])
     return (
         <div  className="start">
-
             {/*<div style={{display: predict === 'win' ? "block" : "none"}} className="blur soon">*/}
             {/*    <div className="round-dark win">*/}
             {/*        <div className="win-btn">*/}
@@ -65,6 +68,8 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
             {/*        </div>*/}
             {/*    </div>*/}
             {/*</div>*/}
+            
+            
             <div style={{display: predict ? "block" : "none"}} className="blur soon">
                 <div className="round-dark win">
                     <div className="win-btn">
@@ -168,6 +173,7 @@ const mapDispatchToProps = {
     userdata,
     registration,
     playClick,
-    up_down
+    up_down,
+    startWin
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Start);
