@@ -545,6 +545,7 @@
 @media screen and (max-width: 1082px) {
   .presentation {
     .step4 {
+      top: 15%;
       left: 12.5%;
     }
 
@@ -652,15 +653,20 @@
 
         .step-nav {
           flex-direction: column;
-
           &__item {
             margin: 20px 0 0 0;
 
+            &:first-child{
+              order: 1;
+            }
             &:not(:nth-child(2)) {
               span {
                 width: 296px;
                 margin: 0;
               }
+            }
+            &:nth-child(2) {
+              order: 1;
             }
           }
         }
@@ -746,7 +752,7 @@
 
           &__item {
             &:first-child {
-              order: 1;
+              order: 2;
             }
 
             &:last-child {
@@ -924,7 +930,7 @@
     }
 
     .clickOnWallet {
-      top: 3%;
+      top: 6.5%;
       height: 367px;
       padding: 24px 16px;
 

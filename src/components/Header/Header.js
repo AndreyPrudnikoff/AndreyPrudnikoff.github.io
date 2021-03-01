@@ -31,7 +31,7 @@ import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
 
-const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, registration, prohibition, authorization, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang, playClick}) => {
+const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, registration, prohibition, authorization, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang, playClick, step}) => {
 
     const [menu, setMenu] = useState(false);
     const [showLang, setShowLang] = useState(true);
@@ -53,6 +53,11 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
             chooseLang("en")
         }
         switchLang();
+    }
+    const stepTest = (switchBool) => {
+        if(step === 4 || step === 0) {
+            switchView(switchBool);
+        }
     }
     useEffect(() => {
         if (location.pathname === "/" || location.pathname === "/login") {
@@ -170,10 +175,10 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                 </div>
                 <div style={{display: isGame && widthMode !== "desktop" ? "block" : "none"}} className="tabs">
                     <div className="wrap-tabs">
-                        <div onClick={() => {switchView(false); playClick()}} className={view ? "tab bets" : "tab bets active"}>
+                        <div onClick={() => {stepTest(false); playClick()}} className={view ? "tab bets" : "tab bets active"}>
                             <img src={bets} alt="tab"/>
                         </div>
-                        <div onClick={() => {switchView(true); playClick()}} className={!view ? "tab wallet" : "tab wallet active"}>
+                        <div onClick={() => {stepTest(true); playClick()}} className={!view ? "tab wallet" : "tab wallet active"}>
                             <img src={wallet} alt="tab"/>
                         </div>
                     </div>
@@ -192,7 +197,8 @@ const mapStateToProps = state => {
         predict: state.balanceReducer.predict,
         widthMode: state.switchOptions.widthMode,
         view: state.switchOptions.view,
-        currentLang: state.switchOptions.lang
+        currentLang: state.switchOptions.lang,
+        step: state.switchOptions.step
     }
 }
 const mapDispatchToProps = {

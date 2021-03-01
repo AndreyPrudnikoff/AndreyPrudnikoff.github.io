@@ -59,6 +59,12 @@ const Auth = ({
         setPhone(value);
     }
 
+    const checkForLatin = event => {
+        let val = event.replace(/[^\x00-\x7F]/ig, '');
+        setName(val);
+        // this.setState(state => ({ value: val }));
+    }
+
     const handleSubmit = event => {
         event.preventDefault();
 
@@ -171,7 +177,8 @@ const Auth = ({
                         <div className="">
                             <label className={currentLang} htmlFor="name">{LANG.Auth.Register.nameTitle}</label>
                             <input onChange={e => {
-                                setName(e.target.value);
+                                checkForLatin(e.target.value);
+                                // setName(e.target.value);
                                 setErr('');
                             }} value={name}
                                    placeholder={LANG.Auth.Register.name}
