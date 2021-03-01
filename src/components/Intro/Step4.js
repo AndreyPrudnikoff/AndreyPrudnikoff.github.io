@@ -2,13 +2,18 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import imgPerson from '../../images/person x4F 4 1.png'
 import {switchStep} from '../../redux/actions/index';
+import {switchView} from "../../redux/actions";
 import {playClick} from '../../redux/actions/music';
 import {connect} from 'react-redux';
 import {EN} from '../../languages/en'
 import {RU} from '../../languages/ru'
 
-const Step4 = ({playClick, switchStep, currentLang}) => {
+const Step4 = ({playClick, switchStep, currentLang, switchView, widthMode}) => {
     const LANG = currentLang === 'en' ? EN : RU;
+    const isDesktop = widthMode === "desktop" ? true : false;
+    if (!isDesktop) {
+        switchView(true)
+    }
     return (
         <div className="step step4">
             <img className='step-img' src={imgPerson} alt='person'/>
@@ -52,13 +57,15 @@ const Step4 = ({playClick, switchStep, currentLang}) => {
 
 const mapStateToProps = state => {
     return {
-        currentLang: state.switchOptions.lang
+        currentLang: state.switchOptions.lang,
+        widthMode: state.switchOptions.widthMode
     } 
 }
 
 const mapDispatchToProps = {
     switchStep,
-    playClick
+    playClick,
+    switchView
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Step4)

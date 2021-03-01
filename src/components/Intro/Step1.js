@@ -2,11 +2,12 @@ import React from 'react'
 import imgPerson from '../../images/person x1F 1 1.png'
 import {switchStep} from '../../redux/actions/index'
 import {playClick} from '../../redux/actions/music'
+import {switchView} from "../../redux/actions";
 import {EN} from '../../languages/en'
 import {RU} from '../../languages/ru'
 import {connect} from 'react-redux'
 
-const Step1 = ({switchStep, playClick, currentLang, widthMode}) => {
+const Step1 = ({switchStep, playClick, currentLang, widthMode, switchView}) => {
     const LANG = currentLang === 'en' ? EN : RU;
     const isDesktop = widthMode === "desktop" ? true : false;
     console.log(isDesktop)
@@ -42,6 +43,7 @@ const Step1 = ({switchStep, playClick, currentLang, widthMode}) => {
             </div>       
         )    
     } else {
+        switchView(false)
         return (
             <div className="step step1">
                 <div className='top-content'>
@@ -86,7 +88,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {
     switchStep,
-    playClick
+    playClick,
+    switchView
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Step1)
