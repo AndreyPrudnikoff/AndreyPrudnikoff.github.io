@@ -325,12 +325,16 @@ export const EN = {
             title: 'Wallet',
             content: 'Here you can see your wallet balance and history.'
         },
+        ClickOnWallet: {
+            title: 'Click on Wallet',
+            content: 'You will go to another tab'
+        },
         Step5: {
             title: 'Inviting friends',
             content: 'Here you can invite your friends to have more fun and earn more bitcoin.'
         },
         btnIntro: {
-            prev: 'Prev',
+            prev: 'Previous',
             skip: 'Skip intro',
             next: 'Next',
             finish: 'Finish'

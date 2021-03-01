@@ -672,7 +672,7 @@
       width: 328px;
       top: 57%;
       position: relative;
-      
+
       &::after,
       &::before {
         content: "";
@@ -719,6 +719,7 @@
           height: 120px;
           margin: 0 0 20px 0;
         }
+
         .list-lines {
           list-style: none;
           display: flex;
@@ -727,7 +728,7 @@
           justify-content: space-between;
           // margin-bottom: 20px;
           // margin-left: 20px;
-  
+
           &__item {
             width: 46px;
             height: 6px;
@@ -747,8 +748,9 @@
             &:first-child {
               order: 1;
             }
-            &:last-child{
-              span{
+
+            &:last-child {
+              span {
                 opacity: 1;
                 margin: 0;
                 width: 296px;
@@ -918,6 +920,25 @@
             }
           }
         }
+      }
+    }
+
+    .clickOnWallet {
+      top: 3%;
+      height: 367px;
+      padding: 24px 16px;
+
+      &::after,
+      &::before {
+        left: 75%;
+      }
+
+      .step-img {
+        position: relative;
+        left: 12%;
+        width: 141px;
+        height: 90px;
+        margin-bottom: 38.36px;
       }
     }
 
