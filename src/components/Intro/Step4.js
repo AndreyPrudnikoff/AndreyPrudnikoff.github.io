@@ -29,7 +29,7 @@ const Step4 = ({playClick, switchStep, currentLang, switchView, widthMode, view}
                     <p className='step-content__content'>{LANG.Intro.Step4.content}</p>
                     <ul className="step-nav">
                         <li className='step-nav__item' onClick={() => {
-                            switchStep(3);
+                            switchView(false);
                             playClick()
                         }}>
                             <span>{LANG.Intro.btnIntro.prev}</span>
@@ -63,7 +63,7 @@ const Step4 = ({playClick, switchStep, currentLang, switchView, widthMode, view}
                         <li className="list-lines__item" />
                         <li className="list-lines__item" />
                     </ul>
-                    <h3 className='step-content__title'>{LANG.Intro.ClickOnWallet.content}</h3>
+                    <h3 className='step-content__title'>{LANG.Intro.ClickOnWallet.title}</h3>
                     <p className='step-content__content'>{LANG.Intro.ClickOnWallet.content}</p>
                     <ul className="step-nav">
                         <li className='step-nav__item' onClick={() => {
