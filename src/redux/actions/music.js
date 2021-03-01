@@ -79,3 +79,4 @@ export function playGameTimer() {
 export function muteToggle() {
     return {type: MUTE}
 }
+

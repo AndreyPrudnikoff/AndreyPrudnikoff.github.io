@@ -30,7 +30,7 @@ const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance,
     }, [banner])
     useEffect(() => {
         userdata();
-    }, [])
+    }, [userdata])
 
     return (
         <div className="right-sector">

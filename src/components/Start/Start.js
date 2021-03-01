@@ -9,29 +9,42 @@ import arrowUp from "../../images/arrowUp.svg";
 import bull from "../../images/bull_start.png";
 import bear from "../../images/bear_start.png";
 import Rect from "../Main/Rect/Rect";
-import Preloader from "../Main/Preloader";
-import bitsybets from "../../images/BITCYBETS.svg";
 import coin from "../../images/coin.svg";
 import {userdata} from "../../redux/actions/game";
 import {registration} from "../../redux/actions";
-import {playClick, up_down, startWin} from "../../redux/actions/music";
+import {playClick, up_down, startWin, muteToggle} from "../../redux/actions/music";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode, registration, currentLang, playClick, up_down, startWin}) => {
+const Start = ({
+                   currentCourse,
+                   course,
+                   history,
+                   lastSeconds,
+                   userdata,
+                   widthMode,
+                   registration,
+                   currentLang,
+                   playClick,
+                   up_down,
+                   startWin,
+                   muteToggle,
+                   mute
+               }) => {
     const [timeGame, setTimeGame] = useState(false);
+    const [start, setStart] = useState(false);
     const [bet, setBet] = useState('');
     const [predict, setPredict] = useState('');
 
     const LANG = currentLang === "en" ? EN : RU
 
     useEffect(() => {
-        if (lastSeconds % 10 === 0) {
+        if (lastSeconds % 10 === 0 && start) {
             setTimeGame(true);
         }
     }, [lastSeconds])
     useEffect(() => {
-        if (lastSeconds % 10 === 0) {
+        if (lastSeconds % 10 === 0 && start) {
             if (bet === 'down' && currentCourse < course[course.length - 2]) {
                 setPredict('win');
                 setBet('');
@@ -55,21 +68,7 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
 
     }, [currentCourse])
     return (
-        <div  className="start">
-            {/*<div style={{display: predict === 'win' ? "block" : "none"}} className="blur soon">*/}
-            {/*    <div className="round-dark win">*/}
-            {/*        <div className="win-btn">*/}
-            {/*            <h2>Sorry, you're out of luck! <br/> try again!</h2>*/}
-            {/*            <button onClick={() => {*/}
-            {/*                setPredict('');*/}
-            {/*                setBet('');*/}
-            {/*            }} className="btn btn-primary">OK*/}
-            {/*            </button>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-            
-            
+        <div className="start">
             <div style={{display: predict ? "block" : "none"}} className="blur soon">
                 <div className="round-dark win">
                     <div className="win-btn">
@@ -78,7 +77,8 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                            setBet('');
                            playClick()
                        }} className="chross">&#10008;</span>
-                        <h2 className={currentLang}>{LANG.Main.Modal.title.first} <br/> {currentLang === "en" ? LANG.Main.Modal.title.second : null}</h2>
+                        <h2 className={currentLang}>{LANG.Main.Modal.title.first}
+                            <br/> {currentLang === "en" ? LANG.Main.Modal.title.second : null}</h2>
                         {/* <h2>{currentLang === "en" ? LANG.Main.Modal.title.first <br/> LANG.Main.Modal.title.second : LANG.Main.Modal.title.first}</h2> */}
                         {/* <h2>You did great! <br/> Join now!</h2> */}
                         <button onClick={() => {
@@ -108,47 +108,61 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                 <div className="bear-start"><img src={bear} alt="bear"/></div>
                 <div className="text text-center">
                     <h2>
-                        <span className="gold">BITCY</span>BETS     
+                        <span className="gold">BITCY</span>BETS
                     </h2>
                     <p className={currentLang + " mt-3"}>{LANG.Main.Start.content}</p>
                 </div>
                 <div className="dark">
                     <Time/>
                     <div className="course">
-                        <h2 style={{opacity: !currentCourse ? 0 : 1}} className="text-center"><img src={bitcoin} alt="course"/>
+                        <h2 style={{opacity: !currentCourse ? 0 : 1}} className="text-center"><img src={bitcoin}
+                                                                                                   alt="course"/>
                             {currentCourse} <span>$</span>
                         </h2>
                         <div>
-                            {/*<SelectList/>*/}
                         </div>
                     </div>
                     <div style={{display: !currentCourse ? "none" : "block"}} className="graph">
                         <Graph gradient1={20} gradient2={150} chartHeight={widthMode === "desktop" ? 200 : 150}/>
                     </div>
-                    <div style={{display: currentCourse ? "none" : "block"}}  className="load">
+                    <div style={{display: currentCourse ? "none" : "block"}} className="load">
                         <div className="wrap-img-preload">
-                            <img className="coin1"  src={coin} alt=""/>
-                            <img className="coin2"  src={coin} alt=""/>
-                            <img className="coin3"  src={coin} alt=""/>
-                            <img className="coin4"  src={coin} alt=""/>
+                            <img className="coin1" src={coin} alt=""/>
+                            <img className="coin2" src={coin} alt=""/>
+                            <img className="coin3" src={coin} alt=""/>
+                            <img className="coin4" src={coin} alt=""/>
                         </div>
                     </div>
                     <div className="buttons">
                         <div className="wrap-btn">
-                            <button disabled={bet || !currentCourse} onClick={() => {setBet('down'); up_down()}}
+                            <button disabled={bet || !currentCourse} onClick={() => {
+                                setBet('down');
+                                if (!mute) {
+                                    muteToggle()
+                                }
+                                up_down();
+                                setStart(true)
+                            }}
                                     className={currentLang + " btn green green-start predict-btn"}
                                     id="down">
-                                        <span className={currentLang + " green"}>{LANG.Main.Start.btnUp}</span>
+                                <span className={currentLang + " green"}>{LANG.Main.Start.btnUp}</span>
                                 <img src={arrowUp} width="15" height="20" alt="b"/>
                                 <Rect start={timeGame} infinite={'infinity'} idButton={'down'}
-                                      mode={timeGame ? 'rectUp' : ''}/>
+                                      mode={start ? 'rectUp' : ''}/>
                             </button>
-                            <button disabled={bet || !currentCourse} onClick={() => {setBet('up'); up_down()}}
+                            <button disabled={bet || !currentCourse} onClick={() => {
+                                setBet('up');
+                                if (!mute) {
+                                    muteToggle()
+                                }
+                                up_down();
+                                setStart(true)
+                            }}
                                     className={currentLang + " btn red red-start predict-btn"}
                                     id="down">
-                                        <span className={currentLang + " red"}>{LANG.Main.Start.btnDown}</span>
+                                <span className={currentLang + " red"}>{LANG.Main.Start.btnDown}</span>
                                 <img src={arrowDown} width="15" height="20" alt="b"/>
-                                <Rect infinite={'infinity'} idButton={'down'} mode={timeGame ? 'rectDown' : ''}/>
+                                <Rect infinite={'infinity'} idButton={'down'} mode={start ? 'rectDown' : ''}/>
                             </button>
                         </div>
                     </div>
@@ -166,7 +180,8 @@ const mapStateToProps = state => {
         course: state.courseReducer.course,
         lastSeconds: state.courseReducer.lastSeconds,
         widthMode: state.switchOptions.widthMode,
-        currentLang: state.switchOptions.lang
+        currentLang: state.switchOptions.lang,
+        mute: state.soundReducer.mute
     }
 }
 const mapDispatchToProps = {
@@ -174,6 +189,7 @@ const mapDispatchToProps = {
     registration,
     playClick,
     up_down,
-    startWin
+    startWin,
+    muteToggle
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Start);

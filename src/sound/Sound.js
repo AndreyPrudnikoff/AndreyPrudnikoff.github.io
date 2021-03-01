@@ -26,7 +26,9 @@ const Sound = ({play, param, stop, mute}) => {
 
     return (
         <div className="sound">
-            <audio ref={audRef} id={param.id} src={param.effect}/>
+            <audio ref={audRef} id={param.id} >
+                <source src={param.effect} type="audio/mpeg" />
+            </audio>
         </div>
     );
 };

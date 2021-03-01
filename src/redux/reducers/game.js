@@ -4,7 +4,7 @@ import {
     CLEAR_BET,
     CLOSE_CONGRATULATION, CLOSE_YOURLOSE,
     GET_RATES,
-    GET_USER_DATA, GOAWAY,
+    GET_USER_DATA,
     SET_BET_DOWN,
     SET_BET_UP
 } from "../types";
