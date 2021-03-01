@@ -83,7 +83,7 @@ const Main = ({history, step, view, switchView, course, lastWin, closeCongratula
                 </div>
             </div>
 
-            <div style={{display: yourlose ? "block" : "none"}} className="blur">
+            {/* <div style={{display: yourlose ? "block" : "none"}} className="blur">
                 <div className="round-dark win">
                     <h2>Your lose</h2>
                     <div className="win-btn">
@@ -95,7 +95,7 @@ const Main = ({history, step, view, switchView, course, lastWin, closeCongratula
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div style={{display: createAdProp ? "block" : "none"}} className="blur soon">
                 <div className="round-dark win">
                     <div className="win-btn">
