@@ -1,3 +1,4 @@
+import { text } from "./privacy.en";
 export const EN = {
     Main: {
         Start: {
@@ -41,7 +42,13 @@ export const EN = {
             password: 'Password',
             passwordRepeat: 'Repeat password',
             signUp: 'SIGN UP',
-            support: 'Need support?'
+            support: 'Need support?',
+            promo: 'Promo code',
+            begin: 'I am over 18 years of age and I accept',
+            legal: ' Legal Terms',
+            and: ' and',
+            privacy: ' Privacy Policy',
+            text
         },
 
         ForgotPassword: {

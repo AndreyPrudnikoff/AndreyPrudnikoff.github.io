@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from "react-router-dom";
 import PhoneInput from 'react-phone-number-input';
 import './auth.scss';
+import arrow_btn from "../../images/arrow-btn.png";
 import {authorization, betWin, registration} from "../../redux/actions";
 import {User} from "../../api/User";
 import {fireworks, muteToggle, playClick} from "../../redux/actions/music";
@@ -32,6 +33,7 @@ const Auth = ({
     const [code, setCode] = useState('')
     const [enterCode, setEnterCode] = useState(false)
     const [err, setErr] = useState('')
+    const [privacy, setPrivacy] = useState(false)
 
     const LANG = currentLang === "en" ? EN : RU
 
@@ -104,7 +106,9 @@ const Auth = ({
                     if (data.data.status === "success") {
                         sessionStorage.setItem('token', data.data.data.accessToken);
                         history.push('/game');
-                        if(!mute) {muteToggle()}
+                        if (!mute) {
+                            muteToggle()
+                        }
                         return authorization();
                     } else if (data.data.error) {
                         return setErr(data.data.error);
@@ -142,12 +146,29 @@ const Auth = ({
             );
         } else {
             return (
-                <div className="round-dark auth">
-                <span onClick={() => {
-                    registration();
-                    clearData();
-                    playClick()
-                }} className="back">&larr;</span>
+                privacy
+                    ? <div style={{display: privacy ? "block" : "none"}} className="round-dark auth privacy-block">
+                        <span onClick={() => {
+                            playClick();
+                            setPrivacy(false);
+                        }} className="back">
+                        &larr;
+                        </span>
+
+                    <p>
+                        <h2>{LANG.Auth.Register.privacy}</h2>
+                        {LANG.Auth.Register.text}
+                    </p>
+                </div>
+                    : <div className="round-dark auth">
+
+
+
+                    <span onClick={() => {
+                        registration();
+                        clearData();
+                        playClick()
+                    }} className="back">&larr;</span>
                     <h2 className={currentLang}>{LANG.Auth.Register.title}</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="">
@@ -157,6 +178,7 @@ const Auth = ({
                                 setErr('');
                             }}
                                    value={name}
+                                   pattern="[A-Za-z]"
                                    placeholder={LANG.Auth.Register.name}
                                    id="name" name="name" type="text" required/>
                         </div>
@@ -211,6 +233,25 @@ const Auth = ({
                         </div>
                         <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
                         <button className={currentLang} onClick={playClick}>{LANG.Auth.Register.signUp}</button>
+                        <div className="privacy">
+
+                            <label>
+                                <input type="checkbox" id="privacy" required/>
+                                <span>{LANG.Auth.Register.begin}
+                                    <span onClick={()=>setPrivacy(true)} className="gold link">{LANG.Auth.Register.legal + " "} </span> {" " + LANG.Auth.Register.and}
+                                    <span onClick={()=>setPrivacy(true)} className="gold link"> {LANG.Auth.Register.privacy}</span>
+                                </span>
+                            </label>
+                            <div className='text'>
+                                <label className={currentLang}
+                                       htmlFor="promo">{LANG.Auth.Register.promo}</label>
+                                <input id="promo" name="promo" type="text"/>
+                                <button type="button" className="arrow-btn">
+                                    <img src={arrow_btn} width="24" alt="arrow"/>
+                                </button>
+                            </div>
+                        </div>
+
                         <Link to='/support' className={currentLang + " support-link"}
                               onClick={playClick}>{LANG.support}</Link>
                     </form>

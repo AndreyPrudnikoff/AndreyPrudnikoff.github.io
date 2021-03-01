@@ -18,7 +18,7 @@ import CompleteWith from "./components/Refill/CompleteWith";
 import Withdraw from "./components/Refill/Withdraw";
 import Invite from "./components/Refill/Invite";
 import gotodesktop from "./components/Auth/gotodesktop";
-import {prohibition, resizeScreen, switchView} from "./redux/actions";
+import {prohibition, resizeScreen, switchView, touchstart} from "./redux/actions";
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -74,7 +74,20 @@ class App extends React.Component {
 
         let start = "";
         let end = "";
+
+        document.addEventListener("click", () => {
+            if (!this.props.touch) {
+                this.props.touchstart();
+            } else {
+                document.removeEventListener("click", () => {
+                }, false);
+            }
+        });
+
         document.addEventListener("touchstart", (e) => {
+            if (!this.props.touch) {
+                this.props.touchstart();
+            }
             start = e.changedTouches[0].screenX;
             document.addEventListener("touchend", (e) => {
                 if (e.path[0].id === "range") {
@@ -122,12 +135,14 @@ const mapStateToProps = state => {
     return {
         auth: state.authReducer.auth,
         unauthorized: state.authReducer.unauthorized,
-        currentLang: state.switchOptions.lang
+        currentLang: state.switchOptions.lang,
+        touch: state.switchOptions.touchstart,
     }
 }
 const mapDispatchToProps = {
     prohibition,
     resizeScreen,
-    switchView
+    switchView,
+    touchstart
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);

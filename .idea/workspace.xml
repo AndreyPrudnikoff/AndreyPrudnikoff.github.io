@@ -2,9 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f6b93ff-e806-4942-bf67-7a8ba8e695b9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/images/arrow-btn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/languages/privacy.en.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/languages/privacy.ru.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/add_to_wallet.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/betTimer.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/click.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/dzin.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/fireworks.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/gameTimer.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/start_win.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/success.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/timer.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/timer1.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/timer2.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/timer3.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/transition.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/up_down.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/you_lose.aac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sound/you_lose2.aac" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/Auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/auth.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/auth.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Start/Start.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Start/Start.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/sound.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/sound.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/languages/en.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/languages/en.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/languages/ru.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/languages/ru.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/music.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/music.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/entry.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/entry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sound/Playlist.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sound/Playlist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sound/Sound.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sound/Sound.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +67,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/sound" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/languages" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -53,11 +84,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\PC-002\WebstormProjects\bitcybets\src\languages" />
+      <recent name="C:\Users\PC-002\WebstormProjects\bitcybets\src\images" />
       <recent name="C:\Users\PC-002\WebstormProjects\bitcybets\src\sound" />
       <recent name="C:\Users\PC-002\WebstormProjects\bitcybets\src\components" />
       <recent name="C:\Users\PC-002\WebstormProjects\bitcybets\src\images\intro" />
-      <recent name="C:\Users\PC-002\WebstormProjects\bitcybets\src\images" />
-      <recent name="C:\Users\PC-002\WebstormProjects\bitcybets\src\components\Intro" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\PC-002\WebstormProjects\bitcybets\src\images" />
@@ -149,7 +180,7 @@
       <workItem from="1614246857464" duration="23676000" />
       <workItem from="1614319310006" duration="9133000" />
       <workItem from="1614425297811" duration="2050000" />
-      <workItem from="1614581647534" duration="4434000" />
+      <workItem from="1614581647534" duration="19307000" />
     </task>
     <servers />
   </component>

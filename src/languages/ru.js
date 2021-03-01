@@ -1,3 +1,5 @@
+import { text } from "./privacy.ru";
+
 export const RU = {
     Main: {
         Start: {
@@ -41,7 +43,13 @@ export const RU = {
             password: 'Пароль',
             passwordRepeat: 'Повторите пароль',
             signUp: 'ЗАРЕГИСТРИРОВАТЬСЯ',
-            support: 'Поддержка'
+            support: 'Поддержка',
+            promo: 'Промокод',
+            begin: 'Мне больше 18 лет, и я принимаю  ',
+            legal: 'Юридические положения',
+            and: 'и',
+            privacy: 'Политика конфиденциальности',
+            text
         },
 
         ForgotPassword: {
