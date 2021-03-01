@@ -154,15 +154,12 @@ const Auth = ({
                         }} className="back">
                         &larr;
                         </span>
-
                     <p>
                         <h2>{LANG.Auth.Register.privacy}</h2>
                         {LANG.Auth.Register.text}
                     </p>
                 </div>
                     : <div className="round-dark auth">
-
-
 
                     <span onClick={() => {
                         registration();
@@ -176,9 +173,7 @@ const Auth = ({
                             <input onChange={e => {
                                 setName(e.target.value);
                                 setErr('');
-                            }}
-                                   value={name}
-                                   pattern="[A-Za-z]"
+                            }} value={name}
                                    placeholder={LANG.Auth.Register.name}
                                    id="name" name="name" type="text" required/>
                         </div>
