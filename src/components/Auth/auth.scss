@@ -1,15 +1,26 @@
 //*.ru {
 //  font-family: "pragmatica";
 //}
-.auth {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.privacy-block {
+  position: relative;
+  overflow: auto;
+  margin: 120px auto 40px!important;
   padding: 10px 30px;
-  margin-top: 30px;
   min-width: 328px;
-  max-height: 568px;
+  max-width: 80vw;
+  z-index: 99;
+  p {
+    margin-top: 50px;
+  }
+}
+.auth {
+  margin: 80px auto 40px;
+  padding: 10px 30px;
+  //margin-top: 30px;
+  min-width: 328px;
+  height: auto;
+
+
 
   form {
     display: flex;
@@ -100,6 +111,59 @@
       color: var(--text-color);
       text-decoration: none;
       cursor: pointer;
+    }
+
+    .privacy {
+      margin-bottom: 0;
+
+      label {
+        white-space: normal;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        max-width: 270px;
+
+        span, .link {
+          font-size: 10px;
+          font-weight: 300;
+        }
+
+        .link {
+          text-decoration: underline;
+
+          &:hover {
+            color: var(--text-color);
+            cursor: pointer;
+          }
+        }
+
+        #privacy {
+          display: inline;
+          margin-right: 10px;
+          margin-top: -5px;
+          cursor: pointer;
+        }
+      }
+
+      .text {
+        position: relative;
+
+        .arrow-btn {
+          width: 46px;
+          height: 40px;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          margin: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 8px;
+          border: 1px solid var(--text-color);
+          background-color: var(--dark-block);
+          cursor: pointer;
+        }
+      }
     }
   }
 

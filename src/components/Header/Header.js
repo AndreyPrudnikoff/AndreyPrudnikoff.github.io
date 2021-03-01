@@ -39,12 +39,12 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
     const switchLang = () => setShowLang(!showLang);
     useEffect(() => {
         authorization();
-    }, [])
+    })
     const handleMute = () => {
         muteToggle();
     }
     let location = useLocation();
-    let history = useHistory();
+    // let history = useHistory();
     let isGame = location.pathname === "/game";
     const chooseLanguages = () => {
         if (currentLang === "en") {

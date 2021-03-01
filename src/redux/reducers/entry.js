@@ -3,7 +3,7 @@ import {
     GET_COURSE,
     GET_LOCATION, GOAWAY, LANG_MODE, LOGOUT,
     PROHIBITION,
-    REGISTRATION, SWITCH_STEP, VIEW_MODE
+    REGISTRATION, SWITCH_STEP, TOUCHSTART, VIEW_MODE
 } from "../types";
 
 const initialState = {
@@ -21,7 +21,8 @@ const initialState = {
     view: false,
     lang: "en",
     step: 0,
-    firstIn: false
+    firstIn: false,
+    touchstart: false
 }
 
 export const switchOptions = (state = initialState, action) => {
@@ -36,6 +37,8 @@ export const switchOptions = (state = initialState, action) => {
             return {...state, lang: action.payload};
         case SWITCH_STEP:
             return {...state, step: action.payload};
+        case TOUCHSTART:
+            return {...state, touchstart: true};
         default:
             return state;
     }
