@@ -73,12 +73,12 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                                 prohibition();
                                 window.location.reload();
                                 playClick()
-                            }} className="btn btn-primary"><Link to="/" onClick={playClick}>{LANG.ModalWindows.LogOut.btnLogOut}</Link>
+                            }} className="btn btn-primary"><Link to="/" >{LANG.ModalWindows.LogOut.btnLogOut}</Link>
                             </button>
                             <button onClick={() => {
                                 logoutQuestion();
                                 playClick()
-                            }} className={currentLang + " btn btn-primary"} onClick={playClick}>{LANG.ModalWindows.LogOut.btnContunue}
+                            }} className={currentLang + " btn btn-primary"} >{LANG.ModalWindows.LogOut.btnContunue}
                             </button>
                         </div>
                     </div>
