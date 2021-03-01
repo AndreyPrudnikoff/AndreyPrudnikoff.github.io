@@ -156,8 +156,8 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
 
                                 <li onClick={() => {createAd(); playClick()}} className="burger-menu-item bord">{LANG.Menu.first}</li>
                                 <li onClick={() => {createAd();  playClick()}} className="burger-menu-item bord"><span>{LANG.Menu.second}</span></li>
-                                {widthMode === "desktop" ? <li onClick={() => switchStep(1)} className="burger-menu-item bord">
-                                    <span>{LANG.Menu.third}</span></li> : null}
+                                <li onClick={() => switchStep(1)} className="burger-menu-item bord">
+                                    <span>{LANG.Menu.third}</span></li>
                                 <li className="burger-menu-item" onClick={() => {
                                     playClick();
                                     logoutQuestion();
