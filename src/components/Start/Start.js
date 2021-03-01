@@ -12,11 +12,11 @@ import Rect from "../Main/Rect/Rect";
 import coin from "../../images/coin.svg";
 import {userdata} from "../../redux/actions/game";
 import {registration} from "../../redux/actions";
-import {playClick, up_down, startWin} from "../../redux/actions/music";
+import {playClick, up_down, startWin, muteToggle} from "../../redux/actions/music";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode, registration, currentLang, playClick, up_down, startWin}) => {
+const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode, registration, currentLang, playClick, up_down, startWin, muteToggle}) => {
     const [timeGame, setTimeGame] = useState(false);
     const [start, setStart] = useState(false);
     const [bet, setBet] = useState('');
@@ -54,7 +54,7 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
 
     }, [currentCourse])
     return (
-        <div  className="start">
+        <div onClick={muteToggle}  className="start">
             <div style={{display: predict ? "block" : "none"}} className="blur soon">
                 <div className="round-dark win">
                     <div className="win-btn">
@@ -158,6 +158,7 @@ const mapDispatchToProps = {
     registration,
     playClick,
     up_down,
-    startWin
+    startWin,
+    muteToggle
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Start);

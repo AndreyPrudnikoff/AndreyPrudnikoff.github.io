@@ -84,7 +84,6 @@ const Auth = ({
                 if (res.data.status === "success") {
                     sessionStorage.setItem('token', res.data.data.accessToken);
                     authorization();
-
                 } else {
                     if (res.data.error) {
                         setErr(res.data.error);
@@ -105,6 +104,7 @@ const Auth = ({
                     if (data.data.status === "success") {
                         sessionStorage.setItem('token', data.data.data.accessToken);
                         history.push('/game');
+                        if(!mute) {muteToggle()}
                         return authorization();
                     } else if (data.data.error) {
                         return setErr(data.data.error);
