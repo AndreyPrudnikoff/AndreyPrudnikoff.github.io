@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import person from "../../images/person.svg";
 import bitcoin from "../../images/bitcoin.svg";
 import {rates} from "../../redux/actions/game";
@@ -32,7 +32,7 @@ const Rates = ({rates, down, up, downBets, upBets, widthMode, currentLang, step}
             rates();
         }, 1000);
         return () => clearInterval(getRates);
-    }, [])
+    })
     const bank = downBets + upBets;
     // const rateUp = 10 * ((up / down) ? (up / down) : 1);
     // const rateDown = 10 * ((down / up) ? (down / up) : 1);

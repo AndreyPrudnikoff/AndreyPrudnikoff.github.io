@@ -19,7 +19,7 @@ import {
 
 const initialState = {
     play: '',
-    mute: true,
+    mute: false,
     bet: false,
     game: false
 }

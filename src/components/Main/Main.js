@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {connect} from "react-redux";
 import './main.scss';
 import bitcoin from '../../images/bitcoin.svg';
@@ -47,7 +47,7 @@ const Main = ({history, step, view, switchView, course, lastWin, closeCongratula
     useEffect(() => {
         userdata();
         fire();
-    }, [congratulation]);
+    }, [congratulation, userdata]);
     useEffect(() => {fire()}, []);
     useEffect(()=> switchView(false), []);
 

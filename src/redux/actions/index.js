@@ -6,7 +6,7 @@ import {
     GET_COURSE, GET_CURRENT_COURSE,
     GET_LOCATION, LANG_MODE, LOGOUT,
     PROHIBITION,
-    REGISTRATION, SWITCH_STEP, VIEW_MODE
+    REGISTRATION, SWITCH_STEP, TOUCHSTART, VIEW_MODE
 } from "../types";
 
 import {userdata} from "./game";
@@ -88,4 +88,8 @@ export function chooseLang(lang) {
 
 export function switchStep(number) {
     return {type: SWITCH_STEP, payload: number}
+}
+
+export function touchstart() {
+    return {type: TOUCHSTART}
 }
