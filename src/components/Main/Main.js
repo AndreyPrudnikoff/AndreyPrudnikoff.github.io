@@ -67,7 +67,6 @@ const Main = ({history, step, view, switchView, course, lastWin, closeCongratula
                             closeCongratulation();
                             userdata();
                             document.getElementById('fireworks').pause();
-
                             // money();
                             add_to_wallet();
                         }} className={currentLang + " btn btn-primary"}>{LANG.BettingRealMoney.WinningAndLosing.Winning.btnAddToWallet}
