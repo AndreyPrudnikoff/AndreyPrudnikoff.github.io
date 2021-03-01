@@ -16,18 +16,18 @@ const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance,
     const LANG = currentLang === "en" ? EN : RU;
     const balanceColor = {color: colorBlalance === 'green' ? '#32D74B' : colorBlalance === 'red' ? '#FF453A' : '#FFFFFF'}
 
-    useEffect(() => {
-        const addBanner = setInterval(() => {
-            if(banner === "banner one round-dark") {
-                setBanner("banner three round-dark");
-            // } else if (banner === "banner two round-dark") {
-            //     setBanner("banner three round-dark");
-            } else if(banner === "banner three round-dark") {
-                setBanner("banner one round-dark");
-            }
-        }, 30000)
-        return () => clearInterval(addBanner)
-    }, [banner])
+    // useEffect(() => {
+    //     const addBanner = setInterval(() => {
+    //         if(banner === "banner one round-dark") {
+    //             setBanner("banner three round-dark");
+    //         // } else if (banner === "banner two round-dark") {
+    //         //     setBanner("banner three round-dark");
+    //         } else if(banner === "banner three round-dark") {
+    //             setBanner("banner one round-dark");
+    //         }
+    //     }, 30000)
+    //     return () => clearInterval(addBanner)
+    // }, [banner])
     useEffect(() => {
         userdata();
     }, [userdata])
@@ -111,8 +111,8 @@ const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance,
             </div>
             <div onClick={() => {
                 window.open('https://bitrxapp.com/?gb', '_blank')
-            }} className={banner}>
-                <button style={{display: banner !== "banner one round-dark" ? "none" : "block"}} className="btn learn-more" onClick={playClick}>Learn more</button>
+            }} className={"banner three round-dark"}>
+                <button style={{display: banner === "banner one round-dark" ? "none" : "block"}} className="btn learn-more" onClick={playClick}>Learn more</button>
             </div>
         </div>
     );
