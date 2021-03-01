@@ -9,8 +9,6 @@ import arrowUp from "../../images/arrowUp.svg";
 import bull from "../../images/bull_start.png";
 import bear from "../../images/bear_start.png";
 import Rect from "../Main/Rect/Rect";
-import Preloader from "../Main/Preloader";
-import bitsybets from "../../images/BITCYBETS.svg";
 import coin from "../../images/coin.svg";
 import {userdata} from "../../redux/actions/game";
 import {registration} from "../../redux/actions";
@@ -20,18 +18,19 @@ import {RU} from "../../languages/ru";
 
 const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode, registration, currentLang, playClick, up_down, startWin}) => {
     const [timeGame, setTimeGame] = useState(false);
+    const [start, setStart] = useState(false);
     const [bet, setBet] = useState('');
     const [predict, setPredict] = useState('');
 
     const LANG = currentLang === "en" ? EN : RU
 
     useEffect(() => {
-        if (lastSeconds % 10 === 0) {
+        if (lastSeconds % 10 === 0 && start) {
             setTimeGame(true);
         }
     }, [lastSeconds])
     useEffect(() => {
-        if (lastSeconds % 10 === 0) {
+        if (lastSeconds % 10 === 0 && start) {
             if (bet === 'down' && currentCourse < course[course.length - 2]) {
                 setPredict('win');
                 setBet('');
@@ -56,20 +55,6 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
     }, [currentCourse])
     return (
         <div  className="start">
-            {/*<div style={{display: predict === 'win' ? "block" : "none"}} className="blur soon">*/}
-            {/*    <div className="round-dark win">*/}
-            {/*        <div className="win-btn">*/}
-            {/*            <h2>Sorry, you're out of luck! <br/> try again!</h2>*/}
-            {/*            <button onClick={() => {*/}
-            {/*                setPredict('');*/}
-            {/*                setBet('');*/}
-            {/*            }} className="btn btn-primary">OK*/}
-            {/*            </button>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-            
-            
             <div style={{display: predict ? "block" : "none"}} className="blur soon">
                 <div className="round-dark win">
                     <div className="win-btn">
@@ -119,7 +104,6 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                             {currentCourse} <span>$</span>
                         </h2>
                         <div>
-                            {/*<SelectList/>*/}
                         </div>
                     </div>
                     <div style={{display: !currentCourse ? "none" : "block"}} className="graph">
@@ -135,20 +119,20 @@ const Start = ({currentCourse, course, history, lastSeconds, userdata, widthMode
                     </div>
                     <div className="buttons">
                         <div className="wrap-btn">
-                            <button disabled={bet || !currentCourse} onClick={() => {setBet('down'); up_down()}}
+                            <button disabled={bet || !currentCourse} onClick={() => {setBet('down'); up_down();setStart(true)}}
                                     className={currentLang + " btn green green-start predict-btn"}
                                     id="down">
                                         <span className={currentLang + " green"}>{LANG.Main.Start.btnUp}</span>
                                 <img src={arrowUp} width="15" height="20" alt="b"/>
                                 <Rect start={timeGame} infinite={'infinity'} idButton={'down'}
-                                      mode={timeGame ? 'rectUp' : ''}/>
+                                      mode={start ? 'rectUp' : ''}/>
                             </button>
-                            <button disabled={bet || !currentCourse} onClick={() => {setBet('up'); up_down()}}
+                            <button disabled={bet || !currentCourse} onClick={() => {setBet('up'); up_down();setStart(true)}}
                                     className={currentLang + " btn red red-start predict-btn"}
                                     id="down">
                                         <span className={currentLang + " red"}>{LANG.Main.Start.btnDown}</span>
                                 <img src={arrowDown} width="15" height="20" alt="b"/>
-                                <Rect infinite={'infinity'} idButton={'down'} mode={timeGame ? 'rectDown' : ''}/>
+                                <Rect infinite={'infinity'} idButton={'down'} mode={start ? 'rectDown' : ''}/>
                             </button>
                         </div>
                     </div>

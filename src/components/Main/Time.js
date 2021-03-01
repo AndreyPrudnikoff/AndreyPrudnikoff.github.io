@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 const Time = ({geo, geoposition}) => {
     useEffect(() => {
         geoposition()
-    },[]);
+    },[geo]);
     useEffect(() => {
         const clock = setInterval(() => setTime(new Date().toLocaleTimeString()), 1000);
         return () => clearInterval(clock);

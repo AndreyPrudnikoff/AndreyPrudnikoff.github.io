@@ -18,7 +18,6 @@ import CompleteWith from "./components/Refill/CompleteWith";
 import Withdraw from "./components/Refill/Withdraw";
 import Invite from "./components/Refill/Invite";
 import gotodesktop from "./components/Auth/gotodesktop";
-import Presentation from "./components/Intro/Presentation";
 import {prohibition, resizeScreen, switchView} from "./redux/actions";
 
 
