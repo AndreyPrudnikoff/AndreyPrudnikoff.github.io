@@ -670,6 +670,26 @@ form {
   //color: var(--alert);
 }
 
+.yourLose {
+  position: relative;
+  background-image: url("../../images/bg_timer.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1{
+    color: red;
+    font-weight: 500;
+    font-family: 'Roc Grotesk', Arial, Helvetica, sans-serif;
+    font-size: 80px;
+    animation: pulse 3s linear infinite;
+    -webkit-animation: pulse 3s linear infinite;
+  }
+}
+
 .big-timer {
   position: relative;
   background-image: url("../../images/bg_timer.png");
@@ -1086,6 +1106,49 @@ form {
   50% {
     opacity: 0;
   }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -moz-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+  }
+  20% {
+    opacity: 0;
+    transform: scale(1.1, 1.1);
+    -webkit-transform: scale(1.1, 1.1);
+    -moz-transform: scale(1.1, 1.1);
+    -ms-transform: scale(1.1, 1.1);
+    -o-transform: scale(1.1, 1.1);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.2, 1.2);
+    -webkit-transform: scale(1.2, 1.2);
+    -moz-transform: scale(1.2, 1.2);
+    -ms-transform: scale(1.2, 1.2);
+    -o-transform: scale(1.2, 1.2);
+  }
+  60% {
+    opacity: 0;
+    transform: scale(1.3, 1.3);
+    -webkit-transform: scale(1.3, 1.3);
+    -moz-transform: scale(1.3, 1.3);
+    -ms-transform: scale(1.3, 1.3);
+    -o-transform: scale(1.3, 1.3);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.4, 1.4);
+    -webkit-transform: scale(1.4, 1.4);
+    -moz-transform: scale(1.4, 1.4);
+    -ms-transform: scale(1.4, 1.4);
+    -o-transform: scale(1.4, 1.4);
+}
 }
 
 #chartjs-tooltip {

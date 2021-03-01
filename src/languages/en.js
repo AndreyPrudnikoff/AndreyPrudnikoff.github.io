@@ -334,7 +334,7 @@ export const EN = {
         },
         ClickOnWallet: {
             title: 'Click on Wallet',
-            content: 'You will go to another tab'
+            content: 'You will go to another tab. Also you can deposit or withdraw your fonds'
         },
         Step5: {
             title: 'Inviting friends',

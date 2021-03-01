@@ -3,7 +3,8 @@ import bitcoin from "../../images/bitcoin.svg";
 import arrowUp from "../../images/arrowUp.svg";
 import arrowDown from "../../images/arrowDown.svg";
 import {connect} from "react-redux";
-import {betLose, betWin, closeCongratulation} from "../../redux/actions";
+import store from '../../redux/store'
+import {betLose, betWin, closeCongratulation, closeYourLose} from "../../redux/actions";
 import {
     bell,
     click,
@@ -27,7 +28,7 @@ import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
 
-const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, step, predictUp, betWin, betLose, fireworks, userdata, predictClear, predictDown, balance, predict, upBets, downBets, up, down, lastSeconds, widthMode, currentLang, up_down, you_lose, playTimer, playTimer2, stop, play}) => {
+const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, step, predictUp, betWin, betLose, fireworks, userdata, predictClear, predictDown, balance, predict, upBets, downBets, up, down, lastSeconds, widthMode, currentLang, up_down, you_lose, playTimer, playTimer2, stop, play, yourlose, closeYourLose}) => {
     const [bet, setBet] = useState(.0001);
     const [counter, setCounter] = useState(10);
     const [gameStart, setGameStart] = useState(undefined);
@@ -60,6 +61,16 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
         }
 
     }, [startGame, timeBet, predict])
+
+    useEffect(() => {
+        if(yourlose === true) {
+            you_lose();
+            setTimeout(() => {
+                closeYourLose()
+            }, 3000);
+        }
+        
+    }, [yourlose])
 
     const setBetHandler = (e) => {
         let bet = +e.target.value.slice(0, 5);
@@ -120,7 +131,19 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
         betDone(e);
     }
 
+    if(yourlose) {
+        return (
+            <div className={`${widthMode} row bottom-container`}>
+                {widthMode === "desktop" ? <Rates/> : <></>}
+                <div style={{zIndex: step === 3 ? "10" : ""}} className={`${widthMode} round dashboard yourLose`}>
+                    <h1>You lose</h1>
+                </div>
+            </div>
+        )
+    }
+
     if (startGame) {
+        console.log(`start ${yourlose}`)
         return (
             <div className={`${widthMode} row bottom-container`}>
                 {widthMode === "desktop" ? <Rates/> : <></>}
@@ -166,6 +189,7 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
             </div>
         );
     } else {
+        console.log(`else ${yourlose}`)
         return (
             <div className={`${widthMode} row bottom-container`}>
                 {widthMode === "desktop" ? <Rates/> : <></>}
@@ -321,6 +345,7 @@ const mapStateToProps = state => {
         lastSeconds: state.courseReducer.lastSeconds,
         lastWin: state.balanceReducer.lastWin,
         predict: state.balanceReducer.predict,
+        yourlose: state.balanceReducer.yourlose,
         downBets: state.balanceReducer.downBets,
         upBets: state.balanceReducer.upBets,
         up: state.balanceReducer.up,
@@ -351,7 +376,8 @@ const mapDispatchToProps = {
     stopBetTimer,
     stopGameTimer,
     playBetTimer,
-    playGameTimer
+    playGameTimer,
+    closeYourLose
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
