@@ -129,12 +129,17 @@ const Dashboard = ({
         setBet(bet || 0.0001);
     }
     const setBetStep = (bool) => {
-        if (!bet || +bet < 0) {
+        const bets = bool ? +bet + .0001 : +bet - .0001;
+        console.log('bet')
+        if (!bets || +bets < 0) {
+            console.log('false')
             setBet(0.0001);
-        }else if (bet > 1) {
+        }else if (+bets > 1) {
+            console.log('true')
             setBet(1);
         } else {
-            bool ? setBet(bet + .0001) : setBet(bet - .0001);
+            setBet(+bets.toFixed(4))
+        //    setBet(+bets)
         }
     }
 
@@ -278,10 +283,9 @@ const Dashboard = ({
                             </div>
                             <div className="balanceInput">
                                 {widthMode === "mobile" ? <Online/> : <></>}
-                                <span className='balanceBtn minus' onClick={() => setBet(bet - 0.001)}>-</span>
+                                <span className='balanceBtn minus' onClick={() => setBetStep(false)}>-</span>
                                 <span
-                                    className={balance - bet >= 0 ? 'balanceInput__balance' : 'balanceInput__balance red'}
-                                    onClick={() => setBetStep(false)}>
+                                    className={balance - bet >= 0 ? 'balanceInput__balance' : 'balanceInput__balance red'}>
                                     <input id="numberBet" type="number" step="0.0001" min="0.0001" max="1"
                                            className={balance - bet >= 0 ? '' : 'red'}
                                            disabled={predict || !timeBet}
