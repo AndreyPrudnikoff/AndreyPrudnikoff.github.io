@@ -737,6 +737,8 @@ form {
   }
 }
 
+
+
 .big-timer {
   position: relative;
   background-image: url("../../images/bg_timer.png");
@@ -746,6 +748,15 @@ form {
   display: flex;
   justify-content: center;
   align-items: start;
+
+  .coinImg {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 140px;
+    display: flex;
+    justify-content: center;
+  }
 
   .timer-item {
 
@@ -1479,7 +1490,7 @@ form {
 
           .peoples {
             left: 5px;
-            top: 50px;
+            top: 27px;
           }
 
           .wrap-btn {
@@ -1506,6 +1517,20 @@ form {
 
             .form-label {
               flex-direction: column;
+              .setSize {
+                display: none;
+              }
+
+              .balanceInput {
+                width: 100%;
+                .balanceBtn{
+                  display: none;
+                }
+
+                &__balance {
+                  margin: -15px 0 20px auto;
+                }
+              }
 
               div h2 {
                 text-align: center;

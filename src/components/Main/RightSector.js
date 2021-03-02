@@ -90,7 +90,7 @@ const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance,
                     <tr>
                         <td> 
                             <div className={currentLang + " label"}>{LANG.BettingRealMoney.UsualState.MyWallet.balanceTitle}</div>
-                            <div style={balanceColor} className="score score-balance" id="balance">{balance} <img src={bitcoin} alt='btc'/></div>
+                            <div style={balanceColor} className="score score-balance" id="balance">{balance} &#8383;</div>
                         </td>
                         {/* <td>
                             <div className={currentLang + " label"}>{LANG.BettingRealMoney.UsualState.MyWallet.lastWinTitle}</div>

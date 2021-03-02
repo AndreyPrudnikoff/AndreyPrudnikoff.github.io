@@ -25,6 +25,8 @@ import Timer from "./Timer";
 import Online from "./Online";
 import YouWon from '../../images/You_won (2).png';
 import GoldCoins from '../../images/Gold_coins1.png';
+import CoinUpImg from '../../images/coinUp.svg'
+import CoinDownImg from '../../images/coinDown.svg'
 
 
 import {EN} from "../../languages/en";
@@ -166,6 +168,7 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
     }
 
     if (startGame) { //startGame
+        console.log(predict)
         return (
             <div className={`${widthMode} row bottom-container`}>
                 {widthMode === "desktop" ? <Rates/> : <></>}
@@ -184,10 +187,13 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
                                                         display: widthMode === "mobile" ? "inline" : "inline"
                                                     }}
                                                           className={currentLang + " green"}>{LANG.Training.UsualState.MakeBet.yourProfit} </span>
-                                <span style={{fontSize: '21px'}}>
-                                                    {up || down ? ((bet / (bet + upBets) * downBets) * 0.97).toFixed(6) : 0}
-                                                </span>
+                                                    <span style={{fontSize: '21px'}}>
+                                                        {up || down ? ((bet / (bet + upBets) * downBets) * 0.97).toFixed(6) : 0}
+                                                    </span>
                                 <img style={{marginTop: '-5px'}} src={bitcoin} width="15" height="21" alt="b"/>
+                                <div className='coinImg'>
+                                    <img src={CoinUpImg} alt='coin'/>
+                                </div>
                             </div>
                         </div>}
                     {startGame && (predict === 'up' || !predict)
@@ -205,6 +211,9 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
                                     style={{fontSize: '21px'}}>{up || down ? ((bet / (bet + downBets) * upBets) * 0.97).toFixed(6) : 0}
                                                 </span>
                                 <img style={{marginTop: '-5px'}} src={bitcoin} width="15" height="21" alt="b"/>
+                                <div className='coinImg'>
+                                    <img src={CoinDownImg} alt='coin'/>
+                                </div>
                             </div>
                         </div>}
                 </div>
@@ -219,13 +228,14 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
                         <div className="form-label d-flex justify-content-between">
                             <div className='makeYourBet'>
                                 <h2 className={predict || startGame ? "text-left" : "make-bet text-left"}>
-                                    {widthMode === "desktop" ? LANG.BettingRealMoney.UsualState.MakeBet.title : ""}</h2>
+                                    {/* {widthMode === "desktop" ? LANG.BettingRealMoney.UsualState.MakeBet.title : ""}</h2> */}
+                                    {LANG.BettingRealMoney.UsualState.MakeBet.title}</h2>
                                 <p className='setSize'>Set bet size</p>
                             </div>
                             <div className="balanceInput">
                                 {widthMode === "mobile" ? <Online/> : <></>}
-                                <span className='balanceBtn minus'>-</span>
-                                <span className={balance - bet >= 0 ? '' : 'red'} onClick={() => setBet(bet - 0.001)}>
+                                <span className='balanceBtn minus' onClick={() => setBet(bet - 0.001)}>-</span>
+                                <span className={balance - bet >= 0 ? 'balanceInput__balance' : 'balanceInput__balance red'} onClick={() => setBet(bet - 0.001)}>
                                     <input id="numberBet" type="number" step="0.0001" min="0.0001" max="1"
                                         className={balance - bet >= 0 ? '' : 'red'}
                                         disabled={predict || !timeBet}
