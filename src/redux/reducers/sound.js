@@ -14,7 +14,7 @@ import {
     PLAY_START_WIN,
     PLAY_TRANSITION,
     PLAY_TIMER_2,
-    STOP_GAME_TIMER, STOP_BET_TIMER, PLAY_GAME_TIMER, PLAY_BET_TIMER
+    STOP_GAME_TIMER, STOP_BET_TIMER, PLAY_GAME_TIMER, PLAY_BET_TIMER, PLAY_YOU_WON
 } from "../types";
 
 const initialState = {
@@ -33,6 +33,9 @@ export const soundReducer = (state = initialState, action) => {
             return {...state, play: 'money'}
         
 
+        case PLAY_YOU_WON: {
+            return {...state, play: 'youWon'}
+        }
         case PLAY_TIMER_2: {
             return {...state, play: 'timer2'}
         }

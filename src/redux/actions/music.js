@@ -14,7 +14,8 @@ import {
     PLAY_START_WIN,
     PLAY_TRANSITION,
     PLAY_TIMER_2,
-    STOP_BET_TIMER, STOP_GAME_TIMER, PLAY_BET_TIMER, PLAY_GAME_TIMER
+    STOP_BET_TIMER, STOP_GAME_TIMER, PLAY_BET_TIMER, PLAY_GAME_TIMER,
+    PLAY_YOU_WON
 } from "../types";
 
 export function click() {
@@ -30,7 +31,9 @@ export function money() {
     return {type: PLAY_MONEY}
 }
 
-
+export function playYouWon() {
+    return {type: PLAY_YOU_WON}
+}
 export function playTimer2() {
     return {type: PLAY_TIMER_2}
 }

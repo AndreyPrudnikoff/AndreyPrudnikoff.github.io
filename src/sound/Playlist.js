@@ -4,6 +4,7 @@ import React from 'react';
 // import bell from './bell.mp3';
 // import tic from './tic.mp3';
 // import clack from './clack.mp3';
+import youWon from './youwon.mp3';
 import timer from './gameTimer.aac'
 import transition from './transition.aac';
 import start_win from './start_win.aac'
@@ -25,6 +26,7 @@ const Playlist = ({betTimer, gameTimer, widthMode, touch}) => {
                 {/*<Sound param={{id: 'clack', effect: clack}}/>*/}
                 {/*<Sound param={{id: 'money', effect: money}}/>*/}
                 {/*<Sound param={{id: 'bell', effect: bell}}/>*/}
+                <Sound param={{id: 'youWon', effect: youWon}}/>
                 {betTimer ? <Sound param={{id: 'timer2', effect: timer2}}/> : null}
                 <Sound param={{id: 'transition', effect: transition}}/>
                 <Sound param={{id: 'start_win', effect: start_win}}/>
