@@ -33,9 +33,6 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
     const [counter, setCounter] = useState(10);
     const [gameStart, setGameStart] = useState(undefined);
     const LANG = currentLang === "en" ? EN : RU;
-    const time = 10;
-    const initialOffset = 440;
-    const i = 10 - counter || 1;
     let timeBet = lastSeconds % 20 === 0 || lastSeconds % 20 === 5;
     let startGame = lastSeconds % 20 === 10 || lastSeconds % 20 === 15;
 
@@ -46,6 +43,7 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
         }
 
     }, [lastSeconds])
+
     useEffect(() => {
         if (startGame && !!predict) {
             stopBetTimer();
@@ -143,7 +141,6 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
     }
 
     if (startGame) {
-        console.log(`start ${yourlose}`)
         return (
             <div className={`${widthMode} row bottom-container`}>
                 {widthMode === "desktop" ? <Rates/> : <></>}
@@ -189,7 +186,6 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
             </div>
         );
     } else {
-        console.log(`else ${yourlose}`)
         return (
             <div className={`${widthMode} row bottom-container`}>
                 {widthMode === "desktop" ? <Rates/> : <></>}
@@ -199,7 +195,6 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
                             <div>
                                 <h2 className={predict || startGame ? "text-left" : "make-bet text-left"}>
                                     {widthMode === "desktop" ? LANG.BettingRealMoney.UsualState.MakeBet.title : ""}</h2>
-                                {/*<span className="time-bet">{timeBet ? counterBet : ''}</span>*/}
                             </div>
                             <div>
                                 {widthMode === "mobile" ? <Online/> : <></>}
@@ -254,53 +249,6 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
                                             </button>
                                         </div>}
 
-                                    <p
-                                        style={{
-                                            display: startGame && predict === 'up' ? 'flex' : 'none'
-                                        }}
-                                        id="predict"
-                                        className="btn bet-btn col-sm-4">
-                                            <span className="gold">{counter}
-                                                <span className='circle'>
-                                                    <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
-                                                    <g>
-                                                        <title>Layer 1</title>
-                                                        <circle
-                                                            strokeDasharray={440}
-                                                            strokeDashoffset={counter === 10 ? -2 * initialOffset : ((i + 1) * (initialOffset / time)) - 2 * initialOffset}
-                                                            id="circle" className="circle_animation" r="69.85699"
-                                                            cy="81"
-                                                            cx="81" strokeWidth="6"
-                                                            stroke="#F7931A" fill="none"/>
-                                                    </g>
-                                                </svg>
-                                                </span>
-                                            </span>
-                                    </p>
-
-                                    <p style={{
-                                        display: startGame && (predict === 'down' || !predict) ? 'flex' : 'none'
-                                    }}
-                                       id="predict"
-                                       className="btn bet-btn col-sm-4">
-                                            <span className="gold">{counter}
-                                                <span className='circle'>
-                                                    <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
-                                                    <g>
-                                                        <title>Layer 1</title>
-                                                        <circle
-                                                            strokeDasharray={440}
-                                                            strokeDashoffset={counter === 10 ? -2 * initialOffset : ((i + 1) * (initialOffset / time)) - 2 * initialOffset}
-                                                            id="circle" className="circle_animation" r="69.85699"
-                                                            cy="81"
-                                                            cx="81" strokeWidth="6"
-                                                            stroke="#F7931A" fill="none"/>
-                                                    </g>
-                                                </svg>
-                                                </span>
-                                            </span>
-                                    </p>
-
                                     {startGame && (predict === 'up' || !predict)
                                         ? <></>
                                         :
@@ -315,7 +263,6 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
                                                 <img src={bitcoin} width="15" height="20" alt="b"/>
                                             </div>
                                             <button disabled={predict || balance - bet < 0 || !timeBet}
-                                                // onClick={() => up_down()}
                                                     onClick={(e) => {
                                                         btnDownHandler(e)
                                                     }}
@@ -356,28 +303,7 @@ const mapStateToProps = state => {
         play: state.soundReducer.play,
     }
 }
-const mapDispatchToProps = {
-    betWin,
-    betLose,
-    predictUp,
-    predictDown,
-    predictClear,
-    click,
-    up_down,
-    you_lose,
-    bell,
-    stop,
-    playTimer,
-    playTimer2,
-    fireworks,
-    closeCongratulation,
-    muteToggle,
-    userdata,
-    stopBetTimer,
-    stopGameTimer,
-    playBetTimer,
-    playGameTimer,
-    closeYourLose
+const mapDispatchToProps = {betWin, betLose, predictUp, predictDown, predictClear, click, up_down, you_lose, bell, stop, playTimer, playTimer2, fireworks, closeCongratulation, muteToggle, userdata, stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, closeYourLose
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

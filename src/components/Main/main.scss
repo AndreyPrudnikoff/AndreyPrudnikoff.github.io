@@ -387,7 +387,7 @@ main {
 }
 
 .round-dark {
-  background: var(--dark-gradient);
+  background: var(--dark-light);
   border-radius: 24px;
   padding: 10px 20px;
   margin: 15px 0;
@@ -610,10 +610,6 @@ form {
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
-
-      &:hover {
-        background: var(--btn-color-hover);
-      }
 
       img {
         margin-left: .3em;

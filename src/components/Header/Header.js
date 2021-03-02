@@ -158,7 +158,6 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                                  src={burger} alt="icon"/>
                             <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">
                                 {/*<li className="burger-menu-item bord"><Link to="/ads">Create ad</Link></li>*/}
-
                                 <li onClick={() => {history.push("/ads"); playClick()}} className="burger-menu-item bord">{LANG.Menu.first}</li>
                                 <li onClick={() => {history.push("/ads");  playClick()}} className="burger-menu-item bord"><span>{LANG.Menu.second}</span></li>
                                 <li onClick={() => switchStep(1)} className="burger-menu-item bord">
