@@ -165,7 +165,7 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                                 {currentLang === 'en' ? <li onClick={() => {playClick(); handleMute();}} className="burger-menu-item bord">
                                         <img onClick={() => {playClick()}} className="sound " src={mute ? sound : noSound} height="18" width="18"
                                         alt="sound"/>
-                                        Sound
+                                        Soundf
                                     </li> : null }
                                 <li onClick={() => {history.push("/ads"); playClick()}} className="burger-menu-item bord">{LANG.Menu.first}</li>
                                 <li onClick={() => {history.push("/ads");  playClick()}} className="burger-menu-item bord"><span>{LANG.Menu.second}</span></li>
