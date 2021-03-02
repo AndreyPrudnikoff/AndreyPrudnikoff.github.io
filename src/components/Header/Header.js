@@ -119,11 +119,14 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                             }
                             window.location.reload();
                             playClick()
-                        }} style={{marginRight: "30px"}} className="sound reload" height="18" width="18"
+                        }} style={currentLang === 'ru' ? {marginRight: "30px"} : null} className="sound reload" height="18" width="18"
                              src={refreshIcon}
                              alt="refresh"/>
-                        <img onClick={() => {handleMute(); playClick()}} className="sound " src={mute ? sound : noSound} height="18" width="18"
-                             alt="sound"/>
+                             {currentLang === 'ru' ? 
+                                <img onClick={() => {handleMute(); playClick()}} className="sound " src={mute ? sound : noSound} height="18" width="18"
+                                alt="sound"/> :
+                                null}
+                        
                         {!auth ? <div className="startHeader">
                             <Link onClick={() => {
                                 if (reg) {
@@ -158,7 +161,11 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                                  src={burger} alt="icon"/>
                             <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">
                                 {/*<li className="burger-menu-item bord"><Link to="/ads">Create ad</Link></li>*/}
-
+                                {currentLang === 'en' ? <li onClick={() => {playClick(); handleMute();}} className="burger-menu-item bord">
+                                        <img onClick={() => {playClick()}} className="sound " src={mute ? sound : noSound} height="18" width="18"
+                                        alt="sound"/>
+                                        Sound
+                                    </li> : null }
                                 <li onClick={() => {createAd(); playClick()}} className="burger-menu-item bord">{LANG.Menu.first}</li>
                                 <li onClick={() => {createAd();  playClick()}} className="burger-menu-item bord"><span>{LANG.Menu.second}</span></li>
                                 <li onClick={() => switchStep(1)} className="burger-menu-item bord">
