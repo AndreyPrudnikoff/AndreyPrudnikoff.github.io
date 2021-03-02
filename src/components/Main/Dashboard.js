@@ -15,7 +15,7 @@ import {
     playTimer,
     playTimer2,
     stop,
-    stopBetTimer, stopGameTimer, playBetTimer, playGameTimer
+    stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, playYouWon
 } from "../../redux/actions/music";
 import Rates from "./Rates";
 import {User} from "../../api/User";
@@ -25,12 +25,15 @@ import Timer from "./Timer";
 import Online from "./Online";
 import YouWon from '../../images/You_won (2).png';
 import GoldCoins from '../../images/Gold_coins1.png';
+import CoinUpImg from '../../images/coinUp.svg'
+import CoinDownImg from '../../images/coinDown.svg'
+
 
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
 
-const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, step, predictUp, betWin, betLose, fireworks, userdata, predictClear, predictDown, balance, predict, upBets, downBets, up, down, lastSeconds, widthMode, currentLang, up_down, you_lose, playTimer, playTimer2, stop, play, yourlose, closeYourLose, congratulation, closeCongratulation}) => {
+const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, step, predictUp, betWin, betLose, fireworks, userdata, predictClear, predictDown, balance, predict, upBets, downBets, up, down, lastSeconds, widthMode, currentLang, up_down, you_lose, playTimer, playTimer2, stop, play, yourlose, closeYourLose, congratulation, closeCongratulation, playYouWon, lastWinGame}) => {
     const [bet, setBet] = useState(.0001);
     const [counter, setCounter] = useState(10);
     const [gameStart, setGameStart] = useState(undefined);
@@ -74,9 +77,10 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
 
     useEffect(() => {
         if(congratulation === true) {
+            playYouWon();
             setTimeout(() => {
                 closeCongratulation()
-            }, 3000);
+            }, 4000);
         }
     }, [congratulation])
 
@@ -116,7 +120,7 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
                 .then(data => {
                     if (+data.data.data.lastWin === 1 && predict !== '') {
                         betWin();
-                        fireworks();
+                        // fireworks();
                     } else if (+data.data.data.lastWin === -1 && predict !== '') {
                         you_lose();
                         betLose();
@@ -139,20 +143,20 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
         betDone(e);
     }
 
-    if (congratulation) {
+    if (congratulation) { // congratulation
         return (
             <div className={`${widthMode} row bottom-container`}>
                 {widthMode === "desktop" ? <Rates/> : <></>}
                 <div style={{zIndex: step === 3 ? "10" : ""}} className={`${widthMode} round dashboard congratulation`}>
                         <img src={YouWon} className='congratulation__youWon-img'/>
                         <img src={GoldCoins} className='congratulation__coins-img'/>
-                        <p className='congratulation__score'></p>
+                        <p className='congratulation__score'>{lastWinGame} <img className='congratulation__btc' src={bitcoin} alt='btc'/></p>
                 </div>
             </div>
         )
     }
 
-    if(yourlose) {
+    if(yourlose) { //yourlose
         return (
             <div className={`${widthMode} row bottom-container`}>
                 {widthMode === "desktop" ? <Rates/> : <></>}
@@ -163,7 +167,8 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
         )
     }
 
-    if (startGame) {
+    if (startGame) { //startGame
+        console.log(predict)
         return (
             <div className={`${widthMode} row bottom-container`}>
                 {widthMode === "desktop" ? <Rates/> : <></>}
@@ -182,10 +187,13 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
                                                         display: widthMode === "mobile" ? "inline" : "inline"
                                                     }}
                                                           className={currentLang + " green"}>{LANG.Training.UsualState.MakeBet.yourProfit} </span>
-                                <span style={{fontSize: '21px'}}>
-                                                    {up || down ? ((bet / (bet + upBets) * downBets) * 0.97).toFixed(6) : 0}
-                                                </span>
+                                                    <span style={{fontSize: '21px'}}>
+                                                        {up || down ? ((bet / (bet + upBets) * downBets) * 0.97).toFixed(6) : 0}
+                                                    </span>
                                 <img style={{marginTop: '-5px'}} src={bitcoin} width="15" height="21" alt="b"/>
+                                <div className='coinImg'>
+                                    <img src={CoinUpImg} alt='coin'/>
+                                </div>
                             </div>
                         </div>}
                     {startGame && (predict === 'up' || !predict)
@@ -203,6 +211,9 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
                                     style={{fontSize: '21px'}}>{up || down ? ((bet / (bet + downBets) * upBets) * 0.97).toFixed(6) : 0}
                                                 </span>
                                 <img style={{marginTop: '-5px'}} src={bitcoin} width="15" height="21" alt="b"/>
+                                <div className='coinImg'>
+                                    <img src={CoinDownImg} alt='coin'/>
+                                </div>
                             </div>
                         </div>}
                 </div>
@@ -215,20 +226,24 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
                 <div style={{zIndex: step === 3 ? "10" : ""}} className={`${widthMode} round dashboard`}>
                     <div className="range">
                         <div className="form-label d-flex justify-content-between">
-                            <div>
+                            <div className='makeYourBet'>
                                 <h2 className={predict || startGame ? "text-left" : "make-bet text-left"}>
-                                    {widthMode === "desktop" ? LANG.BettingRealMoney.UsualState.MakeBet.title : ""}</h2>
+                                    {/* {widthMode === "desktop" ? LANG.BettingRealMoney.UsualState.MakeBet.title : ""}</h2> */}
+                                    {LANG.BettingRealMoney.UsualState.MakeBet.title}</h2>
+                                <p className='setSize'>Set bet size</p>
                             </div>
-                            <div>
+                            <div className="balanceInput">
                                 {widthMode === "mobile" ? <Online/> : <></>}
-                                <span className={balance - bet >= 0 ? '' : 'red'}>
-                                <input id="numberBet" type="number" step="0.0001" min="0.0001" max="1"
-                                       className={balance - bet >= 0 ? '' : 'red'}
-                                       disabled={predict || !timeBet}
-                                       onInput={setBetHandler}
-                                       value={bet}/>
-                                <img className="numberBet" width="15" src={bitcoin} alt="up"/>
-                            </span>
+                                <span className='balanceBtn minus' onClick={() => setBet(bet - 0.001)}>-</span>
+                                <span className={balance - bet >= 0 ? 'balanceInput__balance' : 'balanceInput__balance red'} onClick={() => setBet(bet - 0.001)}>
+                                    <input id="numberBet" type="number" step="0.0001" min="0.0001" max="1"
+                                        className={balance - bet >= 0 ? '' : 'red'}
+                                        disabled={predict || !timeBet}
+                                        onInput={setBetHandler}
+                                        value={bet}/>
+                                    <img className="numberBet" width="15" src={bitcoin} alt="up"/>
+                                </span>
+                                <span className='balanceBtn plus' onClick={() => setBet(bet + 0.001)}>+</span>
                             </div>
                         </div>
                         <form onSubmit={e => e.preventDefault()}>
@@ -314,6 +329,7 @@ const mapStateToProps = state => {
         currentTime: state.courseReducer.currentTime,
         lastSeconds: state.courseReducer.lastSeconds,
         lastWin: state.balanceReducer.lastWin,
+        lastWinGame: state.balanceReducer.lastWinGame,
         congratulation: state.balanceReducer.congratulation,
         predict: state.balanceReducer.predict,
         yourlose: state.balanceReducer.yourlose,
@@ -327,7 +343,7 @@ const mapStateToProps = state => {
         play: state.soundReducer.play,
     }
 }
-const mapDispatchToProps = {betWin, betLose, predictUp, predictDown, predictClear, click, up_down, you_lose, bell, stop, playTimer, playTimer2, fireworks, closeCongratulation, muteToggle, userdata, stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, closeYourLose, closeCongratulation
+const mapDispatchToProps = {betWin, betLose, predictUp, predictDown, predictClear, click, up_down, you_lose, bell, stop, playTimer, playTimer2, fireworks, closeCongratulation, muteToggle, userdata, stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, closeYourLose, closeCongratulation, playYouWon
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
