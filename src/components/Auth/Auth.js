@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {connect} from 'react-redux';
 import {Link} from "react-router-dom";
 import PhoneInput from 'react-phone-number-input';
@@ -10,19 +10,7 @@ import {fireworks, muteToggle, playClick} from "../../redux/actions/music";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Auth = ({
-                  reg,
-                  authorization,
-                  registration,
-                  muteToggle,
-                  mute,
-                  betWin,
-                  fireworks,
-                  history,
-                  widthMode,
-                  currentLang,
-                  playClick
-              }) => {
+const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, fireworks, history, widthMode, currentLang, playClick}) => {
     const [password, setPassword] = useState(true)
     const [passwordConfirm, setPasswordConfirm] = useState(true)
     const [name, setName] = useState('')
@@ -34,10 +22,22 @@ const Auth = ({
     const [enterCode, setEnterCode] = useState(false)
     const [err, setErr] = useState('')
     const [privacy, setPrivacy] = useState(false)
+    const [country, setCountry] = useState("US")
 
     const LANG = currentLang === "en" ? EN : RU
 
     const phoneRef = useRef(null);
+
+    useEffect(() => {
+        fetch('https://extreme-ip-lookup.com/json/')
+            .then( res => res.json())
+            .then(response => {
+                setCountry(response.countryCode);
+            })
+            .catch((data, status) => {
+                console.log('Request failed:', data);
+            });
+    },[])
     const moveCaretToEnd = () => {
         if (phoneRef.createTextRange) {
             const r = phoneRef.createTextRange();
@@ -62,7 +62,6 @@ const Auth = ({
     const checkForLatin = event => {
         let val = event.replace(/[^\x00-\x7F]/ig, '');
         setName(val);
-        // this.setState(state => ({ value: val }));
     }
 
     const handleSubmit = event => {
@@ -108,7 +107,6 @@ const Auth = ({
         User.login(body)
             .then(res => res)
             .then(data => {
-                    // if (widthMode === "desktop") {
                     if (data.data.status === "success") {
                         sessionStorage.setItem('token', data.data.data.accessToken);
                         history.push('/game');
@@ -121,13 +119,9 @@ const Auth = ({
                     } else {
                         return setErr('error, try again later')
                     }
-                    // } else {
-                    //     history.push("/gotodesktop")
-                    // }
                 }
             )
             .catch(error => setErr(error.response.data.error));
-        // authorization();
     }
     if (reg) {
 
@@ -192,6 +186,7 @@ const Auth = ({
                                 moveCaretToEnd();
                             }} id="phone" ref={phoneRef} limitMaxLength={true} placeholder={LANG.Auth.Register.phone}
                                         value={phone} international
+                                        defaultCountry={country}
                                         displayInitialValueAsLocalNumber required/>
                         </div>
                         <div className="">
@@ -277,6 +272,7 @@ const Auth = ({
                             setErr('');
                         }} id="phone" limitMaxLength={true} placeholder={LANG.Auth.Login.phone} value={phone}
                                     international
+                                    defaultCountry={country}
                                     displayInitialValueAsLocalNumber required/>
                     </div>
                     <div className={password ? 'pass' : 'text'}>
