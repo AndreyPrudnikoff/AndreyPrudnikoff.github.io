@@ -23,12 +23,14 @@ import {predictClear, predictDown, predictUp, userdata} from "../../redux/action
 import Rect from "./Rect/Rect";
 import Timer from "./Timer";
 import Online from "./Online";
+import YouWon from '../../images/You_won (2).png';
+import GoldCoins from '../../images/Gold_coins1.png';
 
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
 
-const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, step, predictUp, betWin, betLose, fireworks, userdata, predictClear, predictDown, balance, predict, upBets, downBets, up, down, lastSeconds, widthMode, currentLang, up_down, you_lose, playTimer, playTimer2, stop, play, yourlose, closeYourLose}) => {
+const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, step, predictUp, betWin, betLose, fireworks, userdata, predictClear, predictDown, balance, predict, upBets, downBets, up, down, lastSeconds, widthMode, currentLang, up_down, you_lose, playTimer, playTimer2, stop, play, yourlose, closeYourLose, congratulation, closeCongratulation}) => {
     const [bet, setBet] = useState(.0001);
     const [counter, setCounter] = useState(10);
     const [gameStart, setGameStart] = useState(undefined);
@@ -69,6 +71,14 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
         }
         
     }, [yourlose])
+
+    useEffect(() => {
+        if(congratulation === true) {
+            setTimeout(() => {
+                closeCongratulation()
+            }, 3000);
+        }
+    }, [congratulation])
 
     const setBetHandler = (e) => {
         let bet = +e.target.value.slice(0, 5);
@@ -127,6 +137,19 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
     const btnDownHandler = (e) => {
         e.preventDefault();
         betDone(e);
+    }
+
+    if (congratulation) {
+        return (
+            <div className={`${widthMode} row bottom-container`}>
+                {widthMode === "desktop" ? <Rates/> : <></>}
+                <div style={{zIndex: step === 3 ? "10" : ""}} className={`${widthMode} round dashboard congratulation`}>
+                        <img src={YouWon} className='congratulation__youWon-img'/>
+                        <img src={GoldCoins} className='congratulation__coins-img'/>
+                        <p className='congratulation__score'></p>
+                </div>
+            </div>
+        )
     }
 
     if(yourlose) {
@@ -291,6 +314,7 @@ const mapStateToProps = state => {
         currentTime: state.courseReducer.currentTime,
         lastSeconds: state.courseReducer.lastSeconds,
         lastWin: state.balanceReducer.lastWin,
+        congratulation: state.balanceReducer.congratulation,
         predict: state.balanceReducer.predict,
         yourlose: state.balanceReducer.yourlose,
         downBets: state.balanceReducer.downBets,
@@ -303,7 +327,7 @@ const mapStateToProps = state => {
         play: state.soundReducer.play,
     }
 }
-const mapDispatchToProps = {betWin, betLose, predictUp, predictDown, predictClear, click, up_down, you_lose, bell, stop, playTimer, playTimer2, fireworks, closeCongratulation, muteToggle, userdata, stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, closeYourLose
+const mapDispatchToProps = {betWin, betLose, predictUp, predictDown, predictClear, click, up_down, you_lose, bell, stop, playTimer, playTimer2, fireworks, closeCongratulation, muteToggle, userdata, stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, closeYourLose, closeCongratulation
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
