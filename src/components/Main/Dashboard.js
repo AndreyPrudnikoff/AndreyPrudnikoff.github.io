@@ -33,7 +33,41 @@ import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
 
-const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, step, predictUp, betWin, betLose, fireworks, userdata, predictClear, predictDown, balance, predict, upBets, downBets, up, down, lastSeconds, widthMode, currentLang, up_down, you_lose, playTimer, playTimer2, stop, play, yourlose, closeYourLose, congratulation, closeCongratulation, playYouWon, lastWinGame}) => {
+const Dashboard = ({
+                       stopBetTimer,
+                       stopGameTimer,
+                       playBetTimer,
+                       playGameTimer,
+                       step,
+                       predictUp,
+                       betWin,
+                       betLose,
+                       fireworks,
+                       userdata,
+                       predictClear,
+                       predictDown,
+                       balance,
+                       predict,
+                       upBets,
+                       downBets,
+                       up,
+                       down,
+                       lastSeconds,
+                       widthMode,
+                       currentLang,
+                       up_down,
+                       you_lose,
+                       playTimer,
+                       playTimer2,
+                       stop,
+                       play,
+                       yourlose,
+                       closeYourLose,
+                       congratulation,
+                       closeCongratulation,
+                       playYouWon,
+                       lastWinGame
+                   }) => {
     const [bet, setBet] = useState(.0001);
     const [counter, setCounter] = useState(10);
     const [gameStart, setGameStart] = useState(undefined);
@@ -54,7 +88,7 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
             stopBetTimer();
             playGameTimer();
             playTimer();
-        }else if (timeBet && !!predict) {
+        } else if (timeBet && !!predict) {
             stopGameTimer();
             playBetTimer();
             playTimer2();
@@ -66,17 +100,17 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
     }, [startGame, timeBet, predict])
 
     useEffect(() => {
-        if(yourlose === true) {
+        if (yourlose === true) {
             you_lose();
             setTimeout(() => {
                 closeYourLose()
             }, 3000);
         }
-        
+
     }, [yourlose])
 
     useEffect(() => {
-        if(congratulation === true) {
+        if (congratulation === true) {
             playYouWon();
             setTimeout(() => {
                 closeCongratulation()
@@ -93,6 +127,15 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
             bet = 1;
         }
         setBet(bet || 0.0001);
+    }
+    const setBetStep = (bool) => {
+        if (!bet || +bet < 0) {
+            setBet(0.0001);
+        }else if (bet > 1) {
+            setBet(1);
+        } else {
+            bool ? setBet(bet + .0001) : setBet(bet - .0001);
+        }
     }
 
     const betDone = (e) => {
@@ -148,15 +191,16 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
             <div className={`${widthMode} row bottom-container`}>
                 {widthMode === "desktop" ? <Rates/> : <></>}
                 <div style={{zIndex: step === 3 ? "10" : ""}} className={`${widthMode} round dashboard congratulation`}>
-                        <img src={YouWon} className='congratulation__youWon-img'/>
-                        <img src={GoldCoins} className='congratulation__coins-img'/>
-                        <p className='congratulation__score'>{lastWinGame} <img className='congratulation__btc' src={bitcoin} alt='btc'/></p>
+                    <img src={YouWon} className='congratulation__youWon-img'/>
+                    <img src={GoldCoins} className='congratulation__coins-img'/>
+                    <p className='congratulation__score'>{lastWinGame} <img className='congratulation__btc'
+                                                                            src={bitcoin} alt='btc'/></p>
                 </div>
             </div>
         )
     }
 
-    if(yourlose) { //yourlose
+    if (yourlose) { //yourlose
         return (
             <div className={`${widthMode} row bottom-container`}>
                 {widthMode === "desktop" ? <Rates/> : <></>}
@@ -187,7 +231,7 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
                                                         display: widthMode === "mobile" ? "inline" : "inline"
                                                     }}
                                                           className={currentLang + " green"}>{LANG.Training.UsualState.MakeBet.yourProfit} </span>
-                                                    <span style={{fontSize: '21px'}}>
+                                <span style={{fontSize: '21px'}}>
                                                         {up || down ? ((bet / (bet + upBets) * downBets) * 0.97).toFixed(6) : 0}
                                                     </span>
                                 <img style={{marginTop: '-5px'}} src={bitcoin} width="15" height="21" alt="b"/>
@@ -235,15 +279,17 @@ const Dashboard = ({stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, st
                             <div className="balanceInput">
                                 {widthMode === "mobile" ? <Online/> : <></>}
                                 <span className='balanceBtn minus' onClick={() => setBet(bet - 0.001)}>-</span>
-                                <span className={balance - bet >= 0 ? 'balanceInput__balance' : 'balanceInput__balance red'} onClick={() => setBet(bet - 0.001)}>
+                                <span
+                                    className={balance - bet >= 0 ? 'balanceInput__balance' : 'balanceInput__balance red'}
+                                    onClick={() => setBetStep(false)}>
                                     <input id="numberBet" type="number" step="0.0001" min="0.0001" max="1"
-                                        className={balance - bet >= 0 ? '' : 'red'}
-                                        disabled={predict || !timeBet}
-                                        onInput={setBetHandler}
-                                        value={bet}/>
+                                           className={balance - bet >= 0 ? '' : 'red'}
+                                           disabled={predict || !timeBet}
+                                           onInput={setBetHandler}
+                                           value={bet}/>
                                     <img className="numberBet" width="15" src={bitcoin} alt="up"/>
                                 </span>
-                                <span className='balanceBtn plus' onClick={() => setBet(bet + 0.001)}>+</span>
+                                <span className='balanceBtn plus' onClick={() => setBetStep(true)}>+</span>
                             </div>
                         </div>
                         <form onSubmit={e => e.preventDefault()}>
@@ -343,7 +389,30 @@ const mapStateToProps = state => {
         play: state.soundReducer.play,
     }
 }
-const mapDispatchToProps = {betWin, betLose, predictUp, predictDown, predictClear, click, up_down, you_lose, bell, stop, playTimer, playTimer2, fireworks, closeCongratulation, muteToggle, userdata, stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, closeYourLose, closeCongratulation, playYouWon
+const mapDispatchToProps = {
+    betWin,
+    betLose,
+    predictUp,
+    predictDown,
+    predictClear,
+    click,
+    up_down,
+    you_lose,
+    bell,
+    stop,
+    playTimer,
+    playTimer2,
+    fireworks,
+    closeCongratulation,
+    muteToggle,
+    userdata,
+    stopBetTimer,
+    stopGameTimer,
+    playBetTimer,
+    playGameTimer,
+    closeYourLose,
+    closeCongratulation,
+    playYouWon
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
