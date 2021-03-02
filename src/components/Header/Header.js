@@ -24,6 +24,7 @@ import {
     switchStep,
     switchView
 } from "../../redux/actions";
+import {changeDemo} from '../../redux/actions/game'
 import {Link, useLocation, useHistory} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
 
@@ -31,7 +32,7 @@ import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
 
-const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, registration, prohibition, authorization, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang, playClick, step}) => {
+const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, registration, prohibition, authorization, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang, playClick, step, changeDemo}) => {
 
     const [menu, setMenu] = useState(false);
     const [showLang, setShowLang] = useState(true);
@@ -170,6 +171,7 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                                 <li onClick={() => {history.push("/ads");  playClick()}} className="burger-menu-item bord"><span>{LANG.Menu.second}</span></li>
                                 <li onClick={() => {
                                     history.push("/game");
+                                    changeDemo();
                                     switchStep(1);
                                 }} className="burger-menu-item bord">
                                     <span>{LANG.Menu.third}</span></li>
@@ -205,6 +207,7 @@ const mapStateToProps = state => {
         logout: state.authReducer.logoutQuestion,
         unauthorized: state.authReducer.unauthorized,
         predict: state.balanceReducer.predict,
+        isDemo: state.balanceReducer.isDemo,
         widthMode: state.switchOptions.widthMode,
         view: state.switchOptions.view,
         currentLang: state.switchOptions.lang,
@@ -221,6 +224,7 @@ const mapDispatchToProps = {
     switchView,
     chooseLang,
     playClick,
-    switchStep
+    switchStep,
+    changeDemo
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

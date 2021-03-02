@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import bitcoin from "../../images/bitcoin.svg";
 import deposit from '../../images/deposit.svg';
 import withdraw from '../../images/withdraw.svg';
 import {connect} from "react-redux";
@@ -40,14 +41,14 @@ const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance,
                     {/*<div className="text-center">You are going to play on real <br/> money. Are you sure? </div>*/}
                     <div className="win-btn">
                         <button onClick={() => {
-                            playClick();
+                            transition();
                             changeDemo();
                             setSwitcher(false);
                         }}
                                 className={currentLang + " btn btn-primary"}>{isDemo ? LANG.Training.UsualState.SwitchingToReal.btnSwitchToReal : LANG.Training.UsualState.SwitchingToDemo.btnSwitchToDemo}
                         </button>
                         <button onClick={() => {
-                            playClick();
+                            transition();
                             userdata();
                             setSwitcher(false);
                         }} className={currentLang + " btn btn-primary"}>{!isDemo ? LANG.Training.UsualState.SwitchingToDemo.btnContinueReal : LANG.Training.UsualState.SwitchingToReal.btnContinueDemo}
@@ -61,7 +62,7 @@ const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance,
                         if(!predict) {
                             setSwitcher(true)
                         }
-                        transition()
+                        playClick()
                     }} className={isDemo ? "switch-wrapper demo" : "switch-wrapper real"}
                     style={predict ? {filter: 'grayscale(1)', opacity: .5} : null}>
                     <img src={switchWallet} alt=""/>
@@ -69,20 +70,14 @@ const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance,
                 <table>
                     <tbody>
                     <tr>
-                        <td>
+                        <td width='50%'>
                             <div className={currentLang + " label"}>{LANG.BettingRealMoney.UsualState.MyWallet.nameTitle}</div>
                             <div className="score" id="name">{name}</div>
                         </td>
-                        <td>
+                        {/* <td>
                             <div className={currentLang + " label"}>{LANG.BettingRealMoney.UsualState.MyWallet.winsTitle}</div>
                             <div className="score" id="wins">{wins}</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div className={currentLang + " label"}>{LANG.BettingRealMoney.UsualState.MyWallet.balanceTitle}</div>
-                            <div style={balanceColor} className="score" id="balance">{balance} BTC</div>
-                        </td>
+                        </td> */}
                         <td>
                             <div className={currentLang + " label"}>{LANG.BettingRealMoney.UsualState.MyWallet.lastWinTitle}</div>
                             <div className="score" id="lastWin">{lastWinGame || '0.000'} BTC</div>
@@ -90,6 +85,22 @@ const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance,
                     </tr>
                     </tbody>
                 </table>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td> 
+                            <div className={currentLang + " label"}>{LANG.BettingRealMoney.UsualState.MyWallet.balanceTitle}</div>
+                            <div style={balanceColor} className="score score-balance" id="balance">{balance} &#8383;</div>
+                        </td>
+                        {/* <td>
+                            <div className={currentLang + " label"}>{LANG.BettingRealMoney.UsualState.MyWallet.lastWinTitle}</div>
+                            <div className="score" id="lastWin">{lastWinGame || '0.000'} BTC</div>
+                        </td> */}
+                    </tr>
+                    </tbody>
+                </table>
+                    
+               
                 {!isDemo
                     ? <div>
                     <Link to="/refill" style={{pointerEvents: predict ? "none" : "auto"}} className={currentLang + " btn money-btn green"} onClick={playClick}>{LANG.BettingRealMoney.UsualState.MyWallet.btnDeposit}
