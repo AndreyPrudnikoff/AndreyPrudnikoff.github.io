@@ -1,9 +1,6 @@
 //*.ru {
 //  font-family: "pragmatica";
 //}
-.restore {
-  position: relative;
-}
 .privacy-block {
   position: relative;
   overflow: auto;
@@ -17,13 +14,12 @@
   }
 }
 .auth {
+  position: relative;
   margin: 80px auto 40px;
   padding: 10px 30px;
   //margin-top: 30px;
   min-width: 328px;
   height: auto;
-
-
 
   form {
     display: flex;

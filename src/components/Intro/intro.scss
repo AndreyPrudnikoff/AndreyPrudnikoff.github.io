@@ -16,7 +16,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--dark-block);
+    background-color: rgba(0, 0, 0, .7);
     z-index: 10;
   }
 
@@ -32,7 +32,7 @@
     bottom: 0;
     width: 607px;
     height: 272px;
-    background: #1A1F34;
+    background: var(--dark-light);
     border: 1px solid #8DD9FC;
     backdrop-filter: blur(10px);
     border-radius: 24px;
@@ -51,7 +51,7 @@
         &__item {
           width: 52px;
           height: 6px;
-          background: #F7931A;
+          background: var(--gold);
           border-radius: 4px;
         }
       }
@@ -186,7 +186,7 @@
     }
 
     &::after {
-      border-bottom-color: #1A1F34;
+      border-bottom-color: var(--dark-light);
       border-width: 21px;
       margin-left: -8px;
     }
@@ -297,7 +297,7 @@
     }
 
     &::after {
-      border-right-color: #1A1F34;
+      border-right-color: var(--dark-light);
       border-width: 21px;
       margin-top: -8px;
     }
@@ -354,7 +354,7 @@
     }
 
     &::after {
-      border-top-color: #1A1F34;
+      border-top-color: var(--dark-light);
       border-width: 21px;
       margin-left: -8px;
     }
@@ -408,7 +408,7 @@
     }
 
     &::after {
-      border-left-color: #1A1F34;
+      border-left-color: var(--dark-light);
       border-width: 21px;
       margin-bottom: 1px;
     }
@@ -459,7 +459,7 @@
     }
 
     &::after {
-      border-left-color: #1A1F34;
+      border-left-color: var(--dark-light);
       border-width: 21px;
       margin-bottom: 1px;
     }
@@ -691,7 +691,7 @@
       }
 
       &::after {
-        border-bottom-color: #1A1F34;
+        border-bottom-color: var(--dark-light);
         border-width: 26px;
         margin-left: -12px;
         // bottom: 99%;
@@ -714,7 +714,7 @@
         align-items: center;
         height: 199px;
         padding: 20px 17px 33px 17px;
-        background: #1A1F34;
+        background: var(--dark-light);
         border: 1px solid #8DD9FC;
         box-sizing: border-box;
         backdrop-filter: blur(10px);
@@ -738,7 +738,7 @@
           &__item {
             width: 46px;
             height: 6px;
-            background: #F7931A;
+            background: var(--gold);
             border-radius: 4px;
           }
         }
@@ -783,7 +783,7 @@
       }
 
       &::after {
-        border-bottom-color: #1A1F34;
+        border-bottom-color: var(--dark-light);
         border-width: 26px;
         margin-left: -12px;
         // bottom: 99%;
@@ -841,7 +841,7 @@
       }
 
       &::after {
-        border-top-color: #1A1F34;
+        border-top-color: var(--dark-light);
         border-width: 21px;
         margin-left: -9px;
       }
@@ -892,7 +892,7 @@
       }
 
       &::after {
-        border-bottom-color: #1A1F34;
+        border-bottom-color: var(--dark-light);
         border-width: 26px;
         margin-left: -13px;
         bottom: 99%;
@@ -964,7 +964,7 @@
       }
 
       &::after {
-        border-bottom-color: #1A1F34;
+        border-bottom-color: var(--dark-light);
         border-width: 26px;
         margin-left: -13px;
         bottom: 99%;

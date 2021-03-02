@@ -48,7 +48,6 @@ class Restore extends Component {
                                 if (res.data.status === "success") {
                                     this.toggleRestore(e);
                                 } else {
-                                    console.log(123)
                                     this.setErr('Wrong email');
                                 }
                             })

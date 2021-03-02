@@ -9,8 +9,7 @@ import {connect} from 'react-redux'
 
 const Step1 = ({switchStep, playClick, currentLang, widthMode, switchView}) => {
     const LANG = currentLang === 'en' ? EN : RU;
-    const isDesktop = widthMode === "desktop" ? true : false;
-    console.log(isDesktop)
+    const isDesktop = widthMode === "desktop";
     if(isDesktop) {
         return (
             <div className="step step1">

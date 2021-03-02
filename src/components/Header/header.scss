@@ -8,7 +8,7 @@ header {
   width: 100%;
   height: 56px;
   max-height: 100%;
-  background: var(--dark-gradient);
+  background: var(--dark-light);
   z-index: 9999;
 
   .tabs {
@@ -222,7 +222,7 @@ header {
     .tabs {
       display: block;
       padding: 0 20px 10px 20px;
-      background: var(--dark-gradient);
+      background: var(--dark-light);
 
       .wrap-tabs {
         display: flex;
