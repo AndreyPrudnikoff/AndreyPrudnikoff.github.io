@@ -21,6 +21,17 @@ export const BET_LOSE ='BET_LOSE';
 export const CLOSE_CONGRATULATION ='CLOSE_CONGRATULATION';
 export const CLOSE_YOURLOSE ='CLOSE_YOURLOSE';
 
+//ADS
+export const ADD_BANNER = "ADD_BANNER";
+export const SET_WEB_SITE = "SET_WEB_SITE";
+export const ADD_COUNTRY = "ADD_COUNTRY";
+export const ADD_CITY = "ADD_CITY";
+export const SET_START_DATE = "SET_START_DATE";
+export const SET_START_TIME = "SET_START_TIME";
+export const SET_END_DATE = "SET_END_DATE";
+export const SET_END_TIME = "SET_END_TIME";
+export const SET_TIMEZONE = "SET_TIMEZONE";
+
 // export const PLAY_CLICK ='PLAY_CLICK';
 export const PLAY_CLACK ='PLAY_CLACK';
 export const PLAY_BELL ='PLAY_BELL';
