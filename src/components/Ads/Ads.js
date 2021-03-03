@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import "./ads.scss";
 // components
 import {TextInput} from "./components/Duration/components";
-import {Duration, ImagePreview, Audience, Method, Footer} from "./components";
+import {Duration, ImagePreview, Audience, Footer} from "./components";
 
 const Ads = (props) => {
     const ad = {
@@ -31,12 +31,6 @@ const Ads = (props) => {
             <hr/>
 
             <Audience/>
-
-            <hr/>
-
-            <Method/>
-
-            <hr/>
 
             <Duration/>
 

@@ -8,19 +8,21 @@ import {
     SET_START_TIME, SET_TIMEZONE,
     SET_WEB_SITE
 } from "../types";
-
+const date = new Date();
+const dat = date.toLocaleString();
+const da = dat.split(',');
 const initialState = {
     banner: "base64",
     website_url: "",
     country_codes: [""],
-    country_cities: [""],
-    banner_start_date: "yyyy-mm-dd",
-    banner_start_time: "hh-mm-ss",
-    banner_end_date: "",
-    banner_end_time: "",
-    banner_timezone: "02"
+    // country_cities: [""],
+    banner_start_date: da[0],
+    banner_start_time: da[1],
+    banner_end_date: da[0],
+    banner_end_time: da[1],
+    banner_timezone: "00.00",
+    budget: "0"
 }
-
 export const adsOptions = (state = initialState, action) => {
     switch (action.type) {
         case ADD_BANNER:
