@@ -76,8 +76,21 @@
       }
 
     }
+    .privacy {
+      display: block;
+    }
+    .privacy-row {
+      //flex-wrap: wrap!important;
+      .link {
+        white-space: normal;
+        .and {
+          text-decoration: none;
+        }
+      }
 
+    }
     .text {
+
       .eye {
         position: absolute;
         top: 40px;
@@ -128,7 +141,6 @@
         flex-direction: row;
         flex-wrap: nowrap;
         max-width: 270px;
-        height: 30px;
         align-items: center;
         font-size: 10px;
 

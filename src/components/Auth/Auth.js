@@ -30,6 +30,7 @@ const Auth = ({
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
     const [confpass, setConfpass] = useState('')
+    const [promocode, setPromocode] = useState('')
     const [code, setCode] = useState('')
     const [enterCode, setEnterCode] = useState(false)
     const [err, setErr] = useState('')
@@ -79,7 +80,7 @@ const Auth = ({
     const handleSubmit = event => {
         event.preventDefault();
 
-        const body = JSON.stringify({name, phone, email, pass, confpass});
+        const body = JSON.stringify({name, phone, email, pass, confpass, promocode});
         if (confpass.length < 8 || confpass.length < 8) {
             setErr('Password length must be 8 characters')
         } else {
@@ -246,7 +247,9 @@ const Auth = ({
                                 <label className={currentLang}
                                        htmlFor="promo">{LANG.Auth.Register.promo}</label>
 
-                                <input id="promo" name="promo" type="text"/>
+                                <input onChange={(e) => {
+                                    setPromocode(e.target.value);
+                                }} value={promocode} id="promo" name="promo" type="text"/>
                             </div>
 
                             <div className="privacy">
@@ -256,12 +259,11 @@ const Auth = ({
 
 
                                 </label>
-                                <label>
+                                <label className="privacy-row">
                                     <input type="checkbox" id="privacy" required/>
                                     <span onClick={() => setPrivacy(true)}
-                                          className="gold link">{LANG.Auth.Register.legal} </span> <span className="and">{LANG.Auth.Register.and} </span>
-                                    <span onClick={() => setPrivacy(true)}
-                                          className="gold link"> {LANG.Auth.Register.privacy}</span>
+                                          className="gold link">{LANG.Auth.Register.legal}  <span className="and">{LANG.Auth.Register.and} </span>
+                                           {LANG.Auth.Register.privacy}</span>
                                 </label>
                             </div>
 
