@@ -25,7 +25,11 @@ const Tabs = ({ tabs }) => {
 
       <div className="daily">
         <span>Daily budget</span>
-        <span>Actual amount spend daily may vary</span>
+        <span className="opacity">Actual amount spend daily may vary</span>
+          <div>
+              <span className="opacity">1 click = 1 $</span>
+              <span style={{marginLeft: "60px"}} className="opacity">1 display = 0.05 $</span>
+          </div>
       </div>
 
       <div className="estimated">

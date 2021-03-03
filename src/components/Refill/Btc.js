@@ -36,7 +36,6 @@ const Btc = ({history, currentLang, playClick}) => {
             reader.readAsDataURL(file);
             reader.onload = (event) => {
                 const img = new Image();
-
                 img.src = event.target.result;
                 img.onload = () => {
                     const elem = document.createElement('canvas');

@@ -4,9 +4,11 @@ import {connect} from "react-redux";
 import "./ads.scss";
 // components
 import {TextInput} from "./components/Duration/components";
-import {Duration, ImagePreview, Audience, Method, Footer} from "./components";
+import {Duration, ImagePreview, Audience, Footer} from "./components";
+import {countryList} from "../../country/country";
 
 const Ads = (props) => {
+    const asd = Object.keys(countryList);
     const ad = {
         banner: props.banner,
         website_url: props.website_url,
@@ -31,12 +33,6 @@ const Ads = (props) => {
             <hr/>
 
             <Audience/>
-
-            <hr/>
-
-            <Method/>
-
-            <hr/>
 
             <Duration/>
 

@@ -44,19 +44,11 @@ export const NumberInput = ({ label }) => {
   );
 };
 
-export const SelectInput = ({ label, data = [], onChange = () => {} }) => (
-  <div style={{ width: "100%" }}>
-    <label>{label}</label>
-
-    <div className="selectInput">
-      <select required onChange={onChange} type="select">
-        {data.map((item) => (
-          <option>{item}</option>
-        ))}
-      </select>
-    </div>
-  </div>
-);
+export const SelectInput = ({ label, data = [], onchange = () => {} }) => {
+    return(
+        <div/>
+    );
+}
 
 export const DateInput = ({ label, onChange = () => {} }) => {
   const [inputValue, setValue] = useState("");
@@ -95,13 +87,7 @@ export const TimeInput = ({ label, onChange = () => {} }) => {
   );
 };
 
-export const RangeInput = ({
-  min,
-  max,
-  balance,
-  withError = false,
-  onChange = () => {},
-}) => {
+export const RangeInput = ({min, max, balance, withError = false, onChange = () => {},}) => {
   const [isValid, setValidation] = useState(true);
 
   const hadlerChnage = ({ target: { valueAsNumber } }) => {

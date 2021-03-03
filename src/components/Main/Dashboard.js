@@ -217,7 +217,6 @@ const Dashboard = ({
     }
 
     if (startGame) { //startGame
-        console.log(predict)
         return (
             <div className={`${widthMode} row bottom-container`}>
                 {widthMode === "desktop" ? <Rates/> : <></>}
@@ -373,7 +372,6 @@ const Dashboard = ({
 const mapStateToProps = state => {
     return {
         balance: state.balanceReducer.balance,
-        congratulation: state.balanceReducer.congratulation,
         course: state.courseReducer.course,
         currentCourse: state.courseReducer.currentCourse,
         currentTime: state.courseReducer.currentTime,
@@ -393,30 +391,7 @@ const mapStateToProps = state => {
         play: state.soundReducer.play,
     }
 }
-const mapDispatchToProps = {
-    betWin,
-    betLose,
-    predictUp,
-    predictDown,
-    predictClear,
-    click,
-    up_down,
-    you_lose,
-    bell,
-    stop,
-    playTimer,
-    playTimer2,
-    fireworks,
-    closeCongratulation,
-    muteToggle,
-    userdata,
-    stopBetTimer,
-    stopGameTimer,
-    playBetTimer,
-    playGameTimer,
-    closeYourLose,
-    closeCongratulation,
-    playYouWon
+const mapDispatchToProps = {betWin, betLose, predictUp, predictDown, predictClear, click, up_down, you_lose, bell, stop, playTimer, playTimer2, fireworks, closeCongratulation, muteToggle, userdata, stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, closeYourLose, playYouWon
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

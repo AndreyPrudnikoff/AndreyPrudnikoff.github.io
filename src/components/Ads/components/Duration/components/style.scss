@@ -28,9 +28,10 @@
     flex-direction: column;
     align-items: flex-start;
 
-    & > span:nth-child(2) {
+    span.opacity {
       color: rgba(2555, 255, 255, 0.5);
     }
+
   }
 
   & .estimated {
