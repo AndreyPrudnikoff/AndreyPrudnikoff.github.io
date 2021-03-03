@@ -1,5 +1,5 @@
 
-const countryList = {
+export const countryList = {
     "Afghanistan": "AF",
     "Åland Islands": "AX",
     "Albania": "AL",
@@ -220,7 +220,7 @@ const countryList = {
     "Tajikistan": "TJ",
     "Tanzania, the United Republic of": "TZ",
     "Thailand": "TH",
-    "Timor-Leste [aa]": "TL",
+    "Timor-Leste": "TL",
     "Togo": "TG",
     "Tokelau": "TK",
     "Tonga": "TO",
@@ -247,5 +247,5 @@ const countryList = {
     "Western Sahara": "EH",
     "Yemen": "YE",
     "Zambia": "ZM",
-    "Zimbabwe": "ZW",
+    "Zimbabwe": "ZW"
 }

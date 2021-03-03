@@ -1,4 +1,5 @@
 import Api from './Api';
+import {DevApi} from './Api';
 
 // const token = JSON.stringify({"accessToken": sessionStorage.getItem('token')});
 export const User = {

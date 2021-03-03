@@ -5,8 +5,11 @@ import "./ads.scss";
 // components
 import {TextInput} from "./components/Duration/components";
 import {Duration, ImagePreview, Audience, Footer} from "./components";
+import {countryList} from "../../country/country";
 
 const Ads = (props) => {
+    const asd = Object.keys(countryList);
+    console.log(countryList)
     const ad = {
         banner: props.banner,
         website_url: props.website_url,

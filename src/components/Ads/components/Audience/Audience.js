@@ -1,11 +1,12 @@
 import React from "react";
+import {countryList} from "../../../../country/country";
+import {timeZone} from "../../../../country/timezone";
 // component
 import { SelectInput } from "../Duration/components";
 // styles
 import "./styles.scss";
 
-const country = ["All", "USA", "Ukraine", "Poland"];
-const city = ["All", "Kiev", "Warsaw", "Amsterdam"];
+
 
 const Audience = () => {
   return (
@@ -14,7 +15,7 @@ const Audience = () => {
 
       <div className="content">
         <div className="block">
-          <SelectInput name="country" label="Country" data={country} />
+          <SelectInput name="country" label="Country" data={countryList} />
 
           <div className="addButton">
             <button>+</button>
@@ -23,7 +24,7 @@ const Audience = () => {
           </div>
         </div>
         <div className="block">
-          <SelectInput name="city" label="City" data={city} />
+          <SelectInput name="city" label="Time zone" data={timeZone} />
 
           <div className="addButton">
             <button>+</button>

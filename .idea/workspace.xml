@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f6b93ff-e806-4942-bf67-7a8ba8e695b9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/country/timezone.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/Auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/auth.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/auth.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/Api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/Api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Ads/Ads.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/Ads.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Ads/components/Audience/Audience.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/components/Audience/Audience.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Ads/components/Duration/components/FormInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/components/Duration/components/FormInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/country/country.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/country/country.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/advertising.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/advertising.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +160,7 @@
       <workItem from="1614581647534" duration="25315000" />
       <workItem from="1614668175018" duration="4365000" />
       <workItem from="1614676465276" duration="18995000" />
-      <workItem from="1614756328563" duration="10350000" />
+      <workItem from="1614756328563" duration="16245000" />
     </task>
     <servers />
   </component>
