@@ -3,7 +3,6 @@ import dayjs from "dayjs";
 // styles
 import "./style.scss";
 
-
 export const NumberInput = ({ label }) => {
   const [inputValue, setValue] = useState("1");
 
@@ -45,27 +44,9 @@ export const NumberInput = ({ label }) => {
   );
 };
 
-export const SelectInput = ({ label, data = [], onChange = () => {} }) => {
-    console.log(data.length)
+export const SelectInput = ({ label, data = [], onchange = () => {} }) => {
     return(
-        <div style={{ width: "100%" }}>
-            <label>{label}</label>
-            {data.length
-                ? (<div className="selectInput">
-                    <select defaultValue={""} required onChange={onChange}>
-                        {data.map((item) => (
-                            <option key={item} value={item}>UTC {item}</option>
-                        ))}
-                    </select>
-                </div>)
-                : (<div className="selectInput">
-                    <select defaultValue={""} required onChange={onChange}>
-                        {Object.keys(data).map((item) => (
-                            <option key={item} value={data[item]}>{item}</option>
-                        ))}
-                    </select>
-                </div>)}
-        </div>
+        <div/>
     );
 }
 

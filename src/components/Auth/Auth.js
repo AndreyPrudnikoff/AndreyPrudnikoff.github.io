@@ -90,11 +90,11 @@ const Auth = ({
                         setEnterCode(true);
                     } else {
                         if (data.data.error) {
-                            setErr(data.data.error);
+                            setErr(data.data.data);
                         } else return false;
                     }
                 })
-                .catch(error => setErr(error.response.data.error))
+                .catch(error => setErr(error.response.data.data))
         }
     }
     const codeSubmit = (e) => {
@@ -135,6 +135,7 @@ const Auth = ({
                 }
             )
             .catch(error => setErr(error.response.data.error));
+
     }
     if (reg) {
 
@@ -249,6 +250,7 @@ const Auth = ({
 
                                 <input onChange={(e) => {
                                     setPromocode(e.target.value);
+                                    setErr('');
                                 }} value={promocode} id="promo" name="promo" type="text"/>
                             </div>
 
