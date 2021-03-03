@@ -74,10 +74,6 @@ const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance,
                             <div className={currentLang + " label"}>{LANG.BettingRealMoney.UsualState.MyWallet.nameTitle}</div>
                             <div className="score" id="name">{name}</div>
                         </td>
-                        {/* <td>
-                            <div className={currentLang + " label"}>{LANG.BettingRealMoney.UsualState.MyWallet.winsTitle}</div>
-                            <div className="score" id="wins">{wins}</div>
-                        </td> */}
                         <td>
                             <div className={currentLang + " label"}>{LANG.BettingRealMoney.UsualState.MyWallet.lastWinTitle}</div>
                             <div className="score" id="lastWin">{lastWinGame || '0.000'} BTC</div>
@@ -92,10 +88,6 @@ const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance,
                             <div className={currentLang + " label"}>{LANG.BettingRealMoney.UsualState.MyWallet.balanceTitle}</div>
                             <div style={balanceColor} className="score score-balance" id="balance">{balance} &#8383;</div>
                         </td>
-                        {/* <td>
-                            <div className={currentLang + " label"}>{LANG.BettingRealMoney.UsualState.MyWallet.lastWinTitle}</div>
-                            <div className="score" id="lastWin">{lastWinGame || '0.000'} BTC</div>
-                        </td> */}
                     </tr>
                     </tbody>
                 </table>

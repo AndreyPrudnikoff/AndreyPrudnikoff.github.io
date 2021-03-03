@@ -353,5 +353,38 @@ export const RU = {
             finish: 'Завершить'
         }
     },
+
+    Ads: {
+        MyAds: {
+            title: 'My ads',
+            current: 'Current',
+            finished: 'Finished',
+            notAds: 'You have not run any ads yet'
+        },
+        MyAd: {
+            selectBanner: 'Select a banner to add',
+            chooseFile: 'Choose file',
+            audience: 'Audience',
+            country: 'Country',
+            timeZone: 'Time zone',
+            time: 'Time',
+            startTime: 'Started',
+            finishTime: 'Finished',
+            totalTime: 'Totel time',
+            result: 'Results',
+            display: 'Displays',
+            clicks: 'Clicks',
+            budget: 'Budget',
+            changeBtn: 'Change',
+            repeatBtn: 'Repeat'
+        },
+        Wallet: {
+            title: 'My wallet',
+            name: 'Name',
+            balance: 'Balance',
+            deposite: 'Deposit'
+        }
+    },
+    
     support: 'Нужна помощь?'
 };
