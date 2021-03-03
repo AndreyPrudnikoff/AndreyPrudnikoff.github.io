@@ -25,7 +25,6 @@ export const CLOSE_YOURLOSE ='CLOSE_YOURLOSE';
 export const ADD_BANNER = "ADD_BANNER";
 export const SET_WEB_SITE = "SET_WEB_SITE";
 export const ADD_COUNTRY = "ADD_COUNTRY";
-export const ADD_CITY = "ADD_CITY";
 export const SET_START_DATE = "SET_START_DATE";
 export const SET_START_TIME = "SET_START_TIME";
 export const SET_END_DATE = "SET_END_DATE";

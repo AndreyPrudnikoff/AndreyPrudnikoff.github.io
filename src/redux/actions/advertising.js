@@ -1,4 +1,4 @@
-import {ADD_BANNER, ADD_CITY, ADD_COUNTRY, SET_TIMEZONE, SET_WEB_SITE} from "../types";
+import {ADD_BANNER,  ADD_COUNTRY, SET_TIMEZONE, SET_WEB_SITE} from "../types";
 
 export function addBanner(banner) {
     return {type: ADD_BANNER, payload: banner}
@@ -8,9 +8,6 @@ export function setWebsite(website) {
 }
 export function addCountry(country) {
     return {type: ADD_COUNTRY, payload: country}
-}
-export function addCity(city) {
-    return {type: ADD_CITY, payload: city}
 }
 export function setStartDate(date) {
     return {type: ADD_BANNER, payload: date}

@@ -10,7 +10,19 @@ import {fireworks, muteToggle, playClick} from "../../redux/actions/music";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, fireworks, history, widthMode, currentLang, playClick}) => {
+const Auth = ({
+                  reg,
+                  authorization,
+                  registration,
+                  muteToggle,
+                  mute,
+                  betWin,
+                  fireworks,
+                  history,
+                  widthMode,
+                  currentLang,
+                  playClick
+              }) => {
     const [password, setPassword] = useState(true)
     const [passwordConfirm, setPasswordConfirm] = useState(true)
     const [name, setName] = useState('')
@@ -18,6 +30,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
     const [confpass, setConfpass] = useState('')
+    const [promocode, setPromocode] = useState('')
     const [code, setCode] = useState('')
     const [enterCode, setEnterCode] = useState(false)
     const [err, setErr] = useState('')
@@ -30,14 +43,14 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
 
     useEffect(() => {
         fetch('https://extreme-ip-lookup.com/json/')
-            .then( res => res.json())
+            .then(res => res.json())
             .then(response => {
                 setCountry(response.countryCode);
             })
             .catch((data, status) => {
                 console.log('Request failed:', data);
             });
-    },[])
+    }, [])
     const moveCaretToEnd = () => {
         if (phoneRef.createTextRange) {
             const r = phoneRef.createTextRange();
@@ -67,7 +80,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
     const handleSubmit = event => {
         event.preventDefault();
 
-        const body = JSON.stringify({name, phone, email, pass, confpass});
+        const body = JSON.stringify({name, phone, email, pass, confpass, promocode});
         if (confpass.length < 8 || confpass.length < 8) {
             setErr('Password length must be 8 characters')
         } else {
@@ -77,11 +90,11 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                         setEnterCode(true);
                     } else {
                         if (data.data.error) {
-                            setErr(data.data.error);
+                            setErr(data.data.data);
                         } else return false;
                     }
                 })
-                .catch(error => setErr(error.response.data.error))
+                .catch(error => setErr(error.response.data.data))
         }
     }
     const codeSubmit = (e) => {
@@ -122,6 +135,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                 }
             )
             .catch(error => setErr(error.response.data.error));
+
     }
     if (reg) {
 
@@ -154,11 +168,11 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                         }} className="back">
                         &larr;
                         </span>
-                    <p>
-                        <h2>{LANG.Auth.Register.privacy}</h2>
-                        {LANG.Auth.Register.text}
-                    </p>
-                </div>
+                        <p>
+                            <h2>{LANG.Auth.Register.privacy}</h2>
+                            {LANG.Auth.Register.text}
+                        </p>
+                    </div>
                     : <div className="round-dark auth">
 
                     <span onClick={() => {
@@ -166,94 +180,103 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                         clearData();
                         playClick()
                     }} className="back">&larr;</span>
-                    <h2 className={currentLang}>{LANG.Auth.Register.title}</h2>
-                    <form onSubmit={handleSubmit}>
-                        <div className="">
-                            <label className={currentLang} htmlFor="name">{LANG.Auth.Register.nameTitle}</label>
-                            <input onChange={e => {
-                                checkForLatin(e.target.value);
-                                // setName(e.target.value);
-                                setErr('');
-                            }} value={name}
-                                   placeholder={LANG.Auth.Register.name}
-                                   id="name" name="name" type="text" required/>
-                        </div>
-                        <div className="">
-                            <label className={currentLang} htmlFor="phone">{LANG.Auth.Register.phoneTitle}</label>
-                            <PhoneInput onChange={e => {
-                                setErr('');
-                                setPhoneNumber(e);
-                                moveCaretToEnd();
-                            }} id="phone" ref={phoneRef} limitMaxLength={true} placeholder={LANG.Auth.Register.phone}
-                                        value={phone} international
-                                        defaultCountry={country}
-                                        displayInitialValueAsLocalNumber required/>
-                        </div>
-                        <div className="">
-                            <label className={currentLang} htmlFor="email">{LANG.Auth.Register.emailTitle}</label>
-                            <input onChange={e => {
-                                setEmail(e.target.value);
-                                setErr('');
-                            }}
-                                   value={email}
-                                   placeholder={LANG.Auth.Register.email}
-                                   id="email" name="email" type="email" required/>
-                        </div>
-                        <div className={password ? 'pass' : 'text'}>
+                        <h2 className={currentLang}>{LANG.Auth.Register.title}</h2>
+                        <form onSubmit={handleSubmit}>
+                            <div className="">
+                                <label className={currentLang} htmlFor="name">{LANG.Auth.Register.nameTitle}</label>
+                                <input onChange={e => {
+                                    checkForLatin(e.target.value);
+                                    // setName(e.target.value);
+                                    setErr('');
+                                }} value={name}
+                                       placeholder={LANG.Auth.Register.name}
+                                       id="name" name="name" type="text" required/>
+                            </div>
+                            <div className="">
+                                <label className={currentLang} htmlFor="phone">{LANG.Auth.Register.phoneTitle}</label>
+                                <PhoneInput onChange={e => {
+                                    setErr('');
+                                    setPhoneNumber(e);
+                                    moveCaretToEnd();
+                                }} id="phone" ref={phoneRef} limitMaxLength={true} placeholder={LANG.Auth.Register.phone}
+                                            value={phone} international
+                                            defaultCountry={country}
+                                            displayInitialValueAsLocalNumber required/>
+                            </div>
+                            <div className="">
+                                <label className={currentLang} htmlFor="email">{LANG.Auth.Register.emailTitle}</label>
+                                <input onChange={e => {
+                                    setEmail(e.target.value);
+                                    setErr('');
+                                }}
+                                       value={email}
+                                       placeholder={LANG.Auth.Register.email}
+                                       id="email" name="email" type="email" required/>
+                            </div>
+                            <div className={password ? 'pass' : 'text'}>
                             <span onClick={() => {
                                 setPassword(!password);
                                 playClick()
                             }} className="eye"/>
-                            <label className={currentLang} htmlFor="password">{LANG.Auth.Register.password}</label>
-                            <input min='8' onChange={e => {
-                                setPass(e.target.value);
-                                setErr('');
-                            }}
-                                   value={pass}
-                                   id="password" name="password" type={password ? 'password' : 'text'} required/>
-                        </div>
-                        <div className={passwordConfirm ? 'pass' : 'text'}>
+                                <label className={currentLang} htmlFor="password">{LANG.Auth.Register.password}</label>
+                                <input min='8' onChange={e => {
+                                    setPass(e.target.value);
+                                    setErr('');
+                                }}
+                                       value={pass}
+                                       id="password" name="password" type={password ? 'password' : 'text'} required/>
+                            </div>
+                            <div className={passwordConfirm ? 'pass' : 'text'}>
                             <span onClick={() => {
                                 setPasswordConfirm(!passwordConfirm);
                                 playClick()
                             }} className="eye"/>
-                            <label className={currentLang}
-                                   htmlFor="passwordConfirm">{LANG.Auth.Register.passwordRepeat}</label>
-                            <input min='8' onChange={e => {
-                                setConfpass(e.target.value);
-                                setErr('');
-                            }}
-                                   value={confpass}
-                                   id="passwordConfirm" name="passwordConfirm"
-                                   type={passwordConfirm ? 'password' : 'text'}
-                                   required/>
-                        </div>
-                        <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
-                        <button className={currentLang} onClick={playClick}>{LANG.Auth.Register.signUp}</button>
-                        <div className="privacy">
+                                <label className={currentLang}
+                                       htmlFor="passwordConfirm">{LANG.Auth.Register.passwordRepeat}</label>
+                                <input min='8' onChange={e => {
+                                    setConfpass(e.target.value);
+                                    setErr('');
+                                }}
+                                       value={confpass}
+                                       id="passwordConfirm" name="passwordConfirm"
+                                       type={passwordConfirm ? 'password' : 'text'}
+                                       required/>
+                            </div>
+                            <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
 
-                            <label>
-                                <input type="checkbox" id="privacy" required/>
-                                <span>{LANG.Auth.Register.begin}
-                                    <span onClick={()=>setPrivacy(true)} className="gold link">{LANG.Auth.Register.legal + " "} </span> {" " + LANG.Auth.Register.and}
-                                    <span onClick={()=>setPrivacy(true)} className="gold link"> {LANG.Auth.Register.privacy}</span>
-                                </span>
-                            </label>
                             <div className='text'>
                                 <label className={currentLang}
                                        htmlFor="promo">{LANG.Auth.Register.promo}</label>
-                                <input id="promo" name="promo" type="text"/>
-                                <button type="button" className="arrow-btn">
-                                    <img src={arrow_btn} width="24" alt="arrow"/>
-                                </button>
+
+                                <input onChange={(e) => {
+                                    setPromocode(e.target.value);
+                                    setErr('');
+                                }} value={promocode} id="promo" name="promo" type="text"/>
                             </div>
-                        </div>
 
-                        <Link to='/support' className={currentLang + " support-link"}
-                              onClick={playClick}>{LANG.support}</Link>
-                    </form>
+                            <div className="privacy">
+                                <label>
+                                    <input type="checkbox" id="privacy" required/>
+                                    <span>{LANG.Auth.Register.begin}</span>
 
-                </div>
+
+                                </label>
+                                <label className="privacy-row">
+                                    <input type="checkbox" id="privacy" required/>
+                                    <span onClick={() => setPrivacy(true)}
+                                          className="gold link">{LANG.Auth.Register.legal}  <span className="and">{LANG.Auth.Register.and} </span>
+                                           {LANG.Auth.Register.privacy}</span>
+                                </label>
+                            </div>
+
+                            <button className={currentLang} onClick={playClick}>{LANG.Auth.Register.signUp}</button>
+
+
+                            <Link to='/support' className={currentLang + " support-link"}
+                                  onClick={playClick}>{LANG.support}</Link>
+                        </form>
+
+                    </div>
             );
         }
     } else {

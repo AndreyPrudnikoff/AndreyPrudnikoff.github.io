@@ -4,15 +4,17 @@
 .privacy-block {
   position: relative;
   overflow: auto;
-  margin: 120px auto 40px!important;
+  margin: 120px auto 40px !important;
   padding: 10px 30px;
   min-width: 328px;
   max-width: 80vw;
   z-index: 99;
+
   p {
     margin-top: 50px;
   }
 }
+
 .auth {
   position: relative;
   margin: 80px auto 40px;
@@ -74,9 +76,20 @@
       }
 
     }
+    .privacy {
+      display: block;
+    }
+    .privacy-row {
+      //flex-wrap: wrap!important;
+      .link {
+        white-space: normal;
+        .and {
+          text-decoration: none;
+        }
+      }
 
+    }
     .text {
-      position: relative;
 
       .eye {
         position: absolute;
@@ -111,9 +124,16 @@
       text-decoration: none;
       cursor: pointer;
     }
-
+    button {
+      margin: 0;
+    }
     .privacy {
       margin-bottom: 0;
+
+      .and {
+        margin-left: 5px;
+        margin-right: 5px;
+      }
 
       label {
         white-space: normal;
@@ -121,6 +141,8 @@
         flex-direction: row;
         flex-wrap: nowrap;
         max-width: 270px;
+        align-items: center;
+        font-size: 10px;
 
         span, .link {
           font-size: 10px;
@@ -319,9 +341,7 @@
       max-height: 80%;
       justify-content: space-between;
 
-      button {
-        //margin: 0;
-      }
+
     }
   }
   .restore {
