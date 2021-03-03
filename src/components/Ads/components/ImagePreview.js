@@ -1,6 +1,8 @@
 import React from "react";
 // hooks
 import useImagePreview from "../../useImagePreview";
+import {addBanner} from '../../../redux/actions/advertising'
+import { connect } from "react-redux";
 
 const ImagePreview = () => {
   const [image, setFile] = useImagePreview();
@@ -11,6 +13,7 @@ const ImagePreview = () => {
     console.log(file)
     let reader = new FileReader();
     reader.onloadend = function() {
+      addBanner(reader.result);
       console.log('RESULT', reader.result)
     }
     reader.readAsDataURL(file);
@@ -33,7 +36,7 @@ const ImagePreview = () => {
             ) : (
               <div className="description">Drag and drop file here or</div>
             )}
-            <input onChange={setFile} type="file" id="ad-file" onChange={encodeImageFileAsURL.bind(this)} />
+            <input onChange={(e) => {setFile(e); encodeImageFileAsURL(e)}} type="file" id="ad-file"  />
           </label>
 
           <label htmlFor="ad-file" className="btn-file">
@@ -45,4 +48,7 @@ const ImagePreview = () => {
   );
 };
 
-export default ImagePreview;
+const mapDispatchToProps = {
+  addBanner
+}
+export default connect(null, mapDispatchToProps)(ImagePreview);
