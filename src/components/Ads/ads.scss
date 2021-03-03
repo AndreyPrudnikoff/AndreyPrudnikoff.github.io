@@ -149,6 +149,15 @@
       font-size: 16px;
       line-height: 23px;
 
+      &__not-ads {
+        text-align: center;
+        font-family: Roc Grotesk;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 23px;
+      }
+
       &__item {
         position: relative;
         display: flex;

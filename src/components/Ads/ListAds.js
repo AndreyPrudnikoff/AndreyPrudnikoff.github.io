@@ -5,9 +5,13 @@ import deposit from '../../images/deposit.svg';
 import { useHistory, Link } from 'react-router-dom';
 import {playClick} from "../../redux/actions/music";
 import { connect } from 'react-redux';
+import Wallet from './components/Wallet'
+import {EN} from "../../languages/en";
+import {RU} from "../../languages/ru";
 
-const ListAds = ({playClick, name, balance}) => {
+const ListAds = ({playClick, name, balance, currentLang}) => {
     let history = useHistory();
+    const LANG = currentLang === "en" ? EN : RU;
     const [current, setCurrent] = useState(true)
     const [finished, setFinished] = useState(false)
     const [arrList, setArrList] = useState()
@@ -37,17 +41,19 @@ const ListAds = ({playClick, name, balance}) => {
             {site: 'myheadphones.com', date: 'Dec 28, 2020'}
         ]
     }
+    console.log(Object.keys(testData).length)
     
     return (
         <div className='listBlock'>
             <div className='round-dark listAds'>
-                <h1 className='listAds__title'>My ads</h1>
+                <h1 className='listAds__title'>{LANG.Ads.MyAds.title}</h1>
                 <div className='ads-switch'>
-                    <span onClick={() => {setCurrent(true); setFinished(false)}} className={!current ? 'ads-switch__item' : 'ads-switch__item active'}>Current</span>
-                    <span onClick={() => {setFinished(true); setCurrent(false)}} className={!finished  ? 'ads-switch__item' : 'ads-switch__item active'}>Finished</span>
+                    <span onClick={() => {setCurrent(true); setFinished(false)}} className={!current ? 'ads-switch__item' : 'ads-switch__item active'}>{LANG.Ads.MyAds.current}</span>
+                    <span onClick={() => {setFinished(true); setCurrent(false)}} className={!finished  ? 'ads-switch__item' : 'ads-switch__item active'}>{LANG.Ads.MyAds.finished}</span>
                 </div>
                 <ul className='ads-list'>
-                    {current ? 
+                    {!Object.keys(testData).length == 0 ?
+                        current ? 
                             testData.current.map((item, index) => (
                                 <React.Fragment>
                                     <li className='ads-list__item' onClick={() => {history.push('/ads')}}>
@@ -64,40 +70,21 @@ const ListAds = ({playClick, name, balance}) => {
                                     </li>
                                 </React.Fragment>
                         ))
-                        }
-                    {/* {!(isData) ? 
-                    <React.Fragment>
-                        <li className='ads-list__item' onClick={() => {history.push('/ads')}}>
-                            <span className='item__title'>myheadphones.com</span>
-                            <span className='item__date'>Jan 5, 2021</span>
-                        </li>
-                        <li className='ads-list__item'>
-                            <span className='item__title'>myheadphones.com</span>
-                            <span className='item__date'>Jan 5, 2021</span>
-                        </li>
-                    </React.Fragment>
-                    : <h1>Тустота ...</h1>} */}
-                    {/* {arrList.map((item, index) => {})} */}
+                    
+                    :
+                    <h1 className='ads-list__not-ads'>{LANG.Ads.MyAds.notAds}</h1>
+                    }
+                    
                 </ul>
             </div>
-            <div className='round-dark wallet'>
-                <div className='wallet__title'>My wallet</div>
-                <div className='wallet__name-title'>Name</div>
-                <div className='wallet__name'>{name}</div>
-                <div className='wallet__balance-title'>Balance</div>
-                <div className='wallet__balance'>{balance} &#8383;</div>
-                <Link to="/refill" className="wallet__deposit btn green" onClick={playClick}>Deposit
-                    {/* {LANG.BettingRealMoney.UsualState.MyWallet.btnWithdraw} */}
-                    <img src={deposit} alt="withdraw"/>
-                </Link>
-            </div>
+            <Wallet/>
         </div>  
     )
 }
 
 const mapStateToProps = state => {
-    console.log(state.balanceReducer.name)
     return {
+        currentLang: state.switchOptions.lang,
         balance: state.balanceReducer.balance,
         name: state.balanceReducer.name
     }

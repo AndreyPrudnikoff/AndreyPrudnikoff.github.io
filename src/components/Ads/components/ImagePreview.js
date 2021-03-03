@@ -5,6 +5,17 @@ import useImagePreview from "../../useImagePreview";
 const ImagePreview = () => {
   const [image, setFile] = useImagePreview();
 
+  const encodeImageFileAsURL = (element) => {
+    console.log(element)
+    let file = element.target.files[0];
+    console.log(file)
+    let reader = new FileReader();
+    reader.onloadend = function() {
+      console.log('RESULT', reader.result)
+    }
+    reader.readAsDataURL(file);
+  }
+
   return (
     <div>
       <h2>Ad creative</h2>
@@ -22,7 +33,7 @@ const ImagePreview = () => {
             ) : (
               <div className="description">Drag and drop file here or</div>
             )}
-            <input onChange={setFile} type="file" id="ad-file" />
+            <input onChange={setFile} type="file" id="ad-file" onChange={encodeImageFileAsURL.bind(this)} />
           </label>
 
           <label htmlFor="ad-file" className="btn-file">

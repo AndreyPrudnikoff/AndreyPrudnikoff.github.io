@@ -45,7 +45,7 @@ const routing = [
     {path: "/login", component: Auth},
     {path: "/signup", component: Auth},
     {path: "/ads", component: Ads},
-    {path: '/myads/:params', component: ListAds},
+    {path: '/myads', component: ListAds},
     {path: "/complete/pay", component: CompletePay},
     {path: "/complete/withdraw", component: CompleteWith},
     {path: "/withdraw", component: Withdraw},
