@@ -13,6 +13,7 @@ import Btc from "./components/Refill/Btc";
 import Usd from "./components/Refill/Usd";
 import Support from "./components/Auth/Support";
 import Ads from "./components/Ads/Ads";
+import ListAds from './components/Ads/ListAds';
 import CompletePay from "./components/Refill/CompletePay";
 import CompleteWith from "./components/Refill/CompleteWith";
 import Withdraw from "./components/Refill/Withdraw";
@@ -44,6 +45,7 @@ const routing = [
     {path: "/login", component: Auth},
     {path: "/signup", component: Auth},
     {path: "/ads", component: Ads},
+    {path: '/listAds', component: ListAds},
     {path: "/complete/pay", component: CompletePay},
     {path: "/complete/withdraw", component: CompleteWith},
     {path: "/withdraw", component: Withdraw},

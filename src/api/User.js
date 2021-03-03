@@ -1,4 +1,4 @@
-import Api from './Api';
+import {Api, Dev} from './Api';
 
 // const token = JSON.stringify({"accessToken": sessionStorage.getItem('token')});
 export const User = {
@@ -38,4 +38,7 @@ export const User = {
     withdraw(wallet) {
         return Api().post('/user/withdraw', JSON.stringify({...{"accessToken": sessionStorage.getItem('token')}, ...wallet}));
     },
+    listAds() {
+        return Dev().post('/ads/list', JSON.stringify({"accessToken": sessionStorage.getItem('token')}));
+    }
 };

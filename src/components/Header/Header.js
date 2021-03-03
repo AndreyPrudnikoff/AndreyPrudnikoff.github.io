@@ -167,8 +167,14 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                                         alt="sound"/>
                                         Soundf
                                     </li> : null }
-                                <li onClick={() => {history.push("/ads"); playClick()}} className="burger-menu-item bord">{LANG.Menu.first}</li>
-                                <li onClick={() => {history.push("/ads");  playClick()}} className="burger-menu-item bord"><span>{LANG.Menu.second}</span></li>
+                                {widthMode !== 'desktop' ? null : 
+                                    <React.Fragment>
+                                        <li onClick={() => {history.push("/ads"); playClick()}} className="burger-menu-item bord">{LANG.Menu.first}</li>
+                                        <li onClick={() => {history.push("/listAds");  playClick()}} className="burger-menu-item bord"><span>{LANG.Menu.second}</span></li>
+                                    </React.Fragment>
+                                
+                                }
+                                
                                 <li onClick={() => {
                                     history.push("/game");
                                     changeDemo();
