@@ -4,36 +4,28 @@ import {User} from '../../api/User';
 import deposit from '../../images/deposit.svg';
 import { useHistory, Link } from 'react-router-dom';
 import {playClick} from "../../redux/actions/music";
-import {getCurrentList} from '../../redux/actions/advertising'
+import {getCurrentList, getDetails} from '../../redux/actions/advertising'
 import { connect } from 'react-redux';
 import Wallet from './components/Wallet'
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const ListAds = ({playClick, name, balance, currentLang, currentList, finishedList, getCurrentList}) => {
+const ListAds = ({playClick, name, balance, currentLang, currentList, finishedList, getCurrentList, getDetails}) => {
     let history = useHistory();
     const LANG = currentLang === "en" ? EN : RU;
-    const [isCurrent, setIsCurrent] = useState(true)
+    const [isCurrent, setIsCurrent] = useState(false)
     // const [finished, setFinished] = useState(false)
     const [arrList, setArrList] = useState()
     let ADS = isCurrent ? currentList : finishedList;
     // const [isData, setIsData] = useState(false)
 
-    // const testData = {
-    //     current: [
-    //         {site: 'myheadphones.com', date: 'Jan 5, 2021'},
-    //         {site: 'mybeats.com', date: 'Jan 4, 2021'}
-    //     ],
-    //     finished: [
-    //         {site: 'myairpods.com', date: 'Jan 1, 2021'},
-    //         {site: 'myheadphones.com', date: 'Dec 28, 2020'}
-    //     ]
-    // }
+    
     useEffect(() => {
         ADS = isCurrent ? currentList : finishedList;
     }, [isCurrent])
 
     useEffect(() => {
+        // setIsCurrent(true)
         getCurrentList()
         console.log('121312312312312321321')
     }, [])
@@ -51,12 +43,12 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                     {ADS.length !== 0
                         ?   ADS.map((item, index) => (
                                 <React.Fragment>
-                                    <li className='ads-list__item' onClick={() => {history.push('/myad')}}>
+                                    <li className='ads-list__item' onClick={() => {getDetails(item); history.push('/myad')}}>
                                         <span className='item__title'>myheadphones.com</span>
                                         <span className='item__date'>{item.end_date}</span>
                                     </li>
                                 </React.Fragment>
-                            )) : null
+                            )) : <h1 className='ads-list__not-ads'>{LANG.Ads.MyAds.notAds}</h1>
                             }
                     {/* {!Object.keys(testData).length == 0 ?
                         current ? 
@@ -100,7 +92,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = { 
     playClick, 
-    getCurrentList
+    getCurrentList, 
+    getDetails
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListAds)

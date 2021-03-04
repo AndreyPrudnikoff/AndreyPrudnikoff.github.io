@@ -33,6 +33,7 @@ export const SET_TIMEZONE = "SET_TIMEZONE";
 export const SET_BUDGET = "SET_BUDGET";
 export const DELETE_COUNTRY_AND_TIMEZONE = 'DELETE_COUNTRY_AND_TIMEZONE';
 export const GET_LIST_ADS = 'GET_LIST_ADS';
+export const AD_DETAIL = 'AD_DETAIL';
 
 
 // export const PLAY_CLICK ='PLAY_CLICK';

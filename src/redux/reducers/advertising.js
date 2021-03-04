@@ -10,7 +10,8 @@ import {
     SET_TIMEZONE,
     SET_WEB_SITE,
     DELETE_COUNTRY_AND_TIMEZONE, 
-    GET_LIST_ADS
+    GET_LIST_ADS,
+    AD_DETAIL
 } from "../types";
 
 const initialState = {
@@ -23,7 +24,8 @@ const initialState = {
     banner_end_time: "hh:mm:ss",
     budget: "0",
     currentList: [],
-    finishedList: []
+    finishedList: [],
+    adDetail: {}
 }
 
 export const adsOptions = (state = initialState, action) => {
@@ -51,6 +53,9 @@ export const adsOptions = (state = initialState, action) => {
                 ...state.country_codes_timezones.slice(0, action.payload),
                 ...state.country_codes_timezones.slice(action.payload + 1)
             ]}
+        case AD_DETAIL: {
+            return {...state, adDetail: action.payload}
+        }
         default:
             return state;
     }

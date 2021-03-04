@@ -16,7 +16,7 @@ const Wallet = ({name, balance, playClick, input}) => {
                 <div className='wallet__name'>{name}</div>
                 <div className='wallet__balance-title'>Balance</div>
                 <div className='wallet__balance'>{balance} &#8383;</div>
-                <Link to="/refill" className="wallet__deposit btn green" onClick={playClick}>Deposit
+                <Link to="/refill" className="wallet__deposit btn up" onClick={playClick}>Deposit
                     {/* {LANG.BettingRealMoney.UsualState.MyWallet.btnWithdraw} */}
                     <img className='deposit' src={deposit} alt="deposit"/>
                 </Link>

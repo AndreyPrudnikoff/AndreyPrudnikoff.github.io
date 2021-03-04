@@ -8,7 +8,8 @@ import {
     SET_TIMEZONE,
     SET_WEB_SITE,
     DELETE_COUNTRY_AND_TIMEZONE, 
-    GET_LIST_ADS
+    GET_LIST_ADS,
+    AD_DETAIL
 } from "../types";
 
 export function addBanner(banner) {
@@ -48,19 +49,21 @@ export function getCurrentList() {
     }
     User.listAds()
         .then(data => {
-            console.log(data.data.data.length)
             if(data.status === 200) {
                 for(let i = 0; i < data.data.data.length; i++) {
-                    console.log('for')
-                    if(data.data.data[i].status === 'active') {
-                        obj.currrent.push(data.data.data[i])
-                    } else if (data.data.data[i].status === 'not active') {
-                        console.log('y')
+                    if(data.data.data[i].status === 'ended') {
                         obj.finished.push(data.data.data[i])
+                    } else {
+                        console.log(data.data.data[i])
+                        obj.current.push(data.data.data[i])
                     }
                 }
             }
         })
         .catch(e => console.log(e))
     return {type: GET_LIST_ADS, payload: obj}
+}
+
+export function getDetails(obj) {
+    return{type: AD_DETAIL, payload: obj}
 }
