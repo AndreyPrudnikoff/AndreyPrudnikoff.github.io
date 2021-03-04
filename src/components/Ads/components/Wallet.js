@@ -34,4 +34,4 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     playClick
 }
-export default connect(mapStateToProps, null)(Wallet)
+export default connect(mapStateToProps, mapDispatchToProps)(Wallet)
