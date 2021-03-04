@@ -3,6 +3,8 @@ import {setWebsite} from '../../../../../redux/actions/advertising'
 import dayjs from "dayjs";
 // styles
 import "./style.scss";
+import store from "../../../../../redux/store";
+import {setBudget} from "../../../../../redux/actions/advertising";
 import { connect } from "react-redux";
 
 export const NumberInput = ({ label }) => {
@@ -92,12 +94,12 @@ export const TimeInput = ({ label, onChange = () => {} }) => {
 export const RangeInput = ({min, max, balance, withError = false, onChange = () => {},}) => {
   const [isValid, setValidation] = useState(true);
 
-  const hadlerChnage = ({ target: { valueAsNumber } }) => {
+  const handlerChange = ({ target: { valueAsNumber } }) => {
     onChange({
       value: valueAsNumber,
       isValid: balance >= valueAsNumber,
     });
-
+      store.dispatch(setBudget(valueAsNumber))
     setValidation(balance >= valueAsNumber);
   };
 
@@ -107,7 +109,7 @@ export const RangeInput = ({min, max, balance, withError = false, onChange = () 
         required
         min={min}
         max={max}
-        onChange={hadlerChnage}
+        onChange={handlerChange}
         className={isValid ? "rangeInput" : "rangeInput-error"}
         type="range"
       />
@@ -136,7 +138,10 @@ export const TextInput = ({ label, onChange = () => {}, setWebsite, webSite }) =
         // value=""
         type="text"
         placeholder="website.com"
+
+        onChange={(e)=>onChange(e.target.value)}
         // onChange={(e) => setWebsite(e.target.value)}
+
       />
       {/* {console.log(webSite)} */}
     </div>

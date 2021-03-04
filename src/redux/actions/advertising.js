@@ -1,6 +1,6 @@
 import {
     ADD_BANNER,
-    ADD_COUNTRY,
+    ADD_COUNTRY, SET_BUDGET,
     SET_END_DATE, SET_END_TIME,
     SET_START_DATE,
     SET_START_TIME,
@@ -32,6 +32,9 @@ export function setEndTime(time) {
 }
 export function setTimezone(timezone) {
     return {type: SET_TIMEZONE, payload: timezone}
+}
+export function setBudget(budget) {
+    return {type: SET_BUDGET, payload: budget}
 }
 export function deleteCountryAndTimeZone(index) {
     return {type: DELETE_COUNTRY_AND_TIMEZONE, payload: index}

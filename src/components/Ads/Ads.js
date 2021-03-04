@@ -7,6 +7,7 @@ import {TextInput} from "./components/Duration/components";
 import {Duration, ImagePreview, Audience, Footer} from "./components";
 import Wallet from './components/Wallet'
 import {countryList} from "../../country/country";
+import {setWebsite} from "../../redux/actions/advertising";
 
 const Ads = (props) => {
     const asd = Object.keys(countryList);
@@ -30,7 +31,7 @@ const Ads = (props) => {
             <form onSubmit={(e) => handleSubmit(e)} className="round-dark ads">
                 <ImagePreview/>
 
-                <TextInput label="Website URL"/>
+            <TextInput onChange={props.setWebsite} label="Website URL"/>
 
                 <hr/>
 
@@ -46,6 +47,7 @@ const Ads = (props) => {
         
 }
 const mapStateToProps = state => {
+
     return {
         banner: state.adsOptions.banner,
         website_url: state.adsOptions.website_url,
@@ -56,6 +58,11 @@ const mapStateToProps = state => {
         banner_end_date: state.adsOptions.banner_end_date,
         banner_end_time: state.adsOptions.banner_end_time,
         banner_timezone: state.adsOptions.banner_timezone,
+        budget: state.adsOptions.budget,
+
     }
 }
-export default connect(mapStateToProps, null)(Ads);
+const mapDispatchToProps = {
+    setWebsite
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Ads);

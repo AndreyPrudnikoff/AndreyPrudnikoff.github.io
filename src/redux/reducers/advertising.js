@@ -1,9 +1,19 @@
-import {ADD_BANNER, ADD_COUNTRY, SET_END_DATE, SET_END_TIME, SET_START_DATE, SET_START_TIME, SET_TIMEZONE, SET_WEB_SITE} from "../types";
+import {
+    ADD_BANNER,
+    ADD_COUNTRY,
+    SET_BUDGET,
+    SET_END_DATE,
+    SET_END_TIME,
+    SET_START_DATE,
+    SET_START_TIME,
+    SET_TIMEZONE,
+    SET_WEB_SITE
+} from "../types";
 
 const initialState = {
     banner: "base64",
     website_url: "",
-    country_codes_timezones:[],
+    country_codes_timezones: [],
     banner_start_date: "yyyy-mm-dd",
     banner_start_time: "hh:mm:ss",
     banner_end_date: "yyyy-mm-dd",
@@ -30,6 +40,8 @@ export const adsOptions = (state = initialState, action) => {
             return {...state, banner_end_time: action.payload};
         case SET_TIMEZONE:
             return {...state, banner_timezone: action.payload};
+        case SET_BUDGET:
+            return {...state, budget: action.payload};
         default:
             return state;
     }

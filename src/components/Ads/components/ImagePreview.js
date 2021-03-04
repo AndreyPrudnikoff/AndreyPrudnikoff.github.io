@@ -4,17 +4,14 @@ import useImagePreview from "../../useImagePreview";
 import {addBanner} from '../../../redux/actions/advertising'
 import { connect } from "react-redux";
 
-const ImagePreview = () => {
+const ImagePreview = ({addBanner}) => {
   const [image, setFile] = useImagePreview();
 
   const encodeImageFileAsURL = (element) => {
-    console.log(element)
     let file = element.target.files[0];
-    console.log(file)
     let reader = new FileReader();
     reader.onloadend = function() {
       addBanner(reader.result);
-      console.log('RESULT', reader.result)
     }
     reader.readAsDataURL(file);
   }
@@ -22,7 +19,6 @@ const ImagePreview = () => {
   return (
     <div>
       <h2>Ad creative</h2>
-
       <div className="wrapper-input-file">
         <div className="label-file">
           Select a banner to add <br />
