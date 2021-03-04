@@ -1,3 +1,4 @@
+import {User} from '../../api/User' 
 import {
     ADD_BANNER,
     ADD_COUNTRY, SET_BUDGET,
@@ -6,7 +7,8 @@ import {
     SET_START_TIME,
     SET_TIMEZONE,
     SET_WEB_SITE,
-    DELETE_COUNTRY_AND_TIMEZONE
+    DELETE_COUNTRY_AND_TIMEZONE, 
+    GET_LIST_ADS
 } from "../types";
 
 export function addBanner(banner) {
@@ -38,4 +40,27 @@ export function setBudget(budget) {
 }
 export function deleteCountryAndTimeZone(index) {
     return {type: DELETE_COUNTRY_AND_TIMEZONE, payload: index}
+}
+export function getCurrentList() {
+    let obj = {
+        current: new Array(),
+        finished: new Array()
+    }
+    User.listAds()
+        .then(data => {
+            console.log(data.data.data.length)
+            if(data.status === 200) {
+                for(let i = 0; i < data.data.data.length; i++) {
+                    console.log('for')
+                    if(data.data.data[i].status === 'active') {
+                        obj.currrent.push(data.data.data[i])
+                    } else if (data.data.data[i].status === 'not active') {
+                        console.log('y')
+                        obj.finished.push(data.data.data[i])
+                    }
+                }
+            }
+        })
+        .catch(e => console.log(e))
+    return {type: GET_LIST_ADS, payload: obj}
 }

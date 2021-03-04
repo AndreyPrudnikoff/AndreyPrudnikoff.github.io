@@ -9,7 +9,8 @@ import {
     SET_START_TIME,
     SET_TIMEZONE,
     SET_WEB_SITE,
-    DELETE_COUNTRY_AND_TIMEZONE
+    DELETE_COUNTRY_AND_TIMEZONE, 
+    GET_LIST_ADS
 } from "../types";
 
 const initialState = {
@@ -20,7 +21,9 @@ const initialState = {
     banner_start_time: "hh:mm:ss",
     banner_end_date: "yyyy-mm-dd",
     banner_end_time: "hh:mm:ss",
-    budget: "0"
+    budget: "0",
+    currentList: [],
+    finishedList: []
 }
 
 export const adsOptions = (state = initialState, action) => {
@@ -41,6 +44,8 @@ export const adsOptions = (state = initialState, action) => {
             return {...state, banner_end_time: action.payload};
         case SET_BUDGET:
             return {...state, budget: action.payload};
+        case GET_LIST_ADS:
+            return {...state, currentList: action.payload.current, finishedList: action.payload.finished}
         case DELETE_COUNTRY_AND_TIMEZONE:
             return {...state, country_codes_timezones: [
                 ...state.country_codes_timezones.slice(0, action.payload),
