@@ -5,7 +5,8 @@ import {
     SET_START_DATE,
     SET_START_TIME,
     SET_TIMEZONE,
-    SET_WEB_SITE
+    SET_WEB_SITE,
+    DELETE_COUNTRY_AND_TIMEZONE
 } from "../types";
 
 export function addBanner(banner) {
@@ -31,4 +32,7 @@ export function setEndTime(time) {
 }
 export function setTimezone(timezone) {
     return {type: SET_TIMEZONE, payload: timezone}
+}
+export function deleteCountryAndTimeZone(index) {
+    return {type: DELETE_COUNTRY_AND_TIMEZONE, payload: index}
 }

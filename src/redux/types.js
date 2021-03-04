@@ -30,6 +30,7 @@ export const SET_START_TIME = "SET_START_TIME";
 export const SET_END_DATE = "SET_END_DATE";
 export const SET_END_TIME = "SET_END_TIME";
 export const SET_TIMEZONE = "SET_TIMEZONE";
+export const DELETE_COUNTRY_AND_TIMEZONE = 'DELETE_COUNTRY_AND_TIMEZONE';
 
 // export const PLAY_CLICK ='PLAY_CLICK';
 export const PLAY_CLACK ='PLAY_CLACK';
