@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import {setWebsite} from '../../../../../redux/actions/advertising'
 import dayjs from "dayjs";
 // styles
 import "./style.scss";
 import store from "../../../../../redux/store";
 import {setBudget} from "../../../../../redux/actions/advertising";
+import { connect } from "react-redux";
 
 export const NumberInput = ({ label }) => {
   const [inputValue, setValue] = useState("1");
@@ -128,7 +130,7 @@ export const RangeInput = ({min, max, balance, withError = false, onChange = () 
   );
 };
 
-export const TextInput = ({ label, onChange = () => {} }) => {
+export const TextInput = ({ label, onChange = () => {}, setWebsite, webSite }) => {
   return (
     <div className="website-block">
       <span className="block-description">{label}</span>
@@ -136,8 +138,24 @@ export const TextInput = ({ label, onChange = () => {} }) => {
         // value=""
         type="text"
         placeholder="website.com"
+
         onChange={(e)=>onChange(e.target.value)}
+        // onChange={(e) => setWebsite(e.target.value)}
+
       />
+      {/* {console.log(webSite)} */}
     </div>
   );
 };
+
+// const mapStateToProps = state => {
+//   return {
+//     webSite: state.adsOptions.website_url
+//   }
+// }
+
+// const mapDispatchToProps = {
+//   setWebsite
+// }
+
+// export default connect(mapStateToProps, mapDispatchToProps)(TextInput)

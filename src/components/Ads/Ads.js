@@ -5,6 +5,7 @@ import "./ads.scss";
 // components
 import {TextInput} from "./components/Duration/components";
 import {Duration, ImagePreview, Audience, Footer} from "./components";
+import Wallet from './components/Wallet'
 import {countryList} from "../../country/country";
 import {setWebsite} from "../../redux/actions/advertising";
 
@@ -26,20 +27,24 @@ const Ads = (props) => {
         console.log(ad);
     }
     return (
-        <form onSubmit={(e) => handleSubmit(e)} className="round-dark ads">
-            <ImagePreview/>
+        <div style={{position: 'relative', display:'flex'}}>
+            <form onSubmit={(e) => handleSubmit(e)} className="round-dark ads">
+                <ImagePreview/>
 
             <TextInput onChange={props.setWebsite} label="Website URL"/>
 
-            <hr/>
+                <hr/>
 
-            <Audience/>
+                <Audience/>
 
-            <Duration/>
+                <Duration/>
 
-            <Footer/>
-        </form>
+                <Footer/>
+            </form>
+            <Wallet input={true} />
+        </div>
     )
+        
 }
 const mapStateToProps = state => {
 
