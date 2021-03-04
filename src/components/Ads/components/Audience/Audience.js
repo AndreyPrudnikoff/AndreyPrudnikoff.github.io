@@ -21,11 +21,7 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
     const addCountryTimezone = (e) => {
         e.preventDefault();
         if (country && zone) {
-            console.log(country)
             addCountry({[country]: zone});
-            console.log(country_codes_timezones)
-            // setCountry("");
-            // setZone("");
         }
     }
     const closeBtn = index => {
@@ -59,7 +55,7 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
                         </div>
                     </div>
                     <div className="addButton">
-                        <button onClick={(e) => {addCountryTimezone(e); console.log('y')}}>+</button>
+                        <button onClick={(e) => {addCountryTimezone(e)}}>+</button>
                         <span>Add country</span>
                     </div>
                 </div>
@@ -80,7 +76,6 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
     );
 };
 const mapStateToProps = state => {
-    console.log(state.adsOptions.country_codes_timezones)
     return {
         country_codes_timezones: state.adsOptions.country_codes_timezones
     }
