@@ -21,6 +21,7 @@ const Audience = ({addCountry, country_codes_timezones}) => {
     const addCountryTimezone = (e) => {
         e.preventDefault();
         if (country && zone) {
+            console.log(country)
             addCountry({[country]: zone});
             console.log(country_codes_timezones)
             // setCountry("");
@@ -58,7 +59,7 @@ const Audience = ({addCountry, country_codes_timezones}) => {
                         </div>
                     </div>
                     <div className="addButton">
-                        <button onClick={(e) => addCountryTimezone(e)}>+</button>
+                        <button onClick={(e) => {addCountryTimezone(e); console.log('y')}}>+</button>
                         <span>Add country</span>
                     </div>
                 </div>
@@ -79,12 +80,13 @@ const Audience = ({addCountry, country_codes_timezones}) => {
     );
 };
 const mapStateToProps = state => {
-    // console.log(state.adsOptions.country_codes_timezones)
+    console.log(state.adsOptions.country_codes_timezones)
     return {
         country_codes_timezones: state.adsOptions.country_codes_timezones
     }
 }
 const mapDispatchToProps = {
     addCountry
+    // deleteCountryAndTimeZone
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Audience);
