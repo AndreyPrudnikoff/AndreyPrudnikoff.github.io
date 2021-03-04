@@ -6,7 +6,7 @@ import "./style.scss";
 import {connect} from "react-redux";
 import {setEndDate, setEndTime, setStartDate, setStartTime} from "../../../../redux/actions/advertising";
 
-const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime}) => {
+const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime}) => {
   const tabs = [
     {
       id: 0,
@@ -38,6 +38,15 @@ const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime}) => {
     </div>
   );
 };
+
+// const mapStateToProps = state => {
+//   console.log(state.adsOptions.banner_start_time)
+//   console.log(state.adsOptions.banner_end_time)
+//   return {
+//     startTime: state.adsOptions.banner_start_time
+//   }
+  
+// }
 const mapDispatchToProps = {
     setStartDate,
     setStartTime,
