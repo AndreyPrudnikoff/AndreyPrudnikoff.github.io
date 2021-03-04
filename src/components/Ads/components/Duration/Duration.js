@@ -3,8 +3,10 @@ import React from "react";
 import { Tabs, TimeInput, DateInput } from "./components";
 // style
 import "./style.scss";
+import {connect} from "react-redux";
+import {setEndDate, setEndTime, setStartDate, setStartTime} from "../../../../redux/actions/advertising";
 
-const Duration = () => {
+const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime}) => {
   const tabs = [
     {
       id: 0,
@@ -12,12 +14,12 @@ const Duration = () => {
       content: (
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           <div style={{ display: "flex", gap: "95px" }}>
-            <DateInput label="Start date" />
-            <TimeInput label="Start time" />
+            <DateInput onChange={setStartDate} label="Start date" />
+            <TimeInput onChange={setStartTime} label="Start time" />
           </div>
           <div style={{ display: "flex", gap: "95px" }}>
-            <DateInput label="End date" />
-            <TimeInput label="End time" />
+            <DateInput onChange={setEndDate} label="End date" />
+            <TimeInput onChange={setEndTime} label="End time" />
           </div>
         </div>
       ),
@@ -36,5 +38,10 @@ const Duration = () => {
     </div>
   );
 };
-
-export default Duration;
+const mapDispatchToProps = {
+    setStartDate,
+    setStartTime,
+    setEndDate,
+    setEndTime,
+}
+export default connect(null, mapDispatchToProps)(Duration);

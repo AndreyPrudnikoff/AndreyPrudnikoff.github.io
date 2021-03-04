@@ -196,7 +196,7 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                         <div onClick={() => {stepTest(false); playClick()}} className={view ? "tab bets" : "tab bets active"}>
                             <img src={bets} alt="tab"/>
                         </div>
-                        <div onClick={() => {stepTest(true); playClick()}} className={!view ? "tab wallet" : "tab wallet active"}>
+                        <div onClick={() => {stepTest(true); playClick()}} className={!view ? "tab mobile_wallet" : "tab mobile_wallet active"}>
                             <img src={wallet} alt="tab"/>
                         </div>
                     </div>
@@ -205,6 +205,7 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
         </div>
     );
 };
+
 const mapStateToProps = state => {
     return {
         auth: state.authReducer.auth,

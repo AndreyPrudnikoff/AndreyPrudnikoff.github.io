@@ -18,7 +18,6 @@ const initialState = {
     banner_start_time: "hh:mm:ss",
     banner_end_date: "yyyy-mm-dd",
     banner_end_time: "hh:mm:ss",
-    banner_timezone: "00.00",
     budget: "0"
 }
 
@@ -38,8 +37,6 @@ export const adsOptions = (state = initialState, action) => {
             return {...state, banner_end_date: action.payload};
         case SET_END_TIME:
             return {...state, banner_end_time: action.payload};
-        case SET_TIMEZONE:
-            return {...state, banner_timezone: action.payload};
         case SET_BUDGET:
             return {...state, budget: action.payload};
         default:
