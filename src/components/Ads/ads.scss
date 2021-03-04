@@ -1,9 +1,11 @@
 .ads {
+  font-family: Roc Grotesk;
+  font-style: normal;
   position: relative;
   margin: 100px 0px 60px;
   min-height: 90%;
   width: 512px;
-  padding: 20px;
+  padding: 20px 20px 30px 20px;
 
   h2 {
     text-align: left;
@@ -101,6 +103,77 @@
       }
     }
   }
+
+  .section-block {
+    
+    .section-title {
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 35px;
+      margin-bottom: 10px;
+    }
+
+    span {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+
+      p {
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 23px;
+        margin-bottom: 10px;
+      }
+
+      .opacity-name {
+        opacity: .5;
+      }
+
+      .total-time {
+        font-size: 24px;
+        // line-height: 35px;
+        font-weight: 500;
+      }
+
+      .result-data {
+        font-size: 24px;
+      }
+
+      .currency-block {
+        position: relative;
+        display: flex;
+        flex-wrap: nowrap;
+        .dollar {
+          margin-left: 4px;
+          font-size: 24px;
+          width: 10px;
+          color: #F7931A;
+        }
+        .btn-block {
+          position: absolute;
+          width: 60px;
+          left: 46%;
+          top: 100%;
+          opacity: .5;
+          .btn {
+            color: #F7931A;
+            font-size: 24px;
+            padding: 0;
+            width: 10px;
+            margin-left: 4px;
+          }
+        }
+      }
+      
+    }
+  }
+}
+
+.myAd-btn {
+  opacity: 1 !important;
+  border: 1px solid white !important;
+  color: #fff !important;
 }
 
 .listBlock {
@@ -259,3 +332,5 @@
   position: absolute;
   top: 5.5%;
 }
+
+

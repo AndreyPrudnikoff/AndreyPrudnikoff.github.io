@@ -56,7 +56,7 @@ const ListAds = ({playClick, name, balance, currentLang}) => {
                         current ? 
                             testData.current.map((item, index) => (
                                 <React.Fragment>
-                                    <li className='ads-list__item' onClick={() => {history.push('/ads')}}>
+                                    <li className='ads-list__item' onClick={() => {history.push('/myad')}}>
                                         <span className='item__title'>{item.site}</span>
                                         <span className='item__date'>{item.date}</span>
                                     </li>
@@ -64,7 +64,7 @@ const ListAds = ({playClick, name, balance, currentLang}) => {
                             ))
                         : testData.finished.map((item,index) => (
                             <React.Fragment>
-                                    <li className='ads-list__item' onClick={() => {history.push('/ads')}}>
+                                    <li className='ads-list__item' onClick={() => {history.push('/myad')}}>
                                         <span className='item__title'>{item.site}</span>
                                         <span className='item__date'>{item.date}</span>
                                     </li>
