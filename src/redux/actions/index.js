@@ -74,7 +74,7 @@ export function closeYourLose() {
     return {type: CLOSE_YOURLOSE}
 }
 
-export function createAd() {
+export function createAdProp() {
     return {type: CREATE_AD}
 }
 

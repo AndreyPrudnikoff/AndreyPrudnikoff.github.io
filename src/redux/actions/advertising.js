@@ -54,7 +54,6 @@ export function getCurrentList() {
                     if(data.data.data[i].status === 'ended') {
                         obj.finished.push(data.data.data[i])
                     } else {
-                        console.log(data.data.data[i])
                         obj.current.push(data.data.data[i])
                     }
                 }

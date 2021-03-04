@@ -6,7 +6,7 @@ import arrows from "../../images/arrows.svg";
 import back from "../../images/back.svg";
 import {Link} from "react-router-dom";
 import Header from "../Header/Header";
-import {createAd} from "../../redux/actions";
+import {createAdProp} from "../../redux/actions";
 import {connect} from "react-redux";
 import {playClick} from "../../redux/actions/music";
 import {EN} from "../../languages/en";
@@ -29,12 +29,12 @@ const Refill = ({createAd, createAdProp, history, currentLang, playClick}) => {
 	return (
 		<div>
 		<Header/>
-		<div style={{display: createAdProp ? "block" : "none"}} className="blur soon">
+		<div style={{display: createAd ? "block" : "none"}} className="blur soon">
 		<div className="round-dark win">
 		<div className="win-btn">
 		<h2>This feature coming soon</h2>
 		<button onClick={() => {
-			createAd();
+			createAdProp();
 			playClick()
 		}} className="btn btn-primary">OK
 		</button>
@@ -89,12 +89,12 @@ alt="bit"/></button>
 
 const mapStateToProps = state => {
 	return {
-		createAdProp: state.switchOptions.createAd,
+		createAd: state.switchOptions.createAd,
 		currentLang: state.switchOptions.lang
 	}
 }
 const mapDispatchToProps = {
-	createAd,
+	createAdProp,
 	playClick
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Refill);

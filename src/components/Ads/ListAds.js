@@ -25,9 +25,7 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
     }, [isCurrent])
 
     useEffect(() => {
-        // setIsCurrent(true)
         getCurrentList()
-        console.log('121312312312312321321')
     }, [])
     
     return (
@@ -39,7 +37,6 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                     <span onClick={() => {setIsCurrent(false)}} className={isCurrent  ? 'ads-switch__item' : 'ads-switch__item active'}>{LANG.Ads.MyAds.finished}</span>
                 </div>
                 <ul className='ads-list'>
-                    {console.log(ADS)}
                     {ADS.length !== 0
                         ?   ADS.map((item, index) => (
                                 <React.Fragment>

@@ -7,7 +7,6 @@ import {playClick} from "../../../redux/actions/music";
 import { connect } from 'react-redux';
 
 const Wallet = ({name, balance, playClick, input}) => {
-    console.log(input)
     return (
         
         <div className={!input ? 'round-dark wallet' : 'round-dark wallet top'}>

@@ -2,7 +2,7 @@ import React from "react";
 // styles
 import "./style.scss";
 
-const Footer = () => {
+const Footer = (props) => {
   return (
     <div className="footer">
       <button type="submit">Ad Preview</button>
