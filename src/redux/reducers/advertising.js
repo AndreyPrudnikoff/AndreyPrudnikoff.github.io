@@ -1,3 +1,4 @@
+import { act } from "react-dom/test-utils";
 import {
     ADD_BANNER,
     ADD_COUNTRY,
@@ -7,7 +8,8 @@ import {
     SET_START_DATE,
     SET_START_TIME,
     SET_TIMEZONE,
-    SET_WEB_SITE
+    SET_WEB_SITE,
+    DELETE_COUNTRY_AND_TIMEZONE
 } from "../types";
 
 const initialState = {
@@ -39,6 +41,11 @@ export const adsOptions = (state = initialState, action) => {
             return {...state, banner_end_time: action.payload};
         case SET_BUDGET:
             return {...state, budget: action.payload};
+        case DELETE_COUNTRY_AND_TIMEZONE:
+            return {...state, country_codes_timezones: [
+                ...state.country_codes_timezones.slice(0, action.payload),
+                ...state.country_codes_timezones.slice(action.payload + 1)
+            ]}
         default:
             return state;
     }

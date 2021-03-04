@@ -4,12 +4,12 @@ import {timeZone} from "../../../../country/timezone";
 // component
 // styles
 import "./styles.scss";
-import {addCountry} from "../../../../redux/actions/advertising";
+import {addCountry, deleteCountryAndTimeZone} from "../../../../redux/actions/advertising";
 import {connect} from "react-redux";
 import closeImg from '../../../../images/close.png'
 
 
-const Audience = ({addCountry, country_codes_timezones}) => {
+const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone}) => {
     const [country, setCountry] = useState("");
     const [zone, setZone] = useState("");
     const writeCountry = (e) => {
@@ -22,9 +22,6 @@ const Audience = ({addCountry, country_codes_timezones}) => {
         e.preventDefault();
         if (country && zone) {
             addCountry({[country]: zone});
-            console.log(country_codes_timezones)
-            // setCountry("");
-            // setZone("");
         }
     }
     const closeBtn = index => {
@@ -39,7 +36,7 @@ const Audience = ({addCountry, country_codes_timezones}) => {
                         <span className='item-list selectInput'>{Object.keys(item)}</span>
                         <span className='item-list selectInput'>{Object.values(item)}</span>
                         <span className='item-list-close' >
-                            <img src={closeImg} alt='close' onClick={() => {closeBtn(index)}}/>
+                            <img src={closeImg} alt='close' onClick={() => {deleteCountryAndTimeZone(index)}}/>
                         </span>
                     </li>
                 ))}
@@ -58,7 +55,7 @@ const Audience = ({addCountry, country_codes_timezones}) => {
                         </div>
                     </div>
                     <div className="addButton">
-                        <button onClick={(e) => addCountryTimezone(e)}>+</button>
+                        <button onClick={(e) => {addCountryTimezone(e)}}>+</button>
                         <span>Add country</span>
                     </div>
                 </div>
@@ -79,12 +76,12 @@ const Audience = ({addCountry, country_codes_timezones}) => {
     );
 };
 const mapStateToProps = state => {
-    // console.log(state.adsOptions.country_codes_timezones)
     return {
         country_codes_timezones: state.adsOptions.country_codes_timezones
     }
 }
 const mapDispatchToProps = {
-    addCountry
+    addCountry,
+    deleteCountryAndTimeZone
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Audience);
