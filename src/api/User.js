@@ -38,6 +38,9 @@ export const User = {
     withdraw(wallet) {
         return Api().post('/user/withdraw', JSON.stringify({...{"accessToken": sessionStorage.getItem('token')}, ...wallet}));
     },
+    createAd(ad) {
+        return Dev().post('/ads/create', JSON.stringify({...{"accessToken": sessionStorage.getItem('token')}, ...ad}));
+    },
     listAds() {
         return Dev().post('/ads/list', JSON.stringify({"accessToken": sessionStorage.getItem('token')}));
     }

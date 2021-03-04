@@ -106,7 +106,11 @@ const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance,
                         <button disabled={predict} onClick={() => {setSwitcher(true); playClick()}}  className={currentLang + " btn money-btn green"}>{LANG.Training.UsualState.DemoWallet.btnBetBitcoin}
                             {/*<img src={withdraw} alt="withdraw"/>*/}
                         </button>
-                        <Link to="/invite" style={{pointerEvents: predict ? "none" : "auto"}} className={currentLang + " btn money-btn friends"} onClick={playClick}>{LANG.Training.UsualState.DemoWallet.btnPlayWithFriends}
+                        <Link to="/invite" style={{pointerEvents: predict ? "none" : "auto"}} className={currentLang + " btn money-btn friends"} onClick={(e)=>{
+                            e.preventDefault();
+                            createAd();
+                            playClick();
+                        }}>{LANG.Training.UsualState.DemoWallet.btnPlayWithFriends}
                             {/*<img src={deposit} alt="deposit"/>*/}
                         </Link>
 

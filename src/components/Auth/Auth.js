@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import PhoneInput from 'react-phone-number-input';
 import './auth.scss';
 import arrow_btn from "../../images/arrow-btn.png";
-import {authorization, betWin, registration} from "../../redux/actions";
+import {authorization, betWin, registration, switchStep} from "../../redux/actions";
 import {User} from "../../api/User";
 import {fireworks, muteToggle, playClick} from "../../redux/actions/music";
 import {EN} from "../../languages/en";
@@ -21,7 +21,8 @@ const Auth = ({
                   history,
                   widthMode,
                   currentLang,
-                  playClick
+                  playClick,
+                  switchStep
               }) => {
     const [password, setPassword] = useState(true)
     const [passwordConfirm, setPasswordConfirm] = useState(true)
@@ -79,7 +80,6 @@ const Auth = ({
 
     const handleSubmit = event => {
         event.preventDefault();
-
         const body = JSON.stringify({name, phone, email, pass, confpass, promocode});
         if (confpass.length < 8 || confpass.length < 8) {
             setErr('Password length must be 8 characters')
@@ -104,6 +104,10 @@ const Auth = ({
                 if (res.data.status === "success") {
                     sessionStorage.setItem('token', res.data.data.accessToken);
                     authorization();
+                    if(res.data.newUser) {
+                        console.log(res.data.newUser)
+                        switchStep(1);
+                    }
                 } else {
                     if (res.data.error) {
                         setErr(res.data.error);
@@ -344,7 +348,8 @@ const mapDispatchToProps = {
     muteToggle,
     betWin,
     fireworks,
-    playClick
+    playClick,
+    switchStep
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Auth);

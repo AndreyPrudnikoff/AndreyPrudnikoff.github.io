@@ -18,37 +18,11 @@ import {RU} from "../../languages/ru";
 import Online from "./Online";
 import Presentation from "../Intro/Presentation";
 
-const fire = () => {
-    // document.getElementById('fireworks-canvas').style.width = '100%'
-    // document.getElementById('fireworks-canvas').style.height = '100%'
-    // const firework = JS_FIREWORKS.Fireworks({
-    //     id: 'fireworks-canvas',
-    //     hue: 120,
-    //     particleCount: 100,
-    //     delay: 0,
-    //     minDelay: 5,
-    //     maxDelay: 10,
-    //     boundaries: {
-    //         top: 50,
-    //         bottom: 240,
-    //         left: 50,
-    //         right: 590
-    //     },
-    //     fireworkSpeed: 2,
-    //     fireworkAcceleration: 1.05,
-    //     particleFriction: .95,
-    //     particleGravity: 1.5
-    // });
-    // firework.start();
-};
-
 const Main = ({history, step, view, switchView, course, lastWin, closeCongratulation, congratulation, yourlose, closeYourLose, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition, userdata, lastWinGame, createAd, createAdProp, widthMode, currentLang, you_lose, add_to_wallet, playClick}) => {
 
     useEffect(() => {
         userdata();
-        fire();
     }, [congratulation, userdata]);
-    useEffect(() => {fire()}, []);
     useEffect(()=> switchView(false), []);
 
     const LANG = currentLang === "en" ? EN : RU;
@@ -56,46 +30,6 @@ const Main = ({history, step, view, switchView, course, lastWin, closeCongratula
     return (
         <div className={`${widthMode}-bg main`}>
             <Preloader show={flag}/>
-            {/* <div style={{display: congratulation ? "block" : "none"}} className="blur">
-                <canvas width="640" height="480" id="fireworks-canvas" style={{background: 'rgba(0,0,0, .2)'}}/>
-                <div className="round-dark win">
-                    <h2 className="currentLang">{LANG.BettingRealMoney.WinningAndLosing.Winning.title}</h2>
-                    <div className={currentLang + " text-center"}>{LANG.BettingRealMoney.WinningAndLosing.Winning.youWon} {lastWinGame || 1} <img src={bitcoin} width="15" alt="bit"/>
-                    </div>
-                    <div className="win-btn">
-                        <button onClick={() => {
-                            closeCongratulation();
-                            userdata();
-                            document.getElementById('fireworks').pause();
-                            // money();
-                            add_to_wallet();
-                        }} className={currentLang + " btn btn-primary"}>{LANG.BettingRealMoney.WinningAndLosing.Winning.btnAddToWallet}
-                        </button>
-                        <button disabled onClick={() => {
-                            closeCongratulation();
-                            userdata();
-                            playClick()
-                            document.getElementById('fireworks').pause();
-                            // money();
-                        }} className={currentCourse + " btn btn-primary"}>{LANG.BettingRealMoney.WinningAndLosing.Winning.btnWithdraw}
-                        </button>
-                    </div>
-                </div>
-            </div> */}
-
-            {/* <div style={{display: yourlose ? "block" : "none"}} className="blur">
-                <div className="round-dark win">
-                    <h2>Your lose</h2>
-                    <div className="win-btn">
-                        <button onClick={() => {
-                            closeYourLose();
-                            userdata();
-                            playClick()
-                        }} className="btn btn-primary">Bet again
-                        </button>
-                    </div>
-                </div>
-            </div> */}
             <div style={{display: createAdProp ? "block" : "none"}} className="blur soon">
                 <div className="round-dark win">
                     <div className="win-btn">

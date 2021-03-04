@@ -53,7 +53,7 @@ const Tabs = ({ tabs, budget, setBudget, balance }) => {
           </div>
         </div>
 
-        <RangeInput withError min={1} max={10000} balance={balance} />
+        <RangeInput withError min={0.0001} max={10000} balance={balance} />
       </div>
 
       <div className="content">{tabs[activeTab]?.content}</div>
