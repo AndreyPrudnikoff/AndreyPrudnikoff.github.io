@@ -135,27 +135,11 @@ export const TextInput = ({ label, onChange = () => {}, setWebsite, webSite }) =
     <div className="website-block">
       <span className="block-description">{label}</span>
       <input
-        // value=""
         type="text"
         placeholder="website.com"
-
         onChange={(e)=>onChange(e.target.value)}
-        // onChange={(e) => setWebsite(e.target.value)}
-
       />
-      {/* {console.log(webSite)} */}
     </div>
   );
 };
 
-// const mapStateToProps = state => {
-//   return {
-//     webSite: state.adsOptions.website_url
-//   }
-// }
-
-// const mapDispatchToProps = {
-//   setWebsite
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(TextInput)

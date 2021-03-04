@@ -30,7 +30,7 @@ const Support = ({history, currentLang, playClick}) => {
     return (
         <div className="blur">
             <form style={{width: '40%'}} className="round-dark win">
-                <span onClick={() => {history.push('/'); playClick()}} style={arrow} className="back restore-arrow">&larr;</span>
+                <span onClick={() => {history.goBack(); playClick()}} style={arrow} className="back restore-arrow">&larr;</span>
                 <div className="win-btn">
                     <h2 className={currentLang}>{LANG.Auth.Support.title}</h2>
                     <span className={currentLang} style={label}>{LANG.Auth.Support.writeQuestion}</span>
