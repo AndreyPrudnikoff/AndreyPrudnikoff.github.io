@@ -4,12 +4,12 @@ import {timeZone} from "../../../../country/timezone";
 // component
 // styles
 import "./styles.scss";
-import {addCountry} from "../../../../redux/actions/advertising";
+import {addCountry, deleteCountryAndTimeZone} from "../../../../redux/actions/advertising";
 import {connect} from "react-redux";
 import closeImg from '../../../../images/close.png'
 
 
-const Audience = ({addCountry, country_codes_timezones}) => {
+const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone}) => {
     const [country, setCountry] = useState("");
     const [zone, setZone] = useState("");
     const writeCountry = (e) => {
@@ -40,7 +40,7 @@ const Audience = ({addCountry, country_codes_timezones}) => {
                         <span className='item-list selectInput'>{Object.keys(item)}</span>
                         <span className='item-list selectInput'>{Object.values(item)}</span>
                         <span className='item-list-close' >
-                            <img src={closeImg} alt='close' onClick={() => {closeBtn(index)}}/>
+                            <img src={closeImg} alt='close' onClick={() => {deleteCountryAndTimeZone(index)}}/>
                         </span>
                     </li>
                 ))}
@@ -86,7 +86,7 @@ const mapStateToProps = state => {
     }
 }
 const mapDispatchToProps = {
-    addCountry
-    // deleteCountryAndTimeZone
+    addCountry,
+    deleteCountryAndTimeZone
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Audience);
