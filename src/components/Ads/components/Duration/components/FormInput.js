@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {setWebsite} from '../../../../../redux/actions/advertising'
+import moment from 'moment';
 import dayjs from "dayjs";
 // styles
 import "./style.scss";
@@ -76,9 +77,10 @@ export const TimeInput = ({ label, onChange = () => {} }) => {
   const [inputValue, setValue] = useState("");
 
   const handleChange = ({ target: { valueAsNumber } }) => {
-    setValue(dayjs(valueAsNumber).format("MMM D, YYYY"));
-
-    if (onChange) onChange(inputValue);
+    setValue(onChange(moment.utc(valueAsNumber).format('HH:mm:ss')))
+    // setValue(dayjs(valueAsNumber).format("HH:mm:ss [GMT]Z (z)", 'Europe/London'));
+    // if (onChange) onChange(inputValue);
+    return(onChange(moment.utc(valueAsNumber).format('HH:mm:ss')))
   };
 
   return (
