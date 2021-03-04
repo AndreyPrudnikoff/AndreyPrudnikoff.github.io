@@ -4,8 +4,9 @@ import {addBanner} from '../../redux/actions/advertising'
 import { connect } from "react-redux";
 import Wallet from './components/Wallet'
 
-const MyAd = () => {
+const MyAd = ({objData}) => {
     const [image, setFile] = useState();
+    console.log(objData);
 
   const encodeImageFileAsURL = (element) => {
         let file = element.target.files[0];
@@ -32,11 +33,8 @@ const MyAd = () => {
 
                         <div className="wrap-input">
                         <label className="dashed" htmlFor="ad-file">
-                            {image ? (
-                            <img className="image-preview" src={image} />
-                            ) : (
-                            <div className="description">Drag and drop file here or</div>
-                            )}
+                            <img className="image-preview" src={objData.banner} />
+                            
                             <input onChange={(e) => {setFile(e); encodeImageFileAsURL(e)}} type="file" id="ad-file"  />
                         </label>
 
@@ -70,11 +68,11 @@ const MyAd = () => {
                     <h2 className='timeAds__title section-title'>Time</h2>
                     <span className='start-time-block'>
                         <p className='start-time-block__title opacity-name'>Started</p>
-                        <p className='start-time-block__time'>Dec 31, 2020</p>
+                        <p className='start-time-block__time'>{objData.start_date}</p>
                     </span>
                     <span className='finished-time-block'>
                         <p className='finished-time-block__title opacity-name'>Finished</p>
-                        <p className='finished-time-block__time'>Jan 1, 2021</p>
+                        <p className='finished-time-block__time'>{objData.end_date}</p>
                     </span>
                     <span className='total-time-block'>
                         <p className='total-time-block__title opacity-name'>Totel time</p>
@@ -86,20 +84,20 @@ const MyAd = () => {
                 <h2 className='result__title section-title'>Results</h2>
                     <span className='displays-block'>
                         <p className='displays-block__title opacity-name'>Displays</p>
-                        <p className='displays-block__time result-data'>24 000</p>
+                        <p className='displays-block__time result-data'>{+objData.displays}</p>
                     </span>
                     <span className='clicks-block'>
                         <p className='clicks-block__title opacity-name'>Clicks</p>
-                        <p className='clicks-block__time result-data'>1 200</p>
+                        <p className='clicks-block__time result-data'>{+objData.clicks}</p>
                     </span>
                     <span className='budget-block'>
                         <p className='budget-block__title opacity-name'>Budget time</p>
-                        <p className='budget-block__total-time result-data currency-block'>1 200.00 
+                        <p className='budget-block__total-time result-data currency-block'>{+objData.budget} 
                             <span className='dollar'>&#36;</span>
-                            <span className='btn-block'>
+                            {/* <span className='btn-block'>
                                 0.035
                                 <span className='btn'>&#8383;</span>
-                            </span>
+                            </span> */}
                         </p>
                     </span>
                 </div>
@@ -113,8 +111,14 @@ const MyAd = () => {
     )
 }
 
+const mapStateToProps = state => {
+    return {
+        objData: state.adsOptions.adDetail
+    }
+}
+
 const mapDispatchToProps = {
     addBanner
 }
 
-export default connect(null, addBanner)(MyAd)
+export default connect(mapStateToProps, addBanner)(MyAd)
