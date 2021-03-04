@@ -59,7 +59,8 @@ export const DateInput = ({ label, onChange = () => {} }) => {
   const [inputValue, setValue] = useState("");
 
   const handleChange = ({ target: { valueAsNumber } }) => {
-    setValue(dayjs(valueAsNumber).format("MMM D, YYYY"));
+    setValue(dayjs(valueAsNumber).format("YYYY-MM-DD"));
+    onChange(dayjs(valueAsNumber).format("YYYY-MM-DD"));
   };
 
   return (
@@ -74,10 +75,10 @@ export const DateInput = ({ label, onChange = () => {} }) => {
 };
 
 export const TimeInput = ({ label, onChange = () => {} }) => {
-  const [inputValue, setValue] = useState("");
+  // const [inputValue, setValue] = useState("");
 
   const handleChange = ({ target: { valueAsNumber } }) => {
-    setValue(onChange(moment.utc(valueAsNumber).format('HH:mm:ss')))
+    // setValue(onChange(moment.utc(valueAsNumber).format('HH:mm:ss')))
     // setValue(dayjs(valueAsNumber).format("HH:mm:ss [GMT]Z (z)", 'Europe/London'));
     // if (onChange) onChange(inputValue);
     return(onChange(moment.utc(valueAsNumber).format('HH:mm:ss')))

@@ -6,15 +6,19 @@ import "./ads.scss";
 import {TextInput} from "./components/Duration/components";
 import {Duration, ImagePreview, Audience, Footer} from "./components";
 import Wallet from './components/Wallet'
-import {countryList} from "../../country/country";
 import {setWebsite} from "../../redux/actions/advertising";
+import {User} from "../../api/User";
 
 const Ads = (props) => {
-    const asd = Object.keys(countryList);
+    let timezones = {};
+    props.country_codes_timezones.forEach(item => {
+        const k = Object.keys(item)[0];
+        timezones[k] = item[k]
+    })
     const ad = {
         banner: props.banner,
         website_url: props.website_url,
-        country_codes_timezones: props.country_codes_timezones,
+        country_codes_timezones: timezones,
         banner_start_date: props.banner_start_date,
         banner_start_time: props.banner_start_time,
         banner_end_date: props.banner_end_date,
@@ -23,7 +27,7 @@ const Ads = (props) => {
     }
     const handleSubmit = e => {
         e.preventDefault();
-        console.log(ad);
+        User.createAd(ad).then((res=>console.log(res)))
     }
     return (
         <div style={{position: 'relative', display: 'flex'}}>
