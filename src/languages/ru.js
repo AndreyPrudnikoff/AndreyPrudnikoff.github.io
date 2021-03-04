@@ -117,7 +117,7 @@ export const RU = {
             MakeBet: {
                 title: 'Сделайте ставку',
                 betSize: 'Размер ставки',
-                yourProfit: 'Ваша прибыль',
+                yourProfit: 'Прибыль',
                 btnUp: 'Курс вверх',
                 btnDown: 'Курс вниз'
             },
@@ -256,7 +256,7 @@ export const RU = {
             MakeBet: {
                 title: 'Сделайте ставку',
                 betSize: 'Размер ставки',
-                yourProfit: 'Ваша прибыль',
+                yourProfit: 'Прибыль',
                 btnUp: 'Курс вверх',
                 btnDown: 'Курс вниз'
             },

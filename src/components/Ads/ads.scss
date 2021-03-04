@@ -1,4 +1,5 @@
 .ads {
+  position: relative;
   margin: 100px 0px 60px;
   min-height: 90%;
   width: 512px;
@@ -199,53 +200,62 @@
       opacity: 1;
     }
   }
+}
 
-  .wallet {
-    position: absolute;
-    left: 110%;
-    width: 275px;
-    height: 255px;
-    padding: 20px;
-    font-family: Roc Grotesk;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 23px;
+.wallet {
+  position: absolute;
+  left: 110%;
+  width: 275px;
+  height: 255px;
+  padding: 20px;
+  font-family: Roc Grotesk;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23px;
 
-    &__title {
-      margin: 0 0 8px 0;
-      font-size: 24px;
-      line-height: 35px;
-    }
+  &__title {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+    line-height: 35px;
+  }
 
-    &__name-title {
-      margin-bottom: 4px;
-      opacity: .8;
-    }
+  &__name-title {
+    margin-bottom: 4px;
+    opacity: .8;
+  }
 
-    &__name {
-      margin-bottom: 8px;
-    }
+  &__name {
+    margin-bottom: 8px;
+  }
 
-    &__balance-title {
-      opacity: .8;
-    }
+  &__balance-title {
+    opacity: .8;
+  }
 
-    &__balance {
-      font-size: 24px;
-      margin-bottom: 12px;
-    }
+  &__balance {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
 
-    &__deposit {
-      border-radius: 8px;
-      padding: 12px 0;
-      width: 100%;
-      color: var(--up);
-      border: 1px solid var(--up);
-      -webkit-border-radius: 8px;
-      -moz-border-radius: 8px;
-      -ms-border-radius: 8px;
-      -o-border-radius: 8px;
+  &__deposit {
+    border-radius: 8px;
+    padding: 12px 0;
+    width: 100%;
+    color: var(--up);
+    border: 1px solid var(--up);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+
+    .withdraw {
+      margin-left: 7px;
     }
   }
+}
+
+.top {
+  position: absolute;
+  top: 5.5%;
 }

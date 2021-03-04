@@ -77,7 +77,7 @@ const ListAds = ({playClick, name, balance, currentLang}) => {
                     
                 </ul>
             </div>
-            <Wallet/>
+            <Wallet input={false}/>
         </div>  
     )
 }

@@ -6,9 +6,11 @@ import deposit from '../../../images/deposit.svg';
 import {playClick} from "../../../redux/actions/music";
 import { connect } from 'react-redux';
 
-const Wallet = ({name, balance, playClick}) => {
+const Wallet = ({name, balance, playClick, input}) => {
+    console.log(input)
     return (
-        <div className='round-dark wallet'>
+        
+        <div className={!input ? 'round-dark wallet' : 'round-dark wallet top'}>
                 <div className='wallet__title'>My wallet</div>
                 <div className='wallet__name-title'>Name</div>
                 <div className='wallet__name'>{name}</div>
@@ -16,7 +18,7 @@ const Wallet = ({name, balance, playClick}) => {
                 <div className='wallet__balance'>{balance} &#8383;</div>
                 <Link to="/refill" className="wallet__deposit btn green" onClick={playClick}>Deposit
                     {/* {LANG.BettingRealMoney.UsualState.MyWallet.btnWithdraw} */}
-                    <img src={deposit} alt="withdraw"/>
+                    <img className='deposit' src={deposit} alt="deposit"/>
                 </Link>
         </div>
     )
