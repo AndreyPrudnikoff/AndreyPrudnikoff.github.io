@@ -275,12 +275,12 @@ export const RU = {
         },
 
         WithdrawalMethod: {
-            title: 'Снятие',
-            BTCWalletTitle: 'Ваш БКТ кошелек',
+            title: 'Выведение средств',
+            BTCWalletTitle: 'Ваш Bitcoin кошелек',
             BTCWalletPlaceholder: '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2',
-            AmountBTCTitle: 'Сумма БКТ',
+            AmountBTCTitle: 'Сумма Bitcoin',
             AmountBTC: '0.125',
-            btnWithdraw: 'СНЯТЬ'
+            btnWithdraw: 'ВЫВЕСТИ'
         },
 
         CompletionNotification: {
