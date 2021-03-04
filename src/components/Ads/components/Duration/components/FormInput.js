@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import dayjs from "dayjs";
 // styles
 import "./style.scss";
+import store from "../../../../../redux/store";
+import {setBudget} from "../../../../../redux/actions/advertising";
 
 export const NumberInput = ({ label }) => {
   const [inputValue, setValue] = useState("1");
@@ -90,12 +92,12 @@ export const TimeInput = ({ label, onChange = () => {} }) => {
 export const RangeInput = ({min, max, balance, withError = false, onChange = () => {},}) => {
   const [isValid, setValidation] = useState(true);
 
-  const hadlerChnage = ({ target: { valueAsNumber } }) => {
+  const handlerChange = ({ target: { valueAsNumber } }) => {
     onChange({
       value: valueAsNumber,
       isValid: balance >= valueAsNumber,
     });
-
+      store.dispatch(setBudget(valueAsNumber))
     setValidation(balance >= valueAsNumber);
   };
 
@@ -105,7 +107,7 @@ export const RangeInput = ({min, max, balance, withError = false, onChange = () 
         required
         min={min}
         max={max}
-        onChange={hadlerChnage}
+        onChange={handlerChange}
         className={isValid ? "rangeInput" : "rangeInput-error"}
         type="range"
       />
@@ -134,7 +136,7 @@ export const TextInput = ({ label, onChange = () => {} }) => {
         // value=""
         type="text"
         placeholder="website.com"
-        onChange={onChange}
+        onChange={(e)=>onChange(e.target.value)}
       />
     </div>
   );

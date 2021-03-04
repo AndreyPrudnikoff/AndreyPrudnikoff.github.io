@@ -21,7 +21,6 @@ const Audience = ({addCountry, country_codes_timezones}) => {
         e.preventDefault();
         if (country && zone) {
             addCountry({[country]: zone});
-            console.log(Object.keys(country_codes_timezones))
         }
     }
     return (
