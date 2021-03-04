@@ -6,8 +6,10 @@ import "./style.scss";
 // images
 import bitcoin from "../../../../../images/bitcoin.svg";
 import dollar from "../../../../../images/dollar.svg";
+import {connect} from "react-redux";
+import {setBudget} from "../../../../../redux/actions/advertising";
 
-const Tabs = ({ tabs }) => {
+const Tabs = ({ tabs, budget, setBudget }) => {
   const [activeTab, setActiveTab] = useState(0);
   return (
     <div className="tabsContainer">
@@ -45,18 +47,25 @@ const Tabs = ({ tabs }) => {
             </div>
 
             <div className="amount-dollar">
-              <div className="dollarContainer">1200</div>
+              <div className="dollarContainer">{budget}</div>
               <img src={dollar} />
             </div>
           </div>
         </div>
 
-        <RangeInput withError min={0} max={10000} balance={7500} />
+        <RangeInput withError min={1} max={10000} balance={7500} />
       </div>
 
       <div className="content">{tabs[activeTab]?.content}</div>
     </div>
   );
 };
-
-export default Tabs;
+const mapStateToProps = state => {
+    return {
+        budget: state.adsOptions.budget
+    }
+}
+const mapDispatchToProps = {
+    setBudget
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Tabs);
