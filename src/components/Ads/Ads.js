@@ -6,7 +6,7 @@ import "./ads.scss";
 import {TextInput} from "./components/Duration/components";
 import {Duration, ImagePreview, Audience, Footer} from "./components";
 import Wallet from "./components/Wallet"
-import {setWebsite} from "../../redux/actions/advertising";
+import {getCurrentList, setWebsite} from "../../redux/actions/advertising";
 import {User} from "../../api/User";
 
 import { useHistory } from "react-router-dom";
@@ -38,6 +38,7 @@ const Ads = (props) => {
             .then((res=> {if(res.data.status === "success") {
                 props.createAdProp();
                 props.userdata();
+                props.getCurrentList();
             }}))
             .catch(e => console.log(e.data));
     }
@@ -94,6 +95,7 @@ const mapDispatchToProps = {
     setWebsite,
     createAdProp,
     playClick,
-    userdata
+    userdata,
+    getCurrentList
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Ads);
