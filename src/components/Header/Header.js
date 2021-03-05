@@ -34,9 +34,7 @@ import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
 
-
 const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, createAdProp, logout, registration, prohibition, authorization, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang, playClick, step, changeDemo, isPreview, setIsPreview, setPreviewBanner}) => {
-
 
     const [menu, setMenu] = useState(false);
     const [showLang, setShowLang] = useState(true);
@@ -60,7 +58,7 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
         switchLang();
     }
     const stepTest = (switchBool) => {
-        if(step === 4 || step === 0) {
+        if (step === 4 || step === 0) {
             switchView(switchBool);
         }
     }
@@ -94,44 +92,69 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                                 prohibition();
                                 window.location.reload();
                                 playClick()
-                            }} className="btn btn-primary"><Link to="/" >{LANG.ModalWindows.LogOut.btnLogOut}</Link>
+                            }} className="btn btn-primary"><Link to="/">{LANG.ModalWindows.LogOut.btnLogOut}</Link>
                             </button>
                             <button onClick={() => {
                                 logoutQuestion();
                                 playClick()
-                            }} className={currentLang + " btn btn-primary"} >{LANG.ModalWindows.LogOut.btnContunue}
+                            }} className={currentLang + " btn btn-primary"}>{LANG.ModalWindows.LogOut.btnContunue}
                             </button>
                         </div>
                     </div>
                 </div>
-                <div className="wrap-header">                   
-                        <nav className="navbar">
-                            <a onClick={() => {
-                                sessionStorage.setItem("saveReload", "0");
-                                sessionStorage.removeItem('token');
-                                window.location.reload();
-                                playClick()
-                            }} className="navbar-brand">
-                                <img src={logo} alt="logo" height="23"/>
-                            </a>
-                        </nav>
-                        <div className="header-right">
-                            <div className="flag-wrapper">
-                                <img onClick={() => {switchLang(); playClick()}} className="flag"
-                                    src={currentLang === "en" ? british : russian} width="30" alt="lang"/>
-                                <img onClick={() => {chooseLanguages(); playClick()}} style={{display: showLang ? "none" : "inline"}}
-                                    className="flag hide-flag" src={currentLang === "ru" ? british : russian} width="30"
-                                    alt="lang"/>
-                                <img style={{transform: showLang ? "none" : "rotate(180deg)"}} onClick={() => {switchLang(); playClick()}}
-                                    className="sound "
-                                    src={caret}
-                                    height="18" width="18"
-                                    alt="lang"/>
-                            </div>
-
+                <div className="wrap-header">
+                    <nav className="navbar">
+                        <a onClick={() => {
+                            sessionStorage.setItem("saveReload", "0");
+                            sessionStorage.removeItem('token');
+                            window.location.reload();
+                            playClick()
+                        }} className="navbar-brand">
+                            <img src={logo} alt="logo" height="23"/>
+                        </a>
+                    </nav>
+                    <div className="header-right">
+                        <div className="flag-wrapper">
                             <img onClick={() => {
-                                if (sessionStorage.getItem("token")) {
-                                    sessionStorage.setItem("saveReload", "1");
+                                switchLang();
+                                playClick()
+                            }} className="flag"
+                                 src={currentLang === "en" ? british : russian} width="30" alt="lang"/>
+                            <img onClick={() => {
+                                chooseLanguages();
+                                playClick()
+                            }} style={{display: showLang ? "none" : "inline"}}
+                                 className="flag hide-flag" src={currentLang === "ru" ? british : russian} width="30"
+                                 alt="lang"/>
+                            <img style={{transform: showLang ? "none" : "rotate(180deg)"}} onClick={() => {
+                                switchLang();
+                                playClick()
+                            }}
+                                 className="sound "
+                                 src={caret}
+                                 height="18" width="18"
+                                 alt="lang"/>
+                        </div>
+
+                        <img onClick={() => {
+                            if (sessionStorage.getItem("token")) {
+                                sessionStorage.setItem("saveReload", "1");
+                            }
+                            window.location.reload();
+                            playClick()
+                        }} style={{marginRight: "20px"}} className="sound reload" height="18" width="18"
+                             src={refreshIcon}
+                             alt="refresh"/>
+                        <img onClick={() => {
+                            handleMute();
+                            playClick()
+                        }} className="sound " src={mute ? sound : noSound} height="18" width="18"
+                             alt="sound"/>
+
+                        {!auth ? <div className="startHeader">
+                            <Link onClick={() => {
+                                if (reg) {
+                                    registration();
                                 }
                                 window.location.reload();
                                 playClick()
@@ -166,52 +189,76 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                             </div> : null}
                             <div onClick={(e) => {
                                 playClick()
-                                setMenu(!menu)
-                            }}
-                                style={{
-                                    display: auth ? 'flex' : 'none',
-                                    pointerEvents: predict ? "none" : "auto"
-                                }}
-                                className="menu">
-                                <img className="burger"
-                                    src={burger} alt="icon"/>
-                                <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">
-                                    {/*<li className="burger-menu-item bord"><Link to="/ads">Create ad</Link></li>*/}
-                                    {currentLang === 'en' ? <li onClick={() => {playClick(); handleMute();}} className="burger-menu-item bord">
-                                            <img onClick={() => {playClick()}} className="sound " src={mute ? sound : noSound} height="18" width="18"
-                                            alt="sound"/>
-                                            Sound
-                                        </li> : null }
-                                    {widthMode !== 'desktop' ? null : 
-                                        <React.Fragment>
-                                            <li onClick={() => {history.push("/ads"); playClick(); setPreviewBanner(false)}} className="burger-menu-item bord">{LANG.Menu.first}</li>
-                                            <li onClick={() => {history.push("/myads");  playClick()}} className="burger-menu-item bord"><span>{LANG.Menu.second}</span></li>
-                                        </React.Fragment>
-                                    
-                                    }
-                                    
-                                    <li onClick={() => {
-                                        history.push("/game");
-                                        changeDemo();
-                                        switchStep(1);
-                                    }} className="burger-menu-item bord">
-                                        <span>{LANG.Menu.third}</span></li>
-                                    <li className="burger-menu-item" onClick={() => {
-                                        playClick();
-                                        logoutQuestion();
-                                    }}>{LANG.Menu.exit}
-                                    </li>
-                                </ul>
-                            </div>
+                                if (reg) {
+                                    registration();
+                                }
+                            }} className="login auth-header-icon" to="/login">
+                                <img width={18} src={login} alt="signin"/>
+                            </Link>
+                            <Link onClick={() => {
+                                registration();
+                                playClick()
+                            }} className={currentLang + " signup auth-header"}
+                                  to="/signup">{LANG.Auth.Login.signUp}</Link>
+                            <Link onClick={() => {
+                                registration();
+                                playClick()
+                            }} className="signup auth-header-icon" to="/signup">
+                                <img width={18} src={signup} alt="signup"/></Link>
+                        </div> : null}
+                        <div onClick={(e) => {
+                            playClick()
+                            setMenu(!menu)
+                        }}
+                             style={{
+                                 display: auth ? 'flex' : 'none',
+                                 pointerEvents: predict ? "none" : "auto"
+                             }}
+                             className="menu">
+                            <img className="burger"
+                                 src={burger} alt="icon"/>
+                            <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">
+                                {widthMode !== 'desktop' ? null :
+                                    <>
+                                        <li onClick={() => {
+                                            history.push("/ads");
+                                            playClick()
+                                        }} className="burger-menu-item bord">{LANG.Menu.first}</li>
+                                        <li onClick={() => {
+                                            history.push("/myads");
+                                            playClick()
+                                        }} className="burger-menu-item bord"><span>{LANG.Menu.second}</span></li>
+                                    </>
+
+                                }
+
+                                <li onClick={() => {
+                                    history.push("/game");
+                                    changeDemo();
+                                    switchStep(1);
+                                }} className="burger-menu-item bord">
+                                    <span>{LANG.Menu.third}</span></li>
+                                <li className="burger-menu-item" onClick={() => {
+                                    playClick();
+                                    logoutQuestion();
+                                }}>{LANG.Menu.exit}
+                                </li>
+                            </ul>
                         </div>
 
                 </div>
                 <div style={{display: isGame && widthMode !== "desktop" ? "block" : "none"}} className="tabs">
                     <div className="wrap-tabs">
-                        <div onClick={() => {stepTest(false); playClick()}} className={view ? "tab bets" : "tab bets active"}>
+                        <div onClick={() => {
+                            stepTest(false);
+                            playClick()
+                        }} className={view ? "tab bets" : "tab bets active"}>
                             <img src={bets} alt="tab"/>
                         </div>
-                        <div onClick={() => {stepTest(true); playClick()}} className={!view ? "tab mobile_wallet" : "tab mobile_wallet active"}>
+                        <div onClick={() => {
+                            stepTest(true);
+                            playClick()
+                        }} className={!view ? "tab mobile_wallet" : "tab mobile_wallet active"}>
                             <img src={wallet} alt="tab"/>
                         </div>
                     </div>

@@ -1,12 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from "react"
 import "./ads.scss";
-import {User} from '../../api/User';
-import deposit from '../../images/deposit.svg';
-import {useHistory, Link} from 'react-router-dom';
+import {useHistory} from "react-router-dom";
 import {playClick} from "../../redux/actions/music";
-import {getCurrentList, getDetails} from '../../redux/actions/advertising'
-import {connect} from 'react-redux';
-import Wallet from './components/Wallet'
+import {getCurrentList, getDetails} from "../../redux/actions/advertising"
+import {connect} from "react-redux";
+import Wallet from "./components/Wallet"
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
@@ -27,7 +25,7 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
     }, [isCurrent])
 
     useEffect(() => {
-        getCurrentList()
+        getCurrentList();
     }, [])
 
     return (
@@ -52,35 +50,12 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                                     getDetails(item);
                                     history.push('/myad')
                                 }}>
-                                    <span className='item__title'>myheadphones.com</span>
+                                    <span className='item__title'>{item.web_url || "mysite.com"}</span>
                                     <span className='item__date'>{item.end_date}</span>
                                 </li>
                             </React.Fragment>
                         )) : <h1 className='ads-list__not-ads'>{LANG.Ads.MyAds.notAds}</h1>
                     }
-                    {/* {!Object.keys(testData).length == 0 ?
-                        current ? 
-                            testData.current.map((item, index) => (
-                                <React.Fragment>
-                                    <li className='ads-list__item' onClick={() => {history.push('/myad')}}>
-                                        <span className='item__title'>{item.site}</span>
-                                        <span className='item__date'>{item.date}</span>
-                                    </li>
-                                </React.Fragment>
-                            ))
-                        : testData.finished.map((item,index) => (
-                            <React.Fragment>
-                                    <li className='ads-list__item' onClick={() => {history.push('/myad')}}>
-                                        <span className='item__title'>{item.site}</span>
-                                        <span className='item__date'>{item.date}</span>
-                                    </li>
-                                </React.Fragment>
-                        ))
-                    
-                    :
-                    <h1 className='ads-list__not-ads'>{LANG.Ads.MyAds.notAds}</h1>
-                    } */}
-
                 </ul>
             </div>
             <Wallet input={false}/>

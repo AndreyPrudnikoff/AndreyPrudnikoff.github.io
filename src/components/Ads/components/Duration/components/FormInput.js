@@ -1,148 +1,155 @@
-import React, { useState } from "react";
-import {setWebsite} from '../../../../../redux/actions/advertising'
+import React, {useState} from "react";
+import {setBudget} from '../../../../../redux/actions/advertising'
 import moment from 'moment';
 import dayjs from "dayjs";
 // styles
 import "./style.scss";
 import store from "../../../../../redux/store";
-import {setBudget} from "../../../../../redux/actions/advertising";
-import { connect } from "react-redux";
 
-export const NumberInput = ({ label }) => {
-  const [inputValue, setValue] = useState("1");
+export const NumberInput = ({label}) => {
+    const [inputValue, setValue] = useState("1");
 
-  const handleChange = ({ target: { value } }) => {
-    if (value === "") setValue("1");
+    const handleChange = ({target: {value}}) => {
+        if (value === "") setValue("1");
 
-    if (!Number.isNaN(+value - 1) && value > 0 && !value.includes(".")) {
-      setValue(value);
-    }
-  };
+        if (!Number.isNaN(+value - 1) && value > 0 && !value.includes(".")) {
+            setValue(value);
+        }
+    };
 
-  const changeAmount = ({ target: { name } }) => {
-    if (name === "desc") {
-      if (+inputValue === 1) return;
+    const changeAmount = ({target: {name}}) => {
+        if (name === "desc") {
+            if (+inputValue === 1) return;
 
-      setValue(inputValue - 1);
-    } else {
-      setValue(+inputValue + 1);
-    }
-  };
+            setValue(inputValue - 1);
+        } else {
+            setValue(+inputValue + 1);
+        }
+    };
 
-  return (
-    <div>
-      <label>{label}</label>
-      <div className="formInput">
-        <input required value={inputValue} onChange={handleChange} />
+    return (
+        <div>
+            <label>{label}</label>
+            <div className="formInput">
+                <input required value={inputValue} onChange={handleChange}/>
 
-        <div className="inputButtons">
-          <button name="asc" onClick={changeAmount}>
-            +
-          </button>
+                <div className="inputButtons">
+                    <button name="asc" onClick={changeAmount}>
+                        +
+                    </button>
 
-          <button name="desc" onClick={changeAmount}>
-            -
-          </button>
+                    <button name="desc" onClick={changeAmount}>
+                        -
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
-export const SelectInput = ({ label, data = [], onchange = () => {} }) => {
-    return(
+export const SelectInput = ({
+                                label, data = [], onchange = () => {
+    }
+                            }) => {
+    return (
         <div/>
     );
 }
 
-export const DateInput = ({ label, onChange = () => {} }) => {
-  const [inputValue, setValue] = useState("");
+export const DateInput = ({
+                              label, onChange = () => {
+    }
+                          }) => {
+    const [inputValue, setValue] = useState("");
 
-  const handleChange = ({ target: { valueAsNumber } }) => {
-    setValue(dayjs(valueAsNumber).format("YYYY-MM-DD"));
-    onChange(dayjs(valueAsNumber).format("YYYY-MM-DD"));
-  };
+    const handleChange = ({target: {valueAsNumber}}) => {
+        setValue(dayjs(valueAsNumber).format("YYYY-MM-DD"));
+        onChange(dayjs(valueAsNumber).format("YYYY-MM-DD"));
+    };
 
-  return (
-    <div className="dateInputContainer">
-      <label>{label}</label>
-      <div className="dateInput">
-        <div>{inputValue}</div>
-        <input required onChange={handleChange} type="date" />
-      </div>
-    </div>
-  );
-};
-
-export const TimeInput = ({ label, onChange = () => {} }) => {
-  // const [inputValue, setValue] = useState("");
-
-  const handleChange = ({ target: { valueAsNumber } }) => {
-    // setValue(onChange(moment.utc(valueAsNumber).format('HH:mm:ss')))
-    // setValue(dayjs(valueAsNumber).format("HH:mm:ss [GMT]Z (z)", 'Europe/London'));
-    // if (onChange) onChange(inputValue);
-    return(onChange(moment.utc(valueAsNumber).format('HH:mm:ss')))
-  };
-
-  return (
-    <div className="timeInputContainer">
-      <label>{label}</label>
-      <div className="timeInput">
-        <input required onChange={handleChange} type="time" />
-      </div>
-    </div>
-  );
-};
-
-export const RangeInput = ({min, max, balance, withError = false, onChange = () => {},}) => {
-  const [isValid, setValidation] = useState(true);
-
-  const handlerChange = ({ target: { valueAsNumber } }) => {
-    onChange({
-      value: valueAsNumber,
-      isValid: balance >= valueAsNumber,
-    });
-      store.dispatch(setBudget(valueAsNumber))
-    setValidation(balance >= valueAsNumber);
-  };
-
-  return (
-    <div className="rangeInputContainer">
-      <input
-        required
-        min={min}
-        max={max}
-        onChange={handlerChange}
-        className={isValid ? "rangeInput" : "rangeInput-error"}
-        type="range"
-      />
-
-      {withError && !isValid && (
-        <div className="reffil">
-          <div className="reffil-balance">
-            <span>Balance</span>
-            <span>{balance} BTC</span>
-          </div>
-
-          <button className="reffil-button">REFILL</button>
-
-          <div className="reffil-error">Not enough</div>
+    return (
+        <div className="dateInputContainer">
+            <label>{label}</label>
+            <div className="dateInput">
+                <div>{inputValue}</div>
+                <input required onChange={handleChange} type="date"/>
+            </div>
         </div>
-      )}
-    </div>
-  );
+    );
 };
 
-export const TextInput = ({ label, onChange = () => {}, setWebsite, webSite }) => {
-  return (
-    <div className="website-block">
-      <span className="block-description">{label}</span>
-      <input
-        type="text"
-        placeholder="website.com"
-        onChange={(e)=>onChange(e.target.value)}
-      />
-    </div>
-  );
+export const TimeInput = ({label, onChange = () => {}}) => {
+    // const [inputValue, setValue] = useState("");
+
+    const handleChange = ({target: {valueAsNumber}}) => {
+        // setValue(onChange(moment.utc(valueAsNumber).format('HH:mm:ss')))
+        // setValue(dayjs(valueAsNumber).format("HH:mm:ss [GMT]Z (z)", 'Europe/London'));
+        // if (onChange) onChange(inputValue);
+        return (onChange(moment.utc(valueAsNumber).format('HH:mm:ss')))
+    };
+
+    return (
+        <div className="timeInputContainer">
+            <label>{label}</label>
+            <div className="timeInput">
+                <input required onChange={handleChange} type="time"/>
+            </div>
+        </div>
+    );
+};
+
+export const RangeInput = ({min, max, course, balance, withError = false, onChange = () => {
+    },}) => {
+    const [isValid, setValidation] = useState(true);
+    const handlerChange = ({target: {valueAsNumber}}) => {
+        onChange({
+            value: valueAsNumber,
+            isValid: balance >= valueAsNumber,
+        });
+        const budget = +valueAsNumber / +course;
+        store.dispatch(setBudget(budget))
+        setValidation(balance >= valueAsNumber);
+    };
+    return (
+        <div className="rangeInputContainer">
+            <input
+                required
+                min={min}
+                max={max}
+                onChange={handlerChange}
+                className={isValid ? "rangeInput" : "rangeInput-error"}
+                type="range"
+            />
+
+            {withError && !isValid && (
+                <div className="reffil">
+                    <div className="reffil-balance">
+                        <span>Balance</span>
+                        <span>{balance.toFixed(0)} <span className="gold">$</span></span>
+                    </div>
+
+                    <button className="reffil-button">REFILL</button>
+
+                    <div className="reffil-error">Not enough</div>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export const TextInput = ({
+                              label, onChange = () => {
+    }, setWebsite, webSite
+                          }) => {
+    return (
+        <div className="website-block">
+            <span className="block-description">{label}</span>
+            <input
+                type="text"
+                placeholder="website.com"
+                onChange={(e) => onChange(e.target.value)}
+            />
+        </div>
+    );
 };
 
