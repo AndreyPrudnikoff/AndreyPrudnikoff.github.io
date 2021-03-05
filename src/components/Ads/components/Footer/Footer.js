@@ -11,13 +11,14 @@ const Footer = ({setIsPreview, isCorrectDate}) => {
 
   return (
     <div className="footer">
-      <button type={isCorrectDate ?'submit' : null} disabled={isCorrectDate}>Promote now</button>
+      <button type='submit'>Promote now</button>
 
     </div>
   );
 };
 
 const mapStateToProps = state => {
+  console.log(state.adsOptions.isCorrectDate)
   return {
     isCorrectDate: state.adsOptions.isCorrectDate
   }

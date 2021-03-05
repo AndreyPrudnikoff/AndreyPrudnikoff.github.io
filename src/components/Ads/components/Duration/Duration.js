@@ -7,7 +7,7 @@ import "./style.scss";
 import {connect} from "react-redux";
 import {setEndDate, setEndTime, setStartDate, setStartTime, setIsCorrectDateToStore} from "../../../../redux/actions/advertising";
 
-const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime, setIsCorrectDateToStore}) => {
+const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime, setIsCorrectDateToStore, isCorrectDateFromStore}) => {
   const [dateStart, setDateStart] = useState(0);
   const [timeStart, setTimeStart] = useState(0);
   const [dateEnd, setDateEnd] = useState(0);
@@ -18,8 +18,7 @@ const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime
   useEffect(() => {
     const dateNow = dayjs().valueOf(true);
     let enteredStartDate = dayjs(`${dateStart}T${timeStart}`).valueOf(true);
-	let enteredEndDate = dayjs(`${dateEnd}T${timeEnd}`).valueOf(true);
-	// console.log(enteredStartDate, dateNow)
+	  let enteredEndDate = dayjs(`${dateEnd}T${timeEnd}`).valueOf(true);
     if(dateStart !== 0 && timeStart !== 0) {
       if(enteredStartDate > dateNow) {
 		  console.log('up')
@@ -40,12 +39,16 @@ const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime
 	}
 
 	if(isStartDate && isCorrectDate) {
+    console.log('y')
 		setIsCorrectDateToStore(true)
 	} else {
+    console.log('n')
 		setIsCorrectDateToStore(false)
 	}
     
   }, [dateStart, timeStart, dateEnd, timeEnd])
+
+  
 
   const tabs = [
     {
@@ -61,6 +64,7 @@ const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime
             <DateInput onChange={(e) => {setEndDate(e); setDateEnd(e)}} label="End date" invalid={isCorrectDate ? false : true} />
             <TimeInput onChange={(e) => {setEndTime(e); setTimeEnd(e)}} label="End time" invalid={isCorrectDate ? false : true} />
           </div>
+          
         </div>
       ),
     },
@@ -79,14 +83,14 @@ const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime
   );
 };
 
-// const mapStateToProps = state => {
-//   console.log(state.adsOptions.banner_start_time)
-//   console.log(state.adsOptions.banner_end_time)
-//   return {
-//     startTime: state.adsOptions.banner_start_time
-//   }
-  
-// }
+
+const mapStateToProps = state => {
+  console.log(state.adsOptions.isCorrectDate)
+  return {
+    isCorrectDateFromStore: state.adsOptions.isCorrectDate
+  }
+}
+
 const mapDispatchToProps = {
     setStartDate,
     setStartTime,
@@ -94,4 +98,4 @@ const mapDispatchToProps = {
     setEndTime,
 	setIsCorrectDateToStore
 }
-export default connect(null, mapDispatchToProps)(Duration);
+export default connect(mapStateToProps, mapDispatchToProps)(Duration);
