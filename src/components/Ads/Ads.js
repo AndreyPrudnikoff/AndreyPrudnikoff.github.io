@@ -4,12 +4,12 @@ import {connect} from "react-redux";
 import "./ads.scss";
 // components
 import {TextInput} from "./components/Duration/components";
-import {Duration, ImagePreview, Audience, Footer} from "./components";
+import {Audience, Duration, Footer, ImagePreview} from "./components";
 import Wallet from "./components/Wallet"
 import {getCurrentList, setWebsite} from "../../redux/actions/advertising";
 import {User} from "../../api/User";
 
-import { useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import {createAdProp} from "../../redux/actions";
 import {playClick} from "../../redux/actions/music";
 import {userdata} from "../../redux/actions/game";
@@ -17,29 +17,35 @@ import {userdata} from "../../redux/actions/game";
 
 const Ads = (props) => {
     let timezones = {};
-    let history =  useHistory();
+    let history = useHistory();
     props.country_codes_timezones.forEach(item => {
         const k = Object.keys(item)[0];
         timezones[k] = item[k];
     })
-    const ad = {
-        banner: props.banner,
-        website_url: props.website_url,
-        country_codes_timezones: timezones,
+    const withTime = !props.withDate ? {
         banner_start_date: props.banner_start_date,
         banner_start_time: props.banner_start_time,
         banner_end_date: props.banner_end_date,
         banner_end_time: props.banner_end_time,
-        budget: props.budget
+    } : null
+    const ad = {
+        banner: props.banner,
+        website_url: props.website_url,
+        country_codes_timezones: timezones,
+        budget: props.budget,
+        ...withTime
+
     }
     const handleSubmit = e => {
         e.preventDefault();
         User.createAd(ad)
-            .then((res=> {if(res.data.status === "success") {
-                props.createAdProp();
-                props.userdata();
-                props.getCurrentList();
-            }}))
+            .then((res => {
+                if (res.data.status === "success") {
+                    props.createAdProp();
+                    props.userdata();
+                    props.getCurrentList();
+                }
+            }))
             .catch(e => console.log(e.data));
     }
 
@@ -69,7 +75,7 @@ const Ads = (props) => {
 
                 <Duration/>
 
-                <Footer />
+                <Footer/>
             </form>
             <Wallet input={true}/>
         </div>
@@ -77,7 +83,6 @@ const Ads = (props) => {
 
 }
 const mapStateToProps = state => {
-
     return {
         banner: state.adsOptions.banner,
         website_url: state.adsOptions.website_url,
@@ -87,6 +92,7 @@ const mapStateToProps = state => {
         banner_end_date: state.adsOptions.banner_end_date,
         banner_end_time: state.adsOptions.banner_end_time,
         budget: state.adsOptions.budget,
+        withDate: state.adsOptions.withDate,
         createAd: state.switchOptions.createAd
 
     }

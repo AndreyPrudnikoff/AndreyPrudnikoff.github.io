@@ -150,40 +150,25 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                                     playClick()
                                 }} className="sound " src={mute ? sound : noSound} height="18" width="18"
                                     alt="sound"/>
-
                                     {!auth ? <div className="startHeader">
                                         <Link onClick={() => {
-                                            if (reg) {
-                                                registration();
-                                            }
-                                            playClick()
+                                            if (reg) {registration();}
+                                            playClick();
                                         }} className={currentLang + " login auth-header"}
-                                            to="/login">{LANG.Auth.Login.loginIn}</Link>
+                                            to="/login">{LANG.Auth.Login.loginIn}
+                                        </Link>
                                         <Link onClick={() => {
                                             playClick()
-                                            if (reg) {
-                                                registration();
-                                            }
+                                            if (reg) {registration();}
                                         }} className="login auth-header-icon" to="/login">
                                             <img width={18} src={login} alt="signin"/>
                                         </Link>
                                         <Link onClick={() => {registration(); playClick()}} className={currentLang + " signup auth-header"}
-                                            to="/signup">{LANG.Auth.Login.signUp}</Link>
+                                            to="/signup">{LANG.Auth.Login.signUp}
+                                        </Link>
                                         <Link onClick={() => {registration(); playClick()}} className="signup auth-header-icon" to="/signup">
-                                            <img width={18} src={signup} alt="signup"/></Link>
-                                    <Link onClick={(e) => {
-                                        playClick()
-                                        if (reg) {
-                                            registration();
-                                        }
-                                    }} className="login auth-header-icon" to="/login">
-                                        <img width={18} src={login} alt="signin"/>
-                                    </Link>
-                                    <Link onClick={() => {
-                                        registration();
-                                        playClick()
-                                    }} className="signup auth-header-icon" to="/signup">
-                                        <img width={18} src={signup} alt="signup"/></Link>
+                                            <img width={18} src={signup} alt="signup"/>
+                                        </Link>
                                 </div> : null}
                                 <div onClick={(e) => {
                                     playClick()
