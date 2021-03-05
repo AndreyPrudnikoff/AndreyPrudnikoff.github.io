@@ -6,19 +6,25 @@ import {setIsPreview} from '../../../../redux/actions/advertising'
 import "./style.scss";
 
 
-const Footer = ({setIsPreview}) => {
+const Footer = ({setIsPreview, isCorrectDate}) => {
   let history = useHistory()
 
   return (
     <div className="footer">
-      <button type='submit'>Promote now</button>
+      <button type={isCorrectDate ?'submit' : null} disabled={isCorrectDate}>Promote now</button>
 
     </div>
   );
 };
 
+const mapStateToProps = state => {
+  return {
+    isCorrectDate: state.adsOptions.isCorrectDate
+  }
+}
+
 const mapDispatchToProps = {
   setIsPreview
 }
 
-export default connect(null, mapDispatchToProps)(Footer);
+export default connect(mapStateToProps, mapDispatchToProps)(Footer);
