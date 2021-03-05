@@ -52,7 +52,7 @@ const Tabs = ({tabs, budget, setBudget, balance}) => {
 
                     <div className="amount">
                         <div className="amount-btc">
-                            {+budget.toFixed(4)}<img src={bitcoin} alt="btc"/>
+                            {budget > 0 ? +budget.toFixed(4) : 0}<img src={bitcoin} alt="btc"/>
                         </div>
                         <div className="amount-dollar">
                             <div className="dollarContainer">{(+budget * +currentCourse).toFixed(0)}</div>
