@@ -9,12 +9,12 @@ import {
     SET_START_TIME,
     SET_TIMEZONE,
     SET_WEB_SITE,
-    DELETE_COUNTRY_AND_TIMEZONE, 
+    DELETE_COUNTRY_AND_TIMEZONE,
     GET_LIST_ADS,
     AD_DETAIL,
     IS_PREVIEW,
     PREVIEW_BANNER,
-    IS_CORRECT_DATE
+    IS_CORRECT_DATE, WITH_DATE
 } from "../types";
 
 const initialState = {
@@ -31,7 +31,8 @@ const initialState = {
     adDetail: {},
     isPreview: false,
     previewBanner: false,
-    isCorrectDate: false
+    isCorrectDate: false,
+    withDate: false
 }
 
 export const adsOptions = (state = initialState, action) => {
@@ -67,6 +68,8 @@ export const adsOptions = (state = initialState, action) => {
             return {...state, previewBanner: action.payload}
         case IS_CORRECT_DATE:
             return {...state, isCorrectDate: action.payload}
+            case WITH_DATE:
+            return {...state, withDate: action.payload}
         default:
             return state;
     }

@@ -7,12 +7,12 @@ import {
     SET_START_TIME,
     SET_TIMEZONE,
     SET_WEB_SITE,
-    DELETE_COUNTRY_AND_TIMEZONE, 
+    DELETE_COUNTRY_AND_TIMEZONE,
     GET_LIST_ADS,
     AD_DETAIL,
     IS_PREVIEW,
     PREVIEW_BANNER,
-    IS_CORRECT_DATE
+    IS_CORRECT_DATE, WITH_DATE
 } from "../types";
 
 export function addBanner(banner) {
@@ -79,4 +79,7 @@ export function setPreviewBanner(bool) {
 }
 export function setIsCorrectDateToStore(bool) {
     return {type: IS_CORRECT_DATE, payload: bool}
+}
+export function setWithDate(bool) {
+    return {type: WITH_DATE, payload: bool}
 }
