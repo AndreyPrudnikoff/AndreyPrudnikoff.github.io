@@ -21,6 +21,7 @@ main {
   .main {
     height: 100%;
     position: relative;
+     
   }
 
   .row {
@@ -854,9 +855,18 @@ form {
   background-size: cover;
 }
 
-.three {
-  background-image: url("../../images/adbanner3.png");
-  background-size: cover;
+// .three {
+//   background-image: url("../../images/adbanner3.png");
+//   background-size: cover;
+// }
+.bannerImg{
+  border-radius: 25px;
+  height: 238px;
+  width: 270px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
 }
 
 .score-wrap {

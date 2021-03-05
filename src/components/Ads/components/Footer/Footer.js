@@ -1,15 +1,25 @@
 import React from "react";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+import {setIsPreview} from '../../../../redux/actions/advertising'
 // styles
 import "./style.scss";
 
-const Footer = (props) => {
+
+const Footer = (props, {setIsPreview}) => {
+  let history = useHistory()
+
   return (
     <div className="footer">
       <button type="submit">Ad Preview</button>
 
-      <button>Promote now</button>
+      <button onClick={() => {setIsPreview(true); history.push('/game')}}>Promote now</button>
     </div>
   );
 };
 
-export default Footer;
+const mapDispatchToProps = {
+  setIsPreview
+}
+
+export default connect(null, mapDispatchToProps)(Footer);

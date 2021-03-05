@@ -4,14 +4,18 @@ import deposit from '../../images/deposit.svg';
 import withdraw from '../../images/withdraw.svg';
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import {setIsPreview} from '../../redux/actions/advertising'
 import {playClick, transition} from "../../redux/actions/music";
 import switchWallet from "../../images/switch_wallet.svg";
 import {changeDemo, userdata} from "../../redux/actions/game";
 import {createAdProp} from "../../redux/actions";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
+import bannerImg from '../../images/adbanner3.png';
 
-const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance, userdata, name, isDemo, threewins, changeDemo, createAdProp, predict, currentLang, playClick, transition}) => {
+
+const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance, userdata, name, isDemo, threewins, changeDemo, createAdProp, predict, currentLang, playClick, transition, setIsPreview, bannerPreview, isPreview}) => {
+
     const [switcher, setSwitcher] = useState(false);
     const [banner, setBanner] = useState("banner one round-dark");
     const LANG = currentLang === "en" ? EN : RU;
@@ -32,6 +36,11 @@ const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance,
     useEffect(() => {
         userdata();
     }, [userdata])
+
+    const isPreviewHandler = () => {
+        
+    }
+
 
     return (
         <div className="right-sector">
@@ -119,6 +128,7 @@ const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance,
             <div onClick={() => {
                 window.open('https://bitrxapp.com/?gb', '_blank')
             }} className={"banner three round-dark"}>
+                <img src={isPreview ? bannerPreview : bannerImg} className='bannerImg'/>
                 <button style={{display: banner === "banner one round-dark" ? "none" : "block"}} className="btn learn-more" onClick={playClick}>Learn more</button>
             </div>
         </div>
@@ -137,7 +147,9 @@ const mapStateToProps = state => {
         isDemo: state.balanceReducer.isDemo,
         predict: state.balanceReducer.predict,
         currentLang: state.switchOptions.lang,
-        step: state.switchOptions.step
+        step: state.switchOptions.step,
+        bannerPreview: state.adsOptions.banner,
+        isPreview: state.adsOptions.isPreview
     }
 }
 const mapDispatchToProps = {
@@ -146,6 +158,7 @@ const mapDispatchToProps = {
     changeDemo,
     createAdProp,
     playClick,
-    transition
+    transition,
+    setIsPreview
 }
 export default connect(mapStateToProps, mapDispatchToProps)(RightSector);
