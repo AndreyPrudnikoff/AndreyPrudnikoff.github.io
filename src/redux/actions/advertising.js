@@ -73,6 +73,6 @@ export function setIsPreview(bool) {
     return {type: IS_PREVIEW, payload: bool}
 }
 
-export function setPreviewBanner(banner) {
-    return {type: PREVIEW_BANNER, payload: banner}
+export function setPreviewBanner(bool) {
+    return {type: PREVIEW_BANNER, payload: bool}
 }

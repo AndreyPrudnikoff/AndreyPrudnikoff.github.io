@@ -24,7 +24,7 @@ import {
     switchStep,
     switchView
 } from "../../redux/actions";
-import {setIsPreview} from '../../redux/actions/advertising'
+import {setIsPreview, setPreviewBanner} from '../../redux/actions/advertising'
 import {changeDemo} from '../../redux/actions/game'
 import {Link, useLocation, useHistory} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
@@ -33,7 +33,9 @@ import closePreview from '../../images/closePreview.png';
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, createAdProp, logout, registration, prohibition, authorization, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang, playClick, step, changeDemo, isPreview, setIsPreview}) => {
+
+const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, createAdProp, logout, registration, prohibition, authorization, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang, playClick, step, changeDemo, isPreview, setIsPreview, setPreviewBanner}) => {
+
     const [menu, setMenu] = useState(false);
     const [showLang, setShowLang] = useState(true);
     const LANG = currentLang === "en" ? EN : RU;
@@ -68,7 +70,18 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
     }, [location.pathname])
     return (
         <div>
-            <header className="header">
+            <header className="header" style={{background: isPreview ? 'rgba(0,0,0,0)' : '#1a1f34'}}>
+                {isPreview ? (
+                    <div className='blur'>
+                        <div className={isPreview ? 'closePreview' : 'closePreviewNone'}>
+                            <span></span>
+                            <span>Ad preview</span>
+                            <img src={closePreview} onClick={() => {setPreviewBanner(true);setIsPreview(false); history.push('/ads')}}/>
+                        </div>
+                    </div>
+                    )
+                : (
+                <React.Fragment>
                 <div style={{display: logout ? "block" : "none"}} className="blur">
                     <div className="round-dark win">
                         <h2 className={currentLang}>{LANG.ModalWindows.LogOut.title}</h2>
@@ -90,11 +103,6 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                     </div>
                 </div>
                 <div className="wrap-header">
-                    <div className={isPreview ? 'closePreview' : 'closePreviewNone'}>
-                        <span></span>
-                        <span>Ad preview</span>
-                        <img src={closePreview} onClick={() => {setIsPreview(false); history.push('/ads')}}/>
-                    </div>
                     <nav className="navbar">
                         <a onClick={() => {
                             sessionStorage.setItem("saveReload", "0");
@@ -148,10 +156,38 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                                 if (reg) {
                                     registration();
                                 }
+                                window.location.reload();
                                 playClick()
-                            }} className={currentLang + " login auth-header"}
-                                  to="/login">{LANG.Auth.Login.loginIn}</Link>
-                            <Link onClick={() => {
+                            }} style={currentLang === 'ru' ? {marginRight: "30px"} : null} className="sound reload" height="18" width="18"
+                                src={refreshIcon}
+                                alt="refresh"/>
+                                {currentLang === 'ru' ? 
+                                    <img onClick={() => {handleMute(); playClick()}} className="sound " src={mute ? sound : noSound} height="18" width="18"
+                                    alt="sound"/> :
+                                    null}
+                            
+                            {!auth ? <div className="startHeader">
+                                <Link onClick={() => {
+                                    if (reg) {
+                                        registration();
+                                    }
+                                    playClick()
+                                }} className={currentLang + " login auth-header"}
+                                    to="/login">{LANG.Auth.Login.loginIn}</Link>
+                                <Link onClick={() => {
+                                    playClick()
+                                    if (reg) {
+                                        registration();
+                                    }
+                                }} className="login auth-header-icon" to="/login">
+                                    <img width={18} src={login} alt="signin"/>
+                                </Link>
+                                <Link onClick={() => {registration(); playClick()}} className={currentLang + " signup auth-header"}
+                                    to="/signup">{LANG.Auth.Login.signUp}</Link>
+                                <Link onClick={() => {registration(); playClick()}} className="signup auth-header-icon" to="/signup">
+                                    <img width={18} src={signup} alt="signup"/></Link>
+                            </div> : null}
+                            <div onClick={(e) => {
                                 playClick()
                                 if (reg) {
                                     registration();
@@ -209,7 +245,6 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                                 </li>
                             </ul>
                         </div>
-                    </div>
 
                 </div>
                 <div style={{display: isGame && widthMode !== "desktop" ? "block" : "none"}} className="tabs">
@@ -228,6 +263,7 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                         </div>
                     </div>
                 </div>
+                </React.Fragment>)}
             </header>
         </div>
     );
@@ -261,6 +297,7 @@ const mapDispatchToProps = {
     playClick,
     switchStep,
     changeDemo,
-    setIsPreview
+    setIsPreview,
+    setPreviewBanner
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
