@@ -54,8 +54,8 @@ const Tabs = ({tabs, budget, setBudget, balance}) => {
                         <div className="amount-btc">
                             {budget > 0 ? +budget.toFixed(4) : 0}<img src={bitcoin} alt="btc"/>
                         </div>
-                        <div className="amount-dollar">
-                            <div className="dollarContainer">{(+budget * +currentCourse).toFixed(0)}</div>
+                        <div className="amount-dollar website-block">
+                            <input onInput={e => setBudget(+e.target.value / +currentCourse)} value={(+budget * +currentCourse).toFixed(0)} className="dollarContainer" />
                             <img src={dollar} alt="dollar"/>
                         </div>
                     </div>
