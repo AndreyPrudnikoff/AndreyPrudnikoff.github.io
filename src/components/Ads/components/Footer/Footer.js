@@ -1,31 +1,30 @@
 import React from "react";
-import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+import {connect} from "react-redux";
+import {useHistory} from "react-router-dom";
 import {setIsPreview} from '../../../../redux/actions/advertising'
 // styles
 import "./style.scss";
 
 
 const Footer = ({setIsPreview, isCorrectDate}) => {
-  let history = useHistory()
+    let history = useHistory()
 
-  return (
-    <div className="footer">
-      <button type='submit'>Promote now</button>
 
-    </div>
-  );
+    return (
+        <div className="footer">
+            <button type={'submit'}>Promote now</button>
+        </div>
+    );
 };
 
 const mapStateToProps = state => {
-  console.log(state.adsOptions.isCorrectDate)
-  return {
-    isCorrectDate: state.adsOptions.isCorrectDate
-  }
+    return {
+        isCorrectDate: state.adsOptions.isCorrectDate
+    }
 }
 
 const mapDispatchToProps = {
-  setIsPreview
+    setIsPreview
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Footer);
