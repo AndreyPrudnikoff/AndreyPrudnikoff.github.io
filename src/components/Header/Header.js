@@ -17,7 +17,7 @@ import {playClick} from "../../redux/actions/music";
 import {
     authorization,
     chooseLang,
-    createAd,
+    createAdProp,
     logoutQuestion,
     prohibition,
     registration,
@@ -34,7 +34,9 @@ import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
 
-const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, registration, prohibition, authorization, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang, playClick, step, changeDemo, isPreview, setIsPreview}) => {
+
+const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, createAdProp, logout, registration, prohibition, authorization, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang, playClick, step, changeDemo, isPreview, setIsPreview}) => {
+
 
     const [menu, setMenu] = useState(false);
     const [showLang, setShowLang] = useState(true);
@@ -232,7 +234,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     muteToggle,
     logoutQuestion,
-    createAd,
+    createAdProp,
     registration,
     prohibition,
     authorization,

@@ -5,8 +5,10 @@ import {setIsPreview} from '../../../../redux/actions/advertising'
 // styles
 import "./style.scss";
 
-const Footer = ({setIsPreview}) => {
+
+const Footer = (props, {setIsPreview}) => {
   let history = useHistory()
+
   return (
     <div className="footer">
       <button type="submit">Ad Preview</button>

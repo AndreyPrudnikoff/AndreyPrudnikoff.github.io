@@ -6,7 +6,14 @@ import Graph from "../Graph";
 import RightSector from "./RightSector";
 import Dashboard from "./Dashboard";
 // import SelectList from "./SelectList";
-import {closeCongratulation, closeYourLose, createAd, logoutQuestion, prohibition, switchView} from "../../redux/actions";
+import {
+    closeCongratulation,
+    closeYourLose,
+    createAdProp,
+    logoutQuestion,
+    prohibition,
+    switchView
+} from "../../redux/actions";
 import {money, stop, you_lose, add_to_wallet, playClick} from "../../redux/actions/music";
 import JS_FIREWORKS from "../fireworks";
 import Time from "./Time";
@@ -31,12 +38,12 @@ const Main = ({history, step, view, switchView, course, lastWin, closeCongratula
     return (
         <div className={`${widthMode}-bg main`}>
             <Preloader show={flag}/>
-            <div style={{display: createAdProp ? "block" : "none"}} className="blur soon">
+            <div style={{display: createAd ? "block" : "none"}} className="blur soon">
                 <div className="round-dark win">
                     <div className="win-btn">
                         <h2>This feature coming soon</h2>
                         <button onClick={() => {
-                            createAd();
+                            createAdProp();
                             playClick()
                         }} className="btn btn-primary">OK
                         </button>
@@ -86,7 +93,7 @@ const mapStateToProps = state => {
         congratulation: state.balanceReducer.congratulation,
         yourlose: state.balanceReducer.yourlose,
         logout: state.authReducer.logoutQuestion,
-        createAdProp: state.switchOptions.createAd,
+        createAd: state.switchOptions.createAd,
         widthMode: state.switchOptions.widthMode,
         view: state.switchOptions.view,
         currentLang: state.switchOptions.lang,
@@ -102,7 +109,7 @@ const mapDispatchToProps = {
     logoutQuestion,
     prohibition,
     userdata,
-    createAd,
+    createAdProp,
     you_lose,
     add_to_wallet,
     playClick,
