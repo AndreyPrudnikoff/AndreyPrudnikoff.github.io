@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from "react"
 import "./ads.scss";
-import {useHistory} from 'react-router-dom';
+import {useHistory} from "react-router-dom";
 import {playClick} from "../../redux/actions/music";
-import {getCurrentList, getDetails} from '../../redux/actions/advertising'
-import {connect} from 'react-redux';
-import Wallet from './components/Wallet'
+import {getCurrentList, getDetails} from "../../redux/actions/advertising"
+import {connect} from "react-redux";
+import Wallet from "./components/Wallet"
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
@@ -25,7 +25,7 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
     }, [isCurrent])
 
     useEffect(() => {
-        getCurrentList()
+        getCurrentList();
     }, [])
 
     return (

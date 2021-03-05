@@ -5,7 +5,7 @@ import "./ads.scss";
 // components
 import {TextInput} from "./components/Duration/components";
 import {Duration, ImagePreview, Audience, Footer} from "./components";
-import Wallet from './components/Wallet'
+import Wallet from "./components/Wallet"
 import {setWebsite} from "../../redux/actions/advertising";
 import {User} from "../../api/User";
 import {createAdProp} from "../../redux/actions";
@@ -16,7 +16,7 @@ const Ads = (props) => {
     let timezones = {};
     props.country_codes_timezones.forEach(item => {
         const k = Object.keys(item)[0];
-        timezones[k] = item[k]
+        timezones[k] = item[k];
     })
     const ad = {
         banner: props.banner,
@@ -35,7 +35,7 @@ const Ads = (props) => {
                 props.createAdProp();
                 props.userdata();
             }}))
-            .catch(e => console.log(e.data))
+            .catch(e => console.log(e.data));
     }
 
     return (
@@ -46,7 +46,7 @@ const Ads = (props) => {
                         <h2>Your ad completed</h2>
                         <button onClick={() => {
                             props.createAdProp();
-                            props.history.push("/myads")
+                            props.history.push("/myads");
                             props.playClick();
                         }} className="btn btn-primary">My ads
                         </button>

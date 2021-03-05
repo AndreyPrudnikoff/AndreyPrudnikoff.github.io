@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 let BaseApi = axios.create({baseURL: 'https://bitcybets.com/api'});
 // let BaseApi = axios.create();
