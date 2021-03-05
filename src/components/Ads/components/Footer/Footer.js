@@ -6,7 +6,7 @@ import {setIsPreview} from '../../../../redux/actions/advertising'
 import "./style.scss";
 
 
-const Footer = (props, {setIsPreview}) => {
+const Footer = ({setIsPreview}) => {
   let history = useHistory()
 
   return (

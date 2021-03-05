@@ -4,7 +4,7 @@ import useImagePreview from "../../useImagePreview";
 import {addBanner} from '../../../redux/actions/advertising'
 import { connect } from "react-redux";
 
-const ImagePreview = ({addBanner, banner, isPreview}) => {
+const ImagePreview = ({addBanner, banner, isPreview, previewBanner}) => {
   const [image, setFile] = useImagePreview();
 
   const encodeImageFileAsURL = (element) => {
@@ -27,7 +27,7 @@ const ImagePreview = ({addBanner, banner, isPreview}) => {
 
         <div className="wrap-input">
           <label className="dashed" htmlFor="ad-file">
-            {isPreview ? (<img className="image-preview" src={banner} />) :
+            {previewBanner ? (<img className="image-preview" src={banner} />) :
             (image ? (
               <img className="image-preview" src={image} />
             ) : (
@@ -50,7 +50,8 @@ const ImagePreview = ({addBanner, banner, isPreview}) => {
 const mapStateToProps = state => {
   return {
     banner: state.adsOptions.banner,
-    isPreview: state.adsOptions.isPreview
+    isPreview: state.adsOptions.isPreview,
+    previewBanner: state.adsOptions.previewBanner
   }
   
 }

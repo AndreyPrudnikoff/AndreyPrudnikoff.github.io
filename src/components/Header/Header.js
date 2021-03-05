@@ -24,7 +24,7 @@ import {
     switchStep,
     switchView
 } from "../../redux/actions";
-import {setIsPreview} from '../../redux/actions/advertising'
+import {setIsPreview, setPreviewBanner} from '../../redux/actions/advertising'
 import {changeDemo} from '../../redux/actions/game'
 import {Link, useLocation, useHistory} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
@@ -35,7 +35,7 @@ import {RU} from "../../languages/ru";
 
 
 
-const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, createAdProp, logout, registration, prohibition, authorization, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang, playClick, step, changeDemo, isPreview, setIsPreview}) => {
+const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, createAdProp, logout, registration, prohibition, authorization, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang, playClick, step, changeDemo, isPreview, setIsPreview, setPreviewBanner}) => {
 
 
     const [menu, setMenu] = useState(false);
@@ -72,7 +72,18 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
     }, [location.pathname])
     return (
         <div>
-            <header className="header">
+            <header className="header" style={{background: isPreview ? 'rgba(0,0,0,0)' : '#1a1f34'}}>
+                {isPreview ? (
+                    <div className='blur'>
+                        <div className={isPreview ? 'closePreview' : 'closePreviewNone'}>
+                            <span></span>
+                            <span>Ad preview</span>
+                            <img src={closePreview} onClick={() => {setPreviewBanner(true);setIsPreview(false); history.push('/ads')}}/>
+                        </div>
+                    </div>
+                    )
+                : (
+                <React.Fragment>
                 <div style={{display: logout ? "block" : "none"}} className="blur">
                     <div className="round-dark win">
                         <h2 className={currentLang}>{LANG.ModalWindows.LogOut.title}</h2>
@@ -93,111 +104,106 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                         </div>
                     </div>
                 </div>
-                <div className="wrap-header">
-                    <div className={isPreview ? 'closePreview' : 'closePreviewNone'}>
-                        <span></span>
-                        <span>Ad preview</span>
-                        <img src={closePreview} onClick={() => {setIsPreview(false); history.push('/ads')}}/>
-                    </div>
-                    <nav className="navbar">
-                        <a onClick={() => {
-                            sessionStorage.setItem("saveReload", "0");
-                            sessionStorage.removeItem('token');
-                            window.location.reload();
-                            playClick()
-                        }} className="navbar-brand">
-                            <img src={logo} alt="logo" height="23"/>
-                        </a>
-                    </nav>
-                    <div className="header-right">
-                        <div className="flag-wrapper">
-                            <img onClick={() => {switchLang(); playClick()}} className="flag"
-                                 src={currentLang === "en" ? british : russian} width="30" alt="lang"/>
-                            <img onClick={() => {chooseLanguages(); playClick()}} style={{display: showLang ? "none" : "inline"}}
-                                 className="flag hide-flag" src={currentLang === "ru" ? british : russian} width="30"
-                                 alt="lang"/>
-                            <img style={{transform: showLang ? "none" : "rotate(180deg)"}} onClick={() => {switchLang(); playClick()}}
-                                 className="sound "
-                                 src={caret}
-                                 height="18" width="18"
-                                 alt="lang"/>
-                        </div>
+                <div className="wrap-header">                   
+                        <nav className="navbar">
+                            <a onClick={() => {
+                                sessionStorage.setItem("saveReload", "0");
+                                sessionStorage.removeItem('token');
+                                window.location.reload();
+                                playClick()
+                            }} className="navbar-brand">
+                                <img src={logo} alt="logo" height="23"/>
+                            </a>
+                        </nav>
+                        <div className="header-right">
+                            <div className="flag-wrapper">
+                                <img onClick={() => {switchLang(); playClick()}} className="flag"
+                                    src={currentLang === "en" ? british : russian} width="30" alt="lang"/>
+                                <img onClick={() => {chooseLanguages(); playClick()}} style={{display: showLang ? "none" : "inline"}}
+                                    className="flag hide-flag" src={currentLang === "ru" ? british : russian} width="30"
+                                    alt="lang"/>
+                                <img style={{transform: showLang ? "none" : "rotate(180deg)"}} onClick={() => {switchLang(); playClick()}}
+                                    className="sound "
+                                    src={caret}
+                                    height="18" width="18"
+                                    alt="lang"/>
+                            </div>
 
-                        <img onClick={() => {
-                            if (sessionStorage.getItem("token")) {
-                                sessionStorage.setItem("saveReload", "1");
-                            }
-                            window.location.reload();
-                            playClick()
-                        }} style={currentLang === 'ru' ? {marginRight: "30px"} : null} className="sound reload" height="18" width="18"
-                             src={refreshIcon}
-                             alt="refresh"/>
-                             {currentLang === 'ru' ? 
-                                <img onClick={() => {handleMute(); playClick()}} className="sound " src={mute ? sound : noSound} height="18" width="18"
-                                alt="sound"/> :
-                                null}
-                        
-                        {!auth ? <div className="startHeader">
-                            <Link onClick={() => {
-                                if (reg) {
-                                    registration();
+                            <img onClick={() => {
+                                if (sessionStorage.getItem("token")) {
+                                    sessionStorage.setItem("saveReload", "1");
                                 }
+                                window.location.reload();
                                 playClick()
-                            }} className={currentLang + " login auth-header"}
-                                  to="/login">{LANG.Auth.Login.loginIn}</Link>
-                            <Link onClick={() => {
+                            }} style={currentLang === 'ru' ? {marginRight: "30px"} : null} className="sound reload" height="18" width="18"
+                                src={refreshIcon}
+                                alt="refresh"/>
+                                {currentLang === 'ru' ? 
+                                    <img onClick={() => {handleMute(); playClick()}} className="sound " src={mute ? sound : noSound} height="18" width="18"
+                                    alt="sound"/> :
+                                    null}
+                            
+                            {!auth ? <div className="startHeader">
+                                <Link onClick={() => {
+                                    if (reg) {
+                                        registration();
+                                    }
+                                    playClick()
+                                }} className={currentLang + " login auth-header"}
+                                    to="/login">{LANG.Auth.Login.loginIn}</Link>
+                                <Link onClick={() => {
+                                    playClick()
+                                    if (reg) {
+                                        registration();
+                                    }
+                                }} className="login auth-header-icon" to="/login">
+                                    <img width={18} src={login} alt="signin"/>
+                                </Link>
+                                <Link onClick={() => {registration(); playClick()}} className={currentLang + " signup auth-header"}
+                                    to="/signup">{LANG.Auth.Login.signUp}</Link>
+                                <Link onClick={() => {registration(); playClick()}} className="signup auth-header-icon" to="/signup">
+                                    <img width={18} src={signup} alt="signup"/></Link>
+                            </div> : null}
+                            <div onClick={(e) => {
                                 playClick()
-                                if (reg) {
-                                    registration();
-                                }
-                            }} className="login auth-header-icon" to="/login">
-                                <img width={18} src={login} alt="signin"/>
-                            </Link>
-                            <Link onClick={() => {registration(); playClick()}} className={currentLang + " signup auth-header"}
-                                  to="/signup">{LANG.Auth.Login.signUp}</Link>
-                            <Link onClick={() => {registration(); playClick()}} className="signup auth-header-icon" to="/signup">
-                                <img width={18} src={signup} alt="signup"/></Link>
-                        </div> : null}
-                        <div onClick={(e) => {
-                            playClick()
-                            setMenu(!menu)
-                        }}
-                             style={{
-                                 display: auth ? 'flex' : 'none',
-                                 pointerEvents: predict ? "none" : "auto"
-                             }}
-                             className="menu">
-                            <img className="burger"
-                                 src={burger} alt="icon"/>
-                            <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">
-                                {/*<li className="burger-menu-item bord"><Link to="/ads">Create ad</Link></li>*/}
-                                {currentLang === 'en' ? <li onClick={() => {playClick(); handleMute();}} className="burger-menu-item bord">
-                                        <img onClick={() => {playClick()}} className="sound " src={mute ? sound : noSound} height="18" width="18"
-                                        alt="sound"/>
-                                        Sound
-                                    </li> : null }
-                                {widthMode !== 'desktop' ? null : 
-                                    <React.Fragment>
-                                        <li onClick={() => {history.push("/ads"); playClick()}} className="burger-menu-item bord">{LANG.Menu.first}</li>
-                                        <li onClick={() => {history.push("/myads");  playClick()}} className="burger-menu-item bord"><span>{LANG.Menu.second}</span></li>
-                                    </React.Fragment>
-                                
-                                }
-                                
-                                <li onClick={() => {
-                                    history.push("/game");
-                                    changeDemo();
-                                    switchStep(1);
-                                }} className="burger-menu-item bord">
-                                    <span>{LANG.Menu.third}</span></li>
-                                <li className="burger-menu-item" onClick={() => {
-                                    playClick();
-                                    logoutQuestion();
-                                }}>{LANG.Menu.exit}
-                                </li>
-                            </ul>
+                                setMenu(!menu)
+                            }}
+                                style={{
+                                    display: auth ? 'flex' : 'none',
+                                    pointerEvents: predict ? "none" : "auto"
+                                }}
+                                className="menu">
+                                <img className="burger"
+                                    src={burger} alt="icon"/>
+                                <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">
+                                    {/*<li className="burger-menu-item bord"><Link to="/ads">Create ad</Link></li>*/}
+                                    {currentLang === 'en' ? <li onClick={() => {playClick(); handleMute();}} className="burger-menu-item bord">
+                                            <img onClick={() => {playClick()}} className="sound " src={mute ? sound : noSound} height="18" width="18"
+                                            alt="sound"/>
+                                            Sound
+                                        </li> : null }
+                                    {widthMode !== 'desktop' ? null : 
+                                        <React.Fragment>
+                                            <li onClick={() => {history.push("/ads"); playClick(); setPreviewBanner(false)}} className="burger-menu-item bord">{LANG.Menu.first}</li>
+                                            <li onClick={() => {history.push("/myads");  playClick()}} className="burger-menu-item bord"><span>{LANG.Menu.second}</span></li>
+                                        </React.Fragment>
+                                    
+                                    }
+                                    
+                                    <li onClick={() => {
+                                        history.push("/game");
+                                        changeDemo();
+                                        switchStep(1);
+                                    }} className="burger-menu-item bord">
+                                        <span>{LANG.Menu.third}</span></li>
+                                    <li className="burger-menu-item" onClick={() => {
+                                        playClick();
+                                        logoutQuestion();
+                                    }}>{LANG.Menu.exit}
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
 
                 </div>
                 <div style={{display: isGame && widthMode !== "desktop" ? "block" : "none"}} className="tabs">
@@ -210,6 +216,7 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                         </div>
                     </div>
                 </div>
+                </React.Fragment>)}
             </header>
         </div>
     );
@@ -243,6 +250,7 @@ const mapDispatchToProps = {
     playClick,
     switchStep,
     changeDemo,
-    setIsPreview
+    setIsPreview,
+    setPreviewBanner
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

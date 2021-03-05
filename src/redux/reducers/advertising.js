@@ -29,7 +29,7 @@ const initialState = {
     finishedList: [],
     adDetail: {},
     isPreview: false,
-    previewBanner: ""
+    previewBanner: false
 }
 
 export const adsOptions = (state = initialState, action) => {
