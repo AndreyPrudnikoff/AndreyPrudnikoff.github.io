@@ -11,7 +11,7 @@ const Footer = ({setIsPreview, isCorrectDate}) => {
 
   return (
     <div className="footer">
-      <button type={isCorrectDate ?'submit' : null}>Promote now</button>
+      <button type={isCorrectDate ?'submit' : null} disabled={isCorrectDate}>Promote now</button>
 
     </div>
   );
