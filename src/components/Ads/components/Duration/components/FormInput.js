@@ -56,10 +56,7 @@ export const SelectInput = ({
     );
 }
 
-export const DateInput = ({
-                              label, onChange = () => {
-    }
-                          }) => {
+export const DateInput = ({label, onChange = () => {}}) => {
     const [inputValue, setValue] = useState("");
 
     const handleChange = ({target: {valueAsNumber}}) => {
