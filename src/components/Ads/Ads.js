@@ -10,6 +10,7 @@ import {setWebsite} from "../../redux/actions/advertising";
 import {User} from "../../api/User";
 import {createAdProp} from "../../redux/actions";
 import {playClick} from "../../redux/actions/music";
+import {userdata} from "../../redux/actions/game";
 
 const Ads = (props) => {
     let timezones = {};
@@ -29,11 +30,12 @@ const Ads = (props) => {
     }
     const handleSubmit = e => {
         e.preventDefault();
-        User.createAd(ad).then((res=> {
-            if(res.data.status === "success") {
+        User.createAd(ad)
+            .then((res=> {if(res.data.status === "success") {
                 props.createAdProp();
-            }
-        }))
+                props.userdata();
+            }}))
+            .catch(e => console.log(e.data))
     }
 
     return (
@@ -87,6 +89,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     setWebsite,
     createAdProp,
-    playClick
+    playClick,
+    userdata
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Ads);
