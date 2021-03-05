@@ -94,18 +94,17 @@ export const TimeInput = ({ label, onChange = () => {} }) => {
   );
 };
 
-export const RangeInput = ({min, max, balance, withError = false, onChange = () => {},}) => {
+export const RangeInput = ({min, max, currentCourse, balance, withError = false, onChange = () => {},}) => {
   const [isValid, setValidation] = useState(true);
 
   const handlerChange = ({ target: { valueAsNumber } }) => {
     onChange({
       value: valueAsNumber,
-      isValid: balance >= valueAsNumber,
+      isValid: balance  >= valueAsNumber,
     });
       store.dispatch(setBudget(valueAsNumber))
-    setValidation(balance >= valueAsNumber);
+    setValidation(balance  >= valueAsNumber);
   };
-
   return (
     <div className="rangeInputContainer">
       <input
@@ -121,7 +120,7 @@ export const RangeInput = ({min, max, balance, withError = false, onChange = () 
         <div className="reffil">
           <div className="reffil-balance">
             <span>Balance</span>
-            <span>{balance} BTC</span>
+            <span>{balance.toFixed(0)} <span className="gold">$</span></span>
           </div>
 
           <button className="reffil-button">REFILL</button>

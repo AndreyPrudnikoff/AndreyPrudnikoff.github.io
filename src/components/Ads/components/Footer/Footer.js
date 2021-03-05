@@ -6,14 +6,14 @@ import {setIsPreview} from '../../../../redux/actions/advertising'
 import "./style.scss";
 
 
-const Footer = (props, {setIsPreview}) => {
+const Footer = ({setIsPreview}) => {
   let history = useHistory()
 
   return (
     <div className="footer">
       <button type="submit">Ad Preview</button>
 
-      <button onClick={() => {setIsPreview(true); history.push('/game')}}>Promote now</button>
+      <button onClick={(e) => {e.preventDefault();setIsPreview(true); history.push('/game')}}>Promote now</button>
     </div>
   );
 };
