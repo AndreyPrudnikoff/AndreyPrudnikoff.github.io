@@ -56,7 +56,7 @@ export const SelectInput = ({
     );
 }
 
-export const DateInput = ({label, onChange = () => {}}) => {
+export const DateInput = ({label, onChange = () => {}, invalid}) => {
     const [inputValue, setValue] = useState("");
 
     const handleChange = ({target: {valueAsNumber}}) => {
@@ -67,7 +67,7 @@ export const DateInput = ({label, onChange = () => {}}) => {
     return (
         <div className="dateInputContainer">
             <label>{label}</label>
-            <div className="dateInput">
+            <div className="dateInput" style={{border: invalid ? '1px solid red' : '1px solid white'}}>
                 <div>{inputValue}</div>
                 <input required onChange={handleChange} type="date"/>
             </div>
@@ -75,7 +75,7 @@ export const DateInput = ({label, onChange = () => {}}) => {
     );
 };
 
-export const TimeInput = ({label, onChange = () => {}}) => {
+export const TimeInput = ({label, onChange = () => {}, invalid}) => {
     // const [inputValue, setValue] = useState("");
 
     const handleChange = ({target: {valueAsNumber}}) => {
@@ -88,7 +88,7 @@ export const TimeInput = ({label, onChange = () => {}}) => {
     return (
         <div className="timeInputContainer">
             <label>{label}</label>
-            <div className="timeInput">
+            <div className="timeInput" style={{border: invalid ? '1px solid red' : '1px solid white'}}>
                 <input required onChange={handleChange} type="time"/>
             </div>
         </div>

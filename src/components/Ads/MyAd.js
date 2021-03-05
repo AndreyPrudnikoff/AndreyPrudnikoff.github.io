@@ -17,6 +17,7 @@ const MyAd = ({objData}) => {
         reader.readAsDataURL(file);
     }
 
+
   const handleSubmit = e => {
     e.preventDefault();
     }
@@ -48,7 +49,7 @@ const MyAd = ({objData}) => {
                     <input
                         value={objData.website_url}
                         type="text"
-                        placeholder="website.com"
+                        placeholder={objData.website_url}
                     />
                 </div>
                 <hr/>
@@ -60,7 +61,8 @@ const MyAd = ({objData}) => {
                     </span>
                     <span className='time-zone-block'>
                         <p className='time-zone__title opacity-name'>Time zone</p>
-                        <p className='time-zone__time-zone'>{objData.country_timezone[Object.keys(objData.country_timezone)[0]]}</p>
+                        <p className='time-zone__time-zone'>UTC {objData.country_timezone[`${Object.keys(objData.country_timezone)[0]}`]}</p>
+
                     </span>
                 </div>
                 <hr/>

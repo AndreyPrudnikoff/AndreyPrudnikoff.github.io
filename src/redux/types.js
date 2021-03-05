@@ -36,6 +36,7 @@ export const GET_LIST_ADS = 'GET_LIST_ADS';
 export const AD_DETAIL = 'AD_DETAIL';
 export const IS_PREVIEW = 'IS_PREVIEW';
 export const PREVIEW_BANNER = 'PREVIEW_BANNER';
+export const IS_CORRECT_DATE = 'IS_CORRECT_DATE'
 
 
 // export const PLAY_CLICK ='PLAY_CLICK';

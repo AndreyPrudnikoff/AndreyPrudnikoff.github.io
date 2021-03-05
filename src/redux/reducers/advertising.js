@@ -13,7 +13,8 @@ import {
     GET_LIST_ADS,
     AD_DETAIL,
     IS_PREVIEW,
-    PREVIEW_BANNER
+    PREVIEW_BANNER,
+    IS_CORRECT_DATE
 } from "../types";
 
 const initialState = {
@@ -29,7 +30,8 @@ const initialState = {
     finishedList: [],
     adDetail: {},
     isPreview: false,
-    previewBanner: false
+    previewBanner: false,
+    isCorrectDate: false
 }
 
 export const adsOptions = (state = initialState, action) => {
@@ -57,15 +59,14 @@ export const adsOptions = (state = initialState, action) => {
                 ...state.country_codes_timezones.slice(0, action.payload),
                 ...state.country_codes_timezones.slice(action.payload + 1)
             ]}
-        case AD_DETAIL: {
+        case AD_DETAIL: 
             return {...state, adDetail: action.payload}
-        }
-        case IS_PREVIEW: {
+        case IS_PREVIEW: 
             return {...state, isPreview: action.payload}
-        }
-        case PREVIEW_BANNER: {
+        case PREVIEW_BANNER: 
             return {...state, previewBanner: action.payload}
-        }
+        case IS_CORRECT_DATE:
+            return {...state, isCorrectDate: action.payload}
         default:
             return state;
     }
