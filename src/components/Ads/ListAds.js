@@ -53,11 +53,8 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                                     getDetails(item);
                                     history.push('/myad')
                                 }}>
-<<<<<<< HEAD
                                     <span className='item__title item__url'>{item.website_url || "mysite.com"}</span>
-=======
-                                    <span className='item__title'>{item.website_url || "mysite.com"}</span>
->>>>>>> 590966585b49145e36b710a8fc16f18caf82f1ca
+
                                     <span className='item__date'>{item.end_date}</span>
                                 </li>
                             </React.Fragment>

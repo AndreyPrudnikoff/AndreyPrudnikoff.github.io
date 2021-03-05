@@ -57,11 +57,11 @@ const MyAd = ({objData}) => {
                     <h2 className='audience__title section-title'>Audience</h2>
                     <span className='country-block'>
                         <p className='country-block__title opacity-name'>Country</p>
-                        <p className='country-block__country'>{Object.keys(objData.country_timezone)[0]}</p>
+                        <p className='country-block__country'>{Object.keys(objData.country_timezone)[0] || null}</p>
                     </span>
                     <span className='time-zone-block'>
                         <p className='time-zone__title opacity-name'>Time zone</p>
-                        <p className='time-zone__time-zone'>UTC {objData.country_timezone[`${Object.keys(objData.country_timezone)[0]}`]}</p>
+                        <p className='time-zone__time-zone'>UTC {objData.country_timezone[`${Object.keys(objData.country_timezone)[0]}`] || null}</p>
 
                     </span>
                 </div>
@@ -103,7 +103,7 @@ const MyAd = ({objData}) => {
                         </p>
                     </span>
                 </div>
-                <div className="footer" style={{marginTop: '53px'}}>
+                <div className="footer foter-BTNs" style={{marginTop: '53px'}}>
                     <button type="submit" className='myAd-btn'>Change</button>
                     <button className='myAd-btn'>Repeat</button>
                 </div>
