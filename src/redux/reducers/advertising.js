@@ -11,7 +11,9 @@ import {
     SET_WEB_SITE,
     DELETE_COUNTRY_AND_TIMEZONE, 
     GET_LIST_ADS,
-    AD_DETAIL
+    AD_DETAIL,
+    IS_PREVIEW,
+    PREVIEW_BANNER
 } from "../types";
 
 const initialState = {
@@ -25,7 +27,9 @@ const initialState = {
     budget: "0",
     currentList: [],
     finishedList: [],
-    adDetail: {}
+    adDetail: {},
+    isPreview: false,
+    previewBanner: ""
 }
 
 export const adsOptions = (state = initialState, action) => {
@@ -55,6 +59,12 @@ export const adsOptions = (state = initialState, action) => {
             ]}
         case AD_DETAIL: {
             return {...state, adDetail: action.payload}
+        }
+        case IS_PREVIEW: {
+            return {...state, isPreview: action.payload}
+        }
+        case PREVIEW_BANNER: {
+            return {...state, previewBanner: action.payload}
         }
         default:
             return state;

@@ -9,7 +9,9 @@ import {
     SET_WEB_SITE,
     DELETE_COUNTRY_AND_TIMEZONE, 
     GET_LIST_ADS,
-    AD_DETAIL
+    AD_DETAIL,
+    IS_PREVIEW,
+    PREVIEW_BANNER
 } from "../types";
 
 export function addBanner(banner) {
@@ -64,5 +66,13 @@ export function getCurrentList() {
 }
 
 export function getDetails(obj) {
-    return{type: AD_DETAIL, payload: obj}
+    return {type: AD_DETAIL, payload: obj}
+}
+
+export function setIsPreview(bool) {
+    return {type: IS_PREVIEW, payload: bool}
+}
+
+export function setPreviewBanner(banner) {
+    return {type: PREVIEW_BANNER, payload: banner}
 }

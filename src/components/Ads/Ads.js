@@ -8,12 +8,16 @@ import {Duration, ImagePreview, Audience, Footer} from "./components";
 import Wallet from './components/Wallet'
 import {setWebsite} from "../../redux/actions/advertising";
 import {User} from "../../api/User";
+
+import { useHistory } from "react-router-dom";
 import {createAdProp} from "../../redux/actions";
 import {playClick} from "../../redux/actions/music";
 import {userdata} from "../../redux/actions/game";
 
+
 const Ads = (props) => {
     let timezones = {};
+    let history =  useHistory();
     props.country_codes_timezones.forEach(item => {
         const k = Object.keys(item)[0];
         timezones[k] = item[k]
