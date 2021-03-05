@@ -7,11 +7,11 @@ import {Link} from "react-router-dom";
 import {playClick, transition} from "../../redux/actions/music";
 import switchWallet from "../../images/switch_wallet.svg";
 import {changeDemo, userdata} from "../../redux/actions/game";
-import {createAd} from "../../redux/actions";
+import {createAdProp} from "../../redux/actions";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance, userdata, name, isDemo, threewins, changeDemo, createAd, predict, currentLang, playClick, transition}) => {
+const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance, userdata, name, isDemo, threewins, changeDemo, createAdProp, predict, currentLang, playClick, transition}) => {
     const [switcher, setSwitcher] = useState(false);
     const [banner, setBanner] = useState("banner one round-dark");
     const LANG = currentLang === "en" ? EN : RU;
@@ -108,7 +108,7 @@ const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance,
                         </button>
                         <Link to="/invite" style={{pointerEvents: predict ? "none" : "auto"}} className={currentLang + " btn money-btn friends"} onClick={(e)=>{
                             e.preventDefault();
-                            createAd();
+                            createAdProp();
                             playClick();
                         }}>{LANG.Training.UsualState.DemoWallet.btnPlayWithFriends}
                             {/*<img src={deposit} alt="deposit"/>*/}
@@ -144,7 +144,7 @@ const mapDispatchToProps = {
     // click,
     userdata,
     changeDemo,
-    createAd,
+    createAdProp,
     playClick,
     transition
 }

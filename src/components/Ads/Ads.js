@@ -8,6 +8,9 @@ import {Duration, ImagePreview, Audience, Footer} from "./components";
 import Wallet from './components/Wallet'
 import {setWebsite} from "../../redux/actions/advertising";
 import {User} from "../../api/User";
+import {createAdProp} from "../../redux/actions";
+import {playClick} from "../../redux/actions/music";
+import {userdata} from "../../redux/actions/game";
 
 const Ads = (props) => {
     let timezones = {};
@@ -27,10 +30,29 @@ const Ads = (props) => {
     }
     const handleSubmit = e => {
         e.preventDefault();
-        User.createAd(ad).then((res=>console.log(res)))
+        User.createAd(ad)
+            .then((res=> {if(res.data.status === "success") {
+                props.createAdProp();
+                props.userdata();
+            }}))
+            .catch(e => console.log(e.data))
     }
+
     return (
         <div style={{position: 'relative', display: 'flex'}}>
+            <div style={{display: props.createAd ? "block" : "none"}} className="blur soon">
+                <div className="round-dark win">
+                    <div className="win-btn">
+                        <h2>Your ad completed</h2>
+                        <button onClick={() => {
+                            props.createAdProp();
+                            props.history.push("/myads")
+                            props.playClick();
+                        }} className="btn btn-primary">My ads
+                        </button>
+                    </div>
+                </div>
+            </div>
             <form onSubmit={(e) => handleSubmit(e)} className="round-dark ads">
                 <ImagePreview/>
 
@@ -42,7 +64,7 @@ const Ads = (props) => {
 
                 <Duration/>
 
-                <Footer/>
+                <Footer />
             </form>
             <Wallet input={true}/>
         </div>
@@ -60,10 +82,14 @@ const mapStateToProps = state => {
         banner_end_date: state.adsOptions.banner_end_date,
         banner_end_time: state.adsOptions.banner_end_time,
         budget: state.adsOptions.budget,
+        createAd: state.switchOptions.createAd
 
     }
 }
 const mapDispatchToProps = {
-    setWebsite
+    setWebsite,
+    createAdProp,
+    playClick,
+    userdata
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Ads);
