@@ -49,8 +49,8 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
                         <div className="selectInput">
                             <select value={country} required onChange={writeCountry}>
                                 <option>All</option>
-                                {Object.keys(countryList).map((item) => (
-                                    <option key={item} value={countryList[item]}>{item}</option>
+                                {Object.keys(countryList).map((item, index) => (
+                                    <option key={index + 3} value={countryList[item]}>{item}</option>
                                 ))}
                             </select>
                         </div>
@@ -66,8 +66,8 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
                         <div className="selectInput">
                             <select value={zone} required onChange={writeZone}>
                                 <option>Choose</option>
-                                {timeZone.map((item) => (
-                                    <option key={item} value={item}>{item}</option>
+                                {timeZone.map((item, index) => (
+                                    <option key={index + 5} value={item}>{item}</option>
                                 ))}
                             </select>
                         </div>

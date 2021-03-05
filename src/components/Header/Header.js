@@ -72,7 +72,7 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
         <div>
             <header className="header" style={{background: isPreview ? 'rgba(0,0,0,0)' : '#1a1f34'}}>
                 {isPreview ? (
-                    <div className='blur'>
+                    <div className='blur block-click'>
                         <div className={isPreview ? 'closePreview' : 'closePreviewNone'}>
                             <span></span>
                             <span>Ad preview</span>

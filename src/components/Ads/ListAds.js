@@ -26,6 +26,9 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
 
     useEffect(() => {
         getCurrentList();
+        setTimeout(() => {
+            setArrList(currentList);
+        },  500)
     }, [])
 
     return (
@@ -46,11 +49,11 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                     {arrList.length !== 0
                         ? arrList.map((item, index) => (
                             <React.Fragment>
-                                <li className='ads-list__item' onClick={() => {
+                                <li key={index * 2} className='ads-list__item' onClick={() => {
                                     getDetails(item);
                                     history.push('/myad')
                                 }}>
-                                    <span className='item__title'>{item.web_url || "mysite.com"}</span>
+                                    <span className='item__title'>{item.website_url || "mysite.com"}</span>
                                     <span className='item__date'>{item.end_date}</span>
                                 </li>
                             </React.Fragment>
