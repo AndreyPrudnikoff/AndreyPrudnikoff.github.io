@@ -31,7 +31,6 @@ const MyAd = ({objData}) => {
                         Select a banner to add <br />
                         275 x 270 px
                         </div>
-
                         <div className="wrap-input">
                         <label className="dashed" htmlFor="ad-file">
                             <img className="image-preview" src={objData.banner} />
@@ -48,6 +47,7 @@ const MyAd = ({objData}) => {
                 <div className="website-block">
                     <span className="block-description">Website URL</span>
                     <input
+                        value={objData.website_url}
                         type="text"
                         placeholder={objData.website_url}
                     />
@@ -62,6 +62,7 @@ const MyAd = ({objData}) => {
                     <span className='time-zone-block'>
                         <p className='time-zone__title opacity-name'>Time zone</p>
                         <p className='time-zone__time-zone'>UTC {objData.country_timezone[`${Object.keys(objData.country_timezone)[0]}`]}</p>
+
                     </span>
                 </div>
                 <hr/>
@@ -75,10 +76,10 @@ const MyAd = ({objData}) => {
                         <p className='finished-time-block__title opacity-name'>Finished</p>
                         <p className='finished-time-block__time'>{objData.end_date}</p>
                     </span>
-                    <span className='total-time-block'>
-                        <p className='total-time-block__title opacity-name'>Totel time</p>
-                        <p className='total-time-block__total-time total-time'>8h 30 mins</p>
-                    </span>
+                    {/*<span className='total-time-block'>*/}
+                    {/*    <p className='total-time-block__title opacity-name'>Total time</p>*/}
+                    {/*    <p className='total-time-block__total-time total-time'>8h 30 mins</p>*/}
+                    {/*</span>*/}
                 </div>
                 <hr/>
                 <div className='results section-block'>
@@ -92,8 +93,8 @@ const MyAd = ({objData}) => {
                         <p className='clicks-block__time result-data'>{+objData.clicks}</p>
                     </span>
                     <span className='budget-block'>
-                        <p className='budget-block__title opacity-name'>Budget time</p>
-                        <p className='budget-block__total-time result-data currency-block'>{+objData.budget} 
+                        <p className='budget-block__title opacity-name'>Budget</p>
+                        <p className='budget-block__total-time result-data currency-block'>{+objData.budget}
                             <span className='dollar'>&#36;</span>
                             {/* <span className='btn-block'>
                                 0.035

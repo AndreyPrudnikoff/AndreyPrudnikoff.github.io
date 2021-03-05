@@ -10,7 +10,15 @@ header {
   max-height: 100%;
   background: var(--dark-light);
   z-index: 9999;
-
+.block-click {
+  background-color: transparent!important;
+ span {
+   color: var(--dark-light);
+ }
+  img {
+    cursor: pointer;
+  }
+}
   .closePreview {
     padding-left: 60px;
     padding-right: 60px;
