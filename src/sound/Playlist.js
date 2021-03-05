@@ -14,7 +14,7 @@ import timer2 from './betTimer.aac';
 import add_to_wallet from './add_to_wallet.aac';
 import you_lose from './you_lose.aac';
 import up_down from './up_down.aac';
-import fireworks from './fireworks.aac';
+// import fireworks from './fireworks.aac';
 import Sound from "./Sound";
 import {connect} from "react-redux";
 
@@ -36,7 +36,7 @@ const Playlist = ({betTimer, gameTimer, widthMode, touch}) => {
                 <Sound param={{id: 'add_to_wallet', effect: add_to_wallet}}/>
                 <Sound param={{id: 'you_lose', effect: you_lose}}/>
                 <Sound param={{id: 'up_down', effect: up_down}}/>
-                <Sound param={{id: 'fireworks', effect: fireworks}}/>
+                {/*<Sound param={{id: 'fireworks', effect: fireworks}}/>*/}
             </div>
         );
     } else {
