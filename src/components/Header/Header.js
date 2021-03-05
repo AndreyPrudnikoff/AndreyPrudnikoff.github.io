@@ -195,11 +195,11 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                                     }} className="login auth-header-icon" to="/login">
                                         <img width={18} src={login} alt="signin"/>
                                     </Link>
-                                    <Link onClick={() => {
+                                    {/* <Link onClick={() => {
                                         registration();
                                         playClick()
                                     }} className={currentLang + " signup auth-header"}
-                                        to="/signup">{LANG.Auth.Login.signUp}</Link>
+                                        to="/signup">{LANG.Auth.Login.signUp}</Link> */}
                                     <Link onClick={() => {
                                         registration();
                                         playClick()

@@ -11,7 +11,8 @@ import {
     GET_LIST_ADS,
     AD_DETAIL,
     IS_PREVIEW,
-    PREVIEW_BANNER
+    PREVIEW_BANNER,
+    IS_CORRECT_DATE
 } from "../types";
 
 export function addBanner(banner) {
@@ -75,4 +76,7 @@ export function setIsPreview(bool) {
 
 export function setPreviewBanner(bool) {
     return {type: PREVIEW_BANNER, payload: bool}
+}
+export function setIsCorrectDateToStore(bool) {
+    return {type: IS_CORRECT_DATE, payload: bool}
 }

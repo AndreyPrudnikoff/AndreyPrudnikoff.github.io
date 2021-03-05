@@ -5,26 +5,46 @@ import { Tabs, TimeInput, DateInput } from "./components";
 // style
 import "./style.scss";
 import {connect} from "react-redux";
-import {setEndDate, setEndTime, setStartDate, setStartTime} from "../../../../redux/actions/advertising";
+import {setEndDate, setEndTime, setStartDate, setStartTime, setIsCorrectDateToStore} from "../../../../redux/actions/advertising";
 
-const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime}) => {
-  const [dateStart, setDateStart] = useState();
-  const [timeStart, setTimeStart] = useState();
-  const [dateEnd, setDateEnd] = useState();
-  const [timeEnd, setTimeEnd] = useState();
+const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime, setIsCorrectDateToStore}) => {
+  const [dateStart, setDateStart] = useState(0);
+  const [timeStart, setTimeStart] = useState(0);
+  const [dateEnd, setDateEnd] = useState(0);
+  const [timeEnd, setTimeEnd] = useState(0);
   const [isStartDate, setIsStartDate] = useState(true);
-  const [isEndDate, setIsEndDate] = useState(true);
+  const [isCorrectDate, setIsCorrectDate] = useState(true);
 
   useEffect(() => {
-    console.log(dateStart, timeStart, dateEnd, timeEnd)
-    const dateNow = dayjs().valueOf();
-    let enteredDate = dayjs(`${dateStart}T${timeStart}`).valueOf();
-    console.log(dayjs(`${dateStart}T${timeStart}`).valueOf(), dayjs().valueOf())
-    if(enteredDate > dateNow) {
-      setIsStartDate(true)
-    } else if (enteredDate < dateNow) {
-      setIsStartDate(false)
+    const dateNow = dayjs().valueOf(true);
+    let enteredStartDate = dayjs(`${dateStart}T${timeStart}`).valueOf(true);
+	let enteredEndDate = dayjs(`${dateEnd}T${timeEnd}`).valueOf(true);
+	// console.log(enteredStartDate, dateNow)
+    if(dateStart !== 0 && timeStart !== 0) {
+      if(enteredStartDate > dateNow) {
+		  console.log('up')
+        setIsStartDate(true)
+      } else if (enteredStartDate < dateNow) {
+		  console.log('down')
+        setIsStartDate(false)
+      }
     }
+
+	if(dateStart !== 0 && timeStart !== 0 && dateEnd !==0 && timeEnd !== 0) {
+		if(enteredEndDate > enteredStartDate) {
+			setIsCorrectDate(true)
+		} else if (enteredEndDate < enteredStartDate) {
+			setIsCorrectDate(false)
+		}
+		// console.log(isCorrectDate)
+	}
+
+	if(isStartDate && isCorrectDate) {
+		setIsCorrectDateToStore(true)
+	} else {
+		setIsCorrectDateToStore(false)
+	}
+    
   }, [dateStart, timeStart, dateEnd, timeEnd])
 
   const tabs = [
@@ -33,13 +53,13 @@ const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime
       label: "Choose when this ad ends",
       content: (
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-          <div style={{ display: "flex", gap: "95px" }}>
-            <DateInput onChange={(e) => {setStartDate(e); setDateStart(e)}} label="Start date" />
-            <TimeInput onChange={(e) => {setStartTime(e); setTimeStart(e)}} label="Start time" />
+          <div style={{ display: "flex", gap: "95px"}} >
+            <DateInput onChange={(e) => {setStartDate(e); setDateStart(e)}} label="Start date" invalid={isStartDate ? false : true}/>
+            <TimeInput onChange={(e) => {setStartTime(e); setTimeStart(e)}} label="Start time" invalid={isStartDate ? false : true}/>
           </div>
           <div style={{ display: "flex", gap: "95px" }}>
-            <DateInput onChange={(e) => {setEndDate(e); setDateEnd(e)}} label="End date" />
-            <TimeInput onChange={(e) => {setEndTime(e); setTimeEnd(e)}} label="End time" />
+            <DateInput onChange={(e) => {setEndDate(e); setDateEnd(e)}} label="End date" invalid={isCorrectDate ? false : true} />
+            <TimeInput onChange={(e) => {setEndTime(e); setTimeEnd(e)}} label="End time" invalid={isCorrectDate ? false : true} />
           </div>
         </div>
       ),
@@ -72,5 +92,6 @@ const mapDispatchToProps = {
     setStartTime,
     setEndDate,
     setEndTime,
+	setIsCorrectDateToStore
 }
 export default connect(null, mapDispatchToProps)(Duration);
