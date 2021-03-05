@@ -24,15 +24,17 @@ import {
     switchStep,
     switchView
 } from "../../redux/actions";
+import {setIsPreview} from '../../redux/actions/advertising'
 import {changeDemo} from '../../redux/actions/game'
 import {Link, useLocation, useHistory} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
+import closePreview from '../../images/closePreview.png';
 
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
 
-const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, registration, prohibition, authorization, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang, playClick, step, changeDemo}) => {
+const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, createAd, logout, registration, prohibition, authorization, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang, playClick, step, changeDemo, isPreview, setIsPreview}) => {
 
     const [menu, setMenu] = useState(false);
     const [showLang, setShowLang] = useState(true);
@@ -90,6 +92,11 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                     </div>
                 </div>
                 <div className="wrap-header">
+                    <div className={isPreview ? 'closePreview' : 'closePreviewNone'}>
+                        <span></span>
+                        <span>Ad preview</span>
+                        <img src={closePreview} onClick={() => {setIsPreview(false); history.push('/ads')}}/>
+                    </div>
                     <nav className="navbar">
                         <a onClick={() => {
                             sessionStorage.setItem("saveReload", "0");
@@ -218,7 +225,8 @@ const mapStateToProps = state => {
         widthMode: state.switchOptions.widthMode,
         view: state.switchOptions.view,
         currentLang: state.switchOptions.lang,
-        step: state.switchOptions.step
+        step: state.switchOptions.step,
+        isPreview: state.adsOptions.isPreview
     }
 }
 const mapDispatchToProps = {
@@ -232,6 +240,7 @@ const mapDispatchToProps = {
     chooseLang,
     playClick,
     switchStep,
-    changeDemo
+    changeDemo,
+    setIsPreview
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

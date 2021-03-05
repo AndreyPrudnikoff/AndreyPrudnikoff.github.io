@@ -24,6 +24,22 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+
+    .closePreview {
+      width: 100%;
+      position: absolute;
+      top: 85px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+       img{
+         margin-right: 130px;
+       }
+    }
+    .closePreviewNone{
+      display: none;
+    }
 
     //#logoCentre {
     //position: absolute;

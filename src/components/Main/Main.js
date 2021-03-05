@@ -17,8 +17,9 @@ import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 import Online from "./Online";
 import Presentation from "../Intro/Presentation";
+import closePreview from '../../images/closePreview.png';
 
-const Main = ({history, step, view, switchView, course, lastWin, closeCongratulation, congratulation, yourlose, closeYourLose, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition, userdata, lastWinGame, createAd, createAdProp, widthMode, currentLang, you_lose, add_to_wallet, playClick}) => {
+const Main = ({history, step, view, switchView, course, lastWin, closeCongratulation, congratulation, yourlose, closeYourLose, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition, userdata, lastWinGame, createAd, createAdProp, widthMode, currentLang, you_lose, add_to_wallet, playClick, isPreview}) => {
 
     useEffect(() => {
         userdata();
@@ -89,7 +90,8 @@ const mapStateToProps = state => {
         widthMode: state.switchOptions.widthMode,
         view: state.switchOptions.view,
         currentLang: state.switchOptions.lang,
-        step: state.switchOptions.step
+        step: state.switchOptions.step,
+        isPreview: state.adsOptions.isPreview
     }
 }
 const mapDispatchToProps = {
