@@ -37,6 +37,17 @@
     .wrap-input {
       position: relative;
 
+      .btn-ad-preview {
+        width: 275px;
+        padding: 13px 84px;
+        position: absolute;
+        bottom: -35px;
+        left: 0;
+        background-color: var(--dark-block);
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
       .dashed {
         display: flex;
         flex-direction: column;
@@ -47,7 +58,7 @@
         width: 275px;
         height: 270px;
         // position: relative;
-        margin-bottom: 70px;
+        margin-bottom: 120px;
 
         #ad-file {
           outline: none;
@@ -62,7 +73,7 @@
         width: 275px;
         padding: 13px 84px;
         position: absolute;
-        bottom: 0;
+        bottom: 31px;
         left: 0;
         background-color: var(--dark-block);
         border-radius: 8px;
@@ -105,7 +116,7 @@
   }
 
   .section-block {
-    
+
     .section-title {
       font-weight: 500;
       font-size: 24px;
@@ -144,18 +155,21 @@
         position: relative;
         display: flex;
         flex-wrap: nowrap;
+
         .dollar {
           margin-left: 4px;
           font-size: 24px;
           width: 10px;
           color: #F7931A;
         }
+
         .btn-block {
           position: absolute;
           width: 60px;
           left: 46%;
           top: 100%;
           opacity: .5;
+
           .btn {
             color: #F7931A;
             font-size: 24px;
@@ -165,7 +179,7 @@
           }
         }
       }
-      
+
     }
   }
 }
@@ -326,6 +340,7 @@
       opacity: 1 !important;
       color: var(--up) !important;
     }
+
     .deposit {
       margin-left: 7px;
     }
@@ -336,5 +351,3 @@
   position: absolute;
   top: 5.5%;
 }
-
-

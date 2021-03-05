@@ -1,11 +1,13 @@
 import React from "react";
 // hooks
 import useImagePreview from "../../useImagePreview";
-import {addBanner} from '../../../redux/actions/advertising'
+import {addBanner, setIsPreview} from '../../../redux/actions/advertising'
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 
-const ImagePreview = ({addBanner, banner, isPreview, previewBanner}) => {
+const ImagePreview = ({addBanner, banner, isPreview, previewBanner, setIsPreview}) => {
   const [image, setFile] = useImagePreview();
+  let history = useHistory()
 
   const encodeImageFileAsURL = (element) => {
     let file = element.target.files[0];
@@ -41,6 +43,7 @@ const ImagePreview = ({addBanner, banner, isPreview, previewBanner}) => {
           <label htmlFor="ad-file" className="btn-file">
             Choose file
           </label>
+          <span onClick={() => {setIsPreview(true); history.push('/game')}} className='btn-ad-preview'>Ad Preview</span>
         </div>
       </div>
     </div>
@@ -57,6 +60,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  addBanner
+  addBanner,
+  setIsPreview
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ImagePreview);

@@ -11,9 +11,7 @@ const Footer = ({setIsPreview}) => {
 
   return (
     <div className="footer">
-      <button type="submit">Ad Preview</button>
-
-      <button onClick={() => {setIsPreview(true); history.push('/game')}}>Promote now</button>
+      <button type='submit'>Promote now</button>
     </div>
   );
 };
