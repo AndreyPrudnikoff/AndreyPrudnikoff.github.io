@@ -33,8 +33,6 @@ import closePreview from '../../images/closePreview.png';
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-
-
 const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, createAdProp, logout, registration, prohibition, authorization, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang, playClick, step, changeDemo, isPreview, setIsPreview}) => {
 
 
@@ -60,7 +58,7 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
         switchLang();
     }
     const stepTest = (switchBool) => {
-        if(step === 4 || step === 0) {
+        if (step === 4 || step === 0) {
             switchView(switchBool);
         }
     }
@@ -83,12 +81,12 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                                 prohibition();
                                 window.location.reload();
                                 playClick()
-                            }} className="btn btn-primary"><Link to="/" >{LANG.ModalWindows.LogOut.btnLogOut}</Link>
+                            }} className="btn btn-primary"><Link to="/">{LANG.ModalWindows.LogOut.btnLogOut}</Link>
                             </button>
                             <button onClick={() => {
                                 logoutQuestion();
                                 playClick()
-                            }} className={currentLang + " btn btn-primary"} >{LANG.ModalWindows.LogOut.btnContunue}
+                            }} className={currentLang + " btn btn-primary"}>{LANG.ModalWindows.LogOut.btnContunue}
                             </button>
                         </div>
                     </div>
@@ -111,12 +109,21 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                     </nav>
                     <div className="header-right">
                         <div className="flag-wrapper">
-                            <img onClick={() => {switchLang(); playClick()}} className="flag"
+                            <img onClick={() => {
+                                switchLang();
+                                playClick()
+                            }} className="flag"
                                  src={currentLang === "en" ? british : russian} width="30" alt="lang"/>
-                            <img onClick={() => {chooseLanguages(); playClick()}} style={{display: showLang ? "none" : "inline"}}
+                            <img onClick={() => {
+                                chooseLanguages();
+                                playClick()
+                            }} style={{display: showLang ? "none" : "inline"}}
                                  className="flag hide-flag" src={currentLang === "ru" ? british : russian} width="30"
                                  alt="lang"/>
-                            <img style={{transform: showLang ? "none" : "rotate(180deg)"}} onClick={() => {switchLang(); playClick()}}
+                            <img style={{transform: showLang ? "none" : "rotate(180deg)"}} onClick={() => {
+                                switchLang();
+                                playClick()
+                            }}
                                  className="sound "
                                  src={caret}
                                  height="18" width="18"
@@ -129,14 +136,15 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                             }
                             window.location.reload();
                             playClick()
-                        }} style={currentLang === 'ru' ? {marginRight: "30px"} : null} className="sound reload" height="18" width="18"
+                        }} style={{marginRight: "20px"}} className="sound reload" height="18" width="18"
                              src={refreshIcon}
                              alt="refresh"/>
-                             {currentLang === 'ru' ? 
-                                <img onClick={() => {handleMute(); playClick()}} className="sound " src={mute ? sound : noSound} height="18" width="18"
-                                alt="sound"/> :
-                                null}
-                        
+                        <img onClick={() => {
+                            handleMute();
+                            playClick()
+                        }} className="sound " src={mute ? sound : noSound} height="18" width="18"
+                             alt="sound"/>
+
                         {!auth ? <div className="startHeader">
                             <Link onClick={() => {
                                 if (reg) {
@@ -153,9 +161,15 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                             }} className="login auth-header-icon" to="/login">
                                 <img width={18} src={login} alt="signin"/>
                             </Link>
-                            <Link onClick={() => {registration(); playClick()}} className={currentLang + " signup auth-header"}
+                            <Link onClick={() => {
+                                registration();
+                                playClick()
+                            }} className={currentLang + " signup auth-header"}
                                   to="/signup">{LANG.Auth.Login.signUp}</Link>
-                            <Link onClick={() => {registration(); playClick()}} className="signup auth-header-icon" to="/signup">
+                            <Link onClick={() => {
+                                registration();
+                                playClick()
+                            }} className="signup auth-header-icon" to="/signup">
                                 <img width={18} src={signup} alt="signup"/></Link>
                         </div> : null}
                         <div onClick={(e) => {
@@ -170,20 +184,20 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                             <img className="burger"
                                  src={burger} alt="icon"/>
                             <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">
-                                {/*<li className="burger-menu-item bord"><Link to="/ads">Create ad</Link></li>*/}
-                                {currentLang === 'en' ? <li onClick={() => {playClick(); handleMute();}} className="burger-menu-item bord">
-                                        <img onClick={() => {playClick()}} className="sound " src={mute ? sound : noSound} height="18" width="18"
-                                        alt="sound"/>
-                                        Sound
-                                    </li> : null }
-                                {widthMode !== 'desktop' ? null : 
-                                    <React.Fragment>
-                                        <li onClick={() => {history.push("/ads"); playClick()}} className="burger-menu-item bord">{LANG.Menu.first}</li>
-                                        <li onClick={() => {history.push("/myads");  playClick()}} className="burger-menu-item bord"><span>{LANG.Menu.second}</span></li>
-                                    </React.Fragment>
-                                
+                                {widthMode !== 'desktop' ? null :
+                                    <>
+                                        <li onClick={() => {
+                                            history.push("/ads");
+                                            playClick()
+                                        }} className="burger-menu-item bord">{LANG.Menu.first}</li>
+                                        <li onClick={() => {
+                                            history.push("/myads");
+                                            playClick()
+                                        }} className="burger-menu-item bord"><span>{LANG.Menu.second}</span></li>
+                                    </>
+
                                 }
-                                
+
                                 <li onClick={() => {
                                     history.push("/game");
                                     changeDemo();
@@ -202,10 +216,16 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                 </div>
                 <div style={{display: isGame && widthMode !== "desktop" ? "block" : "none"}} className="tabs">
                     <div className="wrap-tabs">
-                        <div onClick={() => {stepTest(false); playClick()}} className={view ? "tab bets" : "tab bets active"}>
+                        <div onClick={() => {
+                            stepTest(false);
+                            playClick()
+                        }} className={view ? "tab bets" : "tab bets active"}>
                             <img src={bets} alt="tab"/>
                         </div>
-                        <div onClick={() => {stepTest(true); playClick()}} className={!view ? "tab mobile_wallet" : "tab mobile_wallet active"}>
+                        <div onClick={() => {
+                            stepTest(true);
+                            playClick()
+                        }} className={!view ? "tab mobile_wallet" : "tab mobile_wallet active"}>
                             <img src={wallet} alt="tab"/>
                         </div>
                     </div>

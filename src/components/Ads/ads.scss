@@ -225,7 +225,7 @@
 
       &__not-ads {
         text-align: center;
-        font-family: Roc Grotesk;
+        font-family: "roc-grotesk", sans-serif;
         font-style: normal;
         font-weight: normal;
         font-size: 18px;
@@ -238,6 +238,10 @@
         justify-content: space-between;
         align-items: center;
         cursor: pointer;
+        &:hover span {
+          color: var(--gold);
+          text-decoration: underline;
+        }
 
         &:not(:last-child) {
           &::after {
