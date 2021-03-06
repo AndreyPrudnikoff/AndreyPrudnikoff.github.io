@@ -50,7 +50,7 @@ const Ads = (props) => {
     }
 
     return (
-        <div style={{position: 'relative', display: 'flex'}}>
+        <div className="father-ads" style={{position: 'relative', display: 'flex'}}>
             <div style={{display: props.createAd ? "block" : "none"}} className="blur soon">
                 <div className="round-dark win">
                     <div className="win-btn">
