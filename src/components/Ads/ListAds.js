@@ -11,30 +11,16 @@ import {RU} from "../../languages/ru";
 const ListAds = ({playClick, name, balance, currentLang, currentList, finishedList, getCurrentList, getDetails}) => {
     let history = useHistory();
     const LANG = currentLang === "en" ? EN : RU;
-    const [isCurrent, setIsCurrent] = useState(true)
-    // const [finished, setFinished] = useState(false)
-    const [arrList, setArrList] = useState(currentList)
-
-
-    useEffect(() => {
-        if (isCurrent) {
-            setArrList(currentList);
-        } else {
-            setArrList(finishedList);
-        }
-    }, [isCurrent])
+    const [isCurrent, setIsCurrent] = useState(true);
 
     useEffect(() => {
         getCurrentList();
-        setTimeout(() => {
-            setArrList(currentList);
-        },  500)
     }, [])
 
     return (
         <div className='listBlock'>
             <div className='round-dark listAds'>
-                <h1 className='listAds__title'>{LANG.Ads.MyAds.title}</h1>
+                <h2 className='listAds__title'>{LANG.Ads.MyAds.title}</h2>
                 <div className='ads-switch'>
                     <span onClick={() => {
                         setIsCurrent(true)
@@ -46,9 +32,18 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                           className={isCurrent ? 'ads-switch__item' : 'ads-switch__item active'}>{LANG.Ads.MyAds.finished}</span>
                 </div>
                 <ul className='ads-list'>
-                    {arrList.length !== 0
-                        ? arrList.map((item, index) => (
-                            <React.Fragment>
+                    {isCurrent ? currentList.length
+                        ? currentList.map((item, index) => (
+                            <li key={index * 2} className='ads-list__item' onClick={() => {
+                                getDetails(item);
+                                history.push('/myad')
+                            }}>
+                                <span className='item__title'>{item.website_url || "mysite.com"}</span>
+                                <span className='item__date'>{item.end_date}</span>
+                            </li>
+                        )) : <h2 className='ads-list__not-ads'>{LANG.Ads.MyAds.notAds}</h2> :
+                        finishedList.length
+                            ? finishedList.map((item, index) => (
                                 <li key={index * 2} className='ads-list__item' onClick={() => {
                                     getDetails(item);
                                     history.push('/myad')
@@ -56,8 +51,7 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                                     <span className='item__title'>{item.website_url || "mysite.com"}</span>
                                     <span className='item__date'>{item.end_date}</span>
                                 </li>
-                            </React.Fragment>
-                        )) : <h1 className='ads-list__not-ads'>{LANG.Ads.MyAds.notAds}</h1>
+                            )) : <h2 className='ads-list__not-ads'>{LANG.Ads.MyAds.notAds}</h2>
                     }
                 </ul>
             </div>
