@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
 import imgPerson from '../../images/person x4F 4 1.png'
 import imgClickOnWallet from '../../images/clickOnWallet.png'
 import {switchStep} from '../../redux/actions/index';
@@ -10,9 +9,8 @@ import {EN} from '../../languages/en'
 import {RU} from '../../languages/ru'
 
 const Step4 = ({playClick, switchStep, currentLang, switchView, widthMode, view}) => {
-    const [clickOnWalllet, setClickOnWalllet] = useState(false)
     const LANG = currentLang === 'en' ? EN : RU;
-    const isDesktop = widthMode === "desktop" ? true : false;
+    const isDesktop = widthMode === "desktop";
     if (isDesktop === true || view === true) {
         return (
             <div className="step step4">

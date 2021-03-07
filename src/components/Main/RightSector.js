@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import bitcoin from "../../images/bitcoin.svg";
 import deposit from '../../images/deposit.svg';
 import withdraw from '../../images/withdraw.svg';
 import {connect} from "react-redux";
@@ -17,30 +16,13 @@ import bannerImg from '../../images/adbanner3.png';
 const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance, userdata, name, isDemo, threewins, changeDemo, createAdProp, predict, currentLang, playClick, transition, setIsPreview, bannerPreview, isPreview}) => {
 
     const [switcher, setSwitcher] = useState(false);
-    const [banner, setBanner] = useState("banner one round-dark");
+    // const [banner, setBanner] = useState("banner one round-dark");
     const LANG = currentLang === "en" ? EN : RU;
     const balanceColor = {color: colorBlalance === 'green' ? '#32D74B' : colorBlalance === 'red' ? '#FF453A' : '#FFFFFF'}
 
-    // useEffect(() => {
-    //     const addBanner = setInterval(() => {
-    //         if(banner === "banner one round-dark") {
-    //             setBanner("banner three round-dark");
-    //         // } else if (banner === "banner two round-dark") {
-    //         //     setBanner("banner three round-dark");
-    //         } else if(banner === "banner three round-dark") {
-    //             setBanner("banner one round-dark");
-    //         }
-    //     }, 30000)
-    //     return () => clearInterval(addBanner)
-    // }, [banner])
     useEffect(() => {
         userdata();
     }, [userdata])
-
-    const isPreviewHandler = () => {
-        
-    }
-
 
     return (
         <div className="right-sector">
@@ -100,8 +82,7 @@ const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance,
                     </tr>
                     </tbody>
                 </table>
-                    
-               
+
                 {!isDemo
                     ? <div>
                     <Link to="/refill" style={{pointerEvents: predict ? "none" : "auto"}} className={currentLang + " btn money-btn green"} onClick={playClick}>{LANG.BettingRealMoney.UsualState.MyWallet.btnDeposit}
@@ -128,8 +109,7 @@ const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance,
             <div onClick={() => {
                 window.open('https://bitrxapp.com/?gb', '_blank')
             }} className={"banner three round-dark"}>
-                <img src={isPreview ? bannerPreview : bannerImg} className='bannerImg'/>
-                <button style={{display: banner === "banner one round-dark" ? "none" : "block"}} className="btn learn-more" onClick={playClick}>Learn more</button>
+                <img src={isPreview ? bannerPreview : bannerImg} alt="ban" className='bannerImg'/>
             </div>
         </div>
     );

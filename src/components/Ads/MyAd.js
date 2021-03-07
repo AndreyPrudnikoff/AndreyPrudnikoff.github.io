@@ -1,25 +1,23 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './ads.scss';
 import {addBanner} from '../../redux/actions/advertising'
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import Wallet from './components/Wallet'
 
 const MyAd = ({objData}) => {
-    const [image, setFile] = useState();
-    console.log(objData);
 
-  const encodeImageFileAsURL = (element) => {
+    const encodeImageFileAsURL = (element) => {
         let file = element.target.files[0];
         let reader = new FileReader();
-        reader.onloadend = function() {
+        reader.onloadend = function () {
             addBanner(reader.result);
         }
         reader.readAsDataURL(file);
     }
 
 
-  const handleSubmit = e => {
-    e.preventDefault();
+    const handleSubmit = e => {
+        e.preventDefault();
     }
     return (
         <div style={{position: 'relative', display: 'flex'}}>
@@ -28,19 +26,21 @@ const MyAd = ({objData}) => {
                     <h2>Ad creative</h2>
                     <div className="wrapper-input-file">
                         <div className="label-file">
-                        Select a banner to add <br />
-                        275 x 270 px
+                            Select a banner to add <br/>
+                            275 x 270 px
                         </div>
                         <div className="wrap-input">
-                        <label className="dashed" htmlFor="ad-file">
-                            <img className="image-preview" src={objData.banner} />
-                            
-                            <input onChange={(e) => {setFile(e); encodeImageFileAsURL(e)}} type="file" id="ad-file"  />
-                        </label>
+                            <label className="dashed" htmlFor="ad-file">
+                                <img className="image-preview" alt="ban" src={objData.banner}/>
 
-                        <label htmlFor="ad-file" className="btn-file">
-                            Choose file
-                        </label>
+                                <input onChange={(e) => {
+                                    encodeImageFileAsURL(e)
+                                }} type="file" id="ad-file"/>
+                            </label>
+
+                            <label htmlFor="ad-file" className="btn-file">
+                                Choose file
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@ const MyAd = ({objData}) => {
                 </div>
                 <hr/>
                 <div className='results section-block'>
-                <h2 className='result__title section-title'>Results</h2>
+                    <h2 className='result__title section-title'>Results</h2>
                     <span className='displays-block'>
                         <p className='displays-block__title opacity-name'>Displays</p>
                         <p className='displays-block__time result-data'>{+objData.displays}</p>
@@ -123,4 +123,4 @@ const mapDispatchToProps = {
     addBanner
 }
 
-export default connect(mapStateToProps, addBanner)(MyAd)
+export default connect(mapStateToProps, mapDispatchToProps)(MyAd)

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import imgPerson from '../../images/person x5F 3 1.png'
 import {switchStep} from '../../redux/actions/index';
 import {switchView} from "../../redux/actions";
@@ -10,7 +9,7 @@ import {RU} from '../../languages/ru'
 
 const Step3 = ({playClick, switchStep, currentLang, widthMode, switchView}) => {
     const LANG = currentLang === 'en' ? EN : RU;
-    const isDesktop = widthMode === "desktop" ? true : false;
+    const isDesktop = widthMode === "desktop";
     if (!isDesktop) {
         switchView(false)
     }
