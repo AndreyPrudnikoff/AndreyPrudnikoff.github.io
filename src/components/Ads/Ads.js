@@ -17,7 +17,6 @@ import {userdata} from "../../redux/actions/game";
 
 const Ads = (props) => {
     let timezones = {};
-    let history = useHistory();
     props.country_codes_timezones.forEach(item => {
         const k = Object.keys(item)[0];
         timezones[k] = item[k];

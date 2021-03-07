@@ -24,9 +24,6 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
             addCountry({[country]: zone});
         }
     }
-    const closeBtn = index => {
-        console.log(index)
-    }
     return (
         <div className="audience">
             <h2>Audience</h2>

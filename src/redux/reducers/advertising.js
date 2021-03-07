@@ -1,4 +1,3 @@
-import { act } from "react-dom/test-utils";
 import {
     ADD_BANNER,
     ADD_COUNTRY,
@@ -7,7 +6,6 @@ import {
     SET_END_TIME,
     SET_START_DATE,
     SET_START_TIME,
-    SET_TIMEZONE,
     SET_WEB_SITE,
     DELETE_COUNTRY_AND_TIMEZONE,
     GET_LIST_ADS,
