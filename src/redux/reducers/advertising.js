@@ -16,7 +16,7 @@ import {
 } from "../types";
 
 const initialState = {
-    banner: "base64",
+    image: "base64",
     website_url: "",
     country_codes_timezones: [],
     banner_start_date: "yyyy-mm-dd",
