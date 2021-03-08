@@ -8,8 +8,6 @@ import {Audience, Duration, Footer, ImagePreview} from "./components";
 import Wallet from "./components/Wallet"
 import {getCurrentList, setWebsite} from "../../redux/actions/advertising";
 import {User} from "../../api/User";
-
-import {useHistory} from "react-router-dom";
 import {createAdProp} from "../../redux/actions";
 import {playClick} from "../../redux/actions/music";
 import {userdata} from "../../redux/actions/game";
@@ -22,18 +20,17 @@ const Ads = (props) => {
         timezones[k] = item[k];
     })
     const withTime = !props.withDate ? {
-        banner_start_date: props.banner_start_date,
-        banner_start_time: props.banner_start_time,
-        banner_end_date: props.banner_end_date,
-        banner_end_time: props.banner_end_time,
+        start_date: props.start_date,
+        start_time: props.start_time,
+        end_date: props.end_date,
+        end_time: props.end_time,
     } : null
     const ad = {
-        banner: props.banner,
+        image: props.image,
         website_url: props.website_url,
         country_codes_timezones: timezones,
         budget: props.budget,
         ...withTime
-
     }
     const handleSubmit = e => {
         e.preventDefault();
@@ -83,13 +80,13 @@ const Ads = (props) => {
 }
 const mapStateToProps = state => {
     return {
-        banner: state.adsOptions.banner,
+        image: state.adsOptions.banner,
         website_url: state.adsOptions.website_url,
         country_codes_timezones: state.adsOptions.country_codes_timezones,
-        banner_start_date: state.adsOptions.banner_start_date,
-        banner_start_time: state.adsOptions.banner_start_time,
-        banner_end_date: state.adsOptions.banner_end_date,
-        banner_end_time: state.adsOptions.banner_end_time,
+        start_date: state.adsOptions.banner_start_date,
+        start_time: state.adsOptions.banner_start_time,
+        end_date: state.adsOptions.banner_end_date,
+        end_time: state.adsOptions.banner_end_time,
         budget: state.adsOptions.budget,
         withDate: state.adsOptions.withDate,
         createAd: state.switchOptions.createAd
