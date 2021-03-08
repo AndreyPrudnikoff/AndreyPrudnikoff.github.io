@@ -22,6 +22,7 @@ import Invite from "./components/Refill/Invite";
 import gotodesktop from "./components/Auth/gotodesktop";
 import {prohibition, resizeScreen, switchView, touchstart} from "./redux/actions";
 import {getCurrentList} from "./redux/actions/advertising";
+import Promo from "./components/Promo/Promo";
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -52,6 +53,7 @@ const routing = [
     {path: "/complete/pay", component: CompletePay},
     {path: "/complete/withdraw", component: CompleteWith},
     {path: "/withdraw", component: Withdraw},
+    {path: "/promo", component: Promo},
     {path: "/gotodesktop", component: gotodesktop},
 ]
 
