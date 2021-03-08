@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f6b93ff-e806-4942-bf67-7a8ba8e695b9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Ads/Ads.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/Ads.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Ads/MyAd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/MyAd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Ads/components/Audience/Audience.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/components/Audience/Audience.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Ads/components/Duration/components/Tabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/components/Duration/components/Tabs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Intro/Step2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Intro/Step2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Intro/Step3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Intro/Step3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Intro/Step4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Intro/Step4.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Intro/Step5.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Intro/Step5.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/RightSector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/RightSector.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Main/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/main.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/advertising.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/advertising.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/entry.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/entry.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +158,8 @@
       <workItem from="1615014451859" duration="12431000" />
       <workItem from="1615121153911" duration="21000" />
       <workItem from="1615121262764" duration="1059000" />
-      <workItem from="1615130621723" duration="1183000" />
+      <workItem from="1615130621723" duration="1186000" />
+      <workItem from="1615194372452" duration="4507000" />
     </task>
     <servers />
   </component>

@@ -189,6 +189,10 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                                     <img className="burger"
                                         src={burger} alt="icon"/>
                                     <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">
+                                        <li onClick={() => {
+                                            history.push("/promo");
+                                        }} className="burger-menu-item bord">
+                                            <span>Promo</span></li>
                                         {widthMode !== 'desktop' ? null :
                                             <>
                                                 <li onClick={() => {
