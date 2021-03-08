@@ -1179,16 +1179,17 @@ form {
   position: relative;
   width: 100%;
   max-width: 1280px;
-
+  margin: 0;
   span {
     position: absolute;
     top: 30px;
     left: 50px;
+    cursor: pointer;
   }
-
   .left-sector {
     position: relative;
     width: 75%;
+    padding-left: 0;
     .support-link {
       display: block;
       margin: 0 auto 20px;
