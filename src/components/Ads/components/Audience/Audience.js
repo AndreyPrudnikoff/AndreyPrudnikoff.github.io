@@ -53,7 +53,7 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
                         </div>
                     </div>
                     <div className="addButton">
-                        <button onClick={(e) => {addCountryTimezone(e)}}>+</button>
+                        <button onClick={(e) => {addCountryTimezone(e)}} style={{borderColor: country_codes_timezones.length ? 'rgba(255, 255, 255, 0.5)' : 'red'}}>+</button>
                         <span>Add country</span>
                     </div>
                 </div>

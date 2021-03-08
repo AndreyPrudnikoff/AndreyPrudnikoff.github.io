@@ -55,12 +55,12 @@ const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime
       id: 0,
       label: "Choose when this ad ends",
       content: (
-        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-          <div style={{ display: "flex", gap: "95px"}} >
-            <DateInput onChange={(e) => {setStartDate(e); setDateStart(e)}} label="Start date" invalid={isStartDate ? false : true}/>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", marginBottom: '20px', justifyContent: 'space-between'}} >
+            <DateInput onChange={(e) => {setStartDate(e); setDateStart(e)}} label="Start date" invalid={isStartDate ? false : true} />
             <TimeInput onChange={(e) => {setStartTime(e); setTimeStart(e)}} label="Start time" invalid={isStartDate ? false : true}/>
           </div>
-          <div style={{ display: "flex", gap: "95px" }}>
+          <div style={{ display: "flex", justifyContent: 'space-between' }}>
             <DateInput onChange={(e) => {setEndDate(e); setDateEnd(e)}} label="End date" invalid={isCorrectDate ? false : true} />
             <TimeInput onChange={(e) => {setEndTime(e); setTimeEnd(e)}} label="End time" invalid={isCorrectDate ? false : true} />
           </div>
