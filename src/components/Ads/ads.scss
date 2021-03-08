@@ -196,9 +196,10 @@
 }
 
 .listBlock {
-  position: relative;
+  position: absolute;
   display: flex;
-  margin: 80px auto;
+  // margin: 80px auto;
+  top: 100px;
 
   .listAds {
     width: 512px;
