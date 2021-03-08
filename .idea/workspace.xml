@@ -4,9 +4,22 @@
     <list default="true" id="3f6b93ff-e806-4942-bf67-7a8ba8e695b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Ads/Ads.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/Ads.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Ads/ads.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/ads.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Ads/components/Footer/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/components/Footer/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Ads/MyAd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/MyAd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Ads/components/Audience/Audience.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/components/Audience/Audience.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Ads/components/Duration/components/Tabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/components/Duration/components/Tabs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Intro/Step2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Intro/Step2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Intro/Step3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Intro/Step3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Intro/Step4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Intro/Step4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Intro/Step5.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Intro/Step5.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/RightSector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/RightSector.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/advertising.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/advertising.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/entry.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/entry.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +51,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DPA" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -159,6 +172,10 @@
       <workItem from="1614838399718" duration="8702000" />
       <workItem from="1614859664879" duration="6330000" />
       <workItem from="1614930515865" duration="13534000" />
+      <workItem from="1615014451859" duration="12431000" />
+      <workItem from="1615121153911" duration="21000" />
+      <workItem from="1615121262764" duration="1059000" />
+      <workItem from="1615130621723" duration="1183000" />
     </task>
     <servers />
   </component>

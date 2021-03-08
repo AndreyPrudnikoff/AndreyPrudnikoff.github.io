@@ -422,7 +422,7 @@ main {
 
   h2 {
     margin-bottom: 3px;
-    font-family: "roc-grotesk-wide";
+    font-family: "roc-grotesk-wide", sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -483,7 +483,7 @@ form {
     justify-content: center;
 
     span {
-      font-family: "roc-grotesk-wide";
+      font-family: "roc-grotesk-wide", sans-serif;
       font-size: 24px;
       font-weight: 400;
     }
@@ -697,7 +697,7 @@ form {
 
   &__coins-img {
     position: absolute;
-    top: 0px;
+    top: 0;
     z-index: 900;
     animation: scrollingCoins 4s linear infinite;
     -webkit-animation: scrollingCoins 4s linear infinite;
@@ -770,7 +770,7 @@ form {
       font-weight: 700;
       font-size: 96px;
       line-height: 138px;
-      font-family: 'roc-grotesk-wide';
+      font-family: 'roc-grotesk-wide', sans-serif;
       text-transform: uppercase;
       color: #CEA132;
     }
@@ -865,8 +865,6 @@ form {
   width: 270px;
   -webkit-border-radius: 25px;
   -moz-border-radius: 25px;
-  -ms-border-radius: 25px;
-  -o-border-radius: 25px;
 }
 
 .score-wrap {
@@ -1078,7 +1076,7 @@ form {
 
 .makeYourBet{
   .setSize{
-    font-family: Roc Grotesk;
+    font-family: "roc-grotesk", sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -1346,10 +1344,6 @@ form {
 }
 
 @media screen and (min-width: 1100px) and (max-width: 1280px) {
-  .range {
-    //width: 500px;
-    //padding-left: 90px;
-  }
 
   .main {
     padding-bottom: 0;

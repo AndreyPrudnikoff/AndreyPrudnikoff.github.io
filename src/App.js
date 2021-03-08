@@ -21,6 +21,7 @@ import Withdraw from "./components/Refill/Withdraw";
 import Invite from "./components/Refill/Invite";
 import gotodesktop from "./components/Auth/gotodesktop";
 import {prohibition, resizeScreen, switchView, touchstart} from "./redux/actions";
+import {getCurrentList} from "./redux/actions/advertising";
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -147,6 +148,7 @@ const mapDispatchToProps = {
     prohibition,
     resizeScreen,
     switchView,
-    touchstart
+    touchstart,
+    getCurrentList
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);

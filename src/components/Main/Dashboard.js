@@ -1,21 +1,24 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import bitcoin from "../../images/bitcoin.svg";
 import arrowUp from "../../images/arrowUp.svg";
 import arrowDown from "../../images/arrowDown.svg";
 import {connect} from "react-redux";
-import store from '../../redux/store'
 import {betLose, betWin, closeCongratulation, closeYourLose} from "../../redux/actions";
 import {
     bell,
     click,
-    up_down,
     fireworks,
-    you_lose,
     muteToggle,
+    playBetTimer,
+    playGameTimer,
     playTimer,
     playTimer2,
+    playYouWon,
     stop,
-    stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, playYouWon
+    stopBetTimer,
+    stopGameTimer,
+    up_down,
+    you_lose
 } from "../../redux/actions/music";
 import Rates from "./Rates";
 import {User} from "../../api/User";
@@ -69,7 +72,6 @@ const Dashboard = ({
                        lastWinGame
                    }) => {
     const [bet, setBet] = useState(.0001);
-    const [counter, setCounter] = useState(10);
     const [gameStart, setGameStart] = useState(undefined);
     const LANG = currentLang === "en" ? EN : RU;
     let timeBet = lastSeconds % 20 === 0 || lastSeconds % 20 === 5;
@@ -134,12 +136,11 @@ const Dashboard = ({
         if (!bets || +bets < 0) {
             console.log('false')
             setBet(0.0001);
-        }else if (+bets > 1) {
+        } else if (+bets > 1) {
             console.log('true')
             setBet(1);
         } else {
             setBet(+bets.toFixed(4))
-        //    setBet(+bets)
         }
     }
 
@@ -158,12 +159,7 @@ const Dashboard = ({
     }
 
     const predictSubmit = () => {
-        const timer = setInterval(() => {
-            setCounter(counter - 1);
-        }, 1000)
         return setTimeout(() => {
-            clearInterval(timer);
-            setCounter(10);
             User.userdata()
                 .then(data => {
                     if (+data.data.data.lastWin === 1 && predict !== '') {
@@ -196,8 +192,8 @@ const Dashboard = ({
             <div className={`${widthMode} row bottom-container`}>
                 {widthMode === "desktop" ? <Rates/> : <></>}
                 <div style={{zIndex: step === 3 ? "10" : ""}} className={`${widthMode} round dashboard congratulation`}>
-                    <img src={YouWon} className='congratulation__youWon-img'/>
-                    <img src={GoldCoins} className='congratulation__coins-img'/>
+                    <img src={YouWon} className='congratulation__youWon-img' alt="win"/>
+                    <img src={GoldCoins} className='congratulation__coins-img' alt="win"/>
                     <p className='congratulation__score'>{lastWinGame} <img className='congratulation__btc'
                                                                             src={bitcoin} alt='btc'/></p>
                 </div>
@@ -205,7 +201,7 @@ const Dashboard = ({
         )
     }
 
-    if (yourlose) { //yourlose
+    if (yourlose) {
         return (
             <div className={`${widthMode} row bottom-container`}>
                 {widthMode === "desktop" ? <Rates/> : <></>}
@@ -216,7 +212,7 @@ const Dashboard = ({
         )
     }
 
-    if (startGame) { //startGame
+    if (startGame) {
         return (
             <div className={`${widthMode} row bottom-container`}>
                 {widthMode === "desktop" ? <Rates/> : <></>}
@@ -391,7 +387,29 @@ const mapStateToProps = state => {
         play: state.soundReducer.play,
     }
 }
-const mapDispatchToProps = {betWin, betLose, predictUp, predictDown, predictClear, click, up_down, you_lose, bell, stop, playTimer, playTimer2, fireworks, closeCongratulation, muteToggle, userdata, stopBetTimer, stopGameTimer, playBetTimer, playGameTimer, closeYourLose, playYouWon
+const mapDispatchToProps = {
+    betWin,
+    betLose,
+    predictUp,
+    predictDown,
+    predictClear,
+    click,
+    up_down,
+    you_lose,
+    bell,
+    stop,
+    playTimer,
+    playTimer2,
+    fireworks,
+    closeCongratulation,
+    muteToggle,
+    userdata,
+    stopBetTimer,
+    stopGameTimer,
+    playBetTimer,
+    playGameTimer,
+    closeYourLose,
+    playYouWon
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

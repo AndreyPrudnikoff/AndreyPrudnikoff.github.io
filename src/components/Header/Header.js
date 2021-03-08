@@ -151,31 +151,20 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                                 }} className="sound " src={mute ? sound : noSound} height="18" width="18"
                                     alt="sound"/>
 
+
                                     {!auth ? <div className="startHeader">
                                         <Link onClick={() => {
-                                            if (reg) {
-                                                registration();
-                                            }
-                                            playClick()
+                                            if (reg) {registration();}
+                                            playClick();
                                         }} className={currentLang + " login auth-header"}
-                                            to="/login">{LANG.Auth.Login.loginIn}</Link>
-                                        <Link onClick={() => {
-                                            playClick()
-                                            if (reg) {
-                                                registration();
-                                            }
-                                        }} className="login auth-header-icon" to="/login">
-                                            <img width={18} src={login} alt="signin"/>
+                                            to="/login">{LANG.Auth.Login.loginIn}
                                         </Link>
                                         <Link onClick={() => {registration(); playClick()}} className={currentLang + " signup auth-header"}
-                                            to="/signup">{LANG.Auth.Login.signUp}</Link>
-                                        <Link onClick={() => {registration(); playClick()}} className="signup auth-header-icon" to="/signup">
-                                            <img width={18} src={signup} alt="signup"/></Link>
+                                            to="/signup">{LANG.Auth.Login.signUp}
+                                        </Link>
                                     <Link onClick={(e) => {
                                         playClick()
-                                        if (reg) {
-                                            registration();
-                                        }
+                                        if (reg) {registration();}
                                     }} className="login auth-header-icon" to="/login">
                                         <img width={18} src={login} alt="signin"/>
                                     </Link>
@@ -185,6 +174,9 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                                     }} className="signup auth-header-icon" to="/signup">
                                         <img width={18} src={signup} alt="signup"/></Link>
                                 </div> : null}
+
+
+
                                 <div onClick={(e) => {
                                     playClick()
                                     setMenu(!menu)
@@ -227,20 +219,21 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                                 </div>
 
                         </div>
-                        <div style={{display: isGame && widthMode !== "desktop" ? "block" : "none"}} className="tabs">
-                            <div className="wrap-tabs">
-                                <div onClick={() => {
-                                    stepTest(false);
-                                    playClick()
-                                }} className={view ? "tab bets" : "tab bets active"}>
-                                    <img src={bets} alt="tab"/>
-                                </div>
-                                <div onClick={() => {
-                                    stepTest(true);
-                                    playClick()
-                                }} className={!view ? "tab mobile_wallet" : "tab mobile_wallet active"}>
-                                    <img src={wallet} alt="tab"/>
-                                </div>
+
+                    </div>
+                    <div style={{display: isGame && widthMode !== "desktop" ? "block" : "none"}} className="tabs">
+                        <div className="wrap-tabs">
+                            <div onClick={() => {
+                                stepTest(false);
+                                playClick()
+                            }} className={view ? "tab bets" : "tab bets active"}>
+                                <img src={bets} alt="tab"/>
+                            </div>
+                            <div onClick={() => {
+                                stepTest(true);
+                                playClick()
+                            }} className={!view ? "tab mobile_wallet" : "tab mobile_wallet active"}>
+                                <img src={wallet} alt="tab"/>
                             </div>
                         </div>
                     </div>

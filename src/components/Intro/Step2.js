@@ -9,7 +9,7 @@ import {RU} from '../../languages/ru'
 
 const Step2 = ({switchStep, playClick, currentLang, switchView, widthMode}) => {
     const LANG = currentLang === 'en' ? EN : RU;
-    const isDesktop = widthMode === "desktop" ? true : false;
+    const isDesktop = widthMode === "desktop";
     if (!isDesktop) {
         switchView(false)
     }

@@ -16,10 +16,10 @@ export const TOUCHSTART = 'TOUCHSTART';
 export const GET_LOCATION ='GET_LOCATION';
 export const GET_COURSE ='GET_COURSE';
 export const GET_CURRENT_COURSE ='GET_CURRENT_COURSE';
-export const BET_WIN ='BET_WIN';
-export const BET_LOSE ='BET_LOSE';
-export const CLOSE_CONGRATULATION ='CLOSE_CONGRATULATION';
-export const CLOSE_YOURLOSE ='CLOSE_YOURLOSE';
+export const BET_WIN ="BET_WIN";
+export const BET_LOSE ="BET_LOSE";
+export const CLOSE_CONGRATULATION ="CLOSE_CONGRATULATION";
+export const CLOSE_YOURLOSE ="CLOSE_YOURLOSE";
 
 //ADS
 export const ADD_BANNER = "ADD_BANNER";
@@ -31,12 +31,13 @@ export const SET_END_DATE = "SET_END_DATE";
 export const SET_END_TIME = "SET_END_TIME";
 export const SET_TIMEZONE = "SET_TIMEZONE";
 export const SET_BUDGET = "SET_BUDGET";
-export const DELETE_COUNTRY_AND_TIMEZONE = 'DELETE_COUNTRY_AND_TIMEZONE';
-export const GET_LIST_ADS = 'GET_LIST_ADS';
-export const AD_DETAIL = 'AD_DETAIL';
-export const IS_PREVIEW = 'IS_PREVIEW';
-export const PREVIEW_BANNER = 'PREVIEW_BANNER';
-export const IS_CORRECT_DATE = 'IS_CORRECT_DATE'
+export const DELETE_COUNTRY_AND_TIMEZONE = "DELETE_COUNTRY_AND_TIMEZONE";
+export const GET_LIST_ADS = "GET_LIST_ADS";
+export const AD_DETAIL = "AD_DETAIL";
+export const IS_PREVIEW = "IS_PREVIEW";
+export const PREVIEW_BANNER = "PREVIEW_BANNER";
+export const IS_CORRECT_DATE = "IS_CORRECT_DATE";
+export const WITH_DATE = "WITH_DATE";
 
 
 // export const PLAY_CLICK ='PLAY_CLICK';

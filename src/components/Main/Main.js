@@ -5,26 +5,14 @@ import bitcoin from '../../images/bitcoin.svg';
 import Graph from "../Graph";
 import RightSector from "./RightSector";
 import Dashboard from "./Dashboard";
-// import SelectList from "./SelectList";
-import {
-    closeCongratulation,
-    closeYourLose,
-    createAdProp,
-    logoutQuestion,
-    prohibition,
-    switchView
-} from "../../redux/actions";
+import {closeCongratulation, closeYourLose, createAdProp, logoutQuestion, prohibition, switchView} from "../../redux/actions";
 import {money, stop, you_lose, add_to_wallet, playClick} from "../../redux/actions/music";
-import JS_FIREWORKS from "../fireworks";
 import Time from "./Time";
 import Preloader from "./Preloader";
 import {userdata} from "../../redux/actions/game";
 import Rates from "./Rates";
-import {EN} from "../../languages/en";
-import {RU} from "../../languages/ru";
 import Online from "./Online";
 import Presentation from "../Intro/Presentation";
-import closePreview from '../../images/closePreview.png';
 
 const Main = ({history, step, view, switchView, course, lastWin, closeCongratulation, congratulation, yourlose, closeYourLose, currentCourse, money, muteToggle, logout, logoutQuestion, prohibition, userdata, lastWinGame, createAd, createAdProp, widthMode, currentLang, you_lose, add_to_wallet, playClick, isPreview}) => {
 
@@ -33,7 +21,6 @@ const Main = ({history, step, view, switchView, course, lastWin, closeCongratula
     }, [congratulation, userdata]);
     useEffect(()=> switchView(false), []);
 
-    const LANG = currentLang === "en" ? EN : RU;
     let flag = course ? course.length : false;
     return (
         <div className={`${widthMode}-bg main`}>
@@ -78,7 +65,6 @@ const Main = ({history, step, view, switchView, course, lastWin, closeCongratula
                     </div>
                     {widthMode === "desktop" ? <RightSector/> : <></>}
                     {widthMode === "mobile" && view ? <RightSector/> : <></>}
-
                 </div>
             </main>
         </div>

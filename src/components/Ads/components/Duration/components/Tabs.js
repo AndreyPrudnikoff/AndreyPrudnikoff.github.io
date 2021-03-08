@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 // components
 import {RangeInput} from "./FormInput";
 // styles
@@ -7,7 +7,7 @@ import "./style.scss";
 import bitcoin from "../../../../../images/bitcoin.svg";
 import dollar from "../../../../../images/dollar.svg";
 import {connect} from "react-redux";
-import {setBudget} from "../../../../../redux/actions/advertising";
+import {setBudget, setWithDate} from "../../../../../redux/actions/advertising";
 
 
 let socket = new WebSocket("wss://bitcybets.com:8080/serv");
@@ -18,7 +18,7 @@ socket.onmessage = async e => {
     });
 }
 
-const Tabs = ({tabs, budget, setBudget, balance}) => {
+const Tabs = ({tabs, budget, setBudget, balance, setWithDate}) => {
     let currentCourse = bitcoins[bitcoins.length - 1];
     // useEffect(() => socket.close());
     const [activeTab, setActiveTab] = useState(0);
@@ -28,7 +28,10 @@ const Tabs = ({tabs, budget, setBudget, balance}) => {
                 {tabs.map(({id, label}) => (
                     <div key={id}
                         className={activeTab === id ? "activeTab" : "tab"}
-                        onClick={() => setActiveTab(id)}>
+                        onClick={() => {
+                            setActiveTab(id);
+                            setWithDate(!!id);
+                        }}>
                         {label}
                     </div>
                 ))}
@@ -73,6 +76,7 @@ const mapStateToProps = state => {
     }
 }
 const mapDispatchToProps = {
-    setBudget
+    setBudget,
+    setWithDate
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Tabs);
