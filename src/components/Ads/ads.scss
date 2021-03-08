@@ -233,6 +233,11 @@
         line-height: 23px;
         cursor: pointer;
       }
+      &__url {
+        width: 65%;
+        white-space: nowrap;
+        overflow: hidden;
+      }
     }
 
     .images-list {
