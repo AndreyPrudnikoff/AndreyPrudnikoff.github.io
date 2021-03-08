@@ -21,7 +21,7 @@ export const User = {
         return Api().post('/rates', JSON.stringify({"accessToken": sessionStorage.getItem('token')}));
     },
     userdata() {
-        return Api().post('/getUser', JSON.stringify({"accessToken": sessionStorage.getItem('token')}));
+        return Dev().post('/getUser', JSON.stringify({"accessToken": sessionStorage.getItem('token')}));
     },
     predictUp(value) {
         return Api().post('/predictUp', JSON.stringify(({...{"accessToken": sessionStorage.getItem('token')}, ...value})));
@@ -43,5 +43,8 @@ export const User = {
     },
     listAds() {
         return Dev().post('/trahtibidoh/list', JSON.stringify({"accessToken": sessionStorage.getItem('token')}));
+    } ,
+    promoList() {
+        return Dev().post('/promo/list', JSON.stringify({"accessToken": sessionStorage.getItem('token')}));
     }
 };

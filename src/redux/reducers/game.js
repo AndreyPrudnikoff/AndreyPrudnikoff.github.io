@@ -27,7 +27,8 @@ const initialState = {
     upBets: 0,
     downBets: 0,
     online: 0,
-    yourlose: false
+    yourlose: false,
+    promo: false
 
 }
 export const balanceReducer = (state = initialState, action) => {
@@ -52,7 +53,8 @@ export const balanceReducer = (state = initialState, action) => {
                     lastgame: action.payload.lastgame,
                     name: action.payload.name,
                     online: action.payload.online,
-                    isDemo: action.payload.isDemo
+                    isDemo: action.payload.isDemo,
+                    promo: action.payload.promo
                 };
 
             } else {
@@ -67,7 +69,8 @@ export const balanceReducer = (state = initialState, action) => {
                     lastgame: action.payload.lastgame,
                     name: action.payload.name,
                     online: action.payload.online,
-                    isDemo: action.payload.isDemo
+                    isDemo: action.payload.isDemo,
+                    promo: action.payload.promo
                 };
             }
         case GET_RATES:

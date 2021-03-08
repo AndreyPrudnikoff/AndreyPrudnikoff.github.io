@@ -12,7 +12,7 @@ import {
     AD_DETAIL,
     IS_PREVIEW,
     PREVIEW_BANNER,
-    IS_CORRECT_DATE, WITH_DATE
+    IS_CORRECT_DATE, WITH_DATE, PROMO_LIST
 } from "../types";
 
 const initialState = {
@@ -30,7 +30,8 @@ const initialState = {
     isPreview: false,
     previewBanner: false,
     isCorrectDate: false,
-    withDate: false
+    withDate: false,
+    promoList: []
 }
 
 export const adsOptions = (state = initialState, action) => {
@@ -68,6 +69,8 @@ export const adsOptions = (state = initialState, action) => {
             return {...state, isCorrectDate: action.payload}
             case WITH_DATE:
             return {...state, withDate: action.payload}
+        case PROMO_LIST:
+            return {...state, promoList: action.payload}
         default:
             return state;
     }

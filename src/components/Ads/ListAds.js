@@ -64,7 +64,6 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
 }
 
 const mapStateToProps = state => {
-    console.log(state.adsOptions)
     return {
         currentLang: state.switchOptions.lang,
         balance: state.balanceReducer.balance,
