@@ -18,7 +18,7 @@ import {
     WITH_DATE
 } from "../types";
 
-export function addBanner(banner) {
+export function addImage(banner) {
     return {type: ADD_BANNER, payload: banner}
 }
 
