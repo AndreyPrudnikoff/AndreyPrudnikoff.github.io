@@ -184,6 +184,9 @@
 
     }
   }
+  .foter-BTNs {
+    justify-content: space-between;
+  }
 }
 
 .myAd-btn {
@@ -258,6 +261,12 @@
         &:hover span {
           color: var(--gold);
           text-decoration: underline;
+        }
+
+        .item__url {
+          overflow: hidden;
+          white-space: nowrap;
+          width: 70%;
         }
 
         &:not(:last-child) {

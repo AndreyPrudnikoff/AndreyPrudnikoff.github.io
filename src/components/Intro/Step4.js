@@ -1,5 +1,7 @@
 import React from 'react'
 import imgPerson from '../../images/person x4F 4 1.png'
+import imgArrowRight from '../../images/arrow-right.png';
+import imgArrowLeft from '../../images/arrow-left.png';
 import imgClickOnWallet from '../../images/clickOnWallet.png'
 import {switchStep} from '../../redux/actions/index';
 import {switchView} from "../../redux/actions";
@@ -27,10 +29,11 @@ const Step4 = ({playClick, switchStep, currentLang, switchView, widthMode, view}
                     <p className='step-content__content'>{LANG.Intro.Step4.content}</p>
                     <ul className="step-nav">
                         <li className='step-nav__item' onClick={() => {
-                            switchView(false);
+                            // switchView(false);
+                            isDesktop ? switchStep(3) : switchView(false)
                             playClick()
                         }}>
-                            <span>{LANG.Intro.btnIntro.prev}</span>
+                            <span>{isDesktop ? LANG.Intro.btnIntro.prev : <img src={imgArrowLeft} alt='arrow-left'/>}</span>
                         </li>
                         <li className='step-nav__item step-nav_btnSkip' onClick={() => {
                             switchStep(0);
@@ -42,7 +45,7 @@ const Step4 = ({playClick, switchStep, currentLang, switchView, widthMode, view}
                             switchStep(5);
                             playClick()
                         }}>
-                            <span>{LANG.Intro.btnIntro.next}</span>
+                            <span>{isDesktop ? LANG.Intro.btnIntro.next : <img src={imgArrowRight} alt='arrow-right'/>}</span>
                         </li>
                     </ul>
                 </div>
@@ -51,9 +54,9 @@ const Step4 = ({playClick, switchStep, currentLang, switchView, widthMode, view}
         )
     } else {
         return (
-            <div className="step step4 clickOnWallet">
-                <img className='step-img' src={imgClickOnWallet} alt='person'/>
-                <div className='step-content'>
+            <div className="step step4 clickOnWallet" style={{height: '303px'}}>
+                {/* <img className='step-img' src={imgClickOnWallet} alt='person'/> */}
+                <div className='step-content' style={{marginTop: '115px'}}>
                     <ul className='list-lines'>
                         <li className="list-lines__item" />
                         <li className="list-lines__item" />
@@ -68,13 +71,19 @@ const Step4 = ({playClick, switchStep, currentLang, switchView, widthMode, view}
                             switchStep(3);
                             playClick()
                         }}>
-                            <span>{LANG.Intro.btnIntro.prev}</span>
+                            <span>{isDesktop ? LANG.Intro.btnIntro.prev : <img src={imgArrowLeft} alt='arrow-left'/>}</span>
                         </li>
                         <li className='step-nav__item step-nav_btnSkip' onClick={() => {
                             switchStep(0);
                             playClick()
                         }}>
                             <span>{LANG.Intro.btnIntro.skip}</span>
+                        </li>
+                        <li className='step-nav__item' onClick={() => {
+                            switchView(true);
+                            playClick()
+                        }}>
+                            <span>{isDesktop ? LANG.Intro.btnIntro.next : <img src={imgArrowRight} alt='arrow-right'/>}</span>
                         </li>
                     </ul>
                 </div>

@@ -48,7 +48,8 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                                     getDetails(item);
                                     history.push('/myad')
                                 }}>
-                                    <span className='item__title'>{item.website_url || "mysite.com"}</span>
+                                    <span className='item__title item__url'>{item.website_url || "mysite.com"}</span>
+
                                     <span className='item__date'>{item.end_date}</span>
                                 </li>
                             )) : <h2 className='ads-list__not-ads'>{LANG.Ads.MyAds.notAds}</h2>

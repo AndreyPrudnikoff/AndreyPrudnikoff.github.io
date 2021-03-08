@@ -1,5 +1,7 @@
-import React from 'react'
-import imgPerson from '../../images/person x5F 1 1.png'
+import React from 'react';
+import imgPerson from '../../images/person x5F 1 1.png';
+import imgArrowRight from '../../images/arrow-right.png';
+import imgArrowLeft from '../../images/arrow-left.png';
 import {switchStep} from '../../redux/actions/index';
 import {switchView} from "../../redux/actions";
 import {playClick} from '../../redux/actions/music';
@@ -38,7 +40,7 @@ const Step5 = ({playClick, switchStep, currentLang, switchView, widthMode}) => {
                         switchStep(4);
                         playClick()
                     }}>
-                        <span>{LANG.Intro.btnIntro.prev}</span>
+                        <span>{isDesktop ? LANG.Intro.btnIntro.prev : <img src={imgArrowLeft} alt='arrow-left'/>}</span>
                     </li>
                     <li className='step-nav__item step-nav_btnSkip' onClick={() => {
                         switchStep(0);
@@ -50,7 +52,7 @@ const Step5 = ({playClick, switchStep, currentLang, switchView, widthMode}) => {
                         switchStep(0);
                         playClick()
                     }}>
-                        <span>{LANG.Intro.btnIntro.finish}</span>
+                        <span>{isDesktop ? LANG.Intro.btnIntro.finish : <img src={imgArrowRight} alt='arrow-right'/>}</span>
 
                     </li>
                 </ul>
