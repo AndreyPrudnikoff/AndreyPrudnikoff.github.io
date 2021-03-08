@@ -28,7 +28,7 @@ const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview}
         </div>
 
         <div className="wrap-input">
-          <label className="dashed" htmlFor="ad-file">
+          <label className="dashed" htmlFor="image-file">
             {previewBanner ? (<img className="image-preview" src={banner} />) :
             (image ? (
               <img className="image-preview" src={image} />
@@ -37,10 +37,10 @@ const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview}
             ))
             }
             
-            <input onChange={(e) => {setFile(e); encodeImageFileAsURL(e)}} type="file" id="ad-file"  />
+            <input onChange={(e) => {setFile(e); encodeImageFileAsURL(e)}} type="file" id="image-file"  />
           </label>
 
-          <label htmlFor="ad-file" className="btn-file">
+          <label htmlFor="image-file" className="btn-file">
             Choose file
           </label>
           <span onClick={() => {setIsPreview(true); history.push('/game')}} className='btn-ad-preview'>Ad Preview</span>

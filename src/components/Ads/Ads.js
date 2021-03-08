@@ -80,7 +80,7 @@ const Ads = (props) => {
 }
 const mapStateToProps = state => {
     return {
-        image: state.adsOptions.banner,
+        image: state.adsOptions.image,
         website_url: state.adsOptions.website_url,
         country_codes_timezones: state.adsOptions.country_codes_timezones,
         start_date: state.adsOptions.banner_start_date,
