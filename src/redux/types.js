@@ -38,6 +38,7 @@ export const IS_PREVIEW = "IS_PREVIEW";
 export const PREVIEW_BANNER = "PREVIEW_BANNER";
 export const IS_CORRECT_DATE = "IS_CORRECT_DATE";
 export const WITH_DATE = "WITH_DATE";
+export const PROMO_LIST = "PROMO_LIST";
 
 
 // export const PLAY_CLICK ='PLAY_CLICK';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Wallet from "../Ads/components/Wallet";
 import back from "../../images/back.svg";
 import {playClick} from "../../redux/actions/music";
@@ -6,13 +6,40 @@ import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
+import {User} from "../../api/User";
+import {getPromoList} from "../../redux/actions/advertising";
 
-const Promo = ({history, playClick, currentLang}) => {
-    const LANG = currentLang === "en" ? EN : RU
+const Promo = ({history, playClick, currentLang, getPromoList, promoList}) => {
+    const LANG = currentLang === "en" ? EN : RU;
+    const reducer = (accumulator, currentValue) => accumulator.earning + currentValue.earning;
+    const data = [
+        {
+            "name": "Vadym Netrebko",
+            "totalTime": "10:20:13",
+            "deposited": 0.02,
+            "wathdrawed": 0,
+            "bets": 0.02,
+            "earning": 0.00059999999999999995
+        },
+        {
+            "name": "Vasya Pupkin",
+            "totalTime": "10:20:13",
+            "deposited": 0.02,
+            "wathdrawed": 0,
+            "bets": 0.02,
+            "earning": 0.00059999999999999995
+        }
+    ]
+    console.log()
+    useEffect(()=> {
+        User.promoList().then(res=>{
+            getPromoList(res.data.data);
+            // getPromoList(data);
+        }).catch(e => console.log(e.data));
+    }, [])
     return (
         <div className="wrap-promo">
             <div className="row main promo">
-
                 <div className="left-sector">
                              <span onClick={() => {
                                  history.goBack();
@@ -32,37 +59,24 @@ const Promo = ({history, playClick, currentLang}) => {
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>Simon White</td>
-                                <td>10 h 20 m</td>
-                                <td>5 000 $</td>
-                                <td>2 000 $</td>
-                                <td>7 000 $</td>
-                                <td>35 $</td>
-                            </tr>
-                            <tr>
-                                <td>Michael Smith</td>
-                                <td>10 h 20 m</td>
-                                <td>5 000 $</td>
-                                <td>2 000 $</td>
-                                <td>7 000 $</td>
-                                <td>35 $</td>
-                            </tr>
-                            <tr>
-                                <td>James Briggs</td>
-                                <td>10 h 20 m</td>
-                                <td>5 000 $</td>
-                                <td>2 000 $</td>
-                                <td>7 000 $</td>
-                                <td>35 $</td>
-                            </tr>
+                            {promoList.map((item, index) => (
+                                <tr key={index * 1.1}>
+                                    <td>{item.name}</td>
+                                    <td>{item.totalTime}</td>
+                                    <td>{item.deposited} $</td>
+                                    <td>{item.wathdrawed} $</td>
+                                    <td>{item.bets} $</td>
+                                    <td>{item.earning} $</td>
+                                </tr>
+                            ))}
+
                             <tr className="hr">
                                 <td/>
                                 <td/>
                                 <td/>
                                 <td/>
                                 <td style={{opacity: ".5"}}>Total bonus</td>
-                                <td>105 $</td>
+                                <td>{promoList.reduce((a, b) => a + b.earning, 0)} $</td>
                             </tr>
                             </tbody>
                         </table>
@@ -79,10 +93,12 @@ const Promo = ({history, playClick, currentLang}) => {
 };
 const mapStateToProps = state => {
     return {
-        currentLang: state.switchOptions.lang
+        currentLang: state.switchOptions.lang,
+        promoList: state.adsOptions.promoList
     }
 }
 const mapDispatchToProps = {
-    playClick
+    playClick,
+    getPromoList
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Promo);

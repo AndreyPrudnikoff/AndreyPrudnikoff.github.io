@@ -34,7 +34,7 @@ import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
 
-const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, createAdProp, logout, registration, prohibition, authorization, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang, playClick, step, changeDemo, isPreview, setIsPreview, setPreviewBanner}) => {
+const Header = ({switchStep, promo, auth, reg, mute, muteToggle, logoutQuestion, createAdProp, logout, registration, prohibition, authorization, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang, playClick, step, changeDemo, isPreview, setIsPreview, setPreviewBanner}) => {
 
     const [menu, setMenu] = useState(false);
     const [showLang, setShowLang] = useState(true);
@@ -189,12 +189,12 @@ const Header = ({switchStep, auth, reg, mute, muteToggle, logoutQuestion, create
                                     <img className="burger"
                                         src={burger} alt="icon"/>
                                     <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">
-                                        <li onClick={() => {
+                                        {widthMode !== 'desktop' ? null :
+                                            <>
+                                        <li style={{display: !promo ? "block" : "none"}} onClick={() => {
                                             history.push("/promo");
                                         }} className="burger-menu-item bord">
                                             <span>Promo</span></li>
-                                        {widthMode !== 'desktop' ? null :
-                                            <>
                                                 <li onClick={() => {
                                                     history.push("/ads");
                                                     setPreviewBanner(false)
@@ -256,6 +256,7 @@ const mapStateToProps = state => {
         unauthorized: state.authReducer.unauthorized,
         predict: state.balanceReducer.predict,
         isDemo: state.balanceReducer.isDemo,
+        promo: state.balanceReducer.promo,
         widthMode: state.switchOptions.widthMode,
         view: state.switchOptions.view,
         currentLang: state.switchOptions.lang,

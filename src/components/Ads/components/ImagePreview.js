@@ -1,11 +1,11 @@
 import React from "react";
 // hooks
 import useImagePreview from "../../useImagePreview";
-import {addBanner, setIsPreview} from '../../../redux/actions/advertising'
+import {addImage, setIsPreview} from '../../../redux/actions/advertising'
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-const ImagePreview = ({addBanner, banner, isPreview, previewBanner, setIsPreview}) => {
+const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview}) => {
   const [image, setFile] = useImagePreview();
   let history = useHistory()
 
@@ -13,7 +13,7 @@ const ImagePreview = ({addBanner, banner, isPreview, previewBanner, setIsPreview
     let file = element.target.files[0];
     let reader = new FileReader();
     reader.onloadend = function() {
-      addBanner(reader.result);
+      addImage(reader.result);
     }
     reader.readAsDataURL(file);
   }
@@ -60,7 +60,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  addBanner,
+  addImage,
   setIsPreview
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ImagePreview);

@@ -1,6 +1,6 @@
 import React from 'react';
 import './ads.scss';
-import {addBanner} from '../../redux/actions/advertising'
+import {addImage} from '../../redux/actions/advertising'
 import {connect} from "react-redux";
 import Wallet from './components/Wallet'
 
@@ -10,7 +10,7 @@ const MyAd = ({objData}) => {
         let file = element.target.files[0];
         let reader = new FileReader();
         reader.onloadend = function () {
-            addBanner(reader.result);
+            addImage(reader.result);
         }
         reader.readAsDataURL(file);
     }
@@ -30,15 +30,15 @@ const MyAd = ({objData}) => {
                             275 x 270 px
                         </div>
                         <div className="wrap-input">
-                            <label className="dashed" htmlFor="ad-file">
-                                <img className="image-preview" alt="ban" src={objData.banner}/>
+                            <label className="dashed" htmlFor="image-file">
+                                <img className="image-preview" alt="ban" src={objData.image}/>
 
                                 <input onChange={(e) => {
                                     encodeImageFileAsURL(e)
-                                }} type="file" id="ad-file"/>
+                                }} type="file" id="image-file"/>
                             </label>
 
-                            <label htmlFor="ad-file" className="btn-file">
+                            <label htmlFor="image-file" className="btn-file">
                                 Choose file
                             </label>
                         </div>
@@ -120,7 +120,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    addBanner
+    addImage
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyAd)

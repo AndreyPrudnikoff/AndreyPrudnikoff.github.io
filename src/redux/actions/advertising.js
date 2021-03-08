@@ -7,7 +7,7 @@ import {
     GET_LIST_ADS,
     IS_CORRECT_DATE,
     IS_PREVIEW,
-    PREVIEW_BANNER,
+    PREVIEW_BANNER, PROMO_LIST,
     SET_BUDGET,
     SET_END_DATE,
     SET_END_TIME,
@@ -18,7 +18,7 @@ import {
     WITH_DATE
 } from "../types";
 
-export function addBanner(banner) {
+export function addImage(banner) {
     return {type: ADD_BANNER, payload: banner}
 }
 
@@ -94,4 +94,7 @@ export function setIsCorrectDateToStore(bool) {
 
 export function setWithDate(bool) {
     return {type: WITH_DATE, payload: bool}
+}
+export function getPromoList(list) {
+    return {type: PROMO_LIST, payload: list}
 }
