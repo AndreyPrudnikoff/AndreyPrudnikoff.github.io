@@ -21,7 +21,7 @@ main {
   .main {
     height: 100%;
     position: relative;
-     
+
   }
 
   .row {
@@ -739,7 +739,6 @@ form {
 }
 
 
-
 .big-timer {
   position: relative;
   background-image: url("../../images/bg_timer.png");
@@ -859,7 +858,7 @@ form {
 //   background-image: url("../../images/adbanner3.png");
 //   background-size: cover;
 // }
-.bannerImg{
+.bannerImg {
   border-radius: 25px;
   height: 238px;
   width: 270px;
@@ -1074,8 +1073,8 @@ form {
   }
 }
 
-.makeYourBet{
-  .setSize{
+.makeYourBet {
+  .setSize {
     font-family: "roc-grotesk", sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -1167,6 +1166,84 @@ form {
     }
   }
 }
+
+// <<<<<<<<<<<<<<<< PROMO  >>>>>>>>>>>>>>>>>
+.wrap-promo{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 96px 60px 60px 60px;
+.promo {
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+
+  span {
+    position: absolute;
+    top: 30px;
+    left: 50px;
+  }
+
+  .left-sector {
+    position: relative;
+    width: 75%;
+    .support-link {
+      display: block;
+      margin: 0 auto 20px;
+    }
+    table {
+      margin: 30px;
+      width: 95%;
+
+      thead {
+        tr {
+          th {
+            opacity: .5;
+            font-weight: 300;
+            text-align: center;
+          }
+          th:nth-child(1) {
+            text-align: left;
+          }
+          th:nth-child(6) {
+            text-align: right;
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          td:nth-child(6) {
+            text-align: right;
+          }
+          td:nth-child(1) {
+            text-align: left;
+          }
+        }
+
+        td {
+          padding-top: 5px;
+          text-align: center;
+        }
+
+        .hr {
+          border-top: 1px solid rgba(255, 255, 255, .5);
+
+          td {
+            padding-top: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  .wallet {
+    top: 0;
+    left: 75%;
+  }
+}}
 
 // <<<<<<<<<<<<<<<< PRELOADER  >>>>>>>>>>>>>>>>>
 
@@ -1521,13 +1598,15 @@ form {
 
             .form-label {
               flex-direction: column;
+
               .setSize {
                 display: none;
               }
 
               .balanceInput {
                 width: 100%;
-                .balanceBtn{
+
+                .balanceBtn {
                   display: none;
                 }
 
