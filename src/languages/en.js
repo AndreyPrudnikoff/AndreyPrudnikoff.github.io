@@ -330,11 +330,11 @@ export const EN = {
         },
         Step4: {
             title: 'Wallet',
-            content: 'Here you can see your wallet balance and history.'
+            content: 'Here you can see your wallet balance and history. Also you can deposit or withdraw your fonds.'
         },
         ClickOnWallet: {
             title: 'Click on Wallet',
-            content: 'You will go to another tab. Also you can deposit or withdraw your fonds'
+            content: 'You will go to another tab'
         },
         Step5: {
             title: 'Inviting friends',
