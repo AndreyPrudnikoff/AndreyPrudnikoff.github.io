@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {countryList} from "../../../../country/country";
 import {timeZone} from "../../../../country/timezone";
 // component
@@ -12,6 +12,14 @@ import closeImg from '../../../../images/close.png'
 const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone}) => {
     const [country, setCountry] = useState("");
     const [zone, setZone] = useState("");
+    const [isRedCounry, setIsRedCountry] = useState();
+    useEffect(() => {
+        if(country_codes_timezones.length === 0) {
+            setIsRedCountry(true)
+        } else {
+            setIsRedCountry(false)
+        }
+    }, [country_codes_timezones])
     const writeCountry = (e) => {
         setCountry(e.target.value);
     }
@@ -43,8 +51,8 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
                 <div className="block">
                     <div style={{width: "100%"}}>
                         <label>Country</label>
-                        <div className="selectInput">
-                            <select value={country} required onChange={writeCountry}>
+                        <div className="selectInput" style={{borderColor: !isRedCounry ? 'white' : 'red'}}>
+                            <select value={country} required onChange={(e) => {writeCountry(e); setIsRedCountry(false)}} >
                                 <option>All</option>
                                 {Object.keys(countryList).map((item, index) => (
                                     <option key={index + 3} value={countryList[item]}>{item}</option>
@@ -53,15 +61,15 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
                         </div>
                     </div>
                     <div className="addButton">
-                        <button onClick={(e) => {addCountryTimezone(e)}} style={{borderColor: country_codes_timezones.length ? 'rgba(255, 255, 255, 0.5)' : 'red'}}>+</button>
+                        <button onClick={(e) => {addCountryTimezone(e)}}>+</button>
                         <span>Add country</span>
                     </div>
                 </div>
                 <div className="block">
                     <div style={{width: "100%"}}>
                         <label>Time zone</label>
-                        <div className="selectInput">
-                            <select value={zone} required onChange={writeZone}>
+                        <div className="selectInput" style={{borderColor: !isRedCounry ? 'white' : 'red'}}>
+                            <select value={zone} required onChange={(e) => {writeZone(e); setIsRedCountry(false)}}>
                                 <option>Choose</option>
                                 {timeZone.map((item, index) => (
                                     <option key={index + 5} value={item}>{item}</option>

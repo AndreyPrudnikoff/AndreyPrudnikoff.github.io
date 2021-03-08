@@ -103,11 +103,22 @@
   background: transparent;
   outline: none;
   width: 100%;
+  position: relative;
+
+  &::after {
+    content: '⌵';
+    position: absolute;
+    left: 195px;
+  }
 
   & > select {
+    -webkit-appearance: none;
     background: transparent;
     border: none;
     width: 100%;
+    position: relative;
+
+    
 
     &:focus {
       outline: none;

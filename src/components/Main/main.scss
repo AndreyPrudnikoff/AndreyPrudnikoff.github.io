@@ -1168,83 +1168,92 @@ form {
 }
 
 // <<<<<<<<<<<<<<<< PROMO  >>>>>>>>>>>>>>>>>
-.wrap-promo{
+.wrap-promo {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   padding: 96px 60px 60px 60px;
-.promo {
-  position: relative;
-  width: 100%;
-  max-width: 1280px;
-  margin: 0;
-  span {
-    position: absolute;
-    top: 30px;
-    left: 50px;
-    cursor: pointer;
-  }
-  .left-sector {
-    position: relative;
-    width: 75%;
-    padding-left: 0;
-    .support-link {
-      display: block;
-      margin: 0 auto 20px;
-    }
-    table {
-      margin: 30px;
-      width: 95%;
 
-      thead {
-        tr {
-          th {
-            opacity: .5;
-            font-weight: 300;
-            text-align: center;
-          }
-          th:nth-child(1) {
-            text-align: left;
-          }
-          th:nth-child(6) {
-            text-align: right;
-          }
-        }
+  .promo {
+    position: relative;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0;
+
+    span {
+      position: absolute;
+      top: 30px;
+      left: 50px;
+      cursor: pointer;
+    }
+
+    .left-sector {
+      position: relative;
+      width: 75%;
+      padding-left: 0;
+
+      .support-link {
+        display: block;
+        margin: 0 auto 20px;
       }
 
-      tbody {
-        tr {
-          td:nth-child(6) {
-            text-align: right;
-          }
-          td:nth-child(1) {
-            text-align: left;
+      table {
+        margin: 30px;
+        width: 95%;
+
+        thead {
+          tr {
+            th {
+              opacity: .5;
+              font-weight: 300;
+              text-align: center;
+            }
+
+            th:nth-child(1) {
+              text-align: left;
+            }
+
+            th:nth-child(6) {
+              text-align: right;
+            }
           }
         }
 
-        td {
-          padding-top: 5px;
-          text-align: center;
-        }
+        tbody {
+          tr {
+            td:nth-child(6) {
+              text-align: right;
+            }
 
-        .hr {
-          border-top: 1px solid rgba(255, 255, 255, .5);
+            td:nth-child(1) {
+              text-align: left;
+            }
+          }
 
           td {
-            padding-top: 10px;
+            padding-top: 5px;
+            text-align: center;
+          }
+
+          .hr {
+            border-top: 1px solid rgba(255, 255, 255, .5);
+
+            td {
+              padding-top: 10px;
+            }
           }
         }
       }
     }
-  }
 
-  .wallet {
-    top: 0;
-    left: 75%;
+    .wallet {
+      top: 0;
+      left: 75%;
+    }
   }
-}}
+}
 
 // <<<<<<<<<<<<<<<< PRELOADER  >>>>>>>>>>>>>>>>>
 
@@ -1652,5 +1661,94 @@ form {
         }
       }
     }
+  }
+
+  @keyframes increaseYouWon {
+    0% {
+      transform: scale(.2, .2);
+      -webkit-transform: scale(.2, .2);
+      -moz-transform: scale(.2, .2);
+      -ms-transform: scale(.2, .2);
+      -o-transform: scale(.2, .2);
+    }
+
+    25% {
+      transform: scale(.65, .65);
+      -webkit-transform: scale(.65, .65);
+      -moz-transform: scale(.65, .65);
+      -ms-transform: scale(.65, .65);
+      -o-transform: scale(.65, .65);
+    }
+
+    50% {
+      transform: scale(.7, .7);
+      -webkit-transform: scale(.7, .7);
+      -moz-transform: scale(.7, .7);
+      -ms-transform: scale(.7, .7);
+      -o-transform: scale(.7, .7);
+    }
+
+    75% {
+      transform: scale(.75, .75);
+      -webkit-transform: scale(.75, .75);
+      -moz-transform: scale(.75, .75);
+      -ms-transform: scale(.75, .75);
+      -o-transform: scale(.75, .75);
+    }
+
+    100% {
+      transform: scale(.8, .8);
+      -webkit-transform: scale(.8, .8);
+      -moz-transform: scale(.8, .8);
+      -ms-transform: scale(.8, .8);
+      -o-transform: scale(.8, .8);
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      opacity: 1;
+      transform: scale(.8, .8);
+      -webkit-transform: scale(.8, .8);
+      -moz-transform: scale(.8, .8);
+      -ms-transform: scale(.8, .8);
+      -o-transform: scale(.8, .8);
+}
+  
+    20% {
+      opacity: 0;
+      transform: scale(.9, .9);
+      -webkit-transform: scale(.9, .9);
+      -moz-transform: scale(.9, .9);
+      -ms-transform: scale(.9, .9);
+      -o-transform: scale(.9, .9);
+}
+  
+    40% {
+      opacity: 1;
+      transform: scale(1, 1);
+      -webkit-transform: scale(1, 1);
+      -moz-transform: scale(1, 1);
+      -ms-transform: scale(1, 1);
+      -o-transform: scale(1, 1);
+}
+  
+    60% {
+      opacity: 0;
+      transform: scale(1.05, 1.05);
+      -webkit-transform: scale(1.05, 1.05);
+      -moz-transform: scale(1.05, 1.05);
+      -ms-transform: scale(1.05, 1.05);
+      -o-transform: scale(1.05, 1.05);
+}
+  
+    100% {
+      opacity: 1;
+      transform: scale(1.1, 1.1);
+      -webkit-transform: scale(1.1, 1.1);
+      -moz-transform: scale(1.1, 1.1);
+      -ms-transform: scale(1.1, 1.1);
+      -o-transform: scale(1.1, 1.1);
+}
   }
 }
