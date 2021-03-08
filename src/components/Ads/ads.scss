@@ -196,9 +196,10 @@
 }
 
 .listBlock {
-  position: relative;
+  position: absolute;
   display: flex;
-  margin: 80px auto;
+  // margin: 80px auto;
+  top: 100px;
 
   .listAds {
     width: 512px;
@@ -231,6 +232,11 @@
         opacity: 0.5;
         line-height: 23px;
         cursor: pointer;
+      }
+      &__url {
+        width: 65%;
+        white-space: nowrap;
+        overflow: hidden;
       }
     }
 
