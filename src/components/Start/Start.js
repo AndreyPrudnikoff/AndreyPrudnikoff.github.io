@@ -12,7 +12,7 @@ import Rect from "../Main/Rect/Rect";
 import coin from "../../images/coin.svg";
 import {userdata} from "../../redux/actions/game";
 import {registration} from "../../redux/actions";
-import {playClick, up_down, startWin, muteToggle} from "../../redux/actions/music";
+import {playClick, up_down, startWin, muteToggle, playYouWon} from "../../redux/actions/music";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
@@ -29,7 +29,8 @@ const Start = ({
                    up_down,
                    startWin,
                    muteToggle,
-                   mute
+                   mute,
+                   playYouWon
                }) => {
     const [timeGame, setTimeGame] = useState(false);
     const [start, setStart] = useState(false);
@@ -48,19 +49,19 @@ const Start = ({
             if (bet === 'down' && currentCourse < course[course.length - 2]) {
                 setPredict('win');
                 setBet('');
-                startWin()
+                playYouWon()
             } else if (bet === 'down' && currentCourse > course[course.length - 2]) {
                 setPredict('lose');
                 setBet('');
-                startWin()
+                playYouWon()
             } else if (bet === 'up' && currentCourse > course[course.length - 2]) {
                 setPredict('win');
                 setBet('');
-                startWin()
+                playYouWon()
             } else if (bet === 'up' && currentCourse < course[course.length - 2]) {
                 setPredict('lose');
                 setBet('');
-                startWin()
+                playYouWon()
             } else {
                 setBet('');
             }
@@ -190,6 +191,7 @@ const mapDispatchToProps = {
     playClick,
     up_down,
     startWin,
-    muteToggle
+    muteToggle,
+    playYouWon
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Start);

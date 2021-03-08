@@ -9,9 +9,10 @@ import "./style.scss";
 const Footer = ({setIsPreview, isCorrectDate}) => {
     let history = useHistory()
 
+
     return (
         <div className="footer">
-            <button type={'submit'}>Promote now</button>
+            <button type='submit'>Promote now</button>
         </div>
     );
 };

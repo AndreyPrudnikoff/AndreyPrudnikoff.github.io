@@ -1,5 +1,6 @@
 import React from 'react'
 import imgPerson from '../../images/person x1F 1 1.png'
+import imgArrowRight from '../../images/arrow-right.png'
 import {switchStep} from '../../redux/actions/index'
 import {playClick} from '../../redux/actions/music'
 import {switchView} from "../../redux/actions";
@@ -69,7 +70,7 @@ const Step1 = ({switchStep, playClick, currentLang, widthMode, switchView}) => {
                             switchStep(2);
                             playClick()
                         }}>
-                            <span>{LANG.Intro.btnIntro.next}</span>
+                            <span><img src={imgArrowRight} alt='arrow-right'/></span>
                         </li>
                     </ul>
                 </div>

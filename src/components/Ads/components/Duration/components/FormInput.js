@@ -65,7 +65,7 @@ export const DateInput = ({label, onChange = () => {}, invalid}) => {
     };
 
     return (
-        <div className="dateInputContainer">
+        <div className="dateInputContainer" style={{width: '188.5px'}}>
             <label>{label}</label>
             <div className="dateInput" style={{border: invalid ? '1px solid red' : '1px solid white'}}>
                 <div>{inputValue}</div>
@@ -86,7 +86,7 @@ export const TimeInput = ({label, onChange = () => {}, invalid}) => {
     };
 
     return (
-        <div className="timeInputContainer">
+        <div className="timeInputContainer" style={{width: '188.5px'}}>
             <label>{label}</label>
             <div className="timeInput" style={{border: invalid ? '1px solid red' : '1px solid white'}}>
                 <input required onChange={handleChange} type="time"/>
@@ -134,17 +134,21 @@ export const RangeInput = ({min, max, course, balance, withError = false, onChan
     );
 };
 
-export const TextInput = ({
-                              label, onChange = () => {
-    }, setWebsite, webSite
-                          }) => {
+export const TextInput = ({label, onChange = () => {}, setWebsite, webSite}) => {
+    const [name, setName] = useState();    
+
+    const checkForLatin = event => {
+        let val = event.replace(/[^\x00-\x7F]/ig, '');
+        setName(val);
+    }
+
     return (
         <div className="website-block">
             <span className="block-description">{label}</span>
             <input
                 type="text"
                 placeholder="website.com"
-                onChange={(e) => onChange(e.target.value)}
+                onChange={(e) => {onChange(e.target.value); checkForLatin(e.target.value)}} value={name}
             />
         </div>
     );
