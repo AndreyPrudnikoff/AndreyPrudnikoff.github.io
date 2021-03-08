@@ -203,14 +203,14 @@
     padding: 20px 20px 30px 20px;
 
     &__title {
-      font-family: Roc Grotesk;
+      font-family: 'roc-grotesk', sans-serif;
       font-style: normal;
       font-weight: 500;
       font-size: 24px;
       line-height: 35px;
     }
 
-    .ads-switch {
+    .images-switch {
       display: flex;
       margin-top: 5px;
       justify-content: space-between;
@@ -221,7 +221,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-family: Roc Grotesk;
+        font-family: 'roc-grotesk', sans-serif;
         font-style: normal;
         font-weight: normal;
         font-size: 16px;
@@ -231,16 +231,16 @@
       }
     }
 
-    .ads-list {
+    .images-list {
       margin: 25px 0 0 0;
       padding: 0;
-      font-family: Roc Grotesk;
+      font-family: 'roc-grotesk', sans-serif;
       font-style: normal;
       font-weight: normal;
       font-size: 16px;
       line-height: 23px;
 
-      &__not-ads {
+      &__not-images {
         text-align: center;
         font-family: "roc-grotesk", sans-serif;
         font-style: normal;
@@ -302,7 +302,7 @@
   width: 275px;
   height: 255px;
   padding: 20px;
-  font-family: Roc Grotesk;
+  font-family: 'roc-grotesk', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;

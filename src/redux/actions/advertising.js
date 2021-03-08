@@ -64,7 +64,6 @@ export function getCurrentList() {
         const response = await User.listAds();
         const payload = await response.data.status;
         if (payload === "success") {
-
             for (let i = 0; i < response.data.data.length; i++) {
                 if (response.data.data[i].status === 'ended') {
                     obj.finished.push(response.data.data[i])
