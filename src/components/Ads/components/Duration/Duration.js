@@ -21,10 +21,8 @@ const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime
 	  let enteredEndDate = dayjs(`${dateEnd}T${timeEnd}`).valueOf(true);
     if(dateStart !== 0 && timeStart !== 0) {
       if(enteredStartDate > dateNow) {
-		  console.log('up')
         setIsStartDate(true)
       } else if (enteredStartDate < dateNow) {
-		  console.log('down')
         setIsStartDate(false)
       }
     }
@@ -35,14 +33,11 @@ const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime
 		} else if (enteredEndDate < enteredStartDate) {
 			setIsCorrectDate(false)
 		}
-		// console.log(isCorrectDate)
 	}
 
 	if(isStartDate && isCorrectDate) {
-    console.log('y')
 		setIsCorrectDateToStore(true)
 	} else {
-    console.log('n')
 		setIsCorrectDateToStore(false)
 	}
     
@@ -57,12 +52,12 @@ const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime
       content: (
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", marginBottom: '20px', justifyContent: 'space-between'}} >
-            <DateInput onChange={(e) => {setStartDate(e); setDateStart(e)}} label="Start date" invalid={isStartDate ? false : true} />
-            <TimeInput onChange={(e) => {setStartTime(e); setTimeStart(e)}} label="Start time" invalid={isStartDate ? false : true}/>
+            <DateInput onChange={(e) => {setStartDate(e); setDateStart(e)}} label="Start date" invalid={!isStartDate} />
+            <TimeInput onChange={(e) => {setStartTime(e); setTimeStart(e)}} label="Start time" invalid={!isStartDate}/>
           </div>
           <div style={{ display: "flex", justifyContent: 'space-between' }}>
-            <DateInput onChange={(e) => {setEndDate(e); setDateEnd(e)}} label="End date" invalid={isCorrectDate ? false : true} />
-            <TimeInput onChange={(e) => {setEndTime(e); setTimeEnd(e)}} label="End time" invalid={isCorrectDate ? false : true} />
+            <DateInput onChange={(e) => {setEndDate(e); setDateEnd(e)}} label="End date" invalid={!isCorrectDate} />
+            <TimeInput onChange={(e) => {setEndTime(e); setTimeEnd(e)}} label="End time" invalid={!isCorrectDate} />
           </div>
           
         </div>
@@ -85,7 +80,6 @@ const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime
 
 
 const mapStateToProps = state => {
-  console.log(state.adsOptions.isCorrectDate)
   return {
     isCorrectDateFromStore: state.adsOptions.isCorrectDate
   }

@@ -12,18 +12,18 @@ import {
     AD_DETAIL,
     IS_PREVIEW,
     PREVIEW_BANNER,
-    IS_CORRECT_DATE, WITH_DATE, PROMO_LIST
+    IS_CORRECT_DATE, WITH_DATE, PROMO_LIST, ERROR_AD
 } from "../types";
 
 const initialState = {
-    image: "base64",
-    website_url: "",
+    image: undefined,
+    website_url: undefined,
     country_codes_timezones: [],
-    banner_start_date: "yyyy-mm-dd",
-    banner_start_time: "hh:mm:ss",
-    banner_end_date: "yyyy-mm-dd",
-    banner_end_time: "hh:mm:ss",
-    budget: "0",
+    banner_start_date: undefined,
+    banner_start_time: undefined,
+    banner_end_date: undefined,
+    banner_end_time: undefined,
+    budget: 0,
     currentList: [],
     finishedList: [],
     adDetail: {},
@@ -31,13 +31,23 @@ const initialState = {
     previewBanner: false,
     isCorrectDate: false,
     withDate: false,
-    promoList: []
+    promoList: [],
+    errorsObj: {
+        start_date: false,
+        start_time: false,
+        end_date: false,
+        end_time: false,
+        image: false,
+        website_url: false,
+        country_codes_timezones: false,
+        budget: false
+    }
 }
 
 export const adsOptions = (state = initialState, action) => {
     switch (action.type) {
         case ADD_BANNER:
-            return {...state, banner: action.payload};
+            return {...state, image: action.payload};
         case SET_WEB_SITE:
             return {...state, website_url: action.payload};
         case ADD_COUNTRY:
@@ -71,6 +81,8 @@ export const adsOptions = (state = initialState, action) => {
             return {...state, withDate: action.payload}
         case PROMO_LIST:
             return {...state, promoList: action.payload}
+        case ERROR_AD:
+            return {...state, errorsObj: action.payload}
         default:
             return state;
     }

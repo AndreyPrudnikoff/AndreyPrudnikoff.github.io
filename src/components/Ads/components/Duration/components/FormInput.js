@@ -31,7 +31,7 @@ export const NumberInput = ({label}) => {
         <div>
             <label>{label}</label>
             <div className="formInput">
-                <input required value={inputValue} onChange={handleChange}/>
+                <input value={inputValue} onChange={handleChange}/>
 
                 <div className="inputButtons">
                     <button name="asc" onClick={changeAmount}>
@@ -47,14 +47,11 @@ export const NumberInput = ({label}) => {
     );
 };
 
-export const SelectInput = ({
-                                label, data = [], onchange = () => {
-    }
-                            }) => {
-    return (
-        <div/>
-    );
-}
+// export const SelectInput = ({label, data = [], onchange = () => {}}) => {
+//     return (
+//         <div/>
+//     );
+// }
 
 export const DateInput = ({label, onChange = () => {}, invalid}) => {
     const [inputValue, setValue] = useState("");
@@ -67,9 +64,9 @@ export const DateInput = ({label, onChange = () => {}, invalid}) => {
     return (
         <div className="dateInputContainer" style={{width: '188.5px'}}>
             <label>{label}</label>
-            <div className="dateInput" style={{border: invalid ? '1px solid red' : '1px solid white'}}>
+            <div className="dateInput" style={{border: invalid ? '1px solid #FF453A' : '1px solid white'}}>
                 <div>{inputValue}</div>
-                <input required onChange={handleChange} type="date"/>
+                <input onChange={handleChange} type="date"/>
             </div>
         </div>
     );
@@ -88,8 +85,8 @@ export const TimeInput = ({label, onChange = () => {}, invalid}) => {
     return (
         <div className="timeInputContainer" style={{width: '188.5px'}}>
             <label>{label}</label>
-            <div className="timeInput" style={{border: invalid ? '1px solid red' : '1px solid white'}}>
-                <input required onChange={handleChange} type="time"/>
+            <div className="timeInput" style={{border: invalid ? '1px solid #FF453A' : '1px solid white'}}>
+                <input onChange={handleChange} type="time"/>
             </div>
         </div>
     );
@@ -110,7 +107,6 @@ export const RangeInput = ({min, max, course, balance, value, withError = false,
     return (
         <div className="rangeInputContainer">
             <input
-                required
                 min={min}
                 max={max}
                 onChange={handlerChange}
@@ -135,7 +131,7 @@ export const RangeInput = ({min, max, course, balance, value, withError = false,
     );
 };
 
-export const TextInput = ({label, onChange = () => {}, setWebsite, webSite}) => {
+export const TextInput = ({label, onChange = () => {}, setWebsite, webSite, invalid}) => {
     const [name, setName] = useState();    
 
     const checkForLatin = event => {
@@ -147,6 +143,7 @@ export const TextInput = ({label, onChange = () => {}, setWebsite, webSite}) => 
         <div className="website-block">
             <span className="block-description">{label}</span>
             <input
+                style={{borderColor: invalid ? "#FF453A" : "inherit"}}
                 type="text"
                 placeholder="website.com"
                 onChange={(e) => {onChange(e.target.value); checkForLatin(e.target.value)}} value={name}

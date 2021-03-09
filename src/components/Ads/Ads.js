@@ -1,19 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import {connect} from "react-redux";
+import {getCurrentList, setAdErrors, setWebsite} from "../../redux/actions/advertising";
+import {createAdProp} from "../../redux/actions";
+import {playClick} from "../../redux/actions/music";
+import {userdata} from "../../redux/actions/game";
+import {User} from "../../api/User";
 // styles
 import "./ads.scss";
 // components
 import {TextInput} from "./components/Duration/components";
 import {Audience, Duration, Footer, ImagePreview} from "./components";
 import Wallet from "./components/Wallet"
-import {getCurrentList, setWebsite} from "../../redux/actions/advertising";
-import {User} from "../../api/User";
-import {createAdProp} from "../../redux/actions";
-import {playClick} from "../../redux/actions/music";
-import {userdata} from "../../redux/actions/game";
-
 
 const Ads = (props) => {
+    const [errors, setErrors] = useState("");
     let timezones = {};
     props.country_codes_timezones.forEach(item => {
         const k = Object.keys(item)[0];
@@ -32,17 +32,63 @@ const Ads = (props) => {
         budget: props.budget,
         ...withTime
     }
+    const errorsObj = {
+        start_date: false,
+        start_time: false,
+        end_date: false,
+        end_time: false,
+        image: false,
+        website_url: false,
+        country_codes_timezones: false,
+        budget: false
+    };
     const handleSubmit = e => {
         e.preventDefault();
-        User.createAd(ad)
-            .then((res => {
-                if (res.data.status === "success") {
-                    props.createAdProp();
-                    props.userdata();
-                    props.getCurrentList();
-                }
-            }))
-            .catch(e => console.log(e.data));
+        let errorArray = [];
+
+        for (const adKey in ad) {
+            if (!ad[adKey]) {
+                errorArray.push(adKey);
+                errorsObj[adKey] = true;
+            } else if(!props.withDate && !ad.country_codes_timezones.length) {
+                errorArray.push("country_codes_timezones");
+            }
+        }
+        props.setAdErrors(errorsObj);
+        if(!errorArray.length) {
+            setErrors("")
+            User.createAd(ad)
+                .then((res => {
+                    if (res.data.status === "success") {
+                        props.createAdProp();
+                        props.userdata();
+                        props.getCurrentList();
+                    }
+                }))
+                .catch(e => console.log(e.data));
+        } else {
+            let errString = "";
+           errorArray.forEach(err => {
+               errString += err + ", ";
+           })
+            let newStr = errString.slice(0, -2);
+            setErrors(newStr);
+            setTimeout(()=> {
+                props.setAdErrors({
+                    start_date: false,
+                    start_time: false,
+                    end_date: false,
+                    end_time: false,
+                    image: false,
+                    website_url: false,
+                    country_codes_timezones: false,
+                    budget: false
+                })
+                setErrors("");
+
+            }, 5000);
+        }
+
     }
 
     return (
@@ -62,20 +108,21 @@ const Ads = (props) => {
             </div>
             <div style={{display: 'flex', position: 'relative'}}>
                 <form onSubmit={(e) => handleSubmit(e)} className="round-dark ads">
-                    <ImagePreview/>
+                    <ImagePreview />
 
-                    <TextInput onChange={props.setWebsite} label="Website URL"/>
+                    <TextInput invalid={props.adErrors.website_url} onChange={props.setWebsite} label="Website URL"/>
 
                     <hr/>
 
-                    <Audience/>
+                    <Audience />
 
-                    <Duration/>
+                    <Duration />
 
-                    <Footer/>
+                    <Footer errors={errors}/>
                 </form>
                 <Wallet input={true}/>
             </div>
+
         </div>
     )
 
@@ -91,6 +138,7 @@ const mapStateToProps = state => {
         end_time: state.adsOptions.banner_end_time,
         budget: state.adsOptions.budget,
         withDate: state.adsOptions.withDate,
+        adErrors: state.adsOptions.errorsObj,
         createAd: state.switchOptions.createAd
 
     }
@@ -100,6 +148,7 @@ const mapDispatchToProps = {
     createAdProp,
     playClick,
     userdata,
-    getCurrentList
+    getCurrentList,
+    setAdErrors
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Ads);
