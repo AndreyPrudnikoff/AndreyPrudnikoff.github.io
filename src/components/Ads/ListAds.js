@@ -4,6 +4,7 @@ import {useHistory} from "react-router-dom";
 import {playClick} from "../../redux/actions/music";
 import {getCurrentList, getDetails} from "../../redux/actions/advertising"
 import {connect} from "react-redux";
+import back from "../../images/back.svg";
 import Wallet from "./components/Wallet"
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
@@ -21,7 +22,11 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
         <div className='list-main-block'>
             <div className='listBlock'>
                 <div className='round-dark listAds'>
-                    <h2 className='listAds__title'>{LANG.Ads.MyAds.title}</h2>
+                    <span className='backbtn-title-span'>
+                        <img src={back} alt='back' onClick={() => history.push('/game')} className='backbtn-title-span__btn'/>
+                        <h2 className='backbtn-title-span__title'>{LANG.Ads.MyAds.title}</h2>
+                    </span>
+                    
                     <div className='images-switch'>
                         <span onClick={() => {
                             setIsCurrent(true)

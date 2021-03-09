@@ -20,14 +20,27 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
             setIsRedCountry(false)
         }
     }, [country_codes_timezones])
+    useEffect(() => {
+        if(country, zone) {
+            addCountry({[country]: zone});
+            setCountry('');
+            setZone('');
+        }
+    }, [country, zone])
     const writeCountry = (e) => {
         setCountry(e.target.value);
+        if(country, zone) {
+            console.log(country, zone);
+        }
     }
     const writeZone = (e) => {
         setZone(e.target.value);
+        if(country, zone) {
+            console.log(country, zone);
+        }
     }
-    const addCountryTimezone = (e) => {
-        e.preventDefault();
+    const addCountryTimezone = () => {
+        // e.preventDefault();
         if (country && zone) {
             addCountry({[country]: zone});
         }
@@ -61,7 +74,7 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
                         </div>
                     </div>
                     <div className="addButton">
-                        <button onClick={(e) => {addCountryTimezone(e)}}>+</button>
+                        <button onClick={() => {addCountryTimezone()}}>+</button>
                         <span>Add country</span>
                     </div>
                 </div>
