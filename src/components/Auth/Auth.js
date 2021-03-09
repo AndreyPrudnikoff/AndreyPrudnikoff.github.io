@@ -3,27 +3,13 @@ import {connect} from 'react-redux';
 import {Link} from "react-router-dom";
 import PhoneInput from 'react-phone-number-input';
 import './auth.scss';
-import arrow_btn from "../../images/arrow-btn.png";
 import {authorization, betWin, registration, switchStep} from "../../redux/actions";
 import {User} from "../../api/User";
 import {fireworks, muteToggle, playClick} from "../../redux/actions/music";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Auth = ({
-                  reg,
-                  authorization,
-                  registration,
-                  muteToggle,
-                  mute,
-                  betWin,
-                  fireworks,
-                  history,
-                  widthMode,
-                  currentLang,
-                  playClick,
-                  switchStep
-              }) => {
+const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, fireworks, history, widthMode, currentLang, playClick, switchStep}) => {
     const [password, setPassword] = useState(true)
     const [passwordConfirm, setPasswordConfirm] = useState(true)
     const [name, setName] = useState('')
@@ -105,7 +91,6 @@ const Auth = ({
                     sessionStorage.setItem('token', res.data.data.accessToken);
                     authorization();
                     if(res.data.newUser) {
-                        console.log(res.data.newUser)
                         switchStep(1);
                     }
                 } else {
