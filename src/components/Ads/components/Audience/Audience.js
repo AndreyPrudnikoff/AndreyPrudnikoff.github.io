@@ -64,7 +64,7 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
                 <div className="block">
                     <div style={{width: "100%"}}>
                         <label>Country</label>
-                        <div className="selectInput" style={{borderColor: !isRedCounry ? 'white' : 'red'}}>
+                        <div className="selectInput" style={{borderColor: !isRedCounry ? 'white' : '#FF453A'}}>
                             <select value={country} required onChange={(e) => {writeCountry(e); setIsRedCountry(false)}} >
                                 <option>All</option>
                                 {Object.keys(countryList).map((item, index) => (
@@ -81,7 +81,7 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
                 <div className="block">
                     <div style={{width: "100%"}}>
                         <label>Time zone</label>
-                        <div className="selectInput" style={{borderColor: !isRedCounry ? 'white' : 'red'}}>
+                        <div className="selectInput" style={{borderColor: !isRedCounry ? 'white' : '#FF453A'}}>
                             <select value={zone} required onChange={(e) => {writeZone(e); setIsRedCountry(false)}}>
                                 <option>Choose</option>
                                 {timeZone.map((item, index) => (

@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import back from "../../../images/back.svg";
 import { useHistory } from "react-router-dom";
 
-const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview}) => {
+const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview, adErrors}) => {
   const [image, setFile] = useImagePreview();
   let history = useHistory()
 
@@ -33,7 +33,7 @@ const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview}
         </div>
 
         <div className="wrap-input">
-          <label className="dashed" htmlFor="image-file">
+          <label style={{borderColor: adErrors.image ? "#FF453A" : "inherit"}} className="dashed" htmlFor="image-file">
             {previewBanner ? (<img className="image-preview" src={banner} />) :
             (image ? (
               <img className="image-preview" src={image} />
@@ -59,7 +59,8 @@ const mapStateToProps = state => {
   return {
     banner: state.adsOptions.banner,
     isPreview: state.adsOptions.isPreview,
-    previewBanner: state.adsOptions.previewBanner
+    previewBanner: state.adsOptions.previewBanner,
+    adErrors: state.adsOptions.errorsObj,
   }
   
 }
