@@ -1,10 +1,13 @@
 import React from 'react';
 import './ads.scss';
+import back from "../../images/back.svg";
 import {addImage} from '../../redux/actions/advertising'
 import {connect} from "react-redux";
 import Wallet from './components/Wallet'
+import { useHistory } from 'react-router';
 
 const MyAd = ({objData}) => {
+    const history = useHistory()
 
     const encodeImageFileAsURL = (element) => {
         let file = element.target.files[0];
@@ -20,10 +23,13 @@ const MyAd = ({objData}) => {
         e.preventDefault();
     }
     return (
-        <div style={{position: 'relative', display: 'flex', marginTop: '95px'}}>
+        <div className='my-ad-main'>
             <form onSubmit={(e) => handleSubmit(e)} className="round-dark ads">
                 <div>
-                    <h2>Ad creative</h2>
+                    <span className='backbtn-title-span'>
+                        <img src={back} alt='back' className='backbtn-title-span__btn' onClick={() => history.goBack()}/>
+                        <h2 className='backbtn-title-span__title'>Ad creative</h2>
+                    </span>
                     <div className="wrapper-input-file">
                         <div className="label-file">
                             Select a banner to add <br/>

@@ -7,6 +7,10 @@
     display: flex;
     justify-content: center;
     padding: 96px 60px 60px 60px;
+    background-image: url('../../images/server-room-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 -150px;
   
     .promo {
       position: relative;

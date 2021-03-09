@@ -25,7 +25,6 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                     <span className='backbtn-title-span'>
                         <img src={back} alt='back' onClick={() => history.push('/game')} className='backbtn-title-span__btn'/>
                         <h2 className='backbtn-title-span__title'>{LANG.Ads.MyAds.title}</h2>
-                        <></>
                     </span>
                     
                     <div className='images-switch'>
