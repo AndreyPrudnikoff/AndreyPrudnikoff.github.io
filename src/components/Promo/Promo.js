@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 import {User} from "../../api/User";
+import './Promo.scss';
 import {getPromoList} from "../../redux/actions/advertising";
 
 const Promo = ({history, playClick, currentLang, getPromoList, promoList}) => {
@@ -85,7 +86,7 @@ const Promo = ({history, playClick, currentLang, getPromoList, promoList}) => {
                     </div>
 
                 </div>
-                <div className="right-sector"><Wallet/></div>
+                <div className="right-sector"><Wallet input={true}/></div>
             </div>
 
         </div>
