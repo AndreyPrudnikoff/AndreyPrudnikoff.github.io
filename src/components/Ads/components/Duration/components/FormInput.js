@@ -31,7 +31,7 @@ export const NumberInput = ({label}) => {
         <div>
             <label>{label}</label>
             <div className="formInput">
-                <input required value={inputValue} onChange={handleChange}/>
+                <input value={inputValue} onChange={handleChange}/>
 
                 <div className="inputButtons">
                     <button name="asc" onClick={changeAmount}>
@@ -69,7 +69,7 @@ export const DateInput = ({label, onChange = () => {}, invalid}) => {
             <label>{label}</label>
             <div className="dateInput" style={{border: invalid ? '1px solid red' : '1px solid white'}}>
                 <div>{inputValue}</div>
-                <input required onChange={handleChange} type="date"/>
+                <input onChange={handleChange} type="date"/>
             </div>
         </div>
     );
@@ -89,7 +89,7 @@ export const TimeInput = ({label, onChange = () => {}, invalid}) => {
         <div className="timeInputContainer" style={{width: '188.5px'}}>
             <label>{label}</label>
             <div className="timeInput" style={{border: invalid ? '1px solid red' : '1px solid white'}}>
-                <input required onChange={handleChange} type="time"/>
+                <input onChange={handleChange} type="time"/>
             </div>
         </div>
     );
@@ -110,7 +110,6 @@ export const RangeInput = ({min, max, course, balance, value, withError = false,
     return (
         <div className="rangeInputContainer">
             <input
-                required
                 min={min}
                 max={max}
                 onChange={handlerChange}
