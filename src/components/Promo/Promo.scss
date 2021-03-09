@@ -17,6 +17,8 @@
       width: 100%;
       max-width: 1280px;
       margin: 0;
+      display: flex;
+      justify-content: center;
   
       span {
         position: absolute;
@@ -27,7 +29,7 @@
   
       .left-sector {
         position: relative;
-        width: 75%;
+        width: 67%;
         padding-left: 0;
   
         .support-link {
@@ -86,7 +88,7 @@
   
       .wallet {
         top: 0;
-        left: 75%;
+        left: 72%;
       }
     }
   }
