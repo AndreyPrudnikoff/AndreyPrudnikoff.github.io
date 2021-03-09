@@ -22,6 +22,7 @@ const Tabs = ({tabs, budget, setBudget, balance, setWithDate}) => {
     let currentCourse = bitcoins[bitcoins.length - 1];
     // useEffect(() => socket.close());
     const [activeTab, setActiveTab] = useState(0);
+    const [cost, setCost] = useState(50)
     return (
         <div className="tabsContainer">
             <div className="tabs">
@@ -58,12 +59,12 @@ const Tabs = ({tabs, budget, setBudget, balance, setWithDate}) => {
                             {budget > 0 ? +budget.toFixed(4) : 0}<img src={bitcoin} alt="btc"/>
                         </div>
                         <div className="amount-dollar website-block">
-                            <input onInput={e => setBudget(+e.target.value / +currentCourse)} value={(+budget * +currentCourse).toFixed(0)} className="dollarContainer" />
+                            <input onInput={e => setBudget(+e.target.value / +currentCourse)} value={((+budget * +currentCourse) || 50).toFixed(0)} className="dollarContainer" />
                             <img src={dollar} alt="dollar"/>
                         </div>
                     </div>
                 </div>
-                <RangeInput withError min={50} max={50000} course={currentCourse} balance={(balance * currentCourse)}/>
+                <RangeInput withError min={50} max={50000} course={currentCourse} value={((+budget * +currentCourse) || 50).toFixed(0)} balance={(balance * currentCourse)}/>
             </div>
             <div className="content">{tabs[activeTab]?.content}</div>
         </div>

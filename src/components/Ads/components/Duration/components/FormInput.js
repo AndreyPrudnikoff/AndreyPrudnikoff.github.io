@@ -95,7 +95,7 @@ export const TimeInput = ({label, onChange = () => {}, invalid}) => {
     );
 };
 
-export const RangeInput = ({min, max, course, balance, withError = false, onChange = () => {
+export const RangeInput = ({min, max, course, balance, value, withError = false, onChange = () => {
     },}) => {
     const [isValid, setValidation] = useState(true);
     const handlerChange = ({target: {valueAsNumber}}) => {
@@ -116,6 +116,7 @@ export const RangeInput = ({min, max, course, balance, withError = false, onChan
                 onChange={handlerChange}
                 className={isValid ? "rangeInput" : "rangeInput-error"}
                 type="range"
+                value={value}
             />
 
             {withError && !isValid && (

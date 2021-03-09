@@ -216,14 +216,7 @@
       width: 512px;
       // height: 216px;
       padding: 20px 20px 30px 20px;
-  
-      &__title {
-        font-family: 'roc-grotesk', sans-serif;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 24px;
-        line-height: 35px;
-      }
+    
   
       .images-switch {
         display: flex;
@@ -323,6 +316,26 @@
   }
   
   
+}
+
+.backbtn-title-span{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  
+  &__btn {
+    cursor: pointer;
+  }
+
+  &__title {
+    font-family: 'roc-grotesk', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 35px;
+    margin-left: 36%;
+    margin-bottom: 0;
+  }
 }
 
 .wallet {

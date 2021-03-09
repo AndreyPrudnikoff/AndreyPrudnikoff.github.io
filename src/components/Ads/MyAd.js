@@ -20,7 +20,7 @@ const MyAd = ({objData}) => {
         e.preventDefault();
     }
     return (
-        <div style={{position: 'relative', display: 'flex'}}>
+        <div style={{position: 'relative', display: 'flex', marginTop: '95px'}}>
             <form onSubmit={(e) => handleSubmit(e)} className="round-dark ads">
                 <div>
                     <h2>Ad creative</h2>
