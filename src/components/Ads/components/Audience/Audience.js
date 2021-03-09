@@ -21,7 +21,8 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
         }
     }, [country_codes_timezones])
     useEffect(() => {
-        if(country, zone) {
+        console.log(country, zone);
+        if(country !== '' && zone !== '') {
             addCountry({[country]: zone});
             setCountry('');
             setZone('');
