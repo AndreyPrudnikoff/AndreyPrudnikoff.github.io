@@ -1,19 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import {connect} from "react-redux";
+import {getCurrentList, setWebsite} from "../../redux/actions/advertising";
+import {createAdProp} from "../../redux/actions";
+import {playClick} from "../../redux/actions/music";
+import {userdata} from "../../redux/actions/game";
+import {User} from "../../api/User";
 // styles
 import "./ads.scss";
 // components
 import {TextInput} from "./components/Duration/components";
 import {Audience, Duration, Footer, ImagePreview} from "./components";
 import Wallet from "./components/Wallet"
-import {getCurrentList, setWebsite} from "../../redux/actions/advertising";
-import {User} from "../../api/User";
-import {createAdProp} from "../../redux/actions";
-import {playClick} from "../../redux/actions/music";
-import {userdata} from "../../redux/actions/game";
-
 
 const Ads = (props) => {
+    const [errors, setErrors] = useState("");
     let timezones = {};
     props.country_codes_timezones.forEach(item => {
         const k = Object.keys(item)[0];
@@ -34,15 +34,31 @@ const Ads = (props) => {
     }
     const handleSubmit = e => {
         e.preventDefault();
-        User.createAd(ad)
-            .then((res => {
-                if (res.data.status === "success") {
-                    props.createAdProp();
-                    props.userdata();
-                    props.getCurrentList();
-                }
-            }))
-            .catch(e => console.log(e.data));
+        let errorArray = [];
+        for (let adKey in ad) {
+            if (!ad[adKey]) {
+                errorArray.push(adKey);
+            }else if(!props.withDate && !ad.country_codes_timezones.length) {
+                errorArray.push("country_codes_timezones")
+            }
+        }
+        if(!errorArray.length) {
+            User.createAd(ad)
+                .then((res => {
+                    if (res.data.status === "success") {
+                        props.createAdProp();
+                        props.userdata();
+                        props.getCurrentList();
+                    }
+                }))
+                .catch(e => console.log(e.data));
+        } else {
+           errorArray.forEach(err => {
+               setErrors(errors + " " + err);
+           })
+            setTimeout(()=> setErrors(""), 5000);
+        }
+
     }
 
     return (
@@ -71,7 +87,7 @@ const Ads = (props) => {
 
                 <Duration/>
 
-                <Footer/>
+                <Footer err/>
             </form>
             <Wallet input={true}/>
         </div>

@@ -16,14 +16,14 @@ import {
 } from "../types";
 
 const initialState = {
-    image: "base64",
-    website_url: "",
+    image: undefined,
+    website_url: undefined,
     country_codes_timezones: [],
-    banner_start_date: "yyyy-mm-dd",
-    banner_start_time: "hh:mm:ss",
-    banner_end_date: "yyyy-mm-dd",
-    banner_end_time: "hh:mm:ss",
-    budget: "0",
+    banner_start_date: undefined,
+    banner_start_time: undefined,
+    banner_end_date: undefined,
+    banner_end_time: undefined,
+    budget: 0,
     currentList: [],
     finishedList: [],
     adDetail: {},
@@ -37,7 +37,7 @@ const initialState = {
 export const adsOptions = (state = initialState, action) => {
     switch (action.type) {
         case ADD_BANNER:
-            return {...state, banner: action.payload};
+            return {...state, image: action.payload};
         case SET_WEB_SITE:
             return {...state, website_url: action.payload};
         case ADD_COUNTRY:
