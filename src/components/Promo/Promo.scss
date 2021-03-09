@@ -1,0 +1,88 @@
+.wrap-promo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 96px 60px 60px 60px;
+  
+    .promo {
+      position: relative;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0;
+  
+      span {
+        position: absolute;
+        top: 30px;
+        left: 50px;
+        cursor: pointer;
+      }
+  
+      .left-sector {
+        position: relative;
+        width: 75%;
+        padding-left: 0;
+  
+        .support-link {
+          display: block;
+          margin: 0 auto 20px;
+        }
+  
+        table {
+          margin: 30px;
+          width: 95%;
+  
+          thead {
+            tr {
+              th {
+                opacity: .5;
+                font-weight: 300;
+                text-align: center;
+              }
+  
+              th:nth-child(1) {
+                text-align: left;
+              }
+  
+              th:nth-child(6) {
+                text-align: right;
+              }
+            }
+          }
+  
+          tbody {
+            tr {
+              td:nth-child(6) {
+                text-align: right;
+              }
+  
+              td:nth-child(1) {
+                text-align: left;
+              }
+            }
+  
+            td {
+              padding-top: 5px;
+              text-align: center;
+            }
+  
+            .hr {
+              border-top: 1px solid rgba(255, 255, 255, .5);
+  
+              td {
+                padding-top: 10px;
+              }
+            }
+          }
+        }
+      }
+  
+      .wallet {
+        top: 0;
+        left: 75%;
+      }
+    }
+  }
