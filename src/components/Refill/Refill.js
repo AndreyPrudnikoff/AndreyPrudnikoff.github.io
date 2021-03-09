@@ -21,11 +21,12 @@ socket.onmessage = async e => {
 }
 const Refill = ({createAd, createAdProp, history, currentLang, playClick}) => {
     let currentCourse = bitcoins[bitcoins.length - 1];
+    console.log(currentCourse)
     const [bit, setBit] = useState(0);
     const [usd, setUsd] = useState(0);
     const [reverse, setReverse] = useState(false);
     const LANG = currentLang === "en" ? EN : RU;
-    useEffect(() => socket.close())
+    // useEffect(() => socket.close())
     return (
         <div>
             <Header/>
@@ -68,7 +69,8 @@ const Refill = ({createAd, createAdProp, history, currentLang, playClick}) => {
                             <input value={usd}
                                    onChange={(e) => {
                                        setUsd(e.target.value);
-                                       setBit(e.target.value / currentCourse);
+                                       const btc = (e.target.value / currentCourse).toFixed(8)
+                                       setBit(btc);
                                    }}
                                    placeholder="0.000" type="text"/>
                             <img className="currency" src={dollar} width="15" alt="usd"/>
