@@ -191,7 +191,7 @@ const Header = ({switchStep, promo, auth, reg, mute, muteToggle, logoutQuestion,
                                     <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">
                                         {widthMode !== 'desktop' ? null :
                                             <>
-                                        <li style={{display: promo ? "block" : "none"}} onClick={() => {
+                                        <li style={{display: !promo ? "block" : "none"}} onClick={() => {
                                             history.push("/promo");
                                         }} className="burger-menu-item bord">
                                             <span>Promo</span></li>

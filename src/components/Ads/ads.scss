@@ -220,6 +220,7 @@
 
   .listBlock {
     // position: absolute;
+    position: relative;
     display: flex;
     // margin: 80px auto;
     margin-top: 100px;
@@ -353,10 +354,10 @@
 }
 
 .wallet {
-  // position: absolute;
-  // left: 110%;
-  margin-top: 115px;
-  margin-left: 50px;
+  position: absolute;
+  left: 110%;
+  top: 0;
+  // margin-left: 50px;
   width: 275px;
   height: 255px;
   padding: 20px;
