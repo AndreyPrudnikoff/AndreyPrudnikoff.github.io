@@ -3,17 +3,18 @@
 
   & .content {
     display: flex;
-    gap: 20px;
+    // gap: 20px;
+    justify-content: space-between;
 
     & .block {
-      width: 100%;
+      width: 226px;
     }
 
     & .addButton {
       display: flex;
       align-items: center;
       margin-top: 22px;
-      gap: 10px;
+      // gap: 10px;
       cursor: pointer;
 
       & button {
@@ -24,6 +25,7 @@
         width: 20px;
         height: 20px;
         background: transparent;
+        margin-right: 10px;
         // border-color: rgba(255, 255, 255, 0.5);
         border-radius: 50%;
         color: rgba(255, 255, 255, 0.5);
