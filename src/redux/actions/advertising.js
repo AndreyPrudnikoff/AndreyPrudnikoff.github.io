@@ -3,7 +3,7 @@ import {
     AD_DETAIL,
     ADD_BANNER,
     ADD_COUNTRY,
-    DELETE_COUNTRY_AND_TIMEZONE,
+    DELETE_COUNTRY_AND_TIMEZONE, ERROR_AD,
     GET_LIST_ADS,
     IS_CORRECT_DATE,
     IS_PREVIEW,
@@ -97,4 +97,7 @@ export function setWithDate(bool) {
 }
 export function getPromoList(list) {
     return {type: PROMO_LIST, payload: list}
+}
+export function setAdErrors(obj) {
+    return {type: ERROR_AD, payload: obj}
 }
