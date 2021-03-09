@@ -3,6 +3,7 @@ import React from "react";
 import useImagePreview from "../../useImagePreview";
 import {addImage, setIsPreview} from '../../../redux/actions/advertising'
 import { connect } from "react-redux";
+import back from "../../../images/back.svg";
 import { useHistory } from "react-router-dom";
 
 const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview}) => {
@@ -20,7 +21,11 @@ const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview}
 
   return (
     <div>
-      <h2>Ad creative</h2>
+      <span className='backbtn-title-span'>
+        <img src={back} alt='back' onClick={() => history.push('/game')} className='backbtn-title-span__btn'/>
+        <h2 className='backbtn-title-span__title'>Ad creative</h2>
+      </span>
+      
       <div className="wrapper-input-file">
         <div className="label-file">
           Select a banner to add <br />

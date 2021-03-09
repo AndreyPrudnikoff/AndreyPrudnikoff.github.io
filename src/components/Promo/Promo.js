@@ -43,7 +43,7 @@ const Promo = ({history, playClick, currentLang, getPromoList, promoList}) => {
             <div className="row main promo">
                 <div className="left-sector">
                              <span onClick={() => {
-                                 history.goBack();
+                                 history.push('/game');
                                  playClick()
                              }} className="back"><img src={back} alt="back"/></span>
                     <div className="round-dark">

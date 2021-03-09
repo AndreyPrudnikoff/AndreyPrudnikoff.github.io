@@ -76,20 +76,23 @@ const Ads = (props) => {
                     </div>
                 </div>
             </div>
-            <form onSubmit={(e) => handleSubmit(e)} className="round-dark ads">
-                <ImagePreview/>
+            <div style={{display: 'flex', position: 'relative'}}>
+                <form onSubmit={(e) => handleSubmit(e)} className="round-dark ads">
+                    <ImagePreview/>
 
-                <TextInput onChange={props.setWebsite} label="Website URL"/>
+                    <TextInput onChange={props.setWebsite} label="Website URL"/>
 
-                <hr/>
+                    <hr/>
 
-                <Audience/>
+                    <Audience/>
 
-                <Duration/>
+                    <Duration/>
 
-                <Footer err/>
-            </form>
-            <Wallet input={true}/>
+                    <Footer/>
+                </form>
+                <Wallet input={true}/>
+            </div>
+
         </div>
     )
 

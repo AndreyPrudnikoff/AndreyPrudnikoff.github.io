@@ -1,9 +1,16 @@
 .father-ads {
-  margin: 100px auto 0;
+  margin: 56px auto 0;
+  padding-top: 50px;
   display: flex;
+  justify-content: center;
+  width: 100%;
   align-items: flex-start;
-  max-width: 1280px;
+  background-image: url('../../images/server-room-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
 }
+
 .ads {
   font-family: "roc-grotesk", sans-serif;
   font-style: normal;
@@ -187,6 +194,7 @@
 
     }
   }
+
   .foter-BTNs {
     justify-content: space-between;
   }
@@ -200,37 +208,35 @@
 
 .list-main-block {
   position: absolute;
-  max-width: 1280px;
+  width: 100%;
   height: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: flex-start;
+  background-image: url('../../images/server-room-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 -110px;
 
   .listBlock {
     // position: absolute;
+    position: relative;
     display: flex;
     // margin: 80px auto;
     margin-top: 100px;
-  
+
     .listAds {
       width: 512px;
       // height: 216px;
       padding: 20px 20px 30px 20px;
-  
-      &__title {
-        font-family: 'roc-grotesk', sans-serif;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 24px;
-        line-height: 35px;
-      }
-  
+
+
       .images-switch {
         display: flex;
         margin-top: 5px;
         justify-content: space-between;
         align-items: center;
-  
+
         &__item {
           width: 50%;
           display: flex;
@@ -244,13 +250,14 @@
           line-height: 23px;
           cursor: pointer;
         }
+
         &__url {
           width: 65%;
           white-space: nowrap;
           overflow: hidden;
         }
       }
-  
+
       .images-list {
         margin: 25px 0 0 0;
         padding: 0;
@@ -259,7 +266,7 @@
         font-weight: normal;
         font-size: 16px;
         line-height: 23px;
-  
+
         &__not-images {
           text-align: center;
           font-family: "roc-grotesk", sans-serif;
@@ -268,24 +275,25 @@
           font-size: 18px;
           line-height: 23px;
         }
-  
+
         &__item {
           position: relative;
           display: flex;
           justify-content: space-between;
           align-items: center;
           cursor: pointer;
+
           &:hover span {
             color: var(--gold);
             text-decoration: underline;
           }
-  
+
           .item__url {
             overflow: hidden;
             white-space: nowrap;
             width: 70%;
           }
-  
+
           &:not(:last-child) {
             &::after {
               content: '';
@@ -297,19 +305,19 @@
               opacity: .2;
             }
           }
-  
-  
+
+
           &:not(:first-child) {
             margin-top: 32px;
           }
         }
       }
     }
-  
+
     .active {
       position: relative;
       opacity: 1 !important;
-  
+
       &::after {
         content: '';
         position: absolute;
@@ -321,15 +329,35 @@
       }
     }
   }
-  
-  
+
+
+}
+
+.backbtn-title-span {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+
+  &__btn {
+    cursor: pointer;
+  }
+
+  &__title {
+    font-family: 'roc-grotesk', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 35px;
+    margin-left: 36%;
+    margin-bottom: 0;
+  }
 }
 
 .wallet {
-  // position: absolute;
-  // left: 110%;
-  margin-top: 115px;
-  margin-left: 50px;
+  position: absolute;
+  left: 110%;
+  top: 0;
+  // margin-left: 50px;
   width: 275px;
   height: 255px;
   padding: 20px;
@@ -389,4 +417,16 @@
   // position: absolute;
   // top: 5.5%;
   margin-top: 12px;
+}
+
+.my-ad-main {
+  position: relative;
+  display: flex;
+  padding-top: 95px;
+  width: 100%;
+  justify-content: center;
+  background-image: url('../../images/server-room-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
 }
