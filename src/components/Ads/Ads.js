@@ -68,7 +68,6 @@ const Ads = (props) => {
         }
         props.setAdErrors(errorsObj);
         if(!errorArray.length) {
-            setErrors("")
             User.createAd(ad)
                 .then((res => {
                     if (res.data.status === "success") {
@@ -79,12 +78,6 @@ const Ads = (props) => {
                 }))
                 .catch(e => console.log(e.data));
         } else {
-            let errString = "";
-           errorArray.forEach(err => {
-               errString += err + ", ";
-           })
-            let newStr = errString.slice(0, -2);
-            setErrors(newStr);
             setTimeout(()=> {
                 props.setAdErrors({
                     start_date: false,
@@ -96,8 +89,6 @@ const Ads = (props) => {
                     country_codes_timezones: false,
                     budget: false
                 })
-                setErrors("");
-
             }, 5000);
         }
 
@@ -130,7 +121,7 @@ const Ads = (props) => {
 
                     <Duration />
 
-                    <Footer errors={errors}/>
+                    <Footer />
                 </form>
                 <Wallet input={true}/>
             </div>
