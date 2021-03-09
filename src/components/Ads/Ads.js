@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {getCurrentList, setAdErrors, setWebsite} from "../../redux/actions/advertising";
 import {createAdProp} from "../../redux/actions";
@@ -14,6 +14,7 @@ import Wallet from "./components/Wallet"
 
 const Ads = (props) => {
     const [errors, setErrors] = useState("");
+    const [successBtn, setSuccessBtn] = useState(false);
     let timezones = {};
     props.country_codes_timezones.forEach(item => {
         const k = Object.keys(item)[0];
@@ -42,6 +43,17 @@ const Ads = (props) => {
         country_codes_timezones: false,
         budget: false
     };
+    useEffect(() => {
+        console.log(errorsObj);
+        for(let item in errorsObj) {
+            if(errorsObj[item] === false) {
+                return false;
+            }
+        }
+        setSuccessBtn(true)
+        console.log(successBtn)
+    }, [errorsObj])
+    
     const handleSubmit = e => {
         e.preventDefault();
         let errorArray = [];
