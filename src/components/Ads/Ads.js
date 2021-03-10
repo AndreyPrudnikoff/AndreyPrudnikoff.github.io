@@ -18,12 +18,12 @@ const Ads = (props) => {
         const k = Object.keys(item)[0];
         timezones[k] = item[k];
     })
-    const withTime = !props.withDate ? {
+    const withTime = props.withDate ? {
         start_date: props.start_date,
         start_time: props.start_time,
         end_date: props.end_date,
         end_time: props.end_time,
-    } : null
+    } : null;
     const ad = {
         image: props.image,
         website_url: props.website_url,
@@ -105,6 +105,7 @@ const Ads = (props) => {
     )
 }
 const mapStateToProps = state => {
+    console.log(state.adsOptions.withDate)
     return {
         image: state.adsOptions.image,
         website_url: state.adsOptions.website_url,
