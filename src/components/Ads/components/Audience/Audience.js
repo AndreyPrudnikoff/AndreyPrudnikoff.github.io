@@ -21,7 +21,6 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
         }
     }, [country_codes_timezones])
     useEffect(() => {
-        console.log(country, zone);
         if(country !== '' && zone !== '') {
             addCountry({[country]: zone});
             setCountry('');
@@ -30,15 +29,9 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
     }, [country, zone])
     const writeCountry = (e) => {
         setCountry(e.target.value);
-        if(country, zone) {
-            console.log(country, zone);
-        }
     }
     const writeZone = (e) => {
         setZone(e.target.value);
-        if(country, zone) {
-            console.log(country, zone);
-        }
     }
     const addCountryTimezone = () => {
         // e.preventDefault();

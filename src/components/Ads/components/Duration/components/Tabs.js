@@ -59,7 +59,7 @@ const Tabs = ({tabs, budget, setBudget, balance, setWithDate, adErrors}) => {
                             {budget > 0 ? +budget.toFixed(4) : 0}<img src={bitcoin} alt="btc"/>
                         </div>
                         <div className="amount-dollar website-block">
-                            <input style={{borderColor: adErrors.budget ? "#FF453A" : "inherit"}} onInput={e => setBudget(+e.target.value / +currentCourse)} value={((+budget * +currentCourse) || 50).toFixed(0)} className="dollarContainer" />
+                            <input onInput={e => setBudget(+e.target.value / +currentCourse)} value={((+budget * +currentCourse) || 50).toFixed(0)} className="dollarContainer" />
                             <img src={dollar} alt="dollar"/>
                         </div>
                     </div>

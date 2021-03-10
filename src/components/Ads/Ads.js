@@ -1,3 +1,4 @@
+
 import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {getCurrentList, setAdErrors, setWebsite} from "../../redux/actions/advertising";
@@ -21,43 +22,20 @@ const Ads = (props, {objData, isChange}) => {
         const k = Object.keys(item)[0];
         timezones[k] = item[k];
     })
-    useEffect(() => {
-        console.log(objData, isChange)
-    }, [])
-    const withTime = !props.withDate ? {
+
+    const withTime = props.withDate ? {
         start_date: props.start_date,
         start_time: props.start_time,
         end_date: props.end_date,
         end_time: props.end_time,
-    } : null
+    } : null;
     const ad = {
         image: props.image,
         website_url: props.website_url,
         country_codes_timezones: timezones,
-        budget: props.budget,
+        budget: props.budget.toString(),
         ...withTime
     }
-    const errorsObj = {
-        start_date: false,
-        start_time: false,
-        end_date: false,
-        end_time: false,
-        image: false,
-        website_url: false,
-        country_codes_timezones: false,
-        budget: false
-    };
-    useEffect(() => {
-        console.log(errorsObj);
-        for(let item in errorsObj) {
-            if(errorsObj[item] === false) {
-                return false;
-            }
-        }
-        setSuccessBtn(true)
-        console.log(successBtn)
-    }, [errorsObj])
-    
     const handleSubmit = e => {
         e.preventDefault();
         let errorArray = [];
@@ -65,13 +43,13 @@ const Ads = (props, {objData, isChange}) => {
         for (const adKey in ad) {
             if (!ad[adKey]) {
                 errorArray.push(adKey);
-                errorsObj[adKey] = true;
-            } else if(!props.withDate && !ad.country_codes_timezones.length) {
-                errorArray.push("country_codes_timezones");
+            } else if (props.withDate) {
+                if (!ad.country_codes_timezones) {
+                    errorArray.push("country_codes_timezones");
+                }
             }
         }
-        props.setAdErrors(errorsObj);
-        if(!errorArray.length) {
+        if (!errorArray.length) {
             User.createAd(ad)
                 .then((res => {
                     if (res.data.status === "success") {
@@ -81,21 +59,7 @@ const Ads = (props, {objData, isChange}) => {
                     }
                 }))
                 .catch(e => console.log(e.data));
-        } else {
-            setTimeout(()=> {
-                props.setAdErrors({
-                    start_date: false,
-                    start_time: false,
-                    end_date: false,
-                    end_time: false,
-                    image: false,
-                    website_url: false,
-                    country_codes_timezones: false,
-                    budget: false
-                })
-            }, 5000);
         }
-
     }
 
     return (
@@ -115,24 +79,23 @@ const Ads = (props, {objData, isChange}) => {
             </div>
             <div style={{display: 'flex', position: 'relative'}}>
                 <form onSubmit={(e) => handleSubmit(e)} className="round-dark ads">
-                    <ImagePreview />
+                    <ImagePreview/>
 
-                    <TextInput invalid={props.adErrors.website_url} onChange={props.setWebsite} label="Website URL"/>
+                    <TextInput onChange={props.setWebsite} label="Website URL"/>
 
                     <hr/>
 
-                    <Audience />
+                    <Audience/>
 
-                    <Duration />
+                    <Duration/>
 
-                    <Footer />
+                    <Footer/>
                 </form>
                 <Wallet input={true}/>
             </div>
 
         </div>
     )
-
 }
 const mapStateToProps = state => {
     return {
@@ -156,7 +119,6 @@ const mapDispatchToProps = {
     createAdProp,
     playClick,
     userdata,
-    getCurrentList,
-    setAdErrors
+    getCurrentList
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Ads);

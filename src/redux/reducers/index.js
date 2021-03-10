@@ -4,6 +4,8 @@ import {balanceReducer} from "./game";
 import {soundReducer} from "./sound";
 import {adsOptions} from "./advertising";
 import {adCreate} from './changeAd'
+import {ad_errors_reducer} from "./ad_errors_input";
+
 
 export const rootReducer = combineReducers({
     authReducer,
@@ -13,5 +15,6 @@ export const rootReducer = combineReducers({
     soundReducer,
     switchOptions,
     adsOptions,
-    adCreate
+    adCreate,
+    ad_errors_reducer
 })

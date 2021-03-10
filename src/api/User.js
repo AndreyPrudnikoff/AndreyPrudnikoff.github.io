@@ -21,7 +21,7 @@ export const User = {
         return Api().post('/rates', JSON.stringify({"accessToken": sessionStorage.getItem('token')}));
     },
     userdata() {
-        return Dev().post('/getUser', JSON.stringify({"accessToken": sessionStorage.getItem('token')}));
+        return Api().post('/getUser', JSON.stringify({"accessToken": sessionStorage.getItem('token')}));
     },
     predictUp(value) {
         return Api().post('/predictUp', JSON.stringify(({...{"accessToken": sessionStorage.getItem('token')}, ...value})));
@@ -39,12 +39,12 @@ export const User = {
         return Api().post('/user/withdraw', JSON.stringify({...{"accessToken": sessionStorage.getItem('token')}, ...wallet}));
     },
     createAd(ad) {
-        return Dev().post('/trahtibidoh/create', JSON.stringify({...{"accessToken": sessionStorage.getItem('token')}, ...ad}));
+        return Api().post('/trahtibidoh/create', JSON.stringify({...{"accessToken": sessionStorage.getItem('token')}, ...ad}));
     },
     listAds() {
-        return Dev().post('/trahtibidoh/list', JSON.stringify({"accessToken": sessionStorage.getItem('token')}));
+        return Api().post('/trahtibidoh/list', JSON.stringify({"accessToken": sessionStorage.getItem('token')}));
     } ,
     promoList() {
-        return Dev().post('/promo/list', JSON.stringify({"accessToken": sessionStorage.getItem('token')}));
+        return Api().post('/promo/list', JSON.stringify({"accessToken": sessionStorage.getItem('token')}));
     }
 };

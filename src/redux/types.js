@@ -39,10 +39,20 @@ export const PREVIEW_BANNER = "PREVIEW_BANNER";
 export const IS_CORRECT_DATE = "IS_CORRECT_DATE";
 export const WITH_DATE = "WITH_DATE";
 export const PROMO_LIST = "PROMO_LIST";
-export const ERROR_AD = "ERROR_AD";
 export const IS_CHANGE = 'IS_CHANGE';
 export const OBJ_DATA = 'OBJ_DATA';
 
+
+//ADS ERRORS
+export const IMAGE_ERROR = "IMAGE_ERROR";
+export const WEBSITE_URL_ERROR = "WEBSITE_URL_ERROR";
+export const COUNTRY_TIMEZONES_ERROR = "COUNTRY_TIMEZONES_ERROR";
+export const START_DATE_ERROR = "START_DATE_ERROR";
+export const START_TIME_ERROR = "START_TIME_ERROR";
+export const END_DATE_ERROR = "END_DATE_ERROR";
+export const END_TIME_ERROR = "END_TIME_ERROR";
+export const BUDGET_ERROR = "BUDGET_ERROR";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 // export const PLAY_CLICK ='PLAY_CLICK';
 export const PLAY_CLACK ='PLAY_CLACK';
