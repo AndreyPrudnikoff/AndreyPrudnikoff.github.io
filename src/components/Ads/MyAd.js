@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './ads.scss';
 import back from "../../images/back.svg";
 import {addImage} from '../../redux/actions/advertising'
@@ -9,7 +9,6 @@ import { useHistory } from 'react-router';
 
 const MyAd = ({objData, setObjData, setIsChange}) => {
     const history = useHistory();
-    // const countryList = Object.keys(objData.country_timezone)[0]
 
     const encodeImageFileAsURL = (element) => {
         let file = element.target.files[0];
@@ -19,6 +18,7 @@ const MyAd = ({objData, setObjData, setIsChange}) => {
         }
         reader.readAsDataURL(file);
     }
+
 
 
     const handleSubmit = e => {

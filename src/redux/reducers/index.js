@@ -3,7 +3,7 @@ import {authReducer, courseReducer, geoReducer, switchOptions} from "./entry";
 import {balanceReducer} from "./game";
 import {soundReducer} from "./sound";
 import {adsOptions} from "./advertising";
-import {adCreate} from './changeAd'
+import {adChange} from './changeAd'
 import {ad_errors_reducer} from "./ad_errors_input";
 
 
@@ -15,6 +15,6 @@ export const rootReducer = combineReducers({
     soundReducer,
     switchOptions,
     adsOptions,
-    adCreate,
+    adChange,
     ad_errors_reducer
 })

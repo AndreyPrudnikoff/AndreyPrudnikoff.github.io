@@ -61,6 +61,8 @@ const mapStateToProps = state => {
     isPreview: state.adsOptions.isPreview,
     previewBanner: state.adsOptions.previewBanner,
     adErrors: state.adsOptions.errorsObj,
+    isChange: state.adChange.isChange,
+    objData: state.adChange.objData
   }
   
 }
