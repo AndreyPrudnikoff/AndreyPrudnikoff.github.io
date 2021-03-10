@@ -5,11 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Ads/Ads.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/Ads.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Ads/components/Duration/components/Tabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/components/Duration/components/Tabs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Ads/components/Footer/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/components/Footer/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Ads/components/Footer/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/components/Footer/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/game.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +166,7 @@
       <workItem from="1615273344488" duration="11284000" />
       <workItem from="1615301214682" duration="559000" />
       <workItem from="1615314581507" duration="245000" />
-      <workItem from="1615359178167" duration="8053000" />
+      <workItem from="1615359178167" duration="8836000" />
     </task>
     <servers />
   </component>

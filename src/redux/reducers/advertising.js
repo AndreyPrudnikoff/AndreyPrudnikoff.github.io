@@ -30,7 +30,7 @@ const initialState = {
     isPreview: false,
     previewBanner: false,
     isCorrectDate: false,
-    withDate: false,
+    withDate: true,
     promoList: [],
     errorsObj: {
         start_date: false,
