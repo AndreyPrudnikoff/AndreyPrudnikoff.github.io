@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // hooks
 import useImagePreview from "../../useImagePreview";
 import {addImage, setIsPreview} from '../../../redux/actions/advertising'
@@ -9,6 +9,14 @@ import { useHistory } from "react-router-dom";
 const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview, adErrors, isChange, objData}) => {
   const [image, setFile] = useImagePreview();
   let history = useHistory()
+
+  useEffect(() => {
+    if(isChange) {
+      // console.log(objData.image)
+      const data = {target: objData.image};
+      setFile(data, true)
+    }
+  }, [])
 
   const encodeImageFileAsURL = (element) => {
     let file = element.target.files[0];
@@ -34,8 +42,7 @@ const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview,
 
         <div className="wrap-input">
           <label className="dashed" htmlFor="image-file">
-            {isChange ? (<img className="image-preview" src={objData.image} />) :
-            previewBanner ? (<img className="image-preview" src={banner} />) :
+            {previewBanner ? (<img className="image-preview" src={banner} />) :
             (image ? (
               <img className="image-preview" src={image} />
             ) : (
@@ -43,7 +50,7 @@ const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview,
             ))
             }
             
-            <input onChange={(e) => {setFile(e); encodeImageFileAsURL(e)}} type="file" id="image-file"  />
+            <input onChange={(e) => {setFile(e, false); encodeImageFileAsURL(e)}} type="file" id="image-file"  />
           </label>
 
           <label htmlFor="image-file" className="btn-file">

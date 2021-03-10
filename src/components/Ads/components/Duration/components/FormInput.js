@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {setBudget} from '../../../../../redux/actions/advertising'
 import moment from 'moment';
 import dayjs from "dayjs";
@@ -138,6 +138,12 @@ export const TextInput = ({label, onChange = () => {}, setWebsite, webSite, inva
         let val = event.replace(/[^\x00-\x7F]/ig, '');
         setName(val);
     }
+
+    useEffect(() => {
+        if(isChange) {
+            setName(changeUrl)
+        }
+    }, [])
 
     return (
         <div className="website-block">
