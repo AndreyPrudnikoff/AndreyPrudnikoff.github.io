@@ -14,7 +14,7 @@ import {TextInput} from "./components/Duration/components";
 import {Audience, Duration, Footer, ImagePreview} from "./components";
 import Wallet from "./components/Wallet"
 
-const Ads = (props, {objData, isChange}) => {
+const Ads = (props) => {
     const [errors, setErrors] = useState("");
     const [successBtn, setSuccessBtn] = useState(false);
     let timezones = {};
@@ -22,6 +22,9 @@ const Ads = (props, {objData, isChange}) => {
         const k = Object.keys(item)[0];
         timezones[k] = item[k];
     })
+    useEffect(() => {
+        console.log(props.objData, props.isChange)
+    }, [props.objData, props.isChange])
 
     const withTime = props.withDate ? {
         start_date: props.start_date,
@@ -79,7 +82,7 @@ const Ads = (props, {objData, isChange}) => {
             </div>
             <div style={{display: 'flex', position: 'relative'}}>
                 <form onSubmit={(e) => handleSubmit(e)} className="round-dark ads">
-                    <ImagePreview/>
+                    <ImagePreview />
 
                     <TextInput onChange={props.setWebsite} label="Website URL"/>
 
@@ -110,8 +113,8 @@ const mapStateToProps = state => {
         withDate: state.adsOptions.withDate,
         adErrors: state.adsOptions.errorsObj,
         createAd: state.switchOptions.createAd,
-        isChange: state.adCreate.isChange,
-        objData: state.adCreate.objData
+        isChange: state.adChange.isChange,
+        objData: state.adChange.objData
     }
 }
 const mapDispatchToProps = {

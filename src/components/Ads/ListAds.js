@@ -4,6 +4,7 @@ import {useHistory} from "react-router-dom";
 import {playClick} from "../../redux/actions/music";
 import {getCurrentList, getDetails} from "../../redux/actions/advertising"
 import {connect} from "react-redux";
+import moment from 'moment';
 import back from "../../images/back.svg";
 import Wallet from "./components/Wallet"
 import {EN} from "../../languages/en";
@@ -13,11 +14,25 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
     let history = useHistory();
     const LANG = currentLang === "en" ? EN : RU;
     const [isCurrent, setIsCurrent] = useState(true);
+    const [totalTime, setTotalTime] = useState();
 
     useEffect(() => {
         getCurrentList();
         console.log(currentList)
     }, [])
+
+    const getTotalTime = (startTime, startDate, endTime, endDate) => {
+        // let start = moment(`${startDate}T${startTime}`).format();
+        // let end = moment(`${endDate}T${endTime}`).format();
+        // console.log(start);
+        // console.log(end)
+        // console.log(moment.utc(start.diff(end))).format("HH:mm:ss");
+        const start = `${startDate} ${startTime}`;
+        const end = `${endDate} ${endTime}`;
+        // const now  = "04/09/2013 15:00:00";
+        // const then = "04/09/2013 14:20:30";
+        return moment.utc(moment(end).diff(moment(start))).format("DDD:HH:mm:ss")
+    }
 
     return (
         <div className='list-main-block'>
@@ -65,7 +80,7 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                                         </li>
                                         <li className='ad-detail-list__item'>
                                             <span className='item-title'>Totel time</span>
-                                            <span></span>
+                                            <span>{getTotalTime(item.start_time, item.start_date, item.end_time, item.end_date)}</span>
                                         </li>
                                         <li className='ad-detail-list__item'>
                                             <span className='item-title'>Displays</span>

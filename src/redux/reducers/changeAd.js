@@ -8,7 +8,7 @@ const initialState = {
     isChange: false
 }
 
-export const adCreate = (state = initialState, action) => {
+export const adChange = (state = initialState, action) => {
     switch(action.type) {
         case IS_CHANGE: 
             return {...state, isChange: action.payload}
