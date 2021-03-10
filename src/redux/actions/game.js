@@ -11,12 +11,14 @@ export function userdata() {
             const response = await User.userdata();
             const payload = await response.data.data;
             await dispatch({type: GET_USER_DATA, payload});
+            return payload;
         } catch (e) {
             if (e.response.status === 401) {
                 console.log(e.response.data);
                 await dispatch(unauthorized());
             }
         }
+
     }
 }
 

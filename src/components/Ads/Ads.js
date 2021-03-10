@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {connect} from "react-redux";
 import {getCurrentList, setAdErrors, setWebsite} from "../../redux/actions/advertising";
 import {createAdProp} from "../../redux/actions";
@@ -28,7 +28,7 @@ const Ads = (props) => {
         image: props.image,
         website_url: props.website_url,
         country_codes_timezones: timezones,
-        budget: props.budget,
+        budget: props.budget.toString(),
         ...withTime
     }
     const errorsObj = {
@@ -49,12 +49,14 @@ const Ads = (props) => {
             if (!ad[adKey]) {
                 errorArray.push(adKey);
                 errorsObj[adKey] = true;
-            } else if(!props.withDate && !ad.country_codes_timezones.length) {
-                errorArray.push("country_codes_timezones");
+            } else if (props.withDate) {
+                if (!ad.country_codes_timezones) {
+                    errorArray.push("country_codes_timezones");
+                }
             }
         }
-        props.setAdErrors(errorsObj);
-        if(!errorArray.length) {
+        props.setAdErrors(errorArray);
+        if (!errorArray.length) {
             User.createAd(ad)
                 .then((res => {
                     if (res.data.status === "success") {
@@ -64,21 +66,7 @@ const Ads = (props) => {
                     }
                 }))
                 .catch(e => console.log(e.data));
-        } else {
-            setTimeout(()=> {
-                props.setAdErrors({
-                    start_date: false,
-                    start_time: false,
-                    end_date: false,
-                    end_time: false,
-                    image: false,
-                    website_url: false,
-                    country_codes_timezones: false,
-                    budget: false
-                })
-            }, 5000);
         }
-
     }
 
     return (
@@ -98,24 +86,23 @@ const Ads = (props) => {
             </div>
             <div style={{display: 'flex', position: 'relative'}}>
                 <form onSubmit={(e) => handleSubmit(e)} className="round-dark ads">
-                    <ImagePreview />
+                    <ImagePreview/>
 
                     <TextInput invalid={props.adErrors.website_url} onChange={props.setWebsite} label="Website URL"/>
 
                     <hr/>
 
-                    <Audience />
+                    <Audience/>
 
-                    <Duration />
+                    <Duration/>
 
-                    <Footer />
+                    <Footer/>
                 </form>
                 <Wallet input={true}/>
             </div>
 
         </div>
     )
-
 }
 const mapStateToProps = state => {
     return {

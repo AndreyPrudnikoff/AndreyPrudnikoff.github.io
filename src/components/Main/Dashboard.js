@@ -21,7 +21,6 @@ import {
     you_lose
 } from "../../redux/actions/music";
 import Rates from "./Rates";
-import {User} from "../../api/User";
 import {predictClear, predictDown, predictUp, userdata} from "../../redux/actions/game";
 import Rect from "./Rect/Rect";
 import Timer from "./Timer";
@@ -30,7 +29,6 @@ import YouWon from '../../images/You_won (2).png';
 import GoldCoins from '../../images/Gold_coins1.png';
 import CoinUpImg from '../../images/coinUp.svg'
 import CoinDownImg from '../../images/coinDown.svg'
-
 
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
@@ -69,6 +67,7 @@ const Dashboard = ({
                        congratulation,
                        closeCongratulation,
                        playYouWon,
+                       lastWin,
                        lastWinGame
                    }) => {
     const [bet, setBet] = useState(.0001);
@@ -82,7 +81,6 @@ const Dashboard = ({
             setGameStart(lastSeconds);
             predictSubmit();
         }
-
     }, [lastSeconds])
 
     useEffect(() => {
@@ -98,7 +96,6 @@ const Dashboard = ({
             stopBetTimer();
             stopGameTimer();
         }
-
     }, [startGame, timeBet, predict])
 
     useEffect(() => {
@@ -108,7 +105,6 @@ const Dashboard = ({
                 closeYourLose()
             }, 3000);
         }
-
     }, [yourlose])
 
     useEffect(() => {
@@ -134,10 +130,8 @@ const Dashboard = ({
         const bets = bool ? +bet + .0001 : +bet - .0001;
         console.log('bet')
         if (!bets || +bets < 0) {
-            console.log('false')
             setBet(0.0001);
         } else if (+bets > 1) {
-            console.log('true')
             setBet(1);
         } else {
             setBet(+bets.toFixed(4))
@@ -159,26 +153,20 @@ const Dashboard = ({
     }
 
     const predictSubmit = () => {
-        return setTimeout(() => {
-            User.userdata()
-                .then(data => {
-                    if (+data.data.data.lastWin === 1 && predict !== '') {
-                        betWin();
-                        // fireworks();
-                    } else if (+data.data.data.lastWin === -1 && predict !== '') {
-                        you_lose();
-                        betLose();
-                        userdata();
-                    } else if (up > 0 && down > 0) {
-                        userdata();
-                    } else {
-                        userdata();
-                    }
-                }).catch(e => {
-                console.log(e)
-            });
-            setGameStart(undefined);
-            predictClear();
+        return setTimeout(async () => {
+            try {
+                const data = await userdata();
+                if (+data.lastWin === 1 && predict !== '') {
+                    betWin();
+                } else if (+data.lastWin === -1 && predict !== '') {
+                    you_lose();
+                    betLose();
+                }
+                setGameStart(undefined);
+                predictClear();
+            } catch (e) {
+                console.log(e.data);
+            }
         }, 10000)
     }
 
