@@ -275,7 +275,7 @@
         line-height: 23px;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: flex-start;
 
         &__not-images {
           text-align: center;
@@ -301,6 +301,10 @@
           border-radius: 16px;
           cursor: pointer;
           margin-bottom: 24px;
+
+          &:not(:nth-child(3n + 3)) {
+            margin-right: 21px;
+          }
 
           &:hover {
             border: 1px solid rgba(255,255,255, .3);
@@ -379,6 +383,26 @@
             white-space: nowrap;
             width: 70%;
             }
+          }
+        }
+        .add-new{
+          height: 245px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          img {
+            margin-top: 20px;
+          }
+
+          &__content-text {
+            margin-top: 5px;
+            font-family: Roc Grotesk;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 23px;
           }
         }
       }
