@@ -18,7 +18,7 @@ const initialState = {
     end_time: false,
     budget: false,
 }
-export const ad_errors_reducer = (state, action) => {
+export const ad_errors_reducer = (state = initialState, action) => {
     switch (action.type) {
         case IMAGE_ERROR:
             return {...state, image: action.payload}
