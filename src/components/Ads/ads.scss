@@ -344,6 +344,15 @@
               width: 100%;
               justify-content: space-between;
               margin-bottom: 8px;
+
+              .item-title{
+                opacity: .5;
+              }
+
+              .item-dollar{
+                margin-left: 5px;
+                color: var(--gold);
+              }
             }
 
             &__img {
