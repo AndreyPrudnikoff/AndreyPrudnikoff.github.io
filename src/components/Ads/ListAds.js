@@ -16,6 +16,7 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
 
     useEffect(() => {
         getCurrentList();
+        console.log(currentList)
     }, [])
 
     return (
@@ -45,8 +46,43 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                                     getDetails(item);
                                     history.push('/myad')
                                 }}>
-                                    <span className='item__title item__url'>{item.website_url || "mysite.com"}</span>
-                                    <span className='item__date'>{item.end_date}</span>
+                                    {console.log(item)}
+                                    <ul className='ad-detail-list'>
+                                        <li className='ad-detail-list__item ad-detail-list__img'>
+                                            <img src={item.image} alt='image' width='259' height='245'/>
+                                        </li>
+                                        <li className='ad-detail-list__item ad-detail-list__url'>{item.website_url}</li>
+                                        <li className='ad-detail-list__item'>
+                                            <span className='item-title'>{Object.keys(item.country_timezone)[0]}</span>
+                                            <span>UTC {item.country_timezone[`${Object.keys(item.country_timezone)[0]}`]}</span>
+                                        </li>
+                                        <li className='ad-detail-list__item'>
+                                            <span className='item-title'>Started</span>
+                                            <span>{item.start_date}</span>
+                                        </li>
+                                        <li className='ad-detail-list__item'>
+                                            <span className='item-title'>Finished</span>
+                                            <span>{item.end_date}</span>
+                                        </li>
+                                        <li className='ad-detail-list__item'>
+                                            <span className='item-title'>Totel time</span>
+                                            <span></span>
+                                        </li>
+                                        <li className='ad-detail-list__item'>
+                                            <span className='item-title'>Displays</span>
+                                            <span>{item.displays}</span>
+                                        </li>
+                                        <li className='ad-detail-list__item'>
+                                            <span className='item-title'>Clicks</span>
+                                            <span>{item.clicks}</span>
+                                        </li>
+                                        <li className='ad-detail-list__item'>
+                                            <span className='item-title'>Budget</span>
+                                            <span>{item.budget}</span>
+                                        </li>
+                                    </ul>
+                                    {/* <span className='item__title item__url'>{item.website_url || "mysite.com"}</span>
+                                    <span className='item__date'>{item.end_date}</span> */}
                                 </li>
                             )) : <h2 className='images-list__not-images'>{LANG.Ads.MyAds.notAds}</h2>
                             :

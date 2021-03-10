@@ -2,12 +2,14 @@ import React from 'react';
 import './ads.scss';
 import back from "../../images/back.svg";
 import {addImage} from '../../redux/actions/advertising'
+import {setIsChange, setObjData} from '../../redux/actions/changeAd'
 import {connect} from "react-redux";
 import Wallet from './components/Wallet'
 import { useHistory } from 'react-router';
 
-const MyAd = ({objData}) => {
-    const history = useHistory()
+const MyAd = ({objData, setObjData, setIsChange}) => {
+    const history = useHistory();
+    // const countryList = Object.keys(objData.country_timezone)[0]
 
     const encodeImageFileAsURL = (element) => {
         let file = element.target.files[0];
@@ -64,6 +66,7 @@ const MyAd = ({objData}) => {
                         <h2 className='audience__title section-title'>Audience</h2>
                         <span className='country-block'>
                             <p className='country-block__title opacity-name'>Country</p>
+                            {/* {console.log(objData)} */}
                             <p className='country-block__country'>{Object.keys(objData.country_timezone)[0] || null}</p>
                         </span>
                         <span className='time-zone-block'>
@@ -111,7 +114,7 @@ const MyAd = ({objData}) => {
                         </span>
                     </div>
                     <div className="footer foter-BTNs" style={{marginTop: '53px'}}>
-                        <button type="submit" className='myAd-btn'>Change</button>
+                        <button className='myAd-btn' onClick={() => {setIsChange(true); setObjData(objData); console.log('y'); history.push("/ads");}}>Change</button>
                         <button className='myAd-btn'>Repeat</button>
                     </div>
                 </form>
@@ -128,7 +131,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    addImage
+    addImage,
+    setIsChange,
+    setObjData
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyAd)

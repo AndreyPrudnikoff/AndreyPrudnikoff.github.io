@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {getCurrentList, setAdErrors, setWebsite} from "../../redux/actions/advertising";
+// import {objData, isChange} from '../../redux/actions/changeAd'
 import {createAdProp} from "../../redux/actions";
 import {playClick} from "../../redux/actions/music";
 import {userdata} from "../../redux/actions/game";
@@ -12,7 +13,7 @@ import {TextInput} from "./components/Duration/components";
 import {Audience, Duration, Footer, ImagePreview} from "./components";
 import Wallet from "./components/Wallet"
 
-const Ads = (props) => {
+const Ads = (props, {objData, isChange}) => {
     const [errors, setErrors] = useState("");
     const [successBtn, setSuccessBtn] = useState(false);
     let timezones = {};
@@ -20,6 +21,9 @@ const Ads = (props) => {
         const k = Object.keys(item)[0];
         timezones[k] = item[k];
     })
+    useEffect(() => {
+        console.log(objData, isChange)
+    }, [])
     const withTime = !props.withDate ? {
         start_date: props.start_date,
         start_time: props.start_time,
@@ -142,8 +146,9 @@ const mapStateToProps = state => {
         budget: state.adsOptions.budget,
         withDate: state.adsOptions.withDate,
         adErrors: state.adsOptions.errorsObj,
-        createAd: state.switchOptions.createAd
-
+        createAd: state.switchOptions.createAd,
+        isChange: state.adCreate.isChange,
+        objData: state.adCreate.objData
     }
 }
 const mapDispatchToProps = {

@@ -40,6 +40,8 @@ export const IS_CORRECT_DATE = "IS_CORRECT_DATE";
 export const WITH_DATE = "WITH_DATE";
 export const PROMO_LIST = "PROMO_LIST";
 export const ERROR_AD = "ERROR_AD";
+export const IS_CHANGE = 'IS_CHANGE';
+export const OBJ_DATA = 'OBJ_DATA';
 
 
 // export const PLAY_CLICK ='PLAY_CLICK';
