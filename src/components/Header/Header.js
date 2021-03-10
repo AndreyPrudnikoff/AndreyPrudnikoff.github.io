@@ -25,6 +25,7 @@ import {
     switchView
 } from "../../redux/actions";
 import {setIsPreview, setPreviewBanner} from '../../redux/actions/advertising'
+import {setIsChange} from '../../redux/actions/changeAd'
 import {changeDemo} from '../../redux/actions/game'
 import {Link, useLocation, useHistory} from "react-router-dom";
 import {muteToggle} from "../../redux/actions/music";
@@ -34,7 +35,7 @@ import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
 
-const Header = ({switchStep, promo, auth, reg, mute, muteToggle, logoutQuestion, createAdProp, logout, registration, prohibition, authorization, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang, playClick, step, changeDemo, isPreview, setIsPreview, setPreviewBanner}) => {
+const Header = ({switchStep, promo, auth, reg, mute, muteToggle, logoutQuestion, createAdProp, logout, registration, prohibition, authorization, unauthorized, predict, refresh, view, switchView, widthMode, currentLang, chooseLang, playClick, step, changeDemo, isPreview, setIsPreview, setPreviewBanner, setIsChange}) => {
 
     const [menu, setMenu] = useState(false);
     const [showLang, setShowLang] = useState(true);
@@ -197,7 +198,8 @@ const Header = ({switchStep, promo, auth, reg, mute, muteToggle, logoutQuestion,
                                             <span>Promo</span></li>
                                                 <li onClick={() => {
                                                     history.push("/ads");
-                                                    setPreviewBanner(false)
+                                                    setIsChange(false);
+                                                    setPreviewBanner(false);
                                                     playClick()
                                                 }} className="burger-menu-item bord">{LANG.Menu.first}</li>
                                                 <li onClick={() => {
@@ -277,6 +279,7 @@ const mapDispatchToProps = {
     switchStep,
     changeDemo,
     setIsPreview,
-    setPreviewBanner
+    setPreviewBanner,
+    setIsChange
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
