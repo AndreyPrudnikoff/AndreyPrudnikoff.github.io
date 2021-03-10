@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import back from "../../../images/back.svg";
 import { useHistory } from "react-router-dom";
 
-const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview, adErrors}) => {
+const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview, adErrors, isChange, objData}) => {
   const [image, setFile] = useImagePreview();
   let history = useHistory()
 
@@ -34,7 +34,8 @@ const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview,
 
         <div className="wrap-input">
           <label className="dashed" htmlFor="image-file">
-            {previewBanner ? (<img className="image-preview" src={banner} />) :
+            {isChange ? (<img className="image-preview" src={objData.image} />) :
+            previewBanner ? (<img className="image-preview" src={banner} />) :
             (image ? (
               <img className="image-preview" src={image} />
             ) : (
