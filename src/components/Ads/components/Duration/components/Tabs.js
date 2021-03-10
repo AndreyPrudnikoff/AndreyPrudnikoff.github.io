@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 // components
 import {RangeInput} from "./FormInput";
 // styles
@@ -7,6 +7,7 @@ import "./style.scss";
 import bitcoin from "../../../../../images/bitcoin.svg";
 import dollar from "../../../../../images/dollar.svg";
 import {connect} from "react-redux";
+import {budget_err} from '../../../../../redux/actions/ad_errors'
 import {setBudget, setWithDate} from "../../../../../redux/actions/advertising";
 
 
@@ -18,11 +19,18 @@ socket.onmessage = async e => {
     });
 }
 
-const Tabs = ({tabs, budget, setBudget, balance, setWithDate, adErrors}) => {
+const Tabs = ({tabs, budget, setBudget, balance, setWithDate, adErrors, budget_err}) => {
     let currentCourse = bitcoins[bitcoins.length - 1];
     // useEffect(() => socket.close());
     const [activeTab, setActiveTab] = useState(0);
     const [cost, setCost] = useState(50)
+    useEffect(() => {
+        if(cost) {
+            budget_err(true)
+        } else {
+            budget_err(false)
+        }
+    })
     return (
         <div className="tabsContainer">
             <div className="tabs">
@@ -80,6 +88,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {
     setBudget,
-    setWithDate
+    setWithDate,
+    budget_err
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Tabs);

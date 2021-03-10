@@ -2,11 +2,12 @@ import React, { useEffect } from "react";
 // hooks
 import useImagePreview from "../../useImagePreview";
 import {addImage, setIsPreview} from '../../../redux/actions/advertising'
+import {image_err} from '../../../redux/actions/ad_errors'
 import { connect } from "react-redux";
 import back from "../../../images/back.svg";
 import { useHistory } from "react-router-dom";
 
-const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview, adErrors, isChange, objData}) => {
+const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview, adErrors, isChange, objData, image_err}) => {
   const [image, setFile] = useImagePreview();
   let history = useHistory()
 
@@ -17,6 +18,15 @@ const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview,
       setFile(data, true)
     }
   }, [])
+
+  useEffect(() => {
+    console.log(image)
+    if(!image) {
+      image_err(false)
+    } else {
+      image_err(true)
+    }
+  }, [image])
 
   const encodeImageFileAsURL = (element) => {
     let file = element.target.files[0];
@@ -77,6 +87,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   addImage,
-  setIsPreview
+  setIsPreview,
+  image_err
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ImagePreview);

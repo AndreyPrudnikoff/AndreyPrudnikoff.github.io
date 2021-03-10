@@ -41,6 +41,7 @@ export const WITH_DATE = "WITH_DATE";
 export const PROMO_LIST = "PROMO_LIST";
 export const IS_CHANGE = 'IS_CHANGE';
 export const OBJ_DATA = 'OBJ_DATA';
+export const SET_CHANGED_OBJ = 'SET_CHANGED_OBJ';
 
 
 //ADS ERRORS

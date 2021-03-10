@@ -6,6 +6,7 @@ import {setIsChange, setObjData} from '../../redux/actions/changeAd'
 import {connect} from "react-redux";
 import Wallet from './components/Wallet'
 import { useHistory } from 'react-router';
+import {User} from '../../api/User'
 
 const MyAd = ({objData, setObjData, setIsChange}) => {
     const history = useHistory();
@@ -17,6 +18,14 @@ const MyAd = ({objData, setObjData, setIsChange}) => {
             addImage(reader.result);
         }
         reader.readAsDataURL(file);
+    }
+
+    const stopAdHandler = id => {
+        User.stopAd(id)
+    }
+
+    const resumeAdHandler = id => {
+        User.resumeAd(id)
     }
 
 
@@ -114,8 +123,13 @@ const MyAd = ({objData, setObjData, setIsChange}) => {
                         </span>
                     </div>
                     <div className="footer foter-BTNs" style={{marginTop: '53px'}}>
-                        <button className='myAd-btn' onClick={() => {setIsChange(true); setObjData(objData); console.log('y'); history.push("/ads");}}>Change</button>
-                        <button className='myAd-btn'>Repeat</button>
+                        {objData.status === 'ended' ? 
+                            <button className='myAd-btn' onClick={() => {resumeAdHandler(objData.id)}}>Resume</button>
+                            :
+                            <button className='myAd-btn' onClick={() => {stopAdHandler(objData.id)}}>Stop</button>
+                        }
+                        {/* <button className='myAd-btn' onClick={() => {setIsChange(true); setObjData(objData); console.log('y'); history.push("/ads");}}>Change</button>
+                        <button className='myAd-btn'>Repeat</button> */}
                     </div>
                 </form>
             <Wallet input={true}/>
