@@ -12,7 +12,7 @@ import {
     AD_DETAIL,
     IS_PREVIEW,
     PREVIEW_BANNER,
-    IS_CORRECT_DATE, WITH_DATE, PROMO_LIST, ERROR_AD
+    IS_CORRECT_DATE, WITH_DATE, PROMO_LIST, ERROR_AD, SET_CHANGED_OBJ
 } from "../types";
 
 const initialState = {
@@ -67,7 +67,7 @@ export const adsOptions = (state = initialState, action) => {
             return {...state, previewBanner: action.payload}
         case IS_CORRECT_DATE:
             return {...state, isCorrectDate: action.payload}
-            case WITH_DATE:
+        case WITH_DATE:
             return {...state, withDate: action.payload}
         case PROMO_LIST:
             return {...state, promoList: action.payload}

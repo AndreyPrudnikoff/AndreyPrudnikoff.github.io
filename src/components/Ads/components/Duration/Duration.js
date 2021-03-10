@@ -5,9 +5,13 @@ import { Tabs, TimeInput, DateInput } from "./components";
 // style
 import "./style.scss";
 import {connect} from "react-redux";
+import {start_date_err,
+        start_time_err,
+        end_date_err,
+        end_time_err} from '../../../../redux/actions/ad_errors'
 import {setEndDate, setEndTime, setStartDate, setStartTime, setIsCorrectDateToStore} from "../../../../redux/actions/advertising";
 
-const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime, setIsCorrectDateToStore, isCorrectDateFromStore}) => {
+const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime, setIsCorrectDateToStore, isCorrectDateFromStore, start_date_err, start_time_err, end_date_err, end_time_err}) => {
   const [dateStart, setDateStart] = useState(0);
   const [timeStart, setTimeStart] = useState(0);
   const [dateEnd, setDateEnd] = useState(0);
@@ -16,6 +20,11 @@ const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime
   const [isCorrectDate, setIsCorrectDate] = useState(true);
 
   useEffect(() => {
+    timeStart ? start_time_err(true) : start_time_err(false);
+    dateStart ? start_date_err(true) : start_date_err(false);
+    timeEnd ? end_time_err(true) : end_time_err(false);
+    dateEnd ? end_date_err(true) : end_date_err(false);
+
     const dateNow = dayjs().valueOf(true);
     let enteredStartDate = dayjs(`${dateStart}T${timeStart}`).valueOf(true);
 	  let enteredEndDate = dayjs(`${dateEnd}T${timeEnd}`).valueOf(true);
@@ -90,6 +99,10 @@ const mapDispatchToProps = {
     setStartTime,
     setEndDate,
     setEndTime,
-	setIsCorrectDateToStore
+	setIsCorrectDateToStore,
+  start_date_err,
+  start_time_err,
+  end_date_err,
+  end_time_err
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Duration);

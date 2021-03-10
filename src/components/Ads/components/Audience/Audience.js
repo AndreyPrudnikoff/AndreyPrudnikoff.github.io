@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {countryList} from "../../../../country/country";
 import {timeZone} from "../../../../country/timezone";
+import {country_err} from '../../../../redux/actions/ad_errors'
 // component
 // styles
 import "./styles.scss";
@@ -9,7 +10,7 @@ import {connect} from "react-redux";
 import closeImg from '../../../../images/close.png'
 
 
-const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone, isChange, objData}) => {
+const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone, isChange, objData, country_err}) => {
     const [country, setCountry] = useState("");
     const [zone, setZone] = useState("");
     const [isRedCounry, setIsRedCountry] = useState();
@@ -25,6 +26,9 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
             addCountry({[country]: zone});
             setCountry('');
             setZone('');
+            country_err(true)
+        } else {
+            country_err(false)
         }
     }, [country, zone])
     const writeCountry = (e) => {
@@ -98,6 +102,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {
     addCountry,
-    deleteCountryAndTimeZone
+    deleteCountryAndTimeZone,
+    country_err
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Audience);

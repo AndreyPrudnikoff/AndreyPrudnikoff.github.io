@@ -131,13 +131,21 @@ export const RangeInput = ({min, max, course, balance, value, withError = false,
     );
 };
 
-export const TextInput = ({label, onChange = () => {}, setWebsite, webSite, invalid, isChange, changeUrl}) => {
+export const TextInput = ({label, onChange = () => {}, setWebsite, webSite, invalid, isChange, changeUrl, onChangeErrFalse, onChangeErrTrue}) => {
     const [name, setName] = useState();    
 
     const checkForLatin = event => {
         let val = event.replace(/[^\x00-\x7F]/ig, '');
         setName(val);
     }
+
+    useEffect(() => {
+        if(name) {
+            onChangeErrTrue()
+        } else {
+            onChangeErrFalse()
+        }
+    })
 
     useEffect(() => {
         if(isChange) {

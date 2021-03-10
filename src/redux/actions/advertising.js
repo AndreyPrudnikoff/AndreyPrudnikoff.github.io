@@ -15,7 +15,8 @@ import {
     SET_START_TIME,
     SET_TIMEZONE,
     SET_WEB_SITE,
-    WITH_DATE
+    WITH_DATE,
+    SET_CHANGED_OBJ
 } from "../types";
 
 export function addImage(banner) {
@@ -62,6 +63,7 @@ export function getCurrentList() {
     return async dispatch => {
         const obj = {current: [], finished: []}
         const response = await User.listAds();
+        console.log(response)
         const payload = await response.data.status;
         if (payload === "success") {
             for (let i = 0; i < response.data.data.length; i++) {
@@ -97,5 +99,9 @@ export function setWithDate(bool) {
 }
 export function getPromoList(list) {
     return {type: PROMO_LIST, payload: list}
+}
+
+export function setChangeObj(obj) {
+    return {type:SET_CHANGED_OBJ, payload: obj}
 }
 
