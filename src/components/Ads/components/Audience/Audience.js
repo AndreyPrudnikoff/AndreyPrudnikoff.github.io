@@ -9,7 +9,7 @@ import {connect} from "react-redux";
 import closeImg from '../../../../images/close.png'
 
 
-const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone}) => {
+const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone, isChange, objData}) => {
     const [country, setCountry] = useState("");
     const [zone, setZone] = useState("");
     const [isRedCounry, setIsRedCountry] = useState();
@@ -91,7 +91,9 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
 };
 const mapStateToProps = state => {
     return {
-        country_codes_timezones: state.adsOptions.country_codes_timezones
+        country_codes_timezones: state.adsOptions.country_codes_timezones,
+        isChange: state.adChange.isChange,
+        objData: state.adChange.objData
     }
 }
 const mapDispatchToProps = {
