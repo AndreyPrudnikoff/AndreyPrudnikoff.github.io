@@ -5,7 +5,11 @@
   align-items: center;
   margin-top: 30px;
   position: relative;
-
+.green {
+  color: var(--black);
+  background-color: var(--up);
+  border-color: var(--black);
+}
   & > button {
     width: 250px;
     height: 48px;
