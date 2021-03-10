@@ -216,6 +216,7 @@
   align-items: flex-start;
   background-image: url('../../images/server-room-bg.png');
   background-repeat: no-repeat;
+  // background-attachment: fixed;
   background-size: cover;
   background-position: 0 -110px;
 
@@ -230,6 +231,11 @@
       width: 865px;
       // height: 216px;
       padding: 20px 20px 30px 20px;
+      height: 900px;
+      overflow: auto;
+      &::-webkit-scrollbar{
+        width: 0;
+      }
 
 
       .images-switch {

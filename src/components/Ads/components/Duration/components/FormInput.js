@@ -131,7 +131,7 @@ export const RangeInput = ({min, max, course, balance, value, withError = false,
     );
 };
 
-export const TextInput = ({label, onChange = () => {}, setWebsite, webSite, invalid}) => {
+export const TextInput = ({label, onChange = () => {}, setWebsite, webSite, invalid, isChange, changeUrl}) => {
     const [name, setName] = useState();    
 
     const checkForLatin = event => {
@@ -146,7 +146,10 @@ export const TextInput = ({label, onChange = () => {}, setWebsite, webSite, inva
                 style={{borderColor: invalid ? "#FF453A" : "inherit"}}
                 type="text"
                 placeholder="website.com"
-                onChange={(e) => {onChange(e.target.value); checkForLatin(e.target.value)}} value={name}
+                // value = {isChange ? changeUrl : null}
+                onChange={(e) => {onChange(e.target.value); checkForLatin(e.target.value)}}
+                // value = {isChange ? changeUrl : name}
+                value = {name}
             />
         </div>
     );

@@ -84,7 +84,7 @@ const Ads = (props) => {
                 <form onSubmit={(e) => handleSubmit(e)} className="round-dark ads">
                     <ImagePreview />
 
-                    <TextInput onChange={props.setWebsite} label="Website URL"/>
+                    <TextInput onChange={props.setWebsite} isChange={props.isChange} changeUrl={props.objData.website_url} label="Website URL"/>
 
                     <hr/>
 

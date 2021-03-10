@@ -22,15 +22,8 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
     }, [])
 
     const getTotalTime = (startTime, startDate, endTime, endDate) => {
-        // let start = moment(`${startDate}T${startTime}`).format();
-        // let end = moment(`${endDate}T${endTime}`).format();
-        // console.log(start);
-        // console.log(end)
-        // console.log(moment.utc(start.diff(end))).format("HH:mm:ss");
         const start = `${startDate} ${startTime}`;
         const end = `${endDate} ${endTime}`;
-        // const now  = "04/09/2013 15:00:00";
-        // const then = "04/09/2013 14:20:30";
         return moment.utc(moment(end).diff(moment(start))).format("DDD:HH:mm:ss")
     }
 
