@@ -33,7 +33,7 @@ const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview,
         </div>
 
         <div className="wrap-input">
-          <label style={{borderColor: adErrors.image ? "#FF453A" : "inherit"}} className="dashed" htmlFor="image-file">
+          <label className="dashed" htmlFor="image-file">
             {previewBanner ? (<img className="image-preview" src={banner} />) :
             (image ? (
               <img className="image-preview" src={image} />

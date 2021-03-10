@@ -31,16 +31,6 @@ const Ads = (props) => {
         budget: props.budget.toString(),
         ...withTime
     }
-    const errorsObj = {
-        start_date: false,
-        start_time: false,
-        end_date: false,
-        end_time: false,
-        image: false,
-        website_url: false,
-        country_codes_timezones: false,
-        budget: false
-    };
     const handleSubmit = e => {
         e.preventDefault();
         let errorArray = [];
@@ -48,14 +38,12 @@ const Ads = (props) => {
         for (const adKey in ad) {
             if (!ad[adKey]) {
                 errorArray.push(adKey);
-                errorsObj[adKey] = true;
             } else if (props.withDate) {
                 if (!ad.country_codes_timezones) {
                     errorArray.push("country_codes_timezones");
                 }
             }
         }
-        props.setAdErrors(errorArray);
         if (!errorArray.length) {
             User.createAd(ad)
                 .then((res => {
@@ -88,7 +76,7 @@ const Ads = (props) => {
                 <form onSubmit={(e) => handleSubmit(e)} className="round-dark ads">
                     <ImagePreview/>
 
-                    <TextInput invalid={props.adErrors.website_url} onChange={props.setWebsite} label="Website URL"/>
+                    <TextInput onChange={props.setWebsite} label="Website URL"/>
 
                     <hr/>
 
@@ -105,7 +93,6 @@ const Ads = (props) => {
     )
 }
 const mapStateToProps = state => {
-    console.log(state.adsOptions.withDate)
     return {
         image: state.adsOptions.image,
         website_url: state.adsOptions.website_url,
@@ -126,7 +113,6 @@ const mapDispatchToProps = {
     createAdProp,
     playClick,
     userdata,
-    getCurrentList,
-    setAdErrors
+    getCurrentList
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Ads);

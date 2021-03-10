@@ -31,17 +31,7 @@ const initialState = {
     previewBanner: false,
     isCorrectDate: false,
     withDate: true,
-    promoList: [],
-    errorsObj: {
-        start_date: false,
-        start_time: false,
-        end_date: false,
-        end_time: false,
-        image: false,
-        website_url: false,
-        country_codes_timezones: false,
-        budget: false
-    }
+    promoList: []
 }
 
 export const adsOptions = (state = initialState, action) => {
@@ -81,8 +71,6 @@ export const adsOptions = (state = initialState, action) => {
             return {...state, withDate: action.payload}
         case PROMO_LIST:
             return {...state, promoList: action.payload}
-        case ERROR_AD:
-            return {...state, errorsObj: action.payload}
         default:
             return state;
     }
