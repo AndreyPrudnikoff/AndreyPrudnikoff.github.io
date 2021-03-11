@@ -51,7 +51,6 @@ export const User = {
         return Dev().post('/trahtibidoh/stop', JSON.stringify({...{"accessToken": sessionStorage.getItem('token')}, ...{id: id}}))
     },
     resumeAd(id) {
-        console.log({...{"accessToken": sessionStorage.getItem('token')}, ...{id: id}})
         return Dev().post('trahtibidoh/resume', JSON.stringify({...{"accessToken": sessionStorage.getItem('token')}, ...{id: id}}))
     }
 };

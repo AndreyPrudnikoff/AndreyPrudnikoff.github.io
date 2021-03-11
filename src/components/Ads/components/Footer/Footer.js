@@ -50,7 +50,6 @@ const Footer = (props) => {
 };
 
 const mapStateToProps = state => {
-    console.log(state.ad_errors_reducer)
     return {
         image: state.adsOptions.image,
         website_url: state.adsOptions.website_url,
