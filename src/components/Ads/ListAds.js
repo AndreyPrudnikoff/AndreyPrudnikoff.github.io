@@ -99,7 +99,10 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                                     <img src={addNewImg} alt='add new' width='47' height='47' />
                                     <span className='add-new__content-text'>Add new</span>
                                 </li>
-                                </React.Fragment> : <h2 className='images-list__not-images'>{LANG.Ads.MyAds.notAds}</h2>
+                                </React.Fragment> : <li className='images-list__item add-new' onClick={() => history.push('/ads')}>
+                                    <img src={addNewImg} alt='add new' width='47' height='47' />
+                                    <span className='add-new__content-text'>Add new</span>
+                                </li>
                             :
                             finishedList.length
                                 ? finishedList.map((item, index) => (
@@ -152,7 +155,7 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                         }
                     </ul>
                 </div>
-                <Wallet input={false}/>
+                {/* <Wallet input={false}/> */}
             </div>
             
         </div>
