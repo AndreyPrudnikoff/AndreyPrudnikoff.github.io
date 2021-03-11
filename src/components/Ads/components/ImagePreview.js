@@ -38,7 +38,7 @@ const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview,
     <div>
       <span className='backbtn-title-span'>
         <img src={back} alt='back' onClick={() => history.push('/game')} className='backbtn-title-span__btn'/>
-        <h2 className='backbtn-title-span__title'>Ad creative</h2>
+        <h2 className='backbtn-title-span__title'>{isChange ? 'Ad changing' : 'Ad creative'}</h2>
       </span>
       
       <div className="wrapper-input-file">

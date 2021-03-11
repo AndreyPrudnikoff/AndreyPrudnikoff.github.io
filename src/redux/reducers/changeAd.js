@@ -34,7 +34,7 @@ export const adChange = (state = initialState, action) => {
                 if(key === action.payload) {
                     continue;
                 } else {
-                    newObj[key] = state.objData.country_timezone
+                    newObj[key] = state.objData.country_timezone[key]
                 }
             }
             return {...state, objData: {...state.objData, country_timezone: newObj }}
