@@ -41,6 +41,7 @@ const Footer = (props) => {
             setGreen("");
         }
     }, [props.start_date, props.start_time, props.end_date, props.end_time, props.image, props.website_url, timezones, props.budget])
+    console.log(props.start_date, props.start_time, props.end_date, props.end_time, props.image, props.website_url, timezones, props.budget)
     return (
         <div className="footer">
             <button className={green} type='submit'>Promote now</button>
@@ -49,6 +50,7 @@ const Footer = (props) => {
 };
 
 const mapStateToProps = state => {
+    console.log(state.ad_errors_reducer)
     return {
         image: state.adsOptions.image,
         website_url: state.adsOptions.website_url,
@@ -60,6 +62,14 @@ const mapStateToProps = state => {
         budget: state.adsOptions.budget,
         withDate: state.adsOptions.withDate,
         adErrors: state.adsOptions.errorsObj,
+        // image: state.ad_errors_reducer.image,
+        // website_url: state.ad_errors_reducer.website_url,
+        // country_codes_timezones: state.ad_errors_reducer.country_codes_timezones,
+        // start_date: state.ad_errors_reducer.start_date,
+        // start_time: state.ad_errors_reducer.start_time,
+        // end_date: state.ad_errors_reducer.end_date,
+        // end_time: state.ad_errors_reducer.end_time,
+        // budget: state.ad_errors_reducer.budget,
     }
 }
 

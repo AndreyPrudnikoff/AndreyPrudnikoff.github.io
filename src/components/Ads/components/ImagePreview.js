@@ -1,14 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 // hooks
 import useImagePreview from "../../useImagePreview";
 import {addImage, setIsPreview} from '../../../redux/actions/advertising'
+import {image_err} from '../../../redux/actions/ad_errors'
 import { connect } from "react-redux";
 import back from "../../../images/back.svg";
 import { useHistory } from "react-router-dom";
 
-const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview, adErrors, isChange, objData, invalid}) => {
+const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview, adErrors, isChange, objData, image_err}) => {
   const [image, setFile] = useImagePreview();
   let history = useHistory()
+
+  useEffect(() => {
+    if(isChange) {
+      // console.log(objData.image)
+      const data = {target: objData.image};
+      setFile(data, true)
+    }
+  }, [])
+
+  useEffect(() => {
+    console.log(image)
+    if(!image) {
+      image_err(false)
+    } else {
+      image_err(true)
+    }
+  }, [image])
 
   const encodeImageFileAsURL = (element) => {
     let file = element.target.files[0];
@@ -34,8 +52,7 @@ const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview,
 
         <div className="wrap-input">
           <label className="dashed" htmlFor="image-file">
-            {isChange ? (<img className="image-preview" src={objData.image} />) :
-            previewBanner ? (<img className="image-preview" src={banner} />) :
+            {previewBanner ? (<img className="image-preview" src={banner} />) :
             (image ? (
               <img className="image-preview" src={image} />
             ) : (
@@ -43,7 +60,7 @@ const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview,
             ))
             }
             
-            <input onChange={(e) => {setFile(e); encodeImageFileAsURL(e)}} type="file" id="image-file"  />
+            <input onChange={(e) => {setFile(e, false); encodeImageFileAsURL(e)}} type="file" id="image-file"  />
           </label>
 
           <label htmlFor="image-file" className="btn-file">
@@ -69,6 +86,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   addImage,
-  setIsPreview
+  setIsPreview,
+  image_err
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ImagePreview);

@@ -7,6 +7,7 @@ import {createAdProp} from "../../redux/actions";
 import {playClick} from "../../redux/actions/music";
 import {userdata} from "../../redux/actions/game";
 import {User} from "../../api/User";
+import {website_err} from '../../redux/actions/ad_errors'
 // styles
 import "./ads.scss";
 // components
@@ -84,7 +85,7 @@ const Ads = (props) => {
                 <form onSubmit={(e) => handleSubmit(e)} className="round-dark ads">
                     <ImagePreview />
 
-                    <TextInput onChange={props.setWebsite} isChange={props.isChange} changeUrl={props.objData.website_url} label="Website URL"/>
+                    <TextInput onChange={props.setWebsite} isChange={props.isChange} changeUrl={props.objData.website_url} label="Website URL" onChangeErrFalse={() => props.website_err(false)} onChangeErrTrue={() => props.website_err(true)}/>
 
                     <hr/>
 
@@ -122,6 +123,7 @@ const mapDispatchToProps = {
     createAdProp,
     playClick,
     userdata,
-    getCurrentList
+    getCurrentList,
+    website_err
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Ads);

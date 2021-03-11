@@ -5,6 +5,7 @@ import {playClick} from "../../redux/actions/music";
 import {getCurrentList, getDetails} from "../../redux/actions/advertising"
 import {connect} from "react-redux";
 import moment from 'moment';
+import addNewImg from '../../images/add-new.png'
 import back from "../../images/back.svg";
 import Wallet from "./components/Wallet"
 import {EN} from "../../languages/en";
@@ -49,7 +50,8 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                     <ul className='images-list'>
                         {isCurrent ?
                             currentList.length
-                            ? currentList.map((item, index) => (
+                            ? 
+                            <React.Fragment>{currentList.map((item, index) => (
                                 <li key={index * 2} className='images-list__item' onClick={() => {
                                     getDetails(item);
                                     history.push('/myad')
@@ -94,7 +96,11 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                                     {/* <span className='item__title item__url'>{item.website_url || "mysite.com"}</span>
                                     <span className='item__date'>{item.end_date}</span> */}
                                 </li>
-                            )) : <h2 className='images-list__not-images'>{LANG.Ads.MyAds.notAds}</h2>
+                            ))} <li className='images-list__item add-new' onClick={() => history.push('/ads')}>
+                                    <img src={addNewImg} alt='add new' width='47' height='47' />
+                                    <span className='add-new__content-text'>Add new</span>
+                                </li>
+                                </React.Fragment> : <h2 className='images-list__not-images'>{LANG.Ads.MyAds.notAds}</h2>
                             :
                             finishedList.length
                                 ? finishedList.map((item, index) => (

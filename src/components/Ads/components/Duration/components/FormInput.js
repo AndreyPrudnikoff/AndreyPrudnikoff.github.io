@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {setBudget} from '../../../../../redux/actions/advertising'
 import moment from 'moment';
 import dayjs from "dayjs";
@@ -131,13 +131,27 @@ export const RangeInput = ({min, max, course, balance, value, withError = false,
     );
 };
 
-export const TextInput = ({label, onChange = () => {}, setWebsite, webSite, invalid, isChange, changeUrl}) => {
+export const TextInput = ({label, onChange = () => {}, setWebsite, webSite, invalid, isChange, changeUrl, onChangeErrFalse, onChangeErrTrue}) => {
     const [name, setName] = useState();    
 
     const checkForLatin = event => {
         let val = event.replace(/[^\x00-\x7F]/ig, '');
         setName(val);
     }
+
+    useEffect(() => {
+        if(name) {
+            onChangeErrTrue()
+        } else {
+            onChangeErrFalse()
+        }
+    })
+
+    useEffect(() => {
+        if(isChange) {
+            setName(changeUrl)
+        }
+    }, [])
 
     return (
         <div className="website-block">
