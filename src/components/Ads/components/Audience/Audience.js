@@ -10,7 +10,7 @@ import {connect} from "react-redux";
 import closeImg from '../../../../images/close.png'
 
 
-const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone, isChange, objData, country_err}) => {
+const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone, isChange, objData, country_err, country_codes_timezonesErr}) => {
     const [country, setCountry] = useState("");
     const [zone, setZone] = useState("");
     const [isRedCounry, setIsRedCountry] = useState();
@@ -63,7 +63,7 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
                     <div style={{width: "100%"}}>
                         <label>Country</label>
                         <div className="selectInput" style={{borderColor: !isRedCounry ? 'white' : '#FF453A'}}>
-                            <select value={country} required onChange={(e) => {writeCountry(e); setIsRedCountry(false)}} >
+                            <select value={country} required onChange={(e) => {writeCountry(e); setIsRedCountry(false); country_err(false)}} style={{borderColor: country_codes_timezonesErr ? 'F94439' : null}} >
                                 <option>All</option>
                                 {Object.keys(countryList).map((item, index) => (
                                     <option key={index + 3} value={countryList[item]}>{item}</option>
@@ -97,7 +97,8 @@ const mapStateToProps = state => {
     return {
         country_codes_timezones: state.adsOptions.country_codes_timezones,
         isChange: state.adChange.isChange,
-        objData: state.adChange.objData
+        objData: state.adChange.objData,
+        country_codes_timezonesErr: state.ad_errors_reducer.country_codes_timezones
     }
 }
 const mapDispatchToProps = {

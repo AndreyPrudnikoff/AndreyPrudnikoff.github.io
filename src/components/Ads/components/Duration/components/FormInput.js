@@ -53,7 +53,7 @@ export const NumberInput = ({label}) => {
 //     );
 // }
 
-export const DateInput = ({label, onChange = () => {}, invalid}) => {
+export const DateInput = ({label, onChange = () => {}, invalid, start_dateErr, end_dateErr}) => {
     const [inputValue, setValue] = useState("");
 
     const handleChange = ({target: {valueAsNumber}}) => {
@@ -64,7 +64,7 @@ export const DateInput = ({label, onChange = () => {}, invalid}) => {
     return (
         <div className="dateInputContainer" style={{width: '188.5px'}}>
             <label>{label}</label>
-            <div className="dateInput" style={{border: invalid ? '1px solid #FF453A' : '1px solid white'}}>
+            <div className="dateInput" style={{border: invalid || end_dateErr || start_dateErr ? '1px solid #FF453A' : '1px solid white'}}>
                 <div>{inputValue}</div>
                 <input onChange={handleChange} type="date"/>
             </div>
@@ -72,7 +72,7 @@ export const DateInput = ({label, onChange = () => {}, invalid}) => {
     );
 };
 
-export const TimeInput = ({label, onChange = () => {}, invalid}) => {
+export const TimeInput = ({label, onChange = () => {}, invalid, start_timeErr, end_timeErr}) => {
     // const [inputValue, setValue] = useState("");
 
     const handleChange = ({target: {valueAsNumber}}) => {
@@ -85,7 +85,7 @@ export const TimeInput = ({label, onChange = () => {}, invalid}) => {
     return (
         <div className="timeInputContainer" style={{width: '188.5px'}}>
             <label>{label}</label>
-            <div className="timeInput" style={{border: invalid ? '1px solid #FF453A' : '1px solid white'}}>
+            <div className="timeInput" style={{border: invalid || start_timeErr || end_timeErr ? '1px solid #FF453A' : '1px solid white'}}>
                 <input onChange={handleChange} type="time"/>
             </div>
         </div>
@@ -93,7 +93,7 @@ export const TimeInput = ({label, onChange = () => {}, invalid}) => {
 };
 
 export const RangeInput = ({min, max, course, balance, value, withError = false, onChange = () => {
-    },}) => {
+    }, onChangeBudgetErr, budgetErr}) => {
     const [isValid, setValidation] = useState(true);
     const handlerChange = ({target: {valueAsNumber}}) => {
         onChange({
@@ -107,9 +107,10 @@ export const RangeInput = ({min, max, course, balance, value, withError = false,
     return (
         <div className="rangeInputContainer">
             <input
+                style={{borderColor: budgetErr ? 'F94439' : null}}
                 min={min}
                 max={max}
-                onChange={handlerChange}
+                onChange={(e) => {handlerChange(e); onChangeBudgetErr()}}
                 className={isValid ? "rangeInput" : "rangeInput-error"}
                 type="range"
                 value={value}
@@ -131,7 +132,7 @@ export const RangeInput = ({min, max, course, balance, value, withError = false,
     );
 };
 
-export const TextInput = ({label, onChange = () => {}, setWebsite, webSite, invalid, isChange, changeUrl, onChangeErrFalse, onChangeErrTrue}) => {
+export const TextInput = ({label, onChange = () => {}, setWebsite, webSite, invalid, isChange, changeUrl, onChangeErrFalse, urlErr}) => {
     const [name, setName] = useState();    
 
     const checkForLatin = event => {
@@ -139,13 +140,6 @@ export const TextInput = ({label, onChange = () => {}, setWebsite, webSite, inva
         setName(val);
     }
 
-    useEffect(() => {
-        if(name) {
-            onChangeErrTrue()
-        } else {
-            onChangeErrFalse()
-        }
-    })
 
     useEffect(() => {
         if(isChange) {
@@ -157,11 +151,11 @@ export const TextInput = ({label, onChange = () => {}, setWebsite, webSite, inva
         <div className="website-block">
             <span className="block-description">{label}</span>
             <input
-                style={{borderColor: invalid ? "#FF453A" : "inherit"}}
+                style={{borderColor: urlErr ? "#FF453A" : "inherit"}}
                 type="text"
                 placeholder="website.com"
                 // value = {isChange ? changeUrl : null}
-                onChange={(e) => {onChange(e.target.value); checkForLatin(e.target.value)}}
+                onChange={(e) => {onChange(e.target.value); checkForLatin(e.target.value); onChangeErrFalse()}}
                 // value = {isChange ? changeUrl : name}
                 value = {name}
             />

@@ -11,7 +11,7 @@ import {start_date_err,
         end_time_err} from '../../../../redux/actions/ad_errors'
 import {setEndDate, setEndTime, setStartDate, setStartTime, setIsCorrectDateToStore} from "../../../../redux/actions/advertising";
 
-const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime, setIsCorrectDateToStore, isCorrectDateFromStore, start_date_err, start_time_err, end_date_err, end_time_err}) => {
+const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime, setIsCorrectDateToStore, isCorrectDateFromStore, start_date_err, start_time_err, end_date_err, end_time_err, start_dateErr, start_timeErr, end_dateErr, end_timeErr}) => {
   const [dateStart, setDateStart] = useState(0);
   const [timeStart, setTimeStart] = useState(0);
   const [dateEnd, setDateEnd] = useState(0);
@@ -20,10 +20,10 @@ const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime
   const [isCorrectDate, setIsCorrectDate] = useState(true);
 
   useEffect(() => {
-    timeStart ? start_time_err(true) : start_time_err(false);
-    dateStart ? start_date_err(true) : start_date_err(false);
-    timeEnd ? end_time_err(true) : end_time_err(false);
-    dateEnd ? end_date_err(true) : end_date_err(false);
+    // timeStart ? start_time_err(true) : start_time_err(false);
+    // dateStart ? start_date_err(true) : start_date_err(false);
+    // timeEnd ? end_time_err(true) : end_time_err(false);
+    // dateEnd ? end_date_err(true) : end_date_err(false);
 
     const dateNow = dayjs().valueOf(true);
     let enteredStartDate = dayjs(`${dateStart}T${timeStart}`).valueOf(true);
@@ -61,12 +61,12 @@ const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime
       content: (
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", marginBottom: '20px', justifyContent: 'space-between'}} >
-            <DateInput onChange={(e) => {setStartDate(e); setDateStart(e)}} label="Start date" invalid={!isStartDate} />
-            <TimeInput onChange={(e) => {setStartTime(e); setTimeStart(e)}} label="Start time" invalid={!isStartDate}/>
+            <DateInput onChange={(e) => {setStartDate(e); setDateStart(e); start_date_err(false)}} label="Start date" invalid={!isStartDate} start_dateErr={start_dateErr} />
+            <TimeInput onChange={(e) => {setStartTime(e); setTimeStart(e); start_time_err(false)}} label="Start time" invalid={!isStartDate} start_timeErr={start_timeErr}/>
           </div>
           <div style={{ display: "flex", justifyContent: 'space-between' }}>
-            <DateInput onChange={(e) => {setEndDate(e); setDateEnd(e)}} label="End date" invalid={!isCorrectDate} />
-            <TimeInput onChange={(e) => {setEndTime(e); setTimeEnd(e)}} label="End time" invalid={!isCorrectDate} />
+            <DateInput onChange={(e) => {setEndDate(e); setDateEnd(e); end_date_err(false)}} label="End date" invalid={!isCorrectDate} end_dateErr={end_dateErr} />
+            <TimeInput onChange={(e) => {setEndTime(e); setTimeEnd(e); end_time_err(false)}} label="End time" invalid={!isCorrectDate} end_timeErr={end_timeErr} />
           </div>
           
         </div>
@@ -90,7 +90,11 @@ const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime
 
 const mapStateToProps = state => {
   return {
-    isCorrectDateFromStore: state.adsOptions.isCorrectDate
+    isCorrectDateFromStore: state.adsOptions.isCorrectDate,
+    start_dateErr: state.ad_errors_reducer.start_date,
+    start_timeErr: state.ad_errors_reducer.start_time,
+    end_dateErr: state.ad_errors_reducer.end_date,
+    end_timeErr: state.ad_errors_reducer.end_time,
   }
 }
 

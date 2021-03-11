@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import back from "../../../images/back.svg";
 import { useHistory } from "react-router-dom";
 
-const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview, adErrors, isChange, objData, image_err}) => {
+const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview, adErrors, isChange, objData, image_err, imageErr}) => {
   const [image, setFile] = useImagePreview();
   let history = useHistory()
 
@@ -18,15 +18,6 @@ const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview,
       setFile(data, true)
     }
   }, [])
-
-  useEffect(() => {
-    console.log(image)
-    if(!image) {
-      image_err(false)
-    } else {
-      image_err(true)
-    }
-  }, [image])
 
   const encodeImageFileAsURL = (element) => {
     let file = element.target.files[0];
@@ -51,7 +42,7 @@ const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview,
         </div>
 
         <div className="wrap-input">
-          <label className="dashed" htmlFor="image-file">
+          <label className="dashed" htmlFor="image-file" style={{borderColor: imageErr ? '1px dashed #F94439' : '1px dashed #fff'}}>
             {previewBanner ? (<img className="image-preview" src={banner} />) :
             (image ? (
               <img className="image-preview" src={image} />
@@ -60,7 +51,7 @@ const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview,
             ))
             }
             
-            <input onChange={(e) => {setFile(e, false); encodeImageFileAsURL(e)}} type="file" id="image-file"  />
+            <input onChange={(e) => {setFile(e, false); encodeImageFileAsURL(e); image_err(false)}} type="file" id="image-file"  />
           </label>
 
           <label htmlFor="image-file" className="btn-file">
@@ -81,6 +72,7 @@ const mapStateToProps = state => {
     adErrors: state.adsOptions.errorsObj,
     isChange: state.adChange.isChange,
     objData: state.adChange.objData,
+    imageErr: state.ad_errors_reducer.image
   }
 }
 
