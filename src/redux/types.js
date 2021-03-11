@@ -42,6 +42,7 @@ export const PROMO_LIST = "PROMO_LIST";
 export const IS_CHANGE = 'IS_CHANGE';
 export const OBJ_DATA = 'OBJ_DATA';
 export const SET_CHANGED_OBJ = 'SET_CHANGED_OBJ';
+export const CLEAR_AD_CREATE = 'CLEAR_AD_CREATE';
 
 
 //ADS ERRORS
