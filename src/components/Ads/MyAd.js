@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ads.scss';
 import back from "../../images/back.svg";
-import {addImage} from '../../redux/actions/advertising'
-import {setIsChange, setObjData} from '../../redux/actions/changeAd'
+import {addImage} from '../../redux/actions/advertising';
+import {setIsChange, setObjData} from '../../redux/actions/changeAd';
 import {connect} from "react-redux";
-import Wallet from './components/Wallet'
+import Wallet from './components/Wallet';
 import { useHistory } from 'react-router';
-import {User} from '../../api/User'
+import {User} from '../../api/User';
 
 const MyAd = ({objData, setObjData, setIsChange}) => {
+    const [stop, setStop] = useState(objData.status === "ended");
     const history = useHistory();
 
     const encodeImageFileAsURL = (element) => {
@@ -21,11 +22,19 @@ const MyAd = ({objData, setObjData, setIsChange}) => {
     }
 
     const stopAdHandler = id => {
-        User.stopAd(id)
+        User.stopAd(id).then((responce) => {
+            if(responce.status === 200) {
+                setStop(true);
+            }
+        }).catch(err => console.log(err));
     }
 
     const resumeAdHandler = id => {
-        User.resumeAd(id)
+        User.resumeAd(id).then((responce) => {
+            if(responce.status === 200) {
+                setStop(false);
+            }
+        }).catch(err => console.log(err));
     }
 
 
@@ -123,7 +132,7 @@ const MyAd = ({objData, setObjData, setIsChange}) => {
                         </span>
                     </div>
                     <div className="footer foter-BTNs" style={{marginTop: '53px'}}>
-                        {objData.status === 'ended' ? 
+                        {stop ?
                             <button className='myAd-btn' onClick={() => {resumeAdHandler(objData.id)}}>Resume</button>
                             :
                             <button className='myAd-btn' onClick={() => {stopAdHandler(objData.id)}}>Stop</button>
