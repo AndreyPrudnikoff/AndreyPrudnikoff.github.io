@@ -39,10 +39,16 @@ export const PREVIEW_BANNER = "PREVIEW_BANNER";
 export const IS_CORRECT_DATE = "IS_CORRECT_DATE";
 export const WITH_DATE = "WITH_DATE";
 export const PROMO_LIST = "PROMO_LIST";
+
+
+// Change Ad
 export const IS_CHANGE = 'IS_CHANGE';
 export const OBJ_DATA = 'OBJ_DATA';
 export const SET_CHANGED_OBJ = 'SET_CHANGED_OBJ';
+export const DELETE_COUNTRY_AND_TIME_ZONE_CHANGED = 'DELETE_COUNTRY_AND_TIME_ZONE_CHANGED';
+export const ADD_COUNTRY_CHANGED = 'ADD_COUNTRY_CHANGED';
 export const CLEAR_AD_CREATE = 'CLEAR_AD_CREATE';
+
 
 
 //ADS ERRORS

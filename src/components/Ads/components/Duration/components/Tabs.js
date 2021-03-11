@@ -9,6 +9,7 @@ import dollar from "../../../../../images/dollar.svg";
 import {connect} from "react-redux";
 import {budget_err} from '../../../../../redux/actions/ad_errors'
 import {setBudget, setWithDate} from "../../../../../redux/actions/advertising";
+import {setChangedObj} from '../../../../../redux/actions/changeAd';
 
 
 let socket = new WebSocket("wss://bitcybets.com:8080/serv");
@@ -19,18 +20,26 @@ socket.onmessage = async e => {
     });
 }
 
-const Tabs = ({tabs, budget, setBudget, balance, setWithDate, adErrors, budget_err, budgetErr}) => {
+const Tabs = ({tabs, budget, setBudget, balance, setWithDate, adErrors, budget_err, budgetErr, objData, isChange, setChangedObj}) => {
     let currentCourse = bitcoins[bitcoins.length - 1];
     // useEffect(() => socket.close());
     const [activeTab, setActiveTab] = useState(0);
-    // const [cost, setCost] = useState(50)
-    // useEffect(() => {
-    //     if(cost) {
-    //         budget_err(true)
-    //     } else {
-    //         budget_err(false)
-    //     }
-    // })
+
+    const [cost, setCost] = useState(50)
+    const [firstEntry, setFirstEntry] = useState(true)
+    useEffect(() => {
+        // console.log(currentCourse * objData.budget)
+        if(isChange)  {
+            setCost(currentCourse * objData.budget)
+        } else {
+            setCost(50)
+        }
+    }, [])
+
+    const setFirstEntryHandler = () => {
+        setFirstEntry(false)
+    }
+
     return (
         <div className="tabsContainer">
             <div className="tabs">
@@ -67,14 +76,16 @@ const Tabs = ({tabs, budget, setBudget, balance, setWithDate, adErrors, budget_e
                             {budget > 0 ? +budget.toFixed(4) : 0}<img src={bitcoin} alt="btc"/>
                         </div>
                         <div className="amount-dollar website-block">
-                            <input onInput={e => {setBudget(+e.target.value / +currentCourse); budget_err(false)}} value={((+budget * +currentCourse) || 50).toFixed(0)}
+
+                            <input onInput={e => {isChange ? setChangedObj(+e.target.value / +currentCourse) : setBudget(+e.target.value / +currentCourse); budget_err(false); setFirstEntryHandler()}} value={firstEntry ? (currentCourse * objData.budget) :((+budget * +currentCourse) || cost).toFixed(0)}
                                    style={{borderColor: budgetErr ? '#F94439' : '#fff'}}
                                    className="dollarContainer" />
+
                             <img src={dollar} alt="dollar"/>
                         </div>
                     </div>
                 </div>
-                <RangeInput withError min={50} max={50000} course={currentCourse} value={((+budget * +currentCourse) || 50).toFixed(0)} balance={(balance * currentCourse)} budgetErr={budgetErr} onChangeBudgetErr={() => {budget_err(false)}}/>
+                <RangeInput withError min={50} max={50000} course={currentCourse} value={firstEntry ? (currentCourse * objData.budget) :((+budget * +currentCourse) || cost).toFixed(0)} balance={(balance * currentCourse)} budgetErr={budgetErr} onChangeFirstEntry={() => {setFirstEntry(false)}} onChangeBudgetErr={() => {budget_err(false)}}/>
             </div>
             <div className="content">{tabs[activeTab]?.content}</div>
         </div>
@@ -85,12 +96,15 @@ const mapStateToProps = state => {
         budget: state.adsOptions.budget,
         balance: state.balanceReducer.balance,
         adErrors: state.adsOptions.errorsObj,
-        budgetErr: state.ad_errors_reducer.budget
+        budgetErr: state.ad_errors_reducer.budget,
+        isChange: state.adChange.isChange,
+        objData: state.adChange.objData
     }
 }
 const mapDispatchToProps = {
     setBudget,
     setWithDate,
-    budget_err
+    budget_err,
+    setChangedObj
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Tabs);

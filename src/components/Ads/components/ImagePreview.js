@@ -6,8 +6,9 @@ import {image_err} from '../../../redux/actions/ad_errors'
 import { connect } from "react-redux";
 import back from "../../../images/back.svg";
 import { useHistory } from "react-router-dom";
+import {setChangedObj} from '../../../redux/actions/changeAd'
 
-const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview, adErrors, isChange, objData, image_err, imageErr}) => {
+const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview, adErrors, isChange, objData, image_err, imageErr, setChangedObj}) => {
   const [image, setFile] = useImagePreview();
   let history = useHistory()
 
@@ -23,7 +24,12 @@ const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview,
     let file = element.target.files[0];
     let reader = new FileReader();
     reader.onloadend = function() {
-      addImage(reader.result);
+      if(isChange) {
+        setChangedObj('image', reader.result)
+      } else {
+        addImage(reader.result);
+      }
+      
     }
     reader.readAsDataURL(file);
   }
@@ -32,7 +38,7 @@ const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview,
     <div>
       <span className='backbtn-title-span'>
         <img src={back} alt='back' onClick={() => history.push('/game')} className='backbtn-title-span__btn'/>
-        <h2 className='backbtn-title-span__title'>Ad creative</h2>
+        <h2 className='backbtn-title-span__title'>{isChange ? 'Ad changing' : 'Ad creative'}</h2>
       </span>
       
       <div className="wrapper-input-file">
@@ -79,6 +85,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   addImage,
   setIsPreview,
-  image_err
+  image_err,
+  setChangedObj
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ImagePreview);
