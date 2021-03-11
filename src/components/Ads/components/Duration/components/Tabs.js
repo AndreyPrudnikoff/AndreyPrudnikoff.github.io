@@ -19,7 +19,7 @@ socket.onmessage = async e => {
     });
 }
 
-const Tabs = ({tabs, budget, setBudget, balance, setWithDate, adErrors, budget_err}) => {
+const Tabs = ({tabs, budget, setBudget, balance, setWithDate, adErrors, budget_err, budgetErr}) => {
     let currentCourse = bitcoins[bitcoins.length - 1];
     // useEffect(() => socket.close());
     const [activeTab, setActiveTab] = useState(0);
@@ -72,7 +72,7 @@ const Tabs = ({tabs, budget, setBudget, balance, setWithDate, adErrors, budget_e
                         </div>
                     </div>
                 </div>
-                <RangeInput withError min={50} max={50000} course={currentCourse} value={((+budget * +currentCourse) || 50).toFixed(0)} balance={(balance * currentCourse)}/>
+                <RangeInput withError min={50} max={50000} course={currentCourse} value={((+budget * +currentCourse) || 50).toFixed(0)} balance={(balance * currentCourse)} budgetErr={budgetErr} onChangeBudgetErr={() => {budget_err(false)}}/>
             </div>
             <div className="content">{tabs[activeTab]?.content}</div>
         </div>
@@ -83,7 +83,7 @@ const mapStateToProps = state => {
         budget: state.adsOptions.budget,
         balance: state.balanceReducer.balance,
         adErrors: state.adsOptions.errorsObj,
-
+        budgetErr: state.ad_errors_reducer.budget
     }
 }
 const mapDispatchToProps = {

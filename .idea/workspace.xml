@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f6b93ff-e806-4942-bf67-7a8ba8e695b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/redux/actions/ad_errors.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/reducers/ad_errors_input.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_03_2021_18_26_[Default_Changelist]/.eslintcache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_03_2021_18_26_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_03_2021_18_26__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Ads/Ads.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/Ads.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Ads/components/Audience/Audience.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/components/Audience/Audience.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Ads/components/Duration/components/Tabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/components/Duration/components/Tabs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Ads/components/ImagePreview.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/components/ImagePreview.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/advertising.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/advertising.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/advertising.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/advertising.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/Auth.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,6 +171,8 @@
       <workItem from="1615301214682" duration="559000" />
       <workItem from="1615314581507" duration="245000" />
       <workItem from="1615359178167" duration="12101000" />
+      <workItem from="1615406700282" duration="623000" />
+      <workItem from="1615446803876" duration="2148000" />
     </task>
     <servers />
   </component>

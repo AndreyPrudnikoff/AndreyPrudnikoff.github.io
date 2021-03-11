@@ -85,7 +85,7 @@ const Ads = (props) => {
                 <form onSubmit={(e) => handleSubmit(e)} className="round-dark ads">
                     <ImagePreview />
 
-                    <TextInput onChange={props.setWebsite} isChange={props.isChange} changeUrl={props.objData.website_url} label="Website URL" onChangeErrFalse={() => props.website_err(false)} onChangeErrTrue={() => props.website_err(true)}/>
+                    <TextInput onChange={props.setWebsite} isChange={props.isChange} changeUrl={props.objData.website_url} label="Website URL" onChangeErrFalse={() => props.website_err(false)} urlErr={props.website_urlErr} />
 
                     <hr/>
 
@@ -115,7 +115,8 @@ const mapStateToProps = state => {
         adErrors: state.adsOptions.errorsObj,
         createAd: state.switchOptions.createAd,
         isChange: state.adChange.isChange,
-        objData: state.adChange.objData
+        objData: state.adChange.objData,
+        website_urlErr: state.ad_errors_reducer.website_url
     }
 }
 const mapDispatchToProps = {

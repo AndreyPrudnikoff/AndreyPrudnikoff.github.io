@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {connect} from 'react-redux';
 import {Link} from "react-router-dom";
 import PhoneInput from 'react-phone-number-input';
@@ -9,7 +9,20 @@ import {fireworks, muteToggle, playClick} from "../../redux/actions/music";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
-const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, fireworks, history, widthMode, currentLang, playClick, switchStep}) => {
+const Auth = ({
+                  reg,
+                  authorization,
+                  registration,
+                  muteToggle,
+                  mute,
+                  betWin,
+                  fireworks,
+                  history,
+                  widthMode,
+                  currentLang,
+                  playClick,
+                  switchStep
+              }) => {
     const [password, setPassword] = useState(true)
     const [passwordConfirm, setPasswordConfirm] = useState(true)
     const [name, setName] = useState('')
@@ -90,7 +103,7 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                 if (res.data.status === "success") {
                     sessionStorage.setItem('token', res.data.data.accessToken);
                     authorization();
-                    if(res.data.newUser) {
+                    if (res.data.newUser) {
                         switchStep(1);
                     }
                 } else {
@@ -110,12 +123,17 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
             .then(res => res)
             .then(data => {
                     if (data.data.status === "success") {
-                        sessionStorage.setItem('token', data.data.data.accessToken);
-                        history.push('/game');
-                        if (!mute) {
-                            muteToggle()
+                        if (data.data.data.needSms) {
+                            setEnterCode(true);
+                        } else {
+
+                            sessionStorage.setItem('token', data.data.data.accessToken);
+                            history.push('/game');
+                            if (!mute) {
+                                muteToggle()
+                            }
+                            return authorization();
                         }
-                        return authorization();
                     } else if (data.data.error) {
                         return setErr(data.data.error);
                     } else {
@@ -253,8 +271,9 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
                                 <label className="privacy-row">
                                     <input type="checkbox" id="privacy" required/>
                                     <span onClick={() => setPrivacy(true)}
-                                          className="gold link">{LANG.Auth.Register.legal}  <span className="and">{LANG.Auth.Register.and} </span>
-                                           {LANG.Auth.Register.privacy}</span>
+                                          className="gold link">{LANG.Auth.Register.legal} <span
+                                        className="and">{LANG.Auth.Register.and} </span>
+                                        {LANG.Auth.Register.privacy}</span>
                                 </label>
                             </div>
 
@@ -269,53 +288,75 @@ const Auth = ({reg, authorization, registration, muteToggle, mute, betWin, firew
             );
         }
     } else {
-        return (
-            <div className="round-dark auth">
+        if (enterCode) {
+            return (
+                <div className="round-dark auth">
+                         <span onClick={() => {
+                             setEnterCode(false);
+                             clearData();
+                             playClick()
+                         }} className="back">&larr;</span>
+                    <h2>Enter code</h2>
+                    <form onSubmit={e => codeSubmit(e)}>
+                        <div className="">
+                            <input value={code} onInput={e => setCode(e.target.value)} id="code" name="code" type="text"
+                                   required/>
+                        </div>
+                        <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
+                        <button type="submit" onClick={playClick}>SEND</button>
+                    </form>
+                </div>
+            );
+        } else {
+            return (
+                <div className="round-dark auth">
                <span onClick={() => {
                    clearData();
                    playClick()
                }} className="back"><Link to="/">&larr;</Link></span>
-                <h2 className={currentLang}>{LANG.Auth.Login.title}</h2>
-                <form onSubmit={handleLogin}>
-                    <div className="">
-                        <label className={currentLang} htmlFor="phone">{LANG.Auth.Login.phoneTitle}</label>
-                        <PhoneInput onChange={e => {
-                            setPhone(e);
-                            setErr('');
-                        }} id="phone" limitMaxLength={true} placeholder={LANG.Auth.Login.phone} value={phone}
-                                    international
-                                    defaultCountry={country}
-                                    displayInitialValueAsLocalNumber required/>
-                    </div>
-                    <div className={password ? 'pass' : 'text'}>
+                    <h2 className={currentLang}>{LANG.Auth.Login.title}</h2>
+                    <form onSubmit={handleLogin}>
+                        <div className="">
+                            <label className={currentLang} htmlFor="phone">{LANG.Auth.Login.phoneTitle}</label>
+                            <PhoneInput onChange={e => {
+                                setPhone(e);
+                                setErr('');
+                            }} id="phone" limitMaxLength={true} placeholder={LANG.Auth.Login.phone} value={phone}
+                                        international
+                                        defaultCountry={country}
+                                        displayInitialValueAsLocalNumber required/>
+                        </div>
+                        <div className={password ? 'pass' : 'text'}>
                         <span onClick={() => {
                             setPassword(!password);
                             playClick()
                         }} className="eye"/>
-                        <label className={currentLang} htmlFor="password">{LANG.Auth.Login.password}</label>
-                        <input onInput={e => {
-                            setPass(e.target.value);
-                            setErr('');
-                        }} id="password" name="password"
-                               type={password ? 'password' : 'text'} required/>
-                    </div>
-                    <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
-                    <Link to="/restore" className={currentLang + " forgot mb-3"}
-                          onClick={playClick}>{LANG.Auth.Login.forgotPassword}</Link>
-                    <button className={currentLang} onClick={playClick}>{LANG.Auth.Login.loginIn}</button>
-                    <span className={currentLang}>{LANG.Auth.Login.or}</span>
-                    <button className={currentLang} onClick={e => {
-                        e.preventDefault();
-                        registration();
-                        clearData();
-                        playClick();
-                    }}>{LANG.Auth.Login.signUp}
-                    </button>
-                    <Link to="/support" className={currentLang + " support-link"}
-                          onClick={playClick}>{LANG.support}</Link>
-                </form>
-            </div>
-        );
+                            <label className={currentLang} htmlFor="password">{LANG.Auth.Login.password}</label>
+                            <input onInput={e => {
+                                setPass(e.target.value);
+                                setErr('');
+                            }} id="password" name="password"
+                                   type={password ? 'password' : 'text'} required/>
+                        </div>
+                        <span style={{display: err ? 'block' : 'none'}} className="error red">{err}</span>
+                        <Link to="/restore" className={currentLang + " forgot mb-3"}
+                              onClick={playClick}>{LANG.Auth.Login.forgotPassword}</Link>
+                        <button className={currentLang} onClick={playClick}>{LANG.Auth.Login.loginIn}</button>
+                        <span className={currentLang}>{LANG.Auth.Login.or}</span>
+                        <button className={currentLang} onClick={e => {
+                            e.preventDefault();
+                            registration();
+                            clearData();
+                            playClick();
+                        }}>{LANG.Auth.Login.signUp}
+                        </button>
+                        <Link to="/support" className={currentLang + " support-link"}
+                              onClick={playClick}>{LANG.support}</Link>
+                    </form>
+                </div>
+            );
+        }
+
     }
 }
 
