@@ -14,6 +14,7 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
     const [country, setCountry] = useState("");
     const [zone, setZone] = useState("");
     const [isRedCounry, setIsRedCountry] = useState();
+    const [countryTimeZoneObj, setCountryTimeZoneObj] = useState();
     useEffect(() => {
         if(country_codes_timezones.length === 0) {
             setIsRedCountry(true)
@@ -31,6 +32,11 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
             country_err(false)
         }
     }, [country, zone])
+
+    useEffect(() => {
+        console.log(objData.country_timezone)
+        isChange ? setCountryTimeZoneObj(objData.country_timezone) : setCountryTimeZoneObj(country_codes_timezones)
+    }, [])
     const writeCountry = (e) => {
         setCountry(e.target.value);
     }
@@ -47,7 +53,18 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
         <div className="audience">
             <h2>Audience</h2>
             <ul className='list-country-timeZone'>
-                {country_codes_timezones.map((item, index) => (
+                {isChange ? 
+                Object.keys(objData.country_timezone).map((item, index) => (
+                    <li className='list-country-timeZone__item'>
+                        <span className='item-list selectInput'>{item}</span>
+                        <span className='item-list selectInput'>{objData.country_timezone[item]}</span>
+                        <span className='item-list-close' >
+                            <img src={closeImg} alt='close' onClick={() => {deleteCountryAndTimeZone(index)}}/>
+                        </span>
+                    </li>
+                ))
+                :
+                country_codes_timezones.map((item, index) => (
                     <li className='list-country-timeZone__item'>
                         <span className='item-list selectInput'>{Object.keys(item)}</span>
                         <span className='item-list selectInput'>{Object.values(item)}</span>

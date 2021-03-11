@@ -19,18 +19,14 @@ socket.onmessage = async e => {
     });
 }
 
-const Tabs = ({tabs, budget, setBudget, balance, setWithDate, adErrors, budget_err, budgetErr}) => {
+const Tabs = ({tabs, budget, setBudget, balance, setWithDate, adErrors, budget_err, budgetErr, objData, isChange}) => {
     let currentCourse = bitcoins[bitcoins.length - 1];
     // useEffect(() => socket.close());
     const [activeTab, setActiveTab] = useState(0);
     const [cost, setCost] = useState(50)
     useEffect(() => {
-        if(cost) {
-            budget_err(true)
-        } else {
-            budget_err(false)
-        }
-    })
+        isChange ? setCost(objData.budget) : setCost(50)
+    }, [])
     return (
         <div className="tabsContainer">
             <div className="tabs">
@@ -83,7 +79,9 @@ const mapStateToProps = state => {
         budget: state.adsOptions.budget,
         balance: state.balanceReducer.balance,
         adErrors: state.adsOptions.errorsObj,
-        budgetErr: state.ad_errors_reducer.budget
+        budgetErr: state.ad_errors_reducer.budget,
+        isChange: state.adChange.isChange,
+        objData: state.adChange.objData
     }
 }
 const mapDispatchToProps = {

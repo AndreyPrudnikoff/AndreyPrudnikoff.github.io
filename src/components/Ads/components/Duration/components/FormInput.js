@@ -53,12 +53,19 @@ export const NumberInput = ({label}) => {
 //     );
 // }
 
-export const DateInput = ({label, onChange = () => {}, invalid, start_dateErr, end_dateErr}) => {
+export const DateInput = ({label, onChange = () => {}, invalid, start_dateErr, end_dateErr, isChange, objData}) => {
     const [inputValue, setValue] = useState("");
+
+    useEffect(() => {
+        if(isChange) {
+            setValue(objData)
+        }
+    }, [])
 
     const handleChange = ({target: {valueAsNumber}}) => {
         setValue(dayjs(valueAsNumber).format("YYYY-MM-DD"));
         onChange(dayjs(valueAsNumber).format("YYYY-MM-DD"));
+        console.log(inputValue)
     };
 
     return (
@@ -72,20 +79,25 @@ export const DateInput = ({label, onChange = () => {}, invalid, start_dateErr, e
     );
 };
 
-export const TimeInput = ({label, onChange = () => {}, invalid, start_timeErr, end_timeErr}) => {
-    // const [inputValue, setValue] = useState("");
+export const TimeInput = ({label, onChange = () => {}, invalid, start_timeErr, end_timeErr, objData, isChange}) => {
 
+    const [inputValue, setValue] = useState('');
+    useEffect(() => {
+        if(isChange) {
+            setValue(objData)
+        }
+    }, [])
     const handleChange = ({target: {valueAsNumber}}) => {
-        // setValue(onChange(moment.utc(valueAsNumber).format('HH:mm:ss')))
-        // setValue(dayjs(valueAsNumber).format("HH:mm:ss [GMT]Z (z)", 'Europe/London'));
-        // if (onChange) onChange(inputValue);
-        return (onChange(moment.utc(valueAsNumber).format('HH:mm:ss')))
+        onChange(moment.utc(valueAsNumber).format('HH:mm:ss'));
+        setValue(moment.utc(valueAsNumber).format('HH:mm:ss'))
+        // return (onChange(moment.utc(valueAsNumber).format('HH:mm:ss')))
     };
 
     return (
         <div className="timeInputContainer" style={{width: '188.5px'}}>
             <label>{label}</label>
             <div className="timeInput" style={{border: invalid || start_timeErr || end_timeErr ? '1px solid #FF453A' : '1px solid white'}}>
+                <div>{inputValue}</div>
                 <input onChange={handleChange} type="time"/>
             </div>
         </div>
