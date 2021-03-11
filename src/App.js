@@ -21,7 +21,7 @@ import Withdraw from "./components/Refill/Withdraw";
 import Invite from "./components/Refill/Invite";
 import gotodesktop from "./components/Auth/gotodesktop";
 import {prohibition, resizeScreen, switchView, touchstart} from "./redux/actions";
-import {getCurrentList} from "./redux/actions/advertising";
+import {clear_ad, getCurrentList} from "./redux/actions/advertising";
 import Promo from "./components/Promo/Promo";
 
 
@@ -151,6 +151,7 @@ const mapDispatchToProps = {
     resizeScreen,
     switchView,
     touchstart,
-    getCurrentList
+    getCurrentList,
+    clear_ad
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -37,12 +37,12 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
     const writeZone = (e) => {
         setZone(e.target.value);
     }
-    const addCountryTimezone = () => {
-        // e.preventDefault();
-        if (country && zone) {
-            addCountry({[country]: zone});
-        }
-    }
+    // const addCountryTimezone = (e) => {
+    //     e.preventDefault();
+    //     if (country && zone) {
+    //         addCountry({[country]: zone});
+    //     }
+    // }
     return (
         <div className="audience">
             <h2>Audience</h2>
@@ -62,8 +62,8 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
                 <div className="block">
                     <div style={{width: "100%"}}>
                         <label>Country</label>
-                        <div className="selectInput" style={{borderColor: !isRedCounry ? 'white' : '#FF453A'}}>
-                            <select value={country} required onChange={(e) => {writeCountry(e); setIsRedCountry(false); country_err(false)}} style={{borderColor: country_codes_timezonesErr ? 'F94439' : null}} >
+                        <div className="selectInput" style={{borderColor: country_codes_timezonesErr ? '#F94439' : null}}>
+                            <select value={country} required onChange={(e) => {writeCountry(e); setIsRedCountry(false); country_err(false)}}  >
                                 <option>All</option>
                                 {Object.keys(countryList).map((item, index) => (
                                     <option key={index + 3} value={countryList[item]}>{item}</option>
@@ -71,16 +71,16 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
                             </select>
                         </div>
                     </div>
-                    <div className="addButton">
-                        <button onClick={() => {addCountryTimezone()}}>+</button>
-                        <span>Add country</span>
-                    </div>
+                    {/*<div className="addButton">*/}
+                    {/*    <button onClick={(e) => {addCountryTimezone(e)}}>+</button>*/}
+                    {/*    <span>Add country</span>*/}
+                    {/*</div>*/}
                 </div>
                 <div className="block">
                     <div style={{width: "100%"}}>
                         <label>Time zone</label>
-                        <div className="selectInput" style={{borderColor: !isRedCounry ? 'white' : '#FF453A'}}>
-                            <select value={zone} required onChange={(e) => {writeZone(e); setIsRedCountry(false)}}>
+                        <div className="selectInput" style={{borderColor: country_codes_timezonesErr ? '#F94439' : null}}>
+                            <select value={zone} required onChange={(e) => {writeZone(e); country_err(false)}}>
                                 <option>Choose</option>
                                 {timeZone.map((item, index) => (
                                     <option key={index + 5} value={item}>{item}</option>

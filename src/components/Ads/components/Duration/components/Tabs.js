@@ -23,14 +23,14 @@ const Tabs = ({tabs, budget, setBudget, balance, setWithDate, adErrors, budget_e
     let currentCourse = bitcoins[bitcoins.length - 1];
     // useEffect(() => socket.close());
     const [activeTab, setActiveTab] = useState(0);
-    const [cost, setCost] = useState(50)
-    useEffect(() => {
-        if(cost) {
-            budget_err(true)
-        } else {
-            budget_err(false)
-        }
-    })
+    // const [cost, setCost] = useState(50)
+    // useEffect(() => {
+    //     if(cost) {
+    //         budget_err(true)
+    //     } else {
+    //         budget_err(false)
+    //     }
+    // })
     return (
         <div className="tabsContainer">
             <div className="tabs">
@@ -67,7 +67,9 @@ const Tabs = ({tabs, budget, setBudget, balance, setWithDate, adErrors, budget_e
                             {budget > 0 ? +budget.toFixed(4) : 0}<img src={bitcoin} alt="btc"/>
                         </div>
                         <div className="amount-dollar website-block">
-                            <input onInput={e => setBudget(+e.target.value / +currentCourse)} value={((+budget * +currentCourse) || 50).toFixed(0)} className="dollarContainer" />
+                            <input onInput={e => {setBudget(+e.target.value / +currentCourse); budget_err(false)}} value={((+budget * +currentCourse) || 50).toFixed(0)}
+                                   style={{borderColor: budgetErr ? '#F94439' : '#fff'}}
+                                   className="dollarContainer" />
                             <img src={dollar} alt="dollar"/>
                         </div>
                     </div>

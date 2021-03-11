@@ -133,7 +133,7 @@ export const RangeInput = ({min, max, course, balance, value, withError = false,
 };
 
 export const TextInput = ({label, onChange = () => {}, setWebsite, webSite, invalid, isChange, changeUrl, onChangeErrFalse, urlErr}) => {
-    const [name, setName] = useState();    
+    const [name, setName] = useState("");
 
     const checkForLatin = event => {
         let val = event.replace(/[^\x00-\x7F]/ig, '');
@@ -153,7 +153,8 @@ export const TextInput = ({label, onChange = () => {}, setWebsite, webSite, inva
             <input
                 style={{borderColor: urlErr ? "#FF453A" : "inherit"}}
                 type="text"
-                placeholder="website.com"
+                minLength={11}
+                placeholder="https://website.com"
                 // value = {isChange ? changeUrl : null}
                 onChange={(e) => {onChange(e.target.value); checkForLatin(e.target.value); onChangeErrFalse()}}
                 // value = {isChange ? changeUrl : name}

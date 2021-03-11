@@ -4,9 +4,18 @@
     <list default="true" id="3f6b93ff-e806-4942-bf67-7a8ba8e695b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Ads/MyAd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/MyAd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Ads/Ads.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/Ads.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Ads/ListAds.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/ListAds.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Ads/components/Audience/Audience.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/components/Audience/Audience.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Ads/components/Duration/components/FormInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/components/Duration/components/FormInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Ads/components/Duration/components/Tabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/components/Duration/components/Tabs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Ads/components/Footer/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/components/Footer/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Ads/components/ImagePreview.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/components/ImagePreview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/advertising.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/advertising.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/advertising.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/advertising.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
