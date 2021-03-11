@@ -205,6 +205,21 @@
   border: 1px solid white !important;
   color: #fff !important;
   margin-bottom: 20px;
+
+}
+.myAd-btn.resume {
+  background-color: var(--up);
+  color: var(--black) !important;
+  &:hover {
+    color: var(--text-color) !important;
+  }
+}
+.myAd-btn.stop {
+  background-color: var(--down);
+  color: var(--black) !important;
+  &:hover {
+    color: var(--text-color) !important;
+  }
 }
 
 .list-main-block {
@@ -226,12 +241,13 @@
     display: flex;
     // margin: 80px auto;
     margin-top: 100px;
+    height: calc(100vh - 100px);
 
     .listAds {
       width: 865px;
       // height: 216px;
       padding: 20px 20px 30px 20px;
-      height: 900px;
+      max-height: 100%;
       overflow: auto;
       &::-webkit-scrollbar{
         width: 0;
@@ -386,7 +402,7 @@
           }
         }
         .add-new{
-          height: 245px;
+          max-height: 504px;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -442,8 +458,12 @@
     font-weight: 500;
     font-size: 24px;
     line-height: 35px;
+<<<<<<< HEAD
+    margin: 0 auto;
+=======
     margin-left: 43%;
     margin-bottom: 0;
+>>>>>>> 0e040b6fef3d17fd28f3dfc036c03c258620508d
   }
 }
 
