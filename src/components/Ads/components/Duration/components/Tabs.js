@@ -9,6 +9,7 @@ import dollar from "../../../../../images/dollar.svg";
 import {connect} from "react-redux";
 import {budget_err} from '../../../../../redux/actions/ad_errors'
 import {setBudget, setWithDate} from "../../../../../redux/actions/advertising";
+import {setChangedObj} from '../../../../../redux/actions/changeAd';
 
 
 let socket = new WebSocket("wss://bitcybets.com:8080/serv");
@@ -19,14 +20,14 @@ socket.onmessage = async e => {
     });
 }
 
-const Tabs = ({tabs, budget, setBudget, balance, setWithDate, adErrors, budget_err, budgetErr, objData, isChange}) => {
+const Tabs = ({tabs, budget, setBudget, balance, setWithDate, adErrors, budget_err, budgetErr, objData, isChange, setChangedObj}) => {
     let currentCourse = bitcoins[bitcoins.length - 1];
     // useEffect(() => socket.close());
     const [activeTab, setActiveTab] = useState(0);
     const [cost, setCost] = useState(50)
     const [firstEntry, setFirstEntry] = useState(true)
     useEffect(() => {
-        console.log(currentCourse * objData.budget)
+        // console.log(currentCourse * objData.budget)
         if(isChange)  {
             setCost(currentCourse * objData.budget)
         } else {
@@ -73,7 +74,7 @@ const Tabs = ({tabs, budget, setBudget, balance, setWithDate, adErrors, budget_e
                             {budget > 0 ? +budget.toFixed(4) : 0}<img src={bitcoin} alt="btc"/>
                         </div>
                         <div className="amount-dollar website-block">
-                            <input onInput={e => {setBudget(+e.target.value / +currentCourse); setFirstEntryHandler()}} value={firstEntry ? (currentCourse * objData.budget) :((+budget * +currentCourse) || cost).toFixed(0)} className="dollarContainer" />
+                            <input onInput={e => {isChange ? setChangedObj(+e.target.value / +currentCourse) : setBudget(+e.target.value / +currentCourse); setFirstEntryHandler()}} value={firstEntry ? (currentCourse * objData.budget) :((+budget * +currentCourse) || cost).toFixed(0)} className="dollarContainer" />
                             <img src={dollar} alt="dollar"/>
                         </div>
                     </div>
@@ -97,6 +98,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     setBudget,
     setWithDate,
-    budget_err
+    budget_err,
+    setChangedObj
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Tabs);

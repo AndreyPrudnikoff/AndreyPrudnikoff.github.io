@@ -7,6 +7,7 @@ import {createAdProp} from "../../redux/actions";
 import {playClick} from "../../redux/actions/music";
 import {userdata} from "../../redux/actions/game";
 import {User} from "../../api/User";
+import {setChangedObj} from '../../redux/actions/changeAd'
 import {website_err} from '../../redux/actions/ad_errors'
 // styles
 import "./ads.scss";
@@ -24,7 +25,7 @@ const Ads = (props) => {
         timezones[k] = item[k];
     })
     useEffect(() => {
-        console.log(props.objData, props.isChange)
+        // console.log(props.objData, props.isChange)
     }, [props.objData, props.isChange])
 
     const withTime = props.withDate ? {
@@ -85,7 +86,7 @@ const Ads = (props) => {
                 <form onSubmit={(e) => handleSubmit(e)} className="round-dark ads">
                     <ImagePreview />
 
-                    <TextInput onChange={props.setWebsite} isChange={props.isChange} changeUrl={props.objData.website_url} label="Website URL" onChangeErrFalse={() => props.website_err(false)} urlErr={props.website_urlErr} />
+                    <TextInput onChange={props.setWebsite} setChangedWebUrl={(e) => {props.setChangedObj('website_url', e)}} isChange={props.isChange} changeUrl={props.objData.website_url} label="Website URL" onChangeErrFalse={() => props.website_err(false)} urlErr={props.website_urlErr} />
 
                     <hr/>
 
@@ -125,6 +126,7 @@ const mapDispatchToProps = {
     playClick,
     userdata,
     getCurrentList,
-    website_err
+    website_err,
+    setChangedObj
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Ads);

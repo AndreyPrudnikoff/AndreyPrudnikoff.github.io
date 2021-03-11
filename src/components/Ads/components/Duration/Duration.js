@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 import { Tabs, TimeInput, DateInput } from "./components";
 // style
 import "./style.scss";
+import {setChangedObj} from '../../../../redux/actions/changeAd';
 import {connect} from "react-redux";
 import {start_date_err,
         start_time_err,
@@ -11,7 +12,7 @@ import {start_date_err,
         end_time_err} from '../../../../redux/actions/ad_errors'
 import {setEndDate, setEndTime, setStartDate, setStartTime, setIsCorrectDateToStore} from "../../../../redux/actions/advertising";
 
-const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime, setIsCorrectDateToStore, isCorrectDateFromStore, start_date_err, start_time_err, end_date_err, end_time_err, start_dateErr, start_timeErr, end_dateErr, end_timeErr, isChange, objData}) => {
+const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime, setIsCorrectDateToStore, isCorrectDateFromStore, start_date_err, start_time_err, end_date_err, end_time_err, start_dateErr, start_timeErr, end_dateErr, end_timeErr, isChange, objData, setChangedObj}) => {
   const [dateStart, setDateStart] = useState(0);
   const [timeStart, setTimeStart] = useState(0);
   const [dateEnd, setDateEnd] = useState(0);
@@ -61,12 +62,12 @@ const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime
       content: (
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", marginBottom: '20px', justifyContent: 'space-between'}} >
-            <DateInput onChange={(e) => {setStartDate(e); setDateStart(e); start_date_err(false)}} label="Start date" invalid={!isStartDate} start_dateErr={start_dateErr} objData={objData.start_date} isChange={isChange}/>
-            <TimeInput onChange={(e) => {setStartTime(e); setTimeStart(e); start_time_err(false)}} label="Start time" invalid={!isStartDate} start_timeErr={start_timeErr} objData={objData.start_time} isChange={isChange} />
+            <DateInput onChange={(e) => {!isChange ? setStartDate(e) : setChangedObj('start_date', e); setDateStart(e); start_date_err(false)}} label="Start date" invalid={!isStartDate} start_dateErr={start_dateErr} objData={objData.start_date} isChange={isChange}/>
+            <TimeInput onChange={(e) => {!isChange ? setStartTime(e) : setChangedObj('start_time', e); setTimeStart(e); start_time_err(false)}} label="Start time" invalid={!isStartDate} start_timeErr={start_timeErr} objData={objData.start_time} isChange={isChange} />
           </div>
           <div style={{ display: "flex", justifyContent: 'space-between' }}>
-            <DateInput onChange={(e) => {setEndDate(e); setDateEnd(e); end_date_err(false)}} label="End date" invalid={!isCorrectDate} end_dateErr={end_dateErr} objData={objData.end_date} isChange={isChange} />
-            <TimeInput onChange={(e) => {setEndTime(e); setTimeEnd(e); end_time_err(false)}} label="End time" invalid={!isCorrectDate} end_timeErr={end_timeErr} objData={objData.end_time} isChange={isChange} />
+            <DateInput onChange={(e) => {!isChange ? setEndDate(e) : setChangedObj('end_date', e); setDateEnd(e); end_date_err(false)}} label="End date" invalid={!isCorrectDate} end_dateErr={end_dateErr} objData={objData.end_date} isChange={isChange} />
+            <TimeInput onChange={(e) => {!isChange ? setEndTime(e) : setChangedObj('end_time', e); setTimeEnd(e); end_time_err(false)}} label="End time" invalid={!isCorrectDate} end_timeErr={end_timeErr} objData={objData.end_time} isChange={isChange} />
           </div>
           
         </div>
@@ -89,6 +90,7 @@ const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime
 
 
 const mapStateToProps = state => {
+  console.log(state.adChange)
   return {
     isCorrectDateFromStore: state.adsOptions.isCorrectDate,
     start_dateErr: state.ad_errors_reducer.start_date,
@@ -109,6 +111,7 @@ const mapDispatchToProps = {
     start_date_err,
     start_time_err,
     end_date_err,
-    end_time_err
+    end_time_err,
+    setChangedObj
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Duration);
