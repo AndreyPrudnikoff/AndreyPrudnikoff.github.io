@@ -108,6 +108,7 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                                                                               onClick={() => history.push('/ads')}>
                                     <img src={addNewImg} alt='add new' width='47' height='47'/>
                                     <span className='add-new__content-text'>Add new</span>
+<<<<<<< HEAD
                                 </li>))}
 
                                 </React.Fragment>
@@ -116,6 +117,13 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                                         <img src={addNewImg} alt='add new' width='47' height='47'/>
                                         <span className='add-new__content-text'>Add new</span>
                                     </li>))
+=======
+                                </li>
+                                </React.Fragment> : <li className='images-list__item add-new' onClick={() => history.push('/ads')}>
+                                    <img src={addNewImg} alt='add new' width='47' height='47' />
+                                    <span className='add-new__content-text'>Add new</span>
+                                </li>
+>>>>>>> 0e040b6fef3d17fd28f3dfc036c03c258620508d
                             :
                             finishedList.length
                                 ? finishedList.map((item, index) => (
@@ -168,7 +176,11 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                         }
                     </ul>
                 </div>
+<<<<<<< HEAD
                 {/*<Wallet input={false}/>*/}
+=======
+                {/* <Wallet input={false}/> */}
+>>>>>>> 0e040b6fef3d17fd28f3dfc036c03c258620508d
             </div>
 
         </div>

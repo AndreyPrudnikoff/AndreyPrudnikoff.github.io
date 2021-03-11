@@ -5,15 +5,17 @@ import {country_err} from '../../../../redux/actions/ad_errors'
 // component
 // styles
 import "./styles.scss";
+import {deleteCountryChangedObj, addCountryChangedObj} from '../../../../redux/actions/changeAd'
 import {addCountry, deleteCountryAndTimeZone} from "../../../../redux/actions/advertising";
 import {connect} from "react-redux";
 import closeImg from '../../../../images/close.png'
 
 
-const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone, isChange, objData, country_err, country_codes_timezonesErr}) => {
+const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone, isChange, objData, country_err, country_codes_timezonesErr, deleteCountryChangedObj, addCountryChangedObj}) => {
     const [country, setCountry] = useState("");
     const [zone, setZone] = useState("");
     const [isRedCounry, setIsRedCountry] = useState();
+    const [countryTimeZoneObj, setCountryTimeZoneObj] = useState();
     useEffect(() => {
         if(country_codes_timezones.length === 0) {
             setIsRedCountry(true)
@@ -23,7 +25,12 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
     }, [country_codes_timezones])
     useEffect(() => {
         if(country !== '' && zone !== '') {
-            addCountry({[country]: zone});
+            console.log([country])
+            if(isChange)  {
+                addCountryChangedObj(country, zone)
+            } else {
+                addCountry({[country]: zone});
+            }
             setCountry('');
             setZone('');
             country_err(true)
@@ -31,6 +38,11 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
             country_err(false)
         }
     }, [country, zone])
+
+    useEffect(() => {
+        console.log(objData.country_timezone)
+        isChange ? setCountryTimeZoneObj(objData.country_timezone) : setCountryTimeZoneObj(country_codes_timezones)
+    }, [])
     const writeCountry = (e) => {
         setCountry(e.target.value);
     }
@@ -47,7 +59,18 @@ const Audience = ({addCountry, country_codes_timezones, deleteCountryAndTimeZone
         <div className="audience">
             <h2>Audience</h2>
             <ul className='list-country-timeZone'>
-                {country_codes_timezones.map((item, index) => (
+                {isChange ? 
+                Object.keys(objData.country_timezone).map((item, index) => (
+                    <li className='list-country-timeZone__item'>
+                        <span className='item-list selectInput'>{item}</span>
+                        <span className='item-list selectInput'>{objData.country_timezone[item]}</span>
+                        <span className='item-list-close' >
+                            <img src={closeImg} alt='close1' onClick={() => {deleteCountryChangedObj(item); console.log('click')}}/>
+                        </span>
+                    </li>
+                ))
+                :
+                country_codes_timezones.map((item, index) => (
                     <li className='list-country-timeZone__item'>
                         <span className='item-list selectInput'>{Object.keys(item)}</span>
                         <span className='item-list selectInput'>{Object.values(item)}</span>
@@ -104,6 +127,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     addCountry,
     deleteCountryAndTimeZone,
-    country_err
+    country_err,
+    deleteCountryChangedObj,
+    addCountryChangedObj
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Audience);

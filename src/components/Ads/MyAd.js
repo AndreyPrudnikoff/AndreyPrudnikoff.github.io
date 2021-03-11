@@ -137,8 +137,8 @@ const MyAd = ({objData, setObjData, setIsChange}) => {
                             :
                             <button className='myAd-btn stop' onClick={() => {stopAdHandler(objData.id)}}>Stop</button>
                         }
-                        {/* <button className='myAd-btn' onClick={() => {setIsChange(true); setObjData(objData); console.log('y'); history.push("/ads");}}>Change</button>
-                        <button className='myAd-btn'>Repeat</button> */}
+                        <button className='myAd-btn' onClick={() => {setIsChange(true); setObjData(objData); console.log('y'); history.push("/ads");}}>Change</button>
+                        {/* <button className='myAd-btn'>Repeat</button> */}
                     </div>
                 </form>
             <Wallet input={true}/>

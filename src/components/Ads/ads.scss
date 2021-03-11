@@ -233,7 +233,7 @@
   background-repeat: no-repeat;
   // background-attachment: fixed;
   background-size: cover;
-  background-position: 0 -110px;
+  background-position: 0 0;
 
   .listBlock {
     // position: absolute;
@@ -458,7 +458,12 @@
     font-weight: 500;
     font-size: 24px;
     line-height: 35px;
+<<<<<<< HEAD
     margin: 0 auto;
+=======
+    margin-left: 43%;
+    margin-bottom: 0;
+>>>>>>> 0e040b6fef3d17fd28f3dfc036c03c258620508d
   }
 }
 
