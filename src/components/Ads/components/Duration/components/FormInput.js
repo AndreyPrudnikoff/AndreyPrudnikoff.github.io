@@ -105,7 +105,7 @@ export const TimeInput = ({label, onChange = () => {}, invalid, start_timeErr, e
 };
 
 export const RangeInput = ({min, max, course, balance, value, withError = false, onChange = () => {
-    }, onChangeBudgetErr, budgetErr}) => {
+    }, onChangeBudgetErr, budgetErr, onChangeFirstEntry}) => {
     const [isValid, setValidation] = useState(true);
     const handlerChange = ({target: {valueAsNumber}}) => {
         onChange({
@@ -122,7 +122,7 @@ export const RangeInput = ({min, max, course, balance, value, withError = false,
                 style={{borderColor: budgetErr ? 'F94439' : null}}
                 min={min}
                 max={max}
-                onChange={(e) => {handlerChange(e); onChangeBudgetErr()}}
+                onChange={(e) => {handlerChange(e); onChangeBudgetErr(); onChangeFirstEntry()}}
                 className={isValid ? "rangeInput" : "rangeInput-error"}
                 type="range"
                 value={value}
