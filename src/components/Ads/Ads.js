@@ -161,7 +161,7 @@ const mapDispatchToProps = {
     playClick,
     userdata,
     getCurrentList,
-    setChangedObj
+    setChangedObj,
     image_err,
     website_err,
     country_err,
