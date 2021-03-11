@@ -80,9 +80,8 @@ const mapStateToProps = state => {
     previewBanner: state.adsOptions.previewBanner,
     adErrors: state.adsOptions.errorsObj,
     isChange: state.adChange.isChange,
-    objData: state.adChange.objData
+    objData: state.adChange.objData,
   }
-  
 }
 
 const mapDispatchToProps = {
