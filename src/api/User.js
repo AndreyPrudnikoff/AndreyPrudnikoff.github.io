@@ -48,9 +48,9 @@ export const User = {
         return Api().post('/promo/list', JSON.stringify({"accessToken": sessionStorage.getItem('token')}));
     },
     stopAd(id) {
-        return Dev().post('/trahtibidoh/stop', JSON.stringify({...{"accessToken": sessionStorage.getItem('token')}, ...{id: id}}))
+        return Dev().post('/trahtibidoh/stop', JSON.stringify({"accessToken": sessionStorage.getItem('token'), id: id}))
     },
     resumeAd(id) {
-        return Dev().post('trahtibidoh/resume', JSON.stringify({...{"accessToken": sessionStorage.getItem('token')}, ...{id: id}}))
+        return Dev().post('trahtibidoh/resume', JSON.stringify({"accessToken": sessionStorage.getItem('token'), id: id}))
     }
 };

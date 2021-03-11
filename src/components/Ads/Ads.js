@@ -1,14 +1,24 @@
-
-import React, {useEffect, useState} from "react";
+import React, { useEffect } from "react";
 import {connect} from "react-redux";
-import {getCurrentList, setAdErrors, setWebsite} from "../../redux/actions/advertising";
+import {clear_ad, getCurrentList, setIsPreview, setWebsite} from "../../redux/actions/advertising";
 // import {objData, isChange} from '../../redux/actions/changeAd'
 import {createAdProp} from "../../redux/actions";
 import {playClick} from "../../redux/actions/music";
 import {userdata} from "../../redux/actions/game";
 import {User} from "../../api/User";
+
 import {setChangedObj} from '../../redux/actions/changeAd'
-import {website_err} from '../../redux/actions/ad_errors'
+import {
+    budget_err,
+    country_err,
+    end_date_err,
+    end_time_err,
+    image_err,
+    start_date_err,
+    start_time_err,
+    website_err
+} from '../../redux/actions/ad_errors'
+
 // styles
 import "./ads.scss";
 // components
@@ -17,17 +27,16 @@ import {Audience, Duration, Footer, ImagePreview} from "./components";
 import Wallet from "./components/Wallet"
 
 const Ads = (props) => {
-    const [errors, setErrors] = useState("");
-    const [successBtn, setSuccessBtn] = useState(false);
+    // const [successBtn, setSuccessBtn] = useState(false);
     let timezones = {};
     props.country_codes_timezones.forEach(item => {
         const k = Object.keys(item)[0];
         timezones[k] = item[k];
     })
-    useEffect(() => {
-        // console.log(props.objData, props.isChange)
-    }, [props.objData, props.isChange])
 
+    useEffect(()=> {
+        props.clear_ad();
+    }, []);
     const withTime = props.withDate ? {
         start_date: props.start_date,
         start_time: props.start_time,
@@ -38,21 +47,42 @@ const Ads = (props) => {
         image: props.image,
         website_url: props.website_url,
         country_codes_timezones: timezones,
-        budget: props.budget.toString(),
+        budget: props.budget,
         ...withTime
+    }
+
+    const lighting = (err) => {
+        switch (err) {
+            case "image":
+                return props.image_err(true);
+            case "website_url":
+                return props.website_err(true);
+            case "country_codes_timezones":
+                return props.country_err(true);
+            case "budget":
+                return props.budget_err(true);
+            case "start_date":
+                return props.start_date_err(true);
+            case "start_time":
+                return props.start_time_err(true);
+            case "end_date":
+                return props.end_date_err(true);
+            case "end_time":
+                return props.end_time_err(true);
+            default:
+                return null;
+        }
     }
     const handleSubmit = e => {
         e.preventDefault();
         let errorArray = [];
-
         for (const adKey in ad) {
             if (!ad[adKey]) {
                 errorArray.push(adKey);
-            } else if (props.withDate) {
-                if (!ad.country_codes_timezones) {
-                    errorArray.push("country_codes_timezones");
-                }
             }
+        }
+        if (Object.keys(ad.country_codes_timezones).length === 0) {
+            errorArray.push("country_codes_timezones");
         }
         if (!errorArray.length) {
             User.createAd(ad)
@@ -64,6 +94,8 @@ const Ads = (props) => {
                     }
                 }))
                 .catch(e => console.log(e.data));
+        } else {
+            errorArray.forEach(err => lighting(err));
         }
     }
 
@@ -84,9 +116,11 @@ const Ads = (props) => {
             </div>
             <div style={{display: 'flex', position: 'relative'}}>
                 <form onSubmit={(e) => handleSubmit(e)} className="round-dark ads">
-                    <ImagePreview />
+                    <ImagePreview/>
+
 
                     <TextInput onChange={props.setWebsite} setChangedWebUrl={(e) => {props.setChangedObj('website_url', e)}} isChange={props.isChange} changeUrl={props.objData.website_url} label="Website URL" onChangeErrFalse={() => props.website_err(false)} urlErr={props.website_urlErr} />
+
 
                     <hr/>
 
@@ -117,7 +151,8 @@ const mapStateToProps = state => {
         createAd: state.switchOptions.createAd,
         isChange: state.adChange.isChange,
         objData: state.adChange.objData,
-        website_urlErr: state.ad_errors_reducer.website_url
+        website_urlErr: state.ad_errors_reducer.website_url,
+        errors: state.ad_errors_reducer
     }
 }
 const mapDispatchToProps = {
@@ -126,7 +161,16 @@ const mapDispatchToProps = {
     playClick,
     userdata,
     getCurrentList,
-    website_err,
     setChangedObj
+    image_err,
+    website_err,
+    country_err,
+    budget_err,
+    start_date_err,
+    start_time_err,
+    end_date_err,
+    end_time_err,
+    clear_ad,
+    setIsPreview
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Ads);

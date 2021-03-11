@@ -12,7 +12,7 @@ import {
     AD_DETAIL,
     IS_PREVIEW,
     PREVIEW_BANNER,
-    IS_CORRECT_DATE, WITH_DATE, PROMO_LIST, ERROR_AD, SET_CHANGED_OBJ
+    IS_CORRECT_DATE, WITH_DATE, PROMO_LIST, ERROR_AD, SET_CHANGED_OBJ, CLEAR_AD_CREATE
 } from "../types";
 
 const initialState = {
@@ -71,6 +71,8 @@ export const adsOptions = (state = initialState, action) => {
             return {...state, withDate: action.payload}
         case PROMO_LIST:
             return {...state, promoList: action.payload}
+        case CLEAR_AD_CREATE:
+            return {...initialState}
         default:
             return state;
     }

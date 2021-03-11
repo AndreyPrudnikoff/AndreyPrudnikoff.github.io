@@ -48,7 +48,7 @@ const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview,
         </div>
 
         <div className="wrap-input">
-          <label className="dashed" htmlFor="image-file" style={{borderColor: imageErr ? '1px dashed #F94439' : '1px dashed #fff'}}>
+          <label className="dashed" htmlFor="image-file" style={{borderColor: imageErr ? '#F94439' : '#fff'}}>
             {previewBanner ? (<img className="image-preview" src={banner} />) :
             (image ? (
               <img className="image-preview" src={image} />

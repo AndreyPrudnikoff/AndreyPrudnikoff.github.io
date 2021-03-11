@@ -19,7 +19,6 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
 
     useEffect(() => {
         getCurrentList();
-        console.log(currentList)
     }, [])
 
     const getTotalTime = (startTime, startDate, endTime, endDate) => {
@@ -161,6 +160,7 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
 }
 
 const mapStateToProps = state => {
+    console.log(state.adsOptions.finishedList)
     return {
         currentLang: state.switchOptions.lang,
         balance: state.balanceReducer.balance,

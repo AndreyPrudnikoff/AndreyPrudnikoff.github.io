@@ -24,6 +24,7 @@ const Tabs = ({tabs, budget, setBudget, balance, setWithDate, adErrors, budget_e
     let currentCourse = bitcoins[bitcoins.length - 1];
     // useEffect(() => socket.close());
     const [activeTab, setActiveTab] = useState(0);
+
     const [cost, setCost] = useState(50)
     const [firstEntry, setFirstEntry] = useState(true)
     useEffect(() => {
@@ -38,6 +39,7 @@ const Tabs = ({tabs, budget, setBudget, balance, setWithDate, adErrors, budget_e
     const setFirstEntryHandler = () => {
         setFirstEntry(false)
     }
+
     return (
         <div className="tabsContainer">
             <div className="tabs">
@@ -74,7 +76,11 @@ const Tabs = ({tabs, budget, setBudget, balance, setWithDate, adErrors, budget_e
                             {budget > 0 ? +budget.toFixed(4) : 0}<img src={bitcoin} alt="btc"/>
                         </div>
                         <div className="amount-dollar website-block">
-                            <input onInput={e => {isChange ? setChangedObj(+e.target.value / +currentCourse) : setBudget(+e.target.value / +currentCourse); setFirstEntryHandler()}} value={firstEntry ? (currentCourse * objData.budget) :((+budget * +currentCourse) || cost).toFixed(0)} className="dollarContainer" />
+
+                            <input onInput={e => {isChange ? setChangedObj(+e.target.value / +currentCourse) : setBudget(+e.target.value / +currentCourse); budget_err(false); setFirstEntryHandler()}} value={firstEntry ? (currentCourse * objData.budget) :((+budget * +currentCourse) || cost).toFixed(0)}
+                                   style={{borderColor: budgetErr ? '#F94439' : '#fff'}}
+                                   className="dollarContainer" />
+
                             <img src={dollar} alt="dollar"/>
                         </div>
                     </div>

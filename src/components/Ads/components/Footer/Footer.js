@@ -41,7 +41,7 @@ const Footer = (props) => {
             setGreen("");
         }
     }, [props.start_date, props.start_time, props.end_date, props.end_time, props.image, props.website_url, timezones, props.budget])
-    // console.log(props.start_date, props.start_time, props.end_date, props.end_time, props.image, props.website_url, timezones, props.budget)
+
     return (
         <div className="footer">
             <button className={green} type='submit'>{props.isChange ? 'Change now' : 'Promote now'}</button>
