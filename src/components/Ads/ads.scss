@@ -205,6 +205,21 @@
   border: 1px solid white !important;
   color: #fff !important;
   margin-bottom: 20px;
+
+}
+.myAd-btn.resume {
+  background-color: var(--up);
+  color: var(--black) !important;
+  &:hover {
+    color: var(--text-color) !important;
+  }
+}
+.myAd-btn.stop {
+  background-color: var(--down);
+  color: var(--black) !important;
+  &:hover {
+    color: var(--text-color) !important;
+  }
 }
 
 .list-main-block {
