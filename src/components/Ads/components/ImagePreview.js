@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import back from "../../../images/back.svg";
 import { useHistory } from "react-router-dom";
 
-const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview, adErrors, isChange, objData}) => {
+const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview, adErrors, isChange, objData, invalid}) => {
   const [image, setFile] = useImagePreview();
   let history = useHistory()
 
@@ -63,9 +63,8 @@ const mapStateToProps = state => {
     previewBanner: state.adsOptions.previewBanner,
     adErrors: state.adsOptions.errorsObj,
     isChange: state.adChange.isChange,
-    objData: state.adChange.objData
+    objData: state.adChange.objData,
   }
-  
 }
 
 const mapDispatchToProps = {
