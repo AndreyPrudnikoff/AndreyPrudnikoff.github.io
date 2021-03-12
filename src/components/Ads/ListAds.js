@@ -26,7 +26,6 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
 
     for (let i = 0; i < lengthArray; i++) {
         adNew.push(1);
-        console.log(adNew)
     }
 
     const getTotalTime = (startTime, startDate, endTime, endDate) => {
@@ -34,7 +33,6 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
         const end = `${endDate} ${endTime}`;
         return moment.utc(moment(end).diff(moment(start))).format("DDD:HH:mm:ss")
     }
-
     return (
         <div className='list-main-block'>
             <div className='listBlock'>
@@ -64,7 +62,7 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                                         getDetails(item);
                                         history.push('/myad')
                                     }}>
-                                        <div className="trashwrap"><img className="trash"  src={trash} height={25} width={30} alt="trash"/><img className="open-trash" src={opentrash} height={30} width={35} alt="trash"/></div>
+                                        {/*<div className="trashwrap"><img className="trash"  src={trash} height={25} width={30} alt="trash"/><img className="open-trash" src={opentrash} height={30} width={35} alt="trash"/></div>*/}
                                         <ul className='ad-detail-list'>
                                             <li className='ad-detail-list__item ad-detail-list__img'>
                                                 <img src={item.image} alt='image' width='259' height='245'/>
@@ -106,17 +104,17 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                                         {/* <span className='item__title item__url'>{item.website_url || "mysite.com"}</span>
                                     <span className='item__date'>{item.end_date}</span> */}
                                     </li>
-                                ))}{console.log(adNew)} {adNew.map(() => (<li className='images-list__item add-new'
+                                ))} {adNew.map(() => (<li className='images-list__item add-new'
                                                                               onClick={() => history.push('/ads')}>
                                     <img src={addNewImg} alt='add new' width='47' height='47'/>
-                                    <span className='add-new__content-text'>Add new</span>
+                                    <span className='add-new__content-text'>Create ad</span>
                                 </li>))}
 
                                 </React.Fragment>
                                 : [1, 2, 3, 4, 5, 6].map(() => (
                                     <li className='images-list__item add-new' onClick={() => history.push('/ads')}>
                                         <img src={addNewImg} alt='add new' width='47' height='47'/>
-                                        <span className='add-new__content-text'>Add new</span>
+                                        <span className='add-new__content-text'>Create ad</span>
                                     </li>))
                             :
                             finishedList.length
@@ -125,6 +123,7 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                                         getDetails(item);
                                         history.push('/myad')
                                     }}>
+                                        <div className="trashwrap"><img className="trash"  src={trash} height={25} width={30} alt="trash"/><img className="open-trash" src={opentrash} height={30} width={35} alt="trash"/></div>
                                         <ul className='ad-detail-list'>
                                             <li className='ad-detail-list__item ad-detail-list__img'>
                                                 <img src={item.image} alt='image' width='259' height='245'/>

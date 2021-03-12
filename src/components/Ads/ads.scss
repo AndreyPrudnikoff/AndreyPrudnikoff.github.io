@@ -330,6 +330,7 @@
           border-radius: 16px;
           cursor: pointer;
           margin-bottom: 24px;
+          transition: all .2s;
 
           .trashwrap {
             position: absolute;
@@ -356,7 +357,10 @@
           }
 
           &:hover {
-            border: 1px solid rgba(255, 255, 255, .3);
+            //box-shadow: 2px 2px 2px var(--dark-opacity),
+            //            -2px 2px 2px var(--dark-opacity),
+            //            2px -2px 2px var(--dark-opacity);
+            transform: scale(1.03);
           }
 
           // &:hover span {
@@ -391,12 +395,12 @@
             list-style: none;
             padding: 0 12px;
             width: 100%;
-            font-family: Roc Grotesk;
+            font-family: "roc-grotesk", sans-serif;
             font-style: normal;
             font-weight: normal;
             font-size: 16px;
             line-height: 23px;
-            color: #FFFFFF;
+            color: var(--text-color);
 
             &__item {
               display: flex;
@@ -449,7 +453,7 @@
 
           &__content-text {
             margin-top: 5px;
-            font-family: Roc Grotesk;
+            font-family: "roc-grotesk", sans-serif;
             font-style: normal;
             font-weight: 500;
             font-size: 16px;
