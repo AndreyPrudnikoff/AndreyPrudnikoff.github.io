@@ -49,6 +49,7 @@ const Tabs = ({tabs, budget, setBudget, balance, setWithDate, adErrors, budget_e
                         onClick={() => {
                             setActiveTab(id);
                             setWithDate(!!id);
+                            console.log(!!id)
                         }}>
                         {label}
                     </div>

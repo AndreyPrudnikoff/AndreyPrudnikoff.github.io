@@ -206,7 +206,7 @@ const Header = ({switchStep, promo, auth, reg, mute, muteToggle, logoutQuestion,
                                                     setIsChange(false);
                                                     setPreviewBanner(false);
                                                     playClick()
-                                                }} className="burger-menu-item bord">{LANG.Menu.first}</li>
+                                                }} className="burger-menu-item bord"><span>{LANG.Menu.first}</span></li>
                                                 <li onClick={() => {
                                                     history.push("/myads");
                                                     playClick()
@@ -224,7 +224,7 @@ const Header = ({switchStep, promo, auth, reg, mute, muteToggle, logoutQuestion,
                                         <li className="burger-menu-item" onClick={() => {
                                             playClick();
                                             logoutQuestion();
-                                        }}>{LANG.Menu.exit}
+                                        }}><span>{LANG.Menu.exit}</span>
                                         </li>
                                     </ul>
                                 </div>

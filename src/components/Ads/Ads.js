@@ -27,7 +27,6 @@ import {Audience, Duration, Footer, ImagePreview} from "./components";
 import Wallet from "./components/Wallet"
 
 const Ads = (props) => {
-    // const [successBtn, setSuccessBtn] = useState(false);
     let timezones = {};
     props.country_codes_timezones.forEach(item => {
         const k = Object.keys(item)[0];
@@ -76,14 +75,12 @@ const Ads = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         let errorArray = [];
-        if(props.withDate) {
+        if (props.withDate) {
             delete ad.start_date;
             delete ad.start_time;
             delete ad.end_date;
             delete ad.end_time;
-            console.log(123123)
         }
-        console.log(ad)
         for (const adKey in ad) {
 
             if (!ad[adKey]) {
@@ -113,7 +110,7 @@ const Ads = (props) => {
             <div style={{display: props.createAd ? "block" : "none"}} className="blur soon">
                 <div className="round-dark win">
                     <div className="win-btn">
-                        <h2>Your ad completed</h2>
+                        <h2>Your ad is in review</h2>
                         <button onClick={() => {
                             props.createAdProp();
                             props.history.push("/myads");
