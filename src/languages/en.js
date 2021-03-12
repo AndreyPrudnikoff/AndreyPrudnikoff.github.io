@@ -309,6 +309,7 @@ export const EN = {
     },
 
     Menu: {
+        home: "Home",
         first: "Create ad",
         second: "My ads",
         third: "Intro",

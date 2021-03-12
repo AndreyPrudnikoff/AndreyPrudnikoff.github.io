@@ -192,10 +192,15 @@ const Header = ({switchStep, promo, auth, reg, mute, muteToggle, logoutQuestion,
                                     <ul style={{display: menu ? 'block' : 'none'}} className="burger-menu">
                                         {widthMode !== 'desktop' ? null :
                                             <>
+                                                <li onClick={() => {
+                                                    history.push("/game");
+                                                }} className="burger-menu-item bord">
+                                                    <span>{LANG.Menu.home}</span></li>
                                         <li style={{display: promo ? "block" : "none"}} onClick={() => {
                                             history.push("/promo");
                                         }} className="burger-menu-item bord">
                                             <span>Promo</span></li>
+
                                                 <li onClick={() => {
                                                     history.push("/ads");
                                                     setIsChange(false);
