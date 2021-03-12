@@ -116,6 +116,7 @@ const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance,
 };
 
 const mapStateToProps = state => {
+    console.log(state.adsOptions.banner)
     return {
         balance: state.balanceReducer.balance,
         lastWinGame: state.balanceReducer.lastWinGame,
@@ -128,7 +129,7 @@ const mapStateToProps = state => {
         predict: state.balanceReducer.predict,
         currentLang: state.switchOptions.lang,
         step: state.switchOptions.step,
-        preview: state.adsOptions.banner,
+        preview: state.adsOptions.image,
         isPreview: state.adsOptions.isPreview
     }
 }
