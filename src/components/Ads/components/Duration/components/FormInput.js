@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from "react";
-import {setBudget} from '../../../../../redux/actions/advertising'
+import {setBudget} from '../../../../../redux/actions/advertising';
+import DayPicker from 'react-day-picker/DayPickerInput';
 import moment from 'moment';
 import dayjs from "dayjs";
 // styles
 import "./style.scss";
+import 'react-day-picker/lib/style.css';
 import store from "../../../../../redux/store";
 
 export const NumberInput = ({label}) => {
@@ -62,10 +64,10 @@ export const DateInput = ({label, onChange = () => {}, invalid, start_dateErr, e
         }
     }, [])
 
-    const handleChange = ({target: {valueAsNumber}}) => {
+    const handleChange = (valueAsNumber) => {
+        console.log(valueAsNumber)
         setValue(dayjs(valueAsNumber).format("YYYY-MM-DD"));
         onChange(dayjs(valueAsNumber).format("YYYY-MM-DD"));
-        console.log(inputValue)
     };
 
     return (
@@ -73,7 +75,7 @@ export const DateInput = ({label, onChange = () => {}, invalid, start_dateErr, e
             <label>{label}</label>
             <div className="dateInput" style={{border: invalid || end_dateErr || start_dateErr ? '1px solid #FF453A' : '1px solid white'}}>
                 <div>{inputValue}</div>
-                <input onChange={handleChange} type="date"/>
+                <DayPicker onDayChange={handleChange}/>
             </div>
         </div>
     );
