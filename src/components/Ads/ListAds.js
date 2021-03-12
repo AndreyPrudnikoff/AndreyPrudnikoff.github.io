@@ -18,6 +18,7 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
     const LANG = currentLang === "en" ? EN : RU;
     const [isCurrent, setIsCurrent] = useState(true);
     const [totalTime, setTotalTime] = useState();
+    const [done, setDone] = useState(false);
 
     useEffect(() => {
         getCurrentList();
@@ -37,12 +38,25 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
     const deleteAdHandler = id => {
         User.deleteAd(id).then((res) => {
             if(res.status === 200) {
-                console.log('delete')
+                setDone(true);
             }
         }).catch(err => console.log(err))
     }
     return (
         <div className='list-main-block'>
+            <div style={{display: done ? "block" : "none"}} className="blur soon">
+                <div className="round-dark win">
+                    <div className="win-btn">
+                        <h2>Ad deleted</h2>
+                        <button onClick={() => {
+                            getCurrentList();
+                            setDone(false);
+                            playClick();
+                        }} className="btn btn-primary">Ok
+                        </button>
+                    </div>
+                </div>
+            </div>
             <div className='listBlock'>
                 <div className='round-dark listAds'>
                     <span className='backbtn-title-span'>
@@ -131,10 +145,12 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                                         getDetails(item);
                                         history.push('/myad')
                                     }}>
-                                        <div className="trashwrap">
-                                            {console.log(item)}
+                                        <div onClick={(event) => {
+                                            event.stopPropagation();
+                                            deleteAdHandler(item.id);
+                                        }} className="trashwrap">
                                             <img className="trash"  src={trash} height={25} width={30} alt="trash"/>
-                                            <img className="open-trash" src={opentrash} height={30} width={35} alt="trash" onClick={() => deleteAdHandler(item.id)}/>
+                                            <img className="open-trash" src={opentrash} height={30} width={35} alt="trash" />
                                         </div>
                                         <ul className='ad-detail-list'>
                                             <li className='ad-detail-list__item ad-detail-list__img'>

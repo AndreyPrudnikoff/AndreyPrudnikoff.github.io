@@ -1,12 +1,16 @@
 import React, {useEffect, useState} from "react";
 import {setBudget} from '../../../../../redux/actions/advertising';
 import DayPicker from 'react-day-picker/DayPickerInput';
+import TimePicker from 'rc-time-picker'
+import store from "../../../../../redux/store";
 import moment from 'moment';
-import dayjs from "dayjs";
 // styles
 import "./style.scss";
+import "./datepicker.scss";
+import "./timepicker.scss";
 import 'react-day-picker/lib/style.css';
-import store from "../../../../../redux/store";
+import 'rc-time-picker/assets/index.css';
+
 
 export const NumberInput = ({label}) => {
     const [inputValue, setValue] = useState("1");
@@ -56,29 +60,17 @@ export const NumberInput = ({label}) => {
 // }
 
 export const DateInput = ({label, onChange = () => {}, invalid, start_dateErr, end_dateErr, isChange, objData}) => {
-    const [inputValue, setValue] = useState("");
 
-    useEffect(() => {
-        if(isChange) {
-            setValue(objData)
-        }
-    }, [])
-
-    const handleChange = (valueAsNumber) => {
-        console.log(valueAsNumber)
-        setValue(dayjs(valueAsNumber).format("YYYY-MM-DD"));
-        onChange(dayjs(valueAsNumber).format("YYYY-MM-DD"));
+    const handleChange = (date) => {
+        onChange(moment(date).format("YYYY-MM-DD"));
     };
-
     return (
-        <div className="dateInputContainer" style={{width: '188.5px'}}>
+        <div className="dateInputContainer">
             <label>{label}</label>
             <div className="dateInput" style={{border: invalid || end_dateErr || start_dateErr ? '1px solid #FF453A' : '1px solid white'}}>
-                {/* <div>{inputValue}</div> */}
-                <div classNames='dayPickerInput'>
-                    <DayPicker onDayChange={handleChange} classNames='DayPickerInput'/>
+                <div className='dayPickerInput'>
+                    <DayPicker isClearable popperPlacement="top-end" onDayChange={handleChange} />
                 </div>
-                
             </div>
         </div>
     );
@@ -92,18 +84,22 @@ export const TimeInput = ({label, onChange = () => {}, invalid, start_timeErr, e
             setValue(objData)
         }
     }, [])
-    const handleChange = ({target: {valueAsNumber}}) => {
-        onChange(moment.utc(valueAsNumber).format('HH:mm:ss'));
-        setValue(moment.utc(valueAsNumber).format('HH:mm:ss'))
-        // return (onChange(moment.utc(valueAsNumber).format('HH:mm:ss')))
+    const m = moment().utcOffset(0);
+    m.set({hour:0,minute:0,second:0,millisecond:0})
+    m.toISOString()
+    m.format()
+    const handleChange = (time) => {
+        console.log(moment.utc(time).format('HH:mm:ss'))
+        onChange(moment.utc(time).format('HH:mm:ss'));
+        setValue(moment.utc(time).format('HH:mm:ss'))
     };
 
     return (
         <div className="timeInputContainer" style={{width: '188.5px'}}>
             <label>{label}</label>
             <div className="timeInput" style={{border: invalid || start_timeErr || end_timeErr ? '1px solid #FF453A' : '1px solid white'}}>
-                <div>{inputValue}</div>
-                <input onChange={handleChange} type="time"/>
+                {/*<div>{inputValue}</div>*/}
+                <TimePicker placeholder='HH:MM' defaultValue={m} showSecond={false} onChange={handleChange} />
             </div>
         </div>
     );
