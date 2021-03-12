@@ -103,7 +103,6 @@
   padding: 12px;
   outline: none;
   background: transparent;
-  outline: none;
   width: 100%;
   position: relative;
 
@@ -119,13 +118,9 @@
     border: none;
     width: 100%;
     position: relative;
-
-
-
     &:focus {
       outline: none;
     }
-
     & > option {
       color: black;
     }
@@ -190,7 +185,6 @@
     // }
   }
 }
-
 .timeInputContainer {
   width: 100%;
 
