@@ -52,5 +52,12 @@ export const User = {
     },
     resumeAd(id) {
         return Dev().post('trahtibidoh/resume', JSON.stringify({"accessToken": sessionStorage.getItem('token'), id: id}))
+    },
+    deleteAd(id) {
+        return Dev().post('/trahtibidoh/delete', JSON.stringify({"accessToken": sessionStorage.getItem('token'), id: id}))
+    },
+    changeAd(id, obj)  {
+        console.log({"accessToken": sessionStorage.getItem('token'), id: id, ...obj})
+        return Dev().post('/trahtibidoh/edit', JSON.stringify({"accessToken": sessionStorage.getItem('token'), id: id, ...obj}))
     }
 };

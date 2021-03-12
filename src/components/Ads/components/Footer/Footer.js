@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
+import {User} from '../../../../api/User'
 // styles
 import "./style.scss";
 
@@ -42,9 +43,28 @@ const Footer = (props) => {
         }
     }, [props.start_date, props.start_time, props.end_date, props.end_time, props.image, props.website_url, timezones, props.budget])
 
+    const changeAdHandler = () => {
+        if(props.isChange) {
+            let obj = new Object();
+            let country_codes_timezones = new Object();
+            for(let key in props.objData) {
+                obj[key] = props.objData[key]
+            }
+            for(let key in obj.country_timezone) {
+                country_codes_timezones[key] = obj.country_timezone[key];
+            }
+            
+            delete obj.country_timezone;
+            obj['country_codes_timezones'] = country_codes_timezones;
+            console.log(obj);
+            console.log(country_codes_timezones);
+            User.changeAd(props.objData.id, obj)
+        }
+    }
+
     return (
         <div className="footer">
-            <button className={green} type={props.isChange ? null :'submit'}>{props.isChange ? 'Change now' : 'Promote now'}</button>
+            <button className={green} type={props.isChange ? null :'submit'} onClick={() => changeAdHandler()}>{props.isChange ? 'Change now' : 'Promote now'}</button>
         </div>
     );
 };
@@ -61,7 +81,8 @@ const mapStateToProps = state => {
         budget: state.adsOptions.budget,
         withDate: state.adsOptions.withDate,
         adErrors: state.adsOptions.errorsObj,
-        isChange: state.adChange.isChange
+        isChange: state.adChange.isChange,
+        objData: state.adChange.objData
         // image: state.ad_errors_reducer.image,
         // website_url: state.ad_errors_reducer.website_url,
         // country_codes_timezones: state.ad_errors_reducer.country_codes_timezones,

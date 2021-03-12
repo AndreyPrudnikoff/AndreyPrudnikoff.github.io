@@ -4,6 +4,7 @@ import {useHistory} from "react-router-dom";
 import {playClick} from "../../redux/actions/music";
 import {getCurrentList, getDetails} from "../../redux/actions/advertising"
 import {connect} from "react-redux";
+import {User} from '../../api/User'
 import moment from 'moment';
 import addNewImg from '../../images/add-new.png'
 import back from "../../images/back.svg";
@@ -32,6 +33,13 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
         const start = `${startDate} ${startTime}`;
         const end = `${endDate} ${endTime}`;
         return moment.utc(moment(end).diff(moment(start))).format("DDD:HH:mm:ss")
+    }
+    const deleteAdHandler = id => {
+        User.deleteAd(id).then((res) => {
+            if(res.status === 200) {
+                console.log('delete')
+            }
+        }).catch(err => console.log(err))
     }
     return (
         <div className='list-main-block'>
@@ -123,7 +131,11 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                                         getDetails(item);
                                         history.push('/myad')
                                     }}>
-                                        <div className="trashwrap"><img className="trash"  src={trash} height={25} width={30} alt="trash"/><img className="open-trash" src={opentrash} height={30} width={35} alt="trash"/></div>
+                                        <div className="trashwrap">
+                                            {console.log(item)}
+                                            <img className="trash"  src={trash} height={25} width={30} alt="trash"/>
+                                            <img className="open-trash" src={opentrash} height={30} width={35} alt="trash" onClick={() => deleteAdHandler(item.id)}/>
+                                        </div>
                                         <ul className='ad-detail-list'>
                                             <li className='ad-detail-list__item ad-detail-list__img'>
                                                 <img src={item.image} alt='image' width='259' height='245'/>

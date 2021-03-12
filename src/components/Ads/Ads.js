@@ -91,15 +91,16 @@ const Ads = (props) => {
             errorArray.push("country_codes_timezones");
         }
         if (!errorArray.length) {
-            User.createAd(ad)
-                .then((res => {
-                    if (res.data.status === "success") {
-                        props.createAdProp();
-                        props.userdata();
-                        props.getCurrentList();
-                    }
-                }))
-                .catch(e => console.log(e.data));
+                User.createAd(ad)
+                    .then((res => {
+                        if (res.data.status === "success") {
+                            props.createAdProp();
+                            props.userdata();
+                            props.getCurrentList();
+                        }
+                    }))
+                    .catch(e => console.log(e.data));
+
         } else {
             errorArray.forEach(err => lighting(err));
         }

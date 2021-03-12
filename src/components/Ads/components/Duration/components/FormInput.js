@@ -74,8 +74,11 @@ export const DateInput = ({label, onChange = () => {}, invalid, start_dateErr, e
         <div className="dateInputContainer" style={{width: '188.5px'}}>
             <label>{label}</label>
             <div className="dateInput" style={{border: invalid || end_dateErr || start_dateErr ? '1px solid #FF453A' : '1px solid white'}}>
-                <div>{inputValue}</div>
-                <DayPicker onDayChange={handleChange}/>
+                {/* <div>{inputValue}</div> */}
+                <div classNames='dayPickerInput'>
+                    <DayPicker onDayChange={handleChange} classNames='DayPickerInput'/>
+                </div>
+                
             </div>
         </div>
     );
