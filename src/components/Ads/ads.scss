@@ -330,6 +330,7 @@
           border-radius: 16px;
           cursor: pointer;
           margin-bottom: 24px;
+          transition: all .2s;
 
           .trashwrap {
             position: absolute;
@@ -356,7 +357,10 @@
           }
 
           &:hover {
-            border: 1px solid rgba(255, 255, 255, .3);
+            //box-shadow: 2px 2px 2px var(--dark-opacity),
+            //            -2px 2px 2px var(--dark-opacity),
+            //            2px -2px 2px var(--dark-opacity);
+            transform: scale(1.03);
           }
 
           // &:hover span {
