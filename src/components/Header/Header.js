@@ -271,20 +271,6 @@ const mapStateToProps = state => {
         isPreview: state.adsOptions.isPreview
     }
 }
-const mapDispatchToProps = {
-    muteToggle,
-    logoutQuestion,
-    createAdProp,
-    registration,
-    prohibition,
-    authorization,
-    switchView,
-    chooseLang,
-    playClick,
-    switchStep,
-    changeDemo,
-    setIsPreview,
-    setPreviewBanner,
-    setIsChange
+const mapDispatchToProps = {muteToggle, logoutQuestion, createAdProp, registration, prohibition, authorization, switchView, chooseLang, playClick, switchStep, changeDemo, setIsPreview, setPreviewBanner, setIsChange
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
