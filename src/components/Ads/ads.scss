@@ -55,9 +55,13 @@
         position: absolute;
         bottom: -35px;
         left: 0;
-        background-color: var(--dark-block);
+        background-color:  rgba(141,217,252, .5);
+        color: var(--black);
         border-radius: 8px;
         cursor: pointer;
+        &:hover {
+          background-color:  rgba(141,217,252, 1);
+        }
       }
 
       .dashed {
@@ -87,9 +91,13 @@
         position: absolute;
         bottom: 31px;
         left: 0;
-        background-color: var(--dark-block);
+        background-color: rgba(50, 215, 75, .5);
         border-radius: 8px;
         cursor: pointer;
+        color: var(--black);
+        &:hover {
+          background-color: rgba(50, 215, 75, 1);
+        }
       }
 
       .image-preview {
@@ -106,7 +114,7 @@
     align-items: flex-start;
     margin-bottom: 30px;
 
-    &>input {
+    & > input {
       width: 100%;
       height: 48px;
       background: transparent;
@@ -205,6 +213,25 @@
   border: 1px solid white !important;
   color: #fff !important;
   margin-bottom: 20px;
+
+}
+
+.myAd-btn.resume {
+  background-color: var(--up);
+  color: var(--black) !important;
+
+  &:hover {
+    color: var(--text-color) !important;
+  }
+}
+
+.myAd-btn.stop {
+  background-color: var(--down);
+  color: var(--black) !important;
+
+  &:hover {
+    color: var(--text-color) !important;
+  }
 }
 
 .list-main-block {
@@ -226,14 +253,16 @@
     display: flex;
     // margin: 80px auto;
     margin-top: 100px;
+    height: calc(100vh - 100px);
 
     .listAds {
       width: 865px;
       // height: 216px;
       padding: 20px 20px 30px 20px;
-      height: 900px;
+      max-height: 100%;
       overflow: auto;
-      &::-webkit-scrollbar{
+
+      &::-webkit-scrollbar {
         width: 0;
       }
 
@@ -302,12 +331,32 @@
           cursor: pointer;
           margin-bottom: 24px;
 
+          .trashwrap {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            .open-trash {
+              display: none;
+              margin-right: -3px;
+              margin-top: -3px;
+            }
+
+            &:hover {
+              .open-trash {
+                display: inline;
+              }
+              .trash {
+                display: none;
+              }
+            }
+          }
+
           &:not(:nth-child(3n + 3)) {
             margin-right: 21px;
           }
 
           &:hover {
-            border: 1px solid rgba(255,255,255, .3);
+            border: 1px solid rgba(255, 255, 255, .3);
           }
 
           // &:hover span {
@@ -338,7 +387,7 @@
           //   margin-top: 32px;
           // }
 
-          .ad-detail-list{
+          .ad-detail-list {
             list-style: none;
             padding: 0 12px;
             width: 100%;
@@ -355,11 +404,11 @@
               justify-content: space-between;
               margin-bottom: 8px;
 
-              .item-title{
+              .item-title {
                 opacity: .5;
               }
 
-              .item-dollar{
+              .item-dollar {
                 margin-left: 5px;
                 color: var(--gold);
               }
@@ -369,24 +418,26 @@
               width: 259px;
               height: 245px;
               margin-left: -12px;
-              
-              img{
+
+              img {
                 border-radius: 16px;
                 -webkit-border-radius: 16px;
                 -moz-border-radius: 16px;
                 -ms-border-radius: 16px;
                 -o-border-radius: 16px;
-}
+              }
             }
+
             &__url {
               overflow: hidden;
-            white-space: nowrap;
-            width: 70%;
+              white-space: nowrap;
+              width: 70%;
             }
           }
         }
-        .add-new{
-          height: 245px;
+
+        .add-new {
+          max-height: 504px;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -442,8 +493,7 @@
     font-weight: 500;
     font-size: 24px;
     line-height: 35px;
-    margin-left: 43%;
-    margin-bottom: 0;
+    margin: 0 auto;
   }
 }
 

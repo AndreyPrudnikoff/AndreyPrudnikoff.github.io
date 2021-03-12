@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import {clear_ad, getCurrentList, setIsPreview, setWebsite} from "../../redux/actions/advertising";
 // import {objData, isChange} from '../../redux/actions/changeAd'
@@ -34,15 +34,15 @@ const Ads = (props) => {
         timezones[k] = item[k];
     })
 
-    useEffect(()=> {
+    useEffect(() => {
         props.clear_ad();
     }, []);
-    const withTime = props.withDate ? {
+    let withTime = {
         start_date: props.start_date,
         start_time: props.start_time,
         end_date: props.end_date,
         end_time: props.end_time,
-    } : null;
+    };
     const ad = {
         image: props.image,
         website_url: props.website_url,
@@ -76,7 +76,16 @@ const Ads = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         let errorArray = [];
+        if(props.withDate) {
+            delete ad.start_date;
+            delete ad.start_time;
+            delete ad.end_date;
+            delete ad.end_time;
+            console.log(123123)
+        }
+        console.log(ad)
         for (const adKey in ad) {
+
             if (!ad[adKey]) {
                 errorArray.push(adKey);
             }
@@ -119,7 +128,10 @@ const Ads = (props) => {
                     <ImagePreview/>
 
 
-                    <TextInput onChange={props.setWebsite} setChangedWebUrl={(e) => {props.setChangedObj('website_url', e)}} isChange={props.isChange} changeUrl={props.objData.website_url} label="Website URL" onChangeErrFalse={() => props.website_err(false)} urlErr={props.website_urlErr} />
+                    <TextInput onChange={props.setWebsite} setChangedWebUrl={(e) => {
+                        props.setChangedObj('website_url', e)
+                    }} isChange={props.isChange} changeUrl={props.objData.website_url} label="Website URL"
+                               onChangeErrFalse={() => props.website_err(false)} urlErr={props.website_urlErr}/>
 
 
                     <hr/>

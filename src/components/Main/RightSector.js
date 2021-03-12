@@ -10,10 +10,10 @@ import {changeDemo, userdata} from "../../redux/actions/game";
 import {createAdProp} from "../../redux/actions";
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
-import bannerImg from '../../images/adbanner3.png';
+import img from '../../images/adbanner3.png';
 
 
-const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance, userdata, name, isDemo, threewins, changeDemo, createAdProp, predict, currentLang, playClick, transition, setIsPreview, bannerPreview, isPreview}) => {
+const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance, userdata, name, isDemo, threewins, changeDemo, createAdProp, predict, currentLang, playClick, transition, setIsPreview, preview, isPreview}) => {
 
     const [switcher, setSwitcher] = useState(false);
     // const [banner, setBanner] = useState("banner one round-dark");
@@ -109,7 +109,7 @@ const RightSector = ({step, balance, lastWinGame, lastgame, wins, colorBlalance,
             <div onClick={() => {
                 window.open('https://bitrxapp.com/?gb', '_blank')
             }} className={"banner three round-dark"}>
-                <img src={isPreview ? bannerPreview : bannerImg} alt="ban" className='bannerImg'/>
+                <img src={isPreview ? preview : img} alt="ban" className='bannerImg'/>
             </div>
         </div>
     );
@@ -128,7 +128,7 @@ const mapStateToProps = state => {
         predict: state.balanceReducer.predict,
         currentLang: state.switchOptions.lang,
         step: state.switchOptions.step,
-        bannerPreview: state.adsOptions.banner,
+        preview: state.adsOptions.banner,
         isPreview: state.adsOptions.isPreview
     }
 }

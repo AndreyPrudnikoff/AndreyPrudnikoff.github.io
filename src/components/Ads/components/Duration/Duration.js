@@ -90,7 +90,6 @@ const Duration = ({setStartDate, setStartTime, setEndDate, setEndTime, startTime
 
 
 const mapStateToProps = state => {
-  console.log(state.adChange)
   return {
     isCorrectDateFromStore: state.adsOptions.isCorrectDate,
     start_dateErr: state.ad_errors_reducer.start_date,
