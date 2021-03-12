@@ -7,7 +7,8 @@ import {connect} from "react-redux";
 import moment from 'moment';
 import addNewImg from '../../images/add-new.png'
 import back from "../../images/back.svg";
-import Wallet from "./components/Wallet"
+import trash from "./../../images/trash.svg"
+import opentrash from "./../../images/open-trash.svg"
 import {EN} from "../../languages/en";
 import {RU} from "../../languages/ru";
 
@@ -63,6 +64,7 @@ const ListAds = ({playClick, name, balance, currentLang, currentList, finishedLi
                                         getDetails(item);
                                         history.push('/myad')
                                     }}>
+                                        <div className="trashwrap"><img className="trash"  src={trash} height={25} width={30} alt="trash"/><img className="open-trash" src={opentrash} height={30} width={35} alt="trash"/></div>
                                         <ul className='ad-detail-list'>
                                             <li className='ad-detail-list__item ad-detail-list__img'>
                                                 <img src={item.image} alt='image' width='259' height='245'/>
