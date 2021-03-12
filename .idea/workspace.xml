@@ -2,8 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f6b93ff-e806-4942-bf67-7a8ba8e695b9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Ads/components/Duration/components/datepicker.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Ads/components/Duration/components/timepicker.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/calendar.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/clock.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Ads/Ads.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/Ads.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Ads/ListAds.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/ListAds.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Ads/ads.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/ads.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Ads/components/Duration/components/FormInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/components/Duration/components/FormInput.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Ads/components/Duration/components/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/components/Duration/components/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Ads/components/ImagePreview.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/components/ImagePreview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/RightSector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/RightSector.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/advertising.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/advertising.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,9 +25,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="SCSS File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -36,7 +48,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/images" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -168,7 +180,7 @@
       <workItem from="1615359178167" duration="12101000" />
       <workItem from="1615406700282" duration="623000" />
       <workItem from="1615446803876" duration="2148000" />
-      <workItem from="1615534290133" duration="13926000" />
+      <workItem from="1615534290133" duration="23846000" />
     </task>
     <servers />
   </component>

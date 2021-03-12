@@ -8,15 +8,7 @@ import {userdata} from "../../redux/actions/game";
 import {User} from "../../api/User";
 
 import {setChangedObj} from '../../redux/actions/changeAd'
-import {
-    budget_err,
-    country_err,
-    end_date_err,
-    end_time_err,
-    image_err,
-    start_date_err,
-    start_time_err,
-    website_err
+import {budget_err, country_err, end_date_err, end_time_err, image_err, start_date_err, start_time_err, website_err
 } from '../../redux/actions/ad_errors'
 
 // styles
@@ -42,6 +34,7 @@ const Ads = (props) => {
         end_date: props.end_date,
         end_time: props.end_time,
     };
+    console.log(withTime)
     const ad = {
         image: props.image,
         website_url: props.website_url,

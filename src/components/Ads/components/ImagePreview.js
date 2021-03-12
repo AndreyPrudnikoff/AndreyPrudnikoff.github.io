@@ -71,7 +71,6 @@ const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview,
 };
 
 const mapStateToProps = state => {
-  console.log(state.adsOptions.banner)
   return {
     banner: state.adsOptions.image,
     isPreview: state.adsOptions.isPreview,
