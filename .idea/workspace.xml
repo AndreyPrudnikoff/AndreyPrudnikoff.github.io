@@ -3,9 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="3f6b93ff-e806-4942-bf67-7a8ba8e695b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_04_03_2021_14_13_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_04_03_2021_14_13__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Ads/ListAds.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/ListAds.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Ads/MyAd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/MyAd.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Ads/ads.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/ads.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Ads/components/ImagePreview.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ads/components/ImagePreview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/RightSector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/RightSector.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/useImagePreview.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/useImagePreview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/languages/en.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/languages/en.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/languages/ru.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/languages/ru.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,6 +179,7 @@
       <workItem from="1615359178167" duration="12101000" />
       <workItem from="1615406700282" duration="623000" />
       <workItem from="1615446803876" duration="2148000" />
+      <workItem from="1615534290133" duration="1795000" />
     </task>
     <servers />
   </component>

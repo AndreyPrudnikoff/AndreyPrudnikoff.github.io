@@ -20,7 +20,6 @@ const MyAd = ({objData, setObjData, setIsChange}) => {
         }
         reader.readAsDataURL(file);
     }
-
     const stopAdHandler = id => {
         User.stopAd(id).then((responce) => {
             if(responce.status === 200) {

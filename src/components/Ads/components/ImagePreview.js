@@ -10,13 +10,12 @@ import {setChangedObj} from '../../../redux/actions/changeAd'
 
 const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview, adErrors, isChange, objData, image_err, imageErr, setChangedObj}) => {
   const [image, setFile] = useImagePreview();
-  let history = useHistory()
+  let history = useHistory();
 
   useEffect(() => {
     if(isChange) {
-      // console.log(objData.image)
       const data = {target: objData.image};
-      setFile(data, true)
+      setFile(data, true);
     }
   }, [])
 
@@ -25,7 +24,7 @@ const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview,
     let reader = new FileReader();
     reader.onloadend = function() {
       if(isChange) {
-        setChangedObj('image', reader.result)
+        setChangedObj('image', reader.result);
       } else {
         addImage(reader.result);
       }
