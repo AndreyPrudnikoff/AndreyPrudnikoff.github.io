@@ -36,8 +36,10 @@ const initialState = {
 
 export const adsOptions = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_BANNER:
+        case ADD_BANNER: {
+            console.log(action.payload);
             return {...state, image: action.payload};
+        }
         case SET_WEB_SITE:
             return {...state, website_url: action.payload};
         case ADD_COUNTRY:

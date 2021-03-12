@@ -44,7 +44,7 @@ const Footer = (props) => {
 
     return (
         <div className="footer">
-            <button className={green} type='submit'>{props.isChange ? 'Change now' : 'Promote now'}</button>
+            <button className={green} type={props.isChange ? null :'submit'}>{props.isChange ? 'Change now' : 'Promote now'}</button>
         </div>
     );
 };

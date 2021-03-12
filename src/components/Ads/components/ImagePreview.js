@@ -27,6 +27,7 @@ const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview,
         setChangedObj('image', reader.result);
       } else {
         addImage(reader.result);
+        // console.log(reader.result)
       }
       
     }
@@ -70,6 +71,7 @@ const ImagePreview = ({addImage, banner, isPreview, previewBanner, setIsPreview,
 };
 
 const mapStateToProps = state => {
+  console.log(state.adsOptions.banner)
   return {
     banner: state.adsOptions.banner,
     isPreview: state.adsOptions.isPreview,
