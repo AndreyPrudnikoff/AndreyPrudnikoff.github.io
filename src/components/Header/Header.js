@@ -158,7 +158,7 @@ const Header = ({switchStep, promo, auth, reg, mute, muteToggle, logoutQuestion,
                                             if (reg) {registration();}
                                             playClick();
                                         }} className={currentLang + " login auth-header"}
-                                            to="/login">{LANG.Auth.Login.loginIn}
+                                            to="/ads">{LANG.Auth.Login.loginIn}
                                         </Link>
                                         <Link onClick={() => {registration(); playClick()}} className={currentLang + " signup auth-header"}
                                             to="/signup">{LANG.Auth.Login.signUp}
